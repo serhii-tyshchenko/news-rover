@@ -1,0 +1,113 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #282c34;
+  color: white;
+}
+
+a {
+  color: #61dafb;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+h2 {
+  margin: 0 0 1rem 0;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+button {
+  background-color: #282c34;
+  border: 1px solid #61dafb;
+  border-radius: 4px;
+  color: #61dafb;
+  cursor: pointer;
+  font-size: 0.75rem;
+  padding: 0.5rem;
+}
+
+button:hover {
+  background-color: #61dafb;
+  color: #282c34;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 1920px;
+}
+
+header {
+  background-color: #282c34;
+  font-size: calc(10px + 2vmin);
+  color: white;
+  padding: 1rem;
+}
+
+main {
+  padding: 1rem;
+}
+
+/* grid template for 3 columns for desktop and 1 column for mobile */
+@media (min-width: 1024px) {
+  main {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+}
+.widget {
+  border-radius: 4px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+.d-flex {
+  display: flex;
+}
+.justify-content-between {
+  justify-content: space-between;
+}
+.align-items-center {
+  align-items: center;
+}
+.m-0 {
+  margin: 0;
+}
+
+.mb-4 {
+  margin-bottom: 1rem;
+}
+
+.mr-1 {
+  margin-right: 0.25rem;
+}
+
+.mr-2 {
+  margin-right: 0.5rem;
+}
+
+/* generate animated skeleton */
+.skeleton {
+  background: linear-gradient(to right, #282c34 8%, #282c34 18%, #282c34 33%);
+  background-size: 200px 100%;
+  animation: skeleton 1s ease-in-out infinite;
+}
+
+@keyframes skeleton {
+  0% {
+    background-position: -200px 0;
+  }
+  100% {
+    background-position: calc(200px + 100%) 0;
+  }
+}
