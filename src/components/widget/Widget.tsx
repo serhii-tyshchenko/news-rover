@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react';
 import { Skeleton } from 'components';
+import { IconButton } from 'components/atoms';
 import { TNews } from 'App.types';
-import { isEmptyArray } from 'common/utils';
+import { isEmpty } from 'common/utils';
 import { fetchNews, convertDate } from './Widget.utils';
 
-import './Widget.css';
+import './Widget.scss';
 
 type TWidgetProps = {
   provider: {
@@ -25,16 +26,14 @@ function Widget({ provider }: TWidgetProps) {
     <div className="widget">
       <div className="d-flex justify-content-between align-items-center mb-4">
         <h2>{provider.title}</h2>
-        <button
-          type="button"
+        <IconButton
+          icon="arrows-cw"
           onClick={() => fetchNews(provider.name, setNews, setIsLoading)}
-        >
-          Refresh
-        </button>
+        />
       </div>
       {isLoading && <Skeleton />}
-      {isEmptyArray(news) && !isLoading && <div>No news</div>}
-      {!isEmptyArray(news) && !isLoading && (
+      {isEmpty(news) && !isLoading && <div>No news</div>}
+      {!isEmpty(news) && !isLoading && (
         <ul>
           {news.map((item: any) => (
             <li key={item.title}>

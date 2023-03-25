@@ -1,0 +1,29 @@
+:root {
+  --color-primary: #{$color-black};
+  --color-secondary: #{$color-mishka};
+  --color-accent: #{$color-dodger-blue};
+  --color-error: #{$color-red};
+  --background-primary: #{$color-solitude};
+  --background-secondary: #{$color-white};
+  --background-controls: #{$color-athens-gray};
+}
+
+[data-theme='light'] {
+  --color-primary: #{$color-black};
+  --color-secondary: #{$color-mishka};
+  --color-accent: #{$color-dodger-blue};
+  --color-error: #{$color-red};
+  --background-primary: #{$color-solitude};
+  --background-secondary: #{$color-white};
+  --background-controls: #{$color-athens-gray};
+}
+
+[data-theme='dark'] {
+  --color-primary: #{$color-white};
+  --color-secondary: #{$color-mishka};
+  --color-accent: #{$color-dodger-blue};
+  --color-error: #{$color-red};
+  --background-primary: #{$color-black};
+  --background-secondary: #{$color-bunker};
+  --background-controls: #{$color-cape-cod};
+}

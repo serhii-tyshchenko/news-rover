@@ -3,10 +3,10 @@
   background-color: #282c34;
   animation: skeleton 1s infinite;
   height: 2.5rem;
-}
 
-.skeleton:not(:last-child) {
-  margin-bottom: 1rem;
+  &:not(:last-child) {
+    margin-bottom: 1rem;
+  }
 }
 
 @for $i from 1 through 10 {

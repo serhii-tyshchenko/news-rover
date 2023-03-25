@@ -1,0 +1,42 @@
+@import '~styles/variables';
+
+.icon-button {
+  $size: 1.75em;
+
+  align-items: center;
+  background: inherit;
+  border: 0;
+  border-radius: 50%;
+  color: var(--color-primary);
+  cursor: pointer;
+  display: inline-flex;
+  height: $size;
+  justify-content: center;
+  width: $size;
+
+  &:disabled {
+    cursor: default;
+    opacity: 0.65;
+  }
+
+  &--small {
+    font-size: $font-size-xs;
+  }
+
+  &--normal {
+    font-size: $font-size-md;
+  }
+
+  &--big {
+    font-size: $font-size-xl;
+  }
+
+  &--large {
+    font-size: $font-size-xxl;
+  }
+
+  &--toggled,
+  &:hover:not(:disabled) {
+    background-color: var(--background-controls);
+  }
+}

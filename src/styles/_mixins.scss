@@ -1,0 +1,43 @@
+@mixin for-size($size) {
+  @if $size ==mobile-small {
+    @media (max-width: $break-mobile-small) {
+      @content;
+    }
+  }
+
+  @else if $size ==mobile-medium {
+    @media (max-width: $break-mobile-medium) {
+      @content;
+    }
+  }
+
+  @else if $size ==mobile-large {
+    @media (max-width: $break-mobile-large) {
+      @content;
+    }
+  }
+
+  @else if $size ==tablet {
+    @media (max-width: $break-tablet) {
+      @content;
+    }
+  }
+
+  @else if $size ==laptop {
+    @media (max-width: $break-laptop) {
+      @content;
+    }
+  }
+
+  @else if $size ==laptop-large {
+    @media (max-width: $break-laptop-large) {
+      @content;
+    }
+  }
+
+  @else if $size ==4k {
+    @media (max-width: $break-4k) {
+      @content;
+    }
+  }
+}

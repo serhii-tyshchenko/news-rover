@@ -1,0 +1,80 @@
+@font-face {
+  font-family: fontello;
+  font-style: normal;
+  font-weight: normal;
+  src: url('~assets/fonts/fontello.woff') format('woff');
+}
+
+[class^='icon-']::before,
+[class*=' icon-']::before {
+  display: inline-block;
+  font-family: fontello;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1em;
+  margin-left: 0.2em;
+  margin-right: 0.2em;
+  text-align: center;
+  text-decoration: inherit;
+  text-transform: none;
+  width: 1em;
+}
+
+.icon-cancel:before {
+  content: '\e807';
+}
+
+.icon-arrows-cw:before {
+  content: '\e81a';
+}
+
+.icon-eye:before {
+  content: '\e825';
+}
+
+.icon-eye-off:before {
+  content: '\e826';
+}
+
+.icon-cog:before {
+  content: '\e827';
+}
+
+.icon-link-ext:before {
+  content: '\f08e';
+}
+
+.icon-menu:before {
+  content: '\f0c9';
+}
+
+.icon-ellipsis-vert:before {
+  content: '\f142';
+}
+
+.icon-sun:before {
+  content: '\f185';
+}
+
+.icon-moon:before {
+  content: '\f186';
+}
+
+.icon-google:before {
+  content: '\f1a0';
+}
+
+.icon-history:before {
+  content: '\f1da';
+}
+
+.icon-user-o:before {
+  content: '\f2c0';
+}
+
+.icon-user:before {
+  content: '🔖';
+}
