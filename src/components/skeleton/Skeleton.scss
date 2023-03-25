@@ -1,6 +1,6 @@
 .skeleton {
   border-radius: 4px;
-  background-color: #282c34;
+  background-color: var(--background-skeleton);
   animation: skeleton 1s infinite;
   height: 2.5rem;
 
@@ -17,14 +17,14 @@
 
 @keyframes skeleton {
   0% {
-    background-color: #282c34;
+    background-color: var(--background-skeleton);
   }
 
   50% {
-    background-color: #444;
+    background-color: var(--background-skeleton-lighten);
   }
 
   100% {
-    background-color: #282c34;
+    background-color: var(--background-skeleton);
   }
 }

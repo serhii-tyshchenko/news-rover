@@ -68,25 +68,3 @@ main {
     grid-template-columns: repeat(3, 1fr);
   }
 }
-
-@media (prefers-color-scheme: light) {
-  body {
-    background-color: #fff;
-    color: #282c34;
-  }
-
-  a {
-    /* more contrast color than #61dafb */
-    color: #007bff;
-  }
-
-  button {
-    background-color: #fff;
-    color: #282c34;
-  }
-
-  button:hover {
-    background-color: #007bff;
-    color: #fff;
-  }
-}

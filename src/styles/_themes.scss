@@ -5,17 +5,21 @@
   --color-error: #{$color-red};
   --background-primary: #{$color-shark};
   --background-secondary: #{$color-white};
-  --background-controls: #{$color-athens-gray};
+  --background-controls: #{$color-cape-cod};
+  --background-skeleton: #{$color-shark};
+  --background-skeleton-lighten: #{lighten($color-shark, 10%)};
 }
 
 [data-theme='light'] {
   --color-primary: #{$color-black};
   --color-secondary: #{$color-mishka};
-  --color-accent: #{$color-malibu};
+  --color-accent: #{$color-dodger-blue};
   --color-error: #{$color-red};
   --background-primary: #{$color-solitude};
   --background-secondary: #{$color-white};
-  --background-controls: #{$color-athens-gray};
+  --background-controls: #{$color-geyser};
+  --background-skeleton: #{$color-geyser};
+  --background-skeleton-lighten: #{lighten($color-geyser, 10%)};
 }
 
 [data-theme='dark'] {
@@ -26,4 +30,6 @@
   --background-primary: #{$color-shark};
   --background-secondary: #{$color-bunker};
   --background-controls: #{$color-cape-cod};
+  --background-skeleton: #{$color-shark};
+  --background-skeleton-lighten: #{lighten($color-shark, 10%)};
 }

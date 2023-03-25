@@ -1,10 +1,12 @@
 import { Widget } from 'components';
-
+import { useTheme } from 'common/hooks';
 import { PROVIDERS } from 'common/constants';
 
 import './App.scss';
 
 function App() {
+  useTheme();
+
   return (
     <>
       <header>My News</header>

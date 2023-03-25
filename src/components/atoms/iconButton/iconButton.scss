@@ -37,6 +37,8 @@
 
   &--toggled,
   &:hover:not(:disabled) {
-    background-color: #444;
+    background-color: var(--background-controls);
   }
 }
+
+// #444
