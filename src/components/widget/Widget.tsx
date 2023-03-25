@@ -28,6 +28,7 @@ function Widget({ provider }: TWidgetProps) {
         <h2>{provider.title}</h2>
         <IconButton
           icon="arrows-cw"
+          title="Refresh"
           onClick={() => fetchNews(provider.name, setNews, setIsLoading)}
         />
       </div>

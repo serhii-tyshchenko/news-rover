@@ -6,8 +6,8 @@ body {
   font-family: $font-primary;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #282c34;
-  color: white;
+  background-color: var(--background-primary);
+  color: var(--color-primary);
 }
 
 * {
