@@ -28,3 +28,5 @@ export const PROVIDERS = {
     title: 'Defense Express',
   },
 };
+
+export const POSTS_LIMIT = 10;

@@ -1,5 +1,6 @@
 import { SetStateAction } from 'react';
-import { TNews } from '../../App.types';
+import { POSTS_LIMIT } from 'common/constants';
+import { TNews } from 'App.types';
 
 const PROD_ENV_URL = 'https://my-news-be.netlify.app/.netlify/functions/api/';
 
@@ -12,7 +13,7 @@ export async function fetchNews(
 
   try {
     const response = await fetch(
-      `${PROD_ENV_URL}/rss/?provider=${provider}&limit=10`,
+      `${PROD_ENV_URL}/rss/?provider=${provider}&limit=${POSTS_LIMIT}`,
       {
         method: 'GET',
         headers: {

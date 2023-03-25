@@ -6,7 +6,7 @@ import './App.css';
 
 function App() {
   return (
-    <div className="container">
+    <>
       <header>My News</header>
       <main>
         <Widget provider={PROVIDERS.CENSOR} />
@@ -16,7 +16,7 @@ function App() {
         <Widget provider={PROVIDERS.MILITARNYJ} />
         <Widget provider={PROVIDERS.DEFENCE_UA} />
       </main>
-    </div>
+    </>
   );
 }
 

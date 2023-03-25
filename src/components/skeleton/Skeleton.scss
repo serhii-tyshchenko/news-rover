@@ -1,0 +1,30 @@
+.skeleton {
+  border-radius: 4px;
+  background-color: #282c34;
+  animation: skeleton 1s infinite;
+  height: 2.5rem;
+}
+
+.skeleton:not(:last-child) {
+  margin-bottom: 1rem;
+}
+
+@for $i from 1 through 10 {
+  .skeleton:nth-child(#{$i}) {
+    animation-delay: $i * 0.1s;
+  }
+}
+
+@keyframes skeleton {
+  0% {
+    background-color: #282c34;
+  }
+
+  50% {
+    background-color: #444;
+  }
+
+  100% {
+    background-color: #282c34;
+  }
+}

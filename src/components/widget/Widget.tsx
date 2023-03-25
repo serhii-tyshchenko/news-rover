@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { Skeleton } from 'components';
 import { TNews } from 'App.types';
 import { isEmptyArray } from 'common/utils';
 import { fetchNews, convertDate } from './Widget.utils';
@@ -31,7 +32,7 @@ function Widget({ provider }: TWidgetProps) {
           Refresh
         </button>
       </div>
-      {isLoading && <div>Loading...</div>}
+      {isLoading && <Skeleton />}
       {isEmptyArray(news) && !isLoading && <div>No news</div>}
       {!isEmptyArray(news) && !isLoading && (
         <ul>
