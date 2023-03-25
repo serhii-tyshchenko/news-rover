@@ -17,3 +17,9 @@
     }
   }
 }
+
+.loading {
+  transform: rotate(360deg);
+  transition: transform 1s linear;
+  animation: loading 1s infinite;
+}

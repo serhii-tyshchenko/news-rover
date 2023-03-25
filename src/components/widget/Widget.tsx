@@ -30,6 +30,7 @@ function Widget({ provider }: TWidgetProps) {
           icon="arrows-cw"
           title="Refresh"
           onClick={() => fetchNews(provider.name, setNews, setIsLoading)}
+          className={isLoading ? 'loading' : ''}
         />
       </div>
       {isLoading && <Skeleton />}
