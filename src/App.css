@@ -1,5 +1,10 @@
-body {
+* {
+  box-sizing: border-box;
   margin: 0;
+  padding: 0;
+}
+
+body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
@@ -7,6 +12,26 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-color: #282c34;
   color: white;
+  margin: 0;
+  padding: 0;
+}
+
+::-webkit-scrollbar {
+  height: 4px;
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #779299;
+  border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #61dafb;
 }
 
 a {
@@ -18,17 +43,12 @@ a:hover {
   text-decoration: underline;
 }
 
-h2 {
-  margin: 0 0 1rem 0;
-}
-
 ul {
   list-style: none;
-  padding: 0;
 }
 
 button {
-  background-color: #282c34;
+  background-color: transparent;
   border: 1px solid #61dafb;
   border-radius: 4px;
   color: #61dafb;
@@ -44,33 +64,24 @@ button:hover {
 
 .container {
   margin: 0 auto;
-  max-width: 1920px;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
 }
 
 header {
-  background-color: #282c34;
   font-size: calc(10px + 2vmin);
-  color: white;
-  padding: 1rem;
+  padding: 0.75rem;
 }
 
 main {
-  padding: 1rem;
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  flex-grow: 1;
 }
 
-/* grid template for 3 columns for desktop and 1 column for mobile */
-@media (min-width: 1024px) {
-  main {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-  }
-}
-.widget {
-  border-radius: 4px;
-  padding: 1rem;
-  margin-bottom: 1rem;
-}
 .d-flex {
   display: flex;
 }
@@ -82,6 +93,10 @@ main {
 }
 .m-0 {
   margin: 0;
+}
+
+.mb-2 {
+  margin-bottom: 0.5rem;
 }
 
 .mb-4 {
@@ -96,18 +111,29 @@ main {
   margin-right: 0.5rem;
 }
 
-/* generate animated skeleton */
-.skeleton {
-  background: linear-gradient(to right, #282c34 8%, #282c34 18%, #282c34 33%);
-  background-size: 200px 100%;
-  animation: skeleton 1s ease-in-out infinite;
+@media (min-width: 1024px) {
+  main {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
-@keyframes skeleton {
-  0% {
-    background-position: -200px 0;
+@media (prefers-color-scheme: light) {
+  body {
+    background-color: #fff;
+    color: #282c34;
   }
-  100% {
-    background-position: calc(200px + 100%) 0;
+  a {
+    /* more contrast color than #61dafb */
+    color: #007bff;
+  }
+  button {
+    background-color: #fff;
+    color: #282c34;
+  }
+  button:hover {
+    background-color: #007bff;
+    color: #fff;
   }
 }

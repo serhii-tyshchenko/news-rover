@@ -1,19 +1,15 @@
 import { useEffect, useState } from 'react';
-import { TNews } from './App.types';
-import { fetchNews } from './App.utils';
+import { TNews } from 'App.types';
+import { isEmptyArray } from 'common/utils';
+import { fetchNews, convertDate } from './Widget.utils';
+
+import './Widget.css';
 
 type TWidgetProps = {
   provider: {
     name: string;
     title: string;
   };
-};
-
-const convertDate = (date: Date) => {
-  const rawDate = new Date(date);
-  const hours = rawDate.getHours();
-  const minutes = rawDate.getMinutes().toString().padStart(2, '0');
-  return `${hours}:${minutes}`;
 };
 
 function Widget({ provider }: TWidgetProps) {
@@ -26,18 +22,21 @@ function Widget({ provider }: TWidgetProps) {
 
   return (
     <div className="widget">
-      <div className="d-flex justify-content-between align-items-center">
+      <div className="d-flex justify-content-between align-items-center mb-4">
         <h2>{provider.title}</h2>
-        <button onClick={() => fetchNews(provider.name, setNews, setIsLoading)}>
+        <button
+          type="button"
+          onClick={() => fetchNews(provider.name, setNews, setIsLoading)}
+        >
           Refresh
         </button>
       </div>
       {isLoading && <div>Loading...</div>}
-      {news.length === 0 && !isLoading && <div>No news</div>}
-      {news.length > 0 && !isLoading && (
-        <ul className="m-0">
+      {isEmptyArray(news) && !isLoading && <div>No news</div>}
+      {!isEmptyArray(news) && !isLoading && (
+        <ul>
           {news.map((item: any) => (
-            <li key={item.title} className="mb-4 d-flex">
+            <li key={item.title}>
               <span className="mr-2">{convertDate(item.created)}</span>
               <a href={item.link} target="_blank" rel="noreferrer">
                 {item.title}

@@ -1,5 +1,5 @@
 import { SetStateAction } from 'react';
-import { TNews } from './App.types';
+import { TNews } from '../../App.types';
 
 const PROD_ENV_URL = 'https://my-news-be.netlify.app/.netlify/functions/api/';
 
@@ -12,7 +12,7 @@ export async function fetchNews(
 
   try {
     const response = await fetch(
-      `${PROD_ENV_URL}/rss/?provider=${provider}&limit=5`,
+      `${PROD_ENV_URL}/rss/?provider=${provider}&limit=10`,
       {
         method: 'GET',
         headers: {
@@ -28,3 +28,10 @@ export async function fetchNews(
     setIsLoading(false);
   }
 }
+
+export const convertDate = (date: Date) => {
+  const rawDate = new Date(date);
+  const hours = rawDate.getHours();
+  const minutes = rawDate.getMinutes().toString().padStart(2, '0');
+  return `${hours}:${minutes}`;
+};

@@ -1,42 +1,13 @@
-import Widget from './Widget';
+import { Widget } from 'components';
+
+import { PROVIDERS } from 'common/constants';
 
 import './App.css';
-
-const PROVIDERS = {
-  CENSOR: {
-    name: 'censor',
-    title: 'Цензор',
-  },
-  LB: {
-    name: 'lb',
-    title: 'Lb.ua',
-  },
-  PRAVDA: {
-    name: 'pravda',
-    title: 'Українська правда',
-  },
-  NV: {
-    name: 'nv',
-    title: 'НВ',
-  },
-  ESPRESO: {
-    name: 'espreso',
-    title: 'Еспресо',
-  },
-  MILITARNYJ: {
-    name: 'militarnyj',
-    title: 'Мілітарний портал',
-  },
-  DEFENCE_UA: {
-    name: 'defence_ua',
-    title: 'Defense Express',
-  },
-};
 
 function App() {
   return (
     <div className="container">
-      <header>News Agregator</header>
+      <header>My News</header>
       <main>
         <Widget provider={PROVIDERS.CENSOR} />
         <Widget provider={PROVIDERS.LB} />
