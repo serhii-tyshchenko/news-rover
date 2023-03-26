@@ -38,7 +38,7 @@ function Widget({ provider }: TWidgetProps) {
       {!isEmpty(news) && !isLoading && (
         <ul>
           {news.map((item: any) => (
-            <li key={item.title}>
+            <li key={item.title} className="d-flex">
               <span className="mr-2">{convertDate(item.created)}</span>
               <a href={item.link} target="_blank" rel="noreferrer">
                 {item.title}

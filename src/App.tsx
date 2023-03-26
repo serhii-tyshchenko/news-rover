@@ -1,6 +1,6 @@
 import { Widget } from 'components';
 import { useTheme } from 'common/hooks';
-import { PROVIDERS } from 'common/constants';
+import { PROVIDERS, APP_NAME } from 'common/constants';
 
 import './App.scss';
 
@@ -9,7 +9,7 @@ function App() {
 
   return (
     <>
-      <header>My News</header>
+      <header>{APP_NAME}</header>
       <main>
         <Widget provider={PROVIDERS.CENSOR} />
         <Widget provider={PROVIDERS.LB} />

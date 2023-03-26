@@ -4,4 +4,8 @@ export type TNewsItem = {
   time: string;
 };
 
+export type TConfigMap = {
+  [key: string]: string;
+};
+
 export type TNews = TNewsItem[];

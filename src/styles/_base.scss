@@ -61,6 +61,12 @@ main {
   flex-grow: 1;
 }
 
+.animation-rotate {
+  transform: rotate(360deg);
+  transition: transform 1s linear;
+  animation: loading 1s infinite;
+}
+
 @media (min-width: 1024px) {
   main {
     display: grid;
