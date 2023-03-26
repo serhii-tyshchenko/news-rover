@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import { Skeleton } from 'components';
 import { IconButton } from 'components/atoms';
+import { Skeleton } from 'components/molecules';
 import { TNews } from 'App.types';
 import { isEmpty } from 'common/utils';
 import { fetchNews, convertDate } from './Widget.utils';
@@ -30,7 +30,7 @@ function Widget({ provider }: TWidgetProps) {
           icon="arrows-cw"
           title="Refresh"
           onClick={() => fetchNews(provider.name, setNews, setIsLoading)}
-          className={isLoading ? 'loading' : ''}
+          className={isLoading ? 'animation-rotate' : ''}
         />
       </div>
       {isLoading && <Skeleton />}

@@ -1,4 +1,5 @@
 import { POSTS_LIMIT } from 'common/constants';
+
 import './Skeleton.scss';
 
 function Skeleton() {

@@ -1,4 +1,4 @@
-import { Widget } from 'components';
+import { Widget } from 'components/organisms';
 import { useTheme } from 'common/hooks';
 import { PROVIDERS, APP_NAME } from 'common/constants';
 
