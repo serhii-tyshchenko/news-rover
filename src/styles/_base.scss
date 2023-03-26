@@ -62,10 +62,19 @@ main {
 }
 
 .animation-rotate {
-  transform: rotate(360deg);
-  transition: transform 1s linear;
-  animation: loading 1s infinite;
+  animation: rotate 1s linear infinite;
 }
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 
 @media (min-width: 1024px) {
   main {
