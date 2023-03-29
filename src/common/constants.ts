@@ -27,8 +27,26 @@ export const PROVIDERS = {
     name: 'defence_ua',
     title: 'Defense Express',
   },
+  GAZETA_UA: {
+    name: 'gazeta',
+    title: 'Газета',
+  },
+  UNIAN: {
+    name: 'unian',
+    title: 'УНІАН',
+  },
+  OBOZREVATEL: {
+    name: 'obozrevatel',
+    title: 'Обозреватель',
+  },
+  ARMYINFORM: {
+    name: 'armyinform',
+    title: 'Армія Інформ',
+  },
 };
 
 export const POSTS_LIMIT = 10;
 
 export const APP_NAME = 'MyNews';
+
+export const API_URL = process.env.REACT_APP_API_URL;

@@ -15,6 +15,9 @@ function App() {
         <Widget provider={PROVIDERS.LB} />
         <Widget provider={PROVIDERS.NV} />
         <Widget provider={PROVIDERS.ESPRESO} />
+        <Widget provider={PROVIDERS.UNIAN} />
+        <Widget provider={PROVIDERS.OBOZREVATEL} />
+        <Widget provider={PROVIDERS.ARMYINFORM} />
         <Widget provider={PROVIDERS.MILITARNYJ} />
         <Widget provider={PROVIDERS.DEFENCE_UA} />
       </main>
