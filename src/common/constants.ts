@@ -24,7 +24,7 @@ export const PROVIDERS = {
     title: 'Мілітарний портал',
   },
   DEFENCE_UA: {
-    name: 'defence_ua',
+    name: 'defense_express',
     title: 'Defense Express',
   },
   GAZETA_UA: {
