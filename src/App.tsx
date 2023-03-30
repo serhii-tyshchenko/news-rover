@@ -61,7 +61,9 @@ function App() {
       </header>
       <main>
         {isLoading && <div>Loading...</div>}
-        {!isLoading && isEmpty(addedProviders) && <div>No providers added</div>}
+        {!isLoading && isEmpty(addedProviders) && (
+          <div>No providers added. Click settings icon to add.</div>
+        )}
         {!isLoading &&
           !isEmpty(addedProviders) &&
           addedProviders.map((provider: TProvider) => (
