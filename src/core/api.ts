@@ -1,8 +1,11 @@
 import { API_URL, DEFAULT_POSTS_LIMIT } from 'common/constants';
 
+const PROVIDERS_ROOT = `${API_URL}providers`;
+const NEWS_ROOT = `${API_URL}news`;
+
 export const getProviders = async () => {
   try {
-    const response = await fetch(`${API_URL}/providers`);
+    const response = await fetch(PROVIDERS_ROOT);
     const data = await response.json();
     return data;
   } catch (error) {
@@ -15,7 +18,7 @@ export const getNewsByProvider = async (
   limit = DEFAULT_POSTS_LIMIT
 ) => {
   try {
-    const response = await fetch(`${API_URL}/news/${provider}?limit=${limit}`);
+    const response = await fetch(`${NEWS_ROOT}/${provider}?limit=${limit}`);
     const data = await response.json();
     return data;
   } catch (error) {

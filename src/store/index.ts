@@ -7,7 +7,7 @@ import {
 import { loadState, saveState } from 'core/localStorage';
 import thunk from 'redux-thunk';
 
-import { settings } from './reducers';
+import { settings, providersReducer as providers } from './reducers';
 
 declare global {
   interface Window {
@@ -17,6 +17,7 @@ declare global {
 
 export const rootReducer = combineReducers({
   settings,
+  providers,
 });
 
 const persistedState = loadState();

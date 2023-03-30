@@ -1,3 +1,6 @@
+import { useEffect } from 'react';
+import { useAppDispatch } from 'common/hooks';
+import { doGetProviders } from 'store/actions';
 import { Widget } from 'components/organisms';
 import { useTheme } from 'common/hooks';
 import { PROVIDERS, APP_NAME } from 'common/constants';
@@ -5,6 +8,11 @@ import { PROVIDERS, APP_NAME } from 'common/constants';
 import './App.scss';
 
 function App() {
+  const dispatch = useAppDispatch();
+  useEffect(() => {
+    dispatch(doGetProviders());
+  }, [dispatch]);
+
   useTheme();
 
   return (
