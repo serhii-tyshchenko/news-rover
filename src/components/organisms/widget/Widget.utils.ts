@@ -1,5 +1,5 @@
 import { SetStateAction } from 'react';
-import { POSTS_LIMIT, API_URL } from 'common/constants';
+import { DEFAULT_POSTS_LIMIT, API_URL } from 'common/constants';
 import { TNews } from 'App.types';
 
 export async function fetchNews(
@@ -11,7 +11,7 @@ export async function fetchNews(
 
   try {
     const response = await fetch(
-      `${API_URL}rss/?provider=${provider}&limit=${POSTS_LIMIT}`,
+      `${API_URL}rss/?provider=${provider}&limit=${DEFAULT_POSTS_LIMIT}`,
       {
         method: 'GET',
         mode: 'cors',

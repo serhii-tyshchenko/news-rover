@@ -45,7 +45,7 @@ export const PROVIDERS = {
   },
 };
 
-export const POSTS_LIMIT = 10;
+export const DEFAULT_POSTS_LIMIT = 10;
 
 export const APP_NAME = 'MyNews';
 
