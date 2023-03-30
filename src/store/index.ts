@@ -29,9 +29,15 @@ const store = createStore(
 );
 
 store.subscribe(() => {
-  const { settings } = store.getState();
+  const {
+    settings,
+    providers: { added },
+  } = store.getState();
   saveState({
     settings,
+    providers: {
+      added,
+    },
   });
 });
 
