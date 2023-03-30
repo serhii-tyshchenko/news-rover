@@ -2,6 +2,7 @@ import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 import type { TRootState, TAppDispatch } from 'store';
 
 export * from './useTheme';
+export * from './useToggle';
 
 export const useAppDispatch: () => TAppDispatch = useDispatch;
 
