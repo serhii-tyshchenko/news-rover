@@ -4,14 +4,23 @@ import { createPortal } from 'react-dom';
 import { getClassName } from 'common/utils';
 import { portalRoot } from 'common/constants';
 
-import { IconButton } from 'components/atoms';
+import { IconButton, Button } from 'components/atoms';
 
 import './dialog.scss';
 
 const NAME_SPACE = 'dialog';
 
 function Dialog(props: TDialogProps) {
-  const { title, closeBtnTitle, onClose, children, className } = props;
+  const {
+    title,
+    closeBtnTitle,
+    cancelBtnTitle,
+    confirmBtnTitle,
+    onClose,
+    onConfirm,
+    children,
+    className,
+  } = props;
 
   const componentClassName = getClassName(NAME_SPACE, className);
 
@@ -19,12 +28,12 @@ function Dialog(props: TDialogProps) {
     <div className={`${NAME_SPACE}__backdrop`}>
       <div
         role="dialog"
-        aria-labelledby="ui-dialog-title"
+        aria-labelledby="dialog-title"
         aria-modal="true"
         className={componentClassName}
       >
-        <div className={`${NAME_SPACE}__header`}>
-          <h4 id="ui-dialog-title" className={`${NAME_SPACE}__title`}>
+        <header className={`${NAME_SPACE}__header`}>
+          <h4 id="dialog-title" className={`${NAME_SPACE}__title`}>
             {title}
           </h4>
           <IconButton
@@ -35,8 +44,16 @@ function Dialog(props: TDialogProps) {
             size="big"
             autoFocus
           />
-        </div>
-        <div className={`${NAME_SPACE}__content`}>{children}</div>
+        </header>
+        <main className={`${NAME_SPACE}__content`}>{children}</main>
+        <footer className={`${NAME_SPACE}__footer`}>
+          <Button onClick={onConfirm} className="mr-4">
+            {confirmBtnTitle}
+          </Button>
+          <Button onClick={onClose} btnType="secondary">
+            {cancelBtnTitle}
+          </Button>
+        </footer>
       </div>
     </div>,
     portalRoot
@@ -46,7 +63,10 @@ function Dialog(props: TDialogProps) {
 type TDialogProps = {
   title?: string;
   closeBtnTitle?: string;
+  cancelBtnTitle?: string;
+  confirmBtnTitle?: string;
   onClose?: () => void;
+  onConfirm?: () => void;
   children?: React.ReactNode;
   className?: string;
 };
@@ -54,6 +74,11 @@ type TDialogProps = {
 Dialog.defaultProps = {
   title: 'Dialog',
   closeBtnTitle: 'Close',
+  cancelBtnTitle: 'Cancel',
+  confirmBtnTitle: 'Confirm',
+  children: null,
+  onClose: null,
+  onConfirm: null,
   className: '',
 };
 
