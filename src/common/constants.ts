@@ -50,3 +50,8 @@ export const POSTS_LIMIT = 10;
 export const APP_NAME = 'MyNews';
 
 export const API_URL = process.env.REACT_APP_API_URL;
+
+export const THEMES = {
+  LIGHT: 'light',
+  DARK: 'dark',
+};
