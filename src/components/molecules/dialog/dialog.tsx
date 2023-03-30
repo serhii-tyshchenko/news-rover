@@ -11,13 +11,9 @@ import './dialog.scss';
 const NAME_SPACE = 'dialog';
 
 function Dialog(props: TDialogProps) {
-  const { title, closeBtnTitle, opened, onClose, children, className } = props;
+  const { title, closeBtnTitle, onClose, children, className } = props;
 
   const componentClassName = getClassName(NAME_SPACE, className);
-
-  if (!opened) {
-    return null;
-  }
 
   return createPortal(
     <div className={`${NAME_SPACE}__backdrop`}>
@@ -50,7 +46,6 @@ function Dialog(props: TDialogProps) {
 type TDialogProps = {
   title?: string;
   closeBtnTitle?: string;
-  opened?: boolean;
   onClose?: () => void;
   children?: React.ReactNode;
   className?: string;
@@ -59,7 +54,6 @@ type TDialogProps = {
 Dialog.defaultProps = {
   title: 'Dialog',
   closeBtnTitle: 'Close',
-  opened: false,
   className: '',
 };
 
