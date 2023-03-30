@@ -1,6 +1,9 @@
 import { SetStateAction } from 'react';
-import { POSTS_LIMIT, API_URL } from 'common/constants';
-import { TNews } from 'App.types';
+
+import { getNewsByProvider } from 'core/api';
+
+import { DEFAULT_POSTS_LIMIT } from 'common/constants';
+import { TNews } from 'common/types';
 
 export async function fetchNews(
   provider: string,
@@ -10,18 +13,8 @@ export async function fetchNews(
   setIsLoading(true);
 
   try {
-    const response = await fetch(
-      `${API_URL}rss/?provider=${provider}&limit=${POSTS_LIMIT}`,
-      {
-        method: 'GET',
-        mode: 'cors',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      }
-    );
-    const data = await response.json();
-    setNews(data);
+    const response = await getNewsByProvider(provider, DEFAULT_POSTS_LIMIT);
+    setNews(response);
   } catch (err) {
     console.log(err);
   } finally {
@@ -29,7 +22,7 @@ export async function fetchNews(
   }
 }
 
-export const convertDate = (date: Date) => {
+export const formatTime = (date: Date) => {
   const rawDate = new Date(date);
   const hours = rawDate.getHours().toString().padStart(2, '0');
   const minutes = rawDate.getMinutes().toString().padStart(2, '0');
