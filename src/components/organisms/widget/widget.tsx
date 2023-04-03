@@ -44,8 +44,15 @@ function Widget({ provider }: TWidgetProps) {
         <ul>
           {news.map((item: any) => (
             <li key={item.title} className="d-flex">
-              <span className="mr-2">{formatTime(item.created)}</span>
-              <a href={item.link} target="_blank" rel="noreferrer">
+              <span className="mr-2 color-secondary">
+                {formatTime(item.created)}
+              </span>
+              <a
+                href={item.link}
+                target="_blank"
+                rel="noreferrer"
+                className="color-primary"
+              >
                 {item.title}
               </a>
             </li>

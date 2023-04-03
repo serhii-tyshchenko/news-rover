@@ -2,7 +2,7 @@
 @import '~styles/mixins';
 
 .dialog {
-  background: var(--background-secondary);
+  background: var(--color-surface);
   border-radius: 10px;
   color: var(--color-primary);
   display: flex;
@@ -41,7 +41,7 @@
 
   &__header {
     align-items: center;
-    border-bottom: 1px solid var(--color-secondary-darken);
+    border-bottom: 1px solid var(--color-secondary);
     display: flex;
     justify-content: center;
     padding: 1rem;

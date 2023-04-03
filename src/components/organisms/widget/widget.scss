@@ -1,11 +1,21 @@
+@import '~styles/variables';
+
+.widget-list {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+}
+
 .widget {
-  border-radius: 4px;
   width: 100%;
   padding: 1rem;
   flex-shrink: 0;
   scroll-snap-align: start;
   display: flex;
   flex-direction: column;
+  background-color: var(--color-surface);
+  box-shadow: 0 0 0.5rem 0 rgba(0, 0, 0, 0.1);
 
   ul {
     padding-right: 0.5rem;
@@ -15,5 +25,17 @@
     li:not(:last-child) {
       margin-bottom: 1rem;
     }
+  }
+}
+
+@media (min-width: $break-laptop) {
+  .widget {
+    border-radius: 4px;
+  }
+
+  .widget-list {
+    display: grid;
+    gap: 1.25rem;
+    grid-template-columns: repeat(3, 1fr);
   }
 }

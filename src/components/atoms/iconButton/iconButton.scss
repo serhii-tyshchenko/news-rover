@@ -7,7 +7,7 @@
   background: inherit;
   border: 0;
   border-radius: 50%;
-  color: var(--color-accent);
+  color: var(--color-secondary);
   cursor: pointer;
   display: inline-flex;
   height: $size;
@@ -37,7 +37,7 @@
 
   &--toggled,
   &:hover:not(:disabled) {
-    background-color: var(--background-controls);
+    background-color: var(--color-background-controls);
   }
 }
 
