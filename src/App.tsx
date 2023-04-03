@@ -60,15 +60,19 @@ function App() {
         />
       </header>
       <main>
-        {isLoading && <div>Loading...</div>}
+        {isLoading && <div className="text-align-center">Loading...</div>}
         {!isLoading && isEmpty(addedProviders) && (
-          <div>No providers added. Click settings icon to add.</div>
+          <div className="text-align-center">
+            No providers added. Click settings icon to add.
+          </div>
         )}
-        {!isLoading &&
-          !isEmpty(addedProviders) &&
-          addedProviders.map((provider: TProvider) => (
-            <Widget key={provider.id} provider={provider} />
-          ))}
+        {!isLoading && !isEmpty(addedProviders) && (
+          <ul className="widget-list">
+            {addedProviders.map((provider: TProvider) => (
+              <Widget key={provider.id} provider={provider} />
+            ))}
+          </ul>
+        )}
       </main>
       {opened ? (
         <ManageProvidersDialog

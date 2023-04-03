@@ -1,35 +1,35 @@
 :root {
-  --color-primary: #{$color-white};
-  --color-secondary: #{$color-mishka};
-  --color-accent: #{$color-malibu};
-  --color-error: #{$color-red};
-  --background-primary: #{$color-shark};
-  --background-secondary: #{$color-white};
-  --background-controls: #{$color-cape-cod};
-  --background-skeleton: #{$color-shark};
-  --background-skeleton-lighten: #{lighten($color-shark, 10%)};
+  --color-background: #f0f2f5;
+  --color-surface: #FFFFFF;
+  --color-primary: #050505;
+  --color-secondary: #65676B;
+  --color-background-controls: #f0f2f5;
+  --color-accent: #1876f2;
+
+  --background-skeleton: #282c34;
+  --background-skeleton-lighten: #{lighten(#282c34, 10%)};
 }
 
 [data-theme='light'] {
-  --color-primary: #{$color-black};
-  --color-secondary: #{$color-mishka};
-  --color-accent: #{$color-dodger-blue};
-  --color-error: #{$color-red};
-  --background-primary: #{$color-solitude};
-  --background-secondary: #{$color-white};
-  --background-controls: #{$color-geyser};
-  --background-skeleton: #{$color-geyser};
-  --background-skeleton-lighten: #{lighten($color-geyser, 10%)};
+  --color-background: #f0f2f5;
+  --color-surface: #FFFFFF;
+  --color-primary: #050505;
+  --color-secondary: #65676B;
+  --color-background-controls: #f0f2f5;
+  --color-accent: #1876f2;
+
+  --background-skeleton: #d0d7e0;
+  --background-skeleton-lighten: #{lighten(#d0d7e0, 10%)};
 }
 
 [data-theme='dark'] {
-  --color-primary: #{$color-white};
-  --color-secondary: #{$color-mishka};
-  --color-accent: #{$color-malibu};
-  --color-error: #{$color-red};
-  --background-primary: #{$color-shark};
-  --background-secondary: #{$color-bunker};
-  --background-controls: #{$color-cape-cod};
-  --background-skeleton: #{$color-shark};
-  --background-skeleton-lighten: #{lighten($color-shark, 10%)};
+  --color-background: #18191a;
+  --color-surface: #242526;
+  --color-primary: #e4e6eb;
+  --color-secondary: #b0b3b8;
+  --color-background-controls: #3a3b3c;
+  --color-accent: #2e89ff;
+
+  --background-skeleton: #282c34;
+  --background-skeleton-lighten: #{lighten(#282c34, 10%)};
 }
