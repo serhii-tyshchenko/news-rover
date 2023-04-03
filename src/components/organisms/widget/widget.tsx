@@ -28,7 +28,7 @@ function Widget({ provider }: TWidgetProps) {
   }, [handleRefresh]);
 
   return (
-    <div className="widget">
+    <li className="widget">
       <div className="d-flex justify-content-between align-items-center mb-4">
         <h3>{provider.name}</h3>
         <IconButton
@@ -59,7 +59,7 @@ function Widget({ provider }: TWidgetProps) {
           ))}
         </ul>
       )}
-    </div>
+    </li>
   );
 }
 
