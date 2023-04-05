@@ -41,3 +41,9 @@
     }
   }
 }
+
+@mixin for-reduced-motion {
+  @media (prefers-reduced-motion) {
+    @content;
+  }
+}
