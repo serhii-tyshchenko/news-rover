@@ -1,3 +1,5 @@
+@import '~styles/mixins';
+
 html {
   font-size: 16px;
 }
@@ -60,6 +62,10 @@ main {
 
 .animation-rotate {
   animation: rotate 1s linear infinite;
+
+  @include for-reduced-motion() {
+    animation: none;
+  }
 }
 
 @keyframes rotate {

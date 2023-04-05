@@ -5,6 +5,7 @@ import { useAppSelector } from 'common/hooks';
 
 import { TProvider, TAddedProviders } from 'common/types';
 
+import { Toggle } from 'components/atoms';
 import { Dialog } from 'components/molecules';
 
 type TManageProvidersDialogProps = {
@@ -44,22 +45,16 @@ function ManageProvidersDialog(props: TManageProvidersDialogProps) {
       <ul className="overflow-y-auto pr-2">
         {availableProviders.map((provider: TProvider) => (
           <li key={provider.id} className="mb-4">
-            <div className="d-flex align-items-center">
-              <img
-                src={provider.logo}
-                alt={provider.name}
-                style={{ width: '16px' }}
-                className="mr-2"
-              />
+            <div className="d-flex align-items-center mb-1">
               <a href={provider.homepage} target="_blank" rel="noreferrer">
                 <h5>{provider.name}</h5>
               </a>
-              <input
-                type="checkbox"
-                id={provider.id}
-                checked={selectedProviders?.includes(provider.id)}
+              <Toggle
                 onChange={() => handleChange(provider.id)}
+                toggled={selectedProviders?.includes(provider.id)}
                 className="ml-auto"
+                id={provider.id}
+                size="small"
               />
             </div>
             <p className="small">{provider.description}</p>
