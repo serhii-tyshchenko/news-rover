@@ -41,20 +41,29 @@ function Widget({ provider }: TWidgetProps) {
       {isLoading && <Skeleton />}
       {isEmpty(news) && !isLoading && <div>No news</div>}
       {!isEmpty(news) && !isLoading && (
-        <ul>
+        <ul className="item-list">
           {news.map((item: any) => (
-            <li key={item.title} className="d-flex">
-              <span className="mr-2 color-secondary">
-                {formatTime(item.created)}
-              </span>
-              <a
-                href={item.link}
-                target="_blank"
-                rel="noreferrer"
-                className="color-primary"
-              >
-                {item.title}
-              </a>
+            <li key={item.title} className="item">
+              {item?.enclosures[0]?.url && (
+                <img
+                  src={item?.enclosures[0]?.url}
+                  alt={item.title}
+                  className="item__image"
+                />
+              )}
+              <div className="d-flex">
+                <span className="mr-2 color-secondary">
+                  {formatTime(item.created)}
+                </span>
+                <a
+                  href={item.link}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="color-primary"
+                >
+                  {item.title}
+                </a>
+              </div>
             </li>
           ))}
         </ul>
