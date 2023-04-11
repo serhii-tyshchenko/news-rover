@@ -49,6 +49,7 @@ function Widget({ provider }: TWidgetProps) {
                   src={item?.enclosures[0]?.url}
                   alt={item.title}
                   className="item__image"
+                  loading="lazy"
                 />
               )}
               <div className="d-flex">
