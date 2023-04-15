@@ -52,6 +52,11 @@ body {
 
 header {
   font-size: calc(10px + 2vmin);
+  padding: 1rem;
+
+  @include for-size(mobile-large) {
+    padding: 0.5rem;
+  }
 }
 
 main {

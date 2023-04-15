@@ -50,7 +50,7 @@ function App() {
 
   return (
     <>
-      <header className="d-flex align-items-center justify-content-between p-2">
+      <header className="d-flex align-items-center justify-content-between">
         {APP_NAME}
         <IconButton
           icon="cog"
