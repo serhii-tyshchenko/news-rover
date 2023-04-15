@@ -44,14 +44,6 @@ function Widget({ provider }: TWidgetProps) {
         <ul className="item-list">
           {news.map((item: any) => (
             <li key={item.title} className="item">
-              {item?.enclosures[0]?.url && (
-                <img
-                  src={item?.enclosures[0]?.url}
-                  alt={item.title}
-                  className="item__image"
-                  loading="lazy"
-                />
-              )}
               <div className="d-flex">
                 <span className="mr-2 color-secondary">
                   {formatTime(item.created)}
