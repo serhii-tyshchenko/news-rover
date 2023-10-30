@@ -2,7 +2,8 @@ import {
   GET_PROVDERS_REQUEST_STARTED,
   GET_PROVDERS_REQUEST_SUCCESS,
   GET_PROVDERS_REQUEST_FAILED,
-  UPDATE_PROVIDERS,
+  ADD_PROVIDER,
+  REMOVE_PROVIDER,
 } from 'store/action-types';
 
 const initialState = {
@@ -28,10 +29,16 @@ export const providersReducer = (state = initialState, action) => {
     case GET_PROVDERS_REQUEST_FAILED:
       return { ...state, isLoading: false };
 
-    case UPDATE_PROVIDERS:
+    case ADD_PROVIDER:
       return {
         ...state,
-        added: payload,
+        added: [...state.added, payload],
+      };
+
+    case REMOVE_PROVIDER:
+      return {
+        ...state,
+        added: state.added.filter((provider) => provider.id !== payload.id),
       };
 
     default:

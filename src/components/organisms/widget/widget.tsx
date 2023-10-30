@@ -1,6 +1,6 @@
 import { useEffect, useState, useCallback } from 'react';
 import { v4 as uuidv4 } from 'uuid';
-import { isEmpty } from 'common/utils';
+import { isEmpty } from 'lodash';
 import { useAppDispatch, useAppSelector } from 'common/hooks';
 
 import { IconButton } from 'components/atoms';
@@ -47,24 +47,22 @@ function Item(props: TItemProps) {
 
   return (
     <li className="item">
-      <div className="d-flex">
-        <span className="mr-1 color-secondary">{formatTime(created)}</span>
-        <IconButton
-          icon={isBookmarked ? 'bookmark' : 'bookmark-empty'}
-          title={isBookmarked ? 'Remove bookmark' : 'Add bookmark'}
-          onClick={handleClick}
-          size="small"
-          className="mr-1"
-        />
-        <a
-          href={link}
-          target="_blank"
-          rel="noreferrer"
-          className="color-primary mr-1"
-        >
-          {title}
-        </a>
-      </div>
+      <span className="mr-2 color-secondary">{formatTime(created)}</span>
+      <a
+        href={link}
+        target="_blank"
+        rel="noreferrer"
+        className="color-primary mr-2"
+      >
+        {title}
+      </a>
+      <IconButton
+        icon={isBookmarked ? 'bookmark' : 'bookmark-empty'}
+        title={isBookmarked ? 'Remove bookmark' : 'Add bookmark'}
+        onClick={handleClick}
+        size="small"
+        className="ml-auto"
+      />
     </li>
   );
 }

@@ -1,7 +1,7 @@
 import { memo } from 'react';
 import { getClassName } from 'common/utils';
 
-import './iconButton.scss';
+import './icon-button.scss';
 
 const NAME_SPACE = 'icon-button';
 

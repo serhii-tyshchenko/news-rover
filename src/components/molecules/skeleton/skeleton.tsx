@@ -1,6 +1,6 @@
 import { DEFAULT_POSTS_LIMIT } from 'common/constants';
 
-import './Skeleton.scss';
+import './skeleton.scss';
 
 function Skeleton() {
   return (

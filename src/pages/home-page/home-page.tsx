@@ -6,7 +6,7 @@ import {
 
 import { useAppSelector } from 'common/hooks';
 
-import { isEmpty } from 'common/utils';
+import { isEmpty } from 'lodash';
 import { BaseLayout } from 'layout';
 import { Widget } from 'components/organisms';
 

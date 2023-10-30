@@ -21,6 +21,7 @@ h5 {
 a {
     color: var(--color-accent);
     text-decoration: none;
+    font-size: inherit;
 
     &:hover {
         text-decoration: underline;
