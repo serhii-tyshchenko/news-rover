@@ -64,6 +64,17 @@ main {
   overflow-y: auto;
 }
 
+fieldset {
+  border: 1px solid var(--color-secondary);
+  padding: $padding-sm;
+  margin-bottom: $padding-md;
+  border-radius: 0.25rem;
+
+  legend {
+    padding: 0 $padding-sm;
+  }
+}
+
 .animation-rotate {
   animation: rotate 1s linear infinite;
 

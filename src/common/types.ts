@@ -5,6 +5,7 @@ export type TProvider = {
   url: string;
   homepage: string;
   logo: string;
+  category: string;
 };
 
 export type TAddedProvider = string;

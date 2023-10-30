@@ -3,21 +3,19 @@ import { memo, useState } from 'react';
 import { selectProvidersData, selectAddedProviders } from 'store/selectors';
 import { useAppSelector } from 'common/hooks';
 
-import { TProvider, TAddedProviders } from 'common/types';
-
 import { Toggle } from 'components/atoms';
 import { Dialog } from 'components/molecules';
 
-type TManageProvidersDialogProps = {
-  onConfirm: (providers: TAddedProviders) => void;
-  onClose: () => void;
-};
+import { groupProvidersByCategory } from './manageProvidersDialog.utils';
+import { categoryToNameMap } from './manageProvidersDialog.constants';
+import { TManageProvidersDialogProps } from './manageProvidersDialog.types';
 
 function ManageProvidersDialog(props: TManageProvidersDialogProps) {
   const { onClose, onConfirm } = props;
 
   const availableProviders = useAppSelector(selectProvidersData);
   const addedProviders = useAppSelector(selectAddedProviders);
+  const groupedProviders = groupProvidersByCategory(availableProviders);
 
   const [selectedProviders, setSelectedProviders] = useState(addedProviders);
 
@@ -42,25 +40,35 @@ function ManageProvidersDialog(props: TManageProvidersDialogProps) {
       onClose={onClose}
       onConfirm={handleConfirm}
     >
-      <ul className="overflow-y-auto pr-2">
-        {availableProviders.map((provider: TProvider) => (
-          <li key={provider.id} className="mb-4">
-            <div className="d-flex align-items-center mb-1">
-              <a href={provider.homepage} target="_blank" rel="noreferrer">
-                <h5>{provider.name}</h5>
-              </a>
-              <Toggle
-                onChange={() => handleChange(provider.id)}
-                toggled={selectedProviders?.includes(provider.id)}
-                className="ml-auto"
-                id={provider.id}
-                size="small"
-              />
-            </div>
-            <p className="small">{provider.description}</p>
-          </li>
+      {groupedProviders &&
+        Object.keys(groupedProviders).map((category) => (
+          <fieldset key={category}>
+            <legend>{categoryToNameMap[category]}</legend>
+            <ul className="overflow-y-auto pr-2">
+              {groupedProviders[category].map((provider) => (
+                <li key={provider.id} className="mb-4">
+                  <div className="d-flex align-items-center mb-1">
+                    <a
+                      href={provider.homepage}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      <h5>{provider.name}</h5>
+                    </a>
+                    <Toggle
+                      onChange={() => handleChange(provider.id)}
+                      toggled={selectedProviders?.includes(provider.id)}
+                      className="ml-auto"
+                      id={provider.id}
+                      size="small"
+                    />
+                  </div>
+                  <p className="small">{provider.description}</p>
+                </li>
+              ))}
+            </ul>
+          </fieldset>
         ))}
-      </ul>
     </Dialog>
   );
 }
