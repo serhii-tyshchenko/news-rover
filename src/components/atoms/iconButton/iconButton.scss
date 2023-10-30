@@ -10,6 +10,7 @@
   color: var(--color-secondary);
   cursor: pointer;
   display: inline-flex;
+  flex-shrink: 0;
   height: $size;
   justify-content: center;
   width: $size;
