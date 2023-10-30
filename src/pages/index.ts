@@ -1,3 +1,3 @@
-export { default as HomePage } from './homePage';
-export { default as BookmarksPage } from './bookmarksPage';
-export { default as ProvidersPage } from './providersPage';
+export * from './home-page';
+export * from './bookmarks-page';
+export * from './providers-page';
