@@ -1,3 +1,7 @@
+.d-block {
+    display: block;
+}
+
 .d-flex {
     display: flex;
 }
@@ -12,6 +16,14 @@
 
 .overflow-y-auto {
     overflow-y: auto;
+}
+
+.flex-grow-1 {
+    flex-grow: 1;
+}
+
+.flex-shrink-0 {
+    flex-shrink: 0;
 }
 
 .m-0 {

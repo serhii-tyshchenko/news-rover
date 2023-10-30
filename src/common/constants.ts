@@ -7,4 +7,10 @@ export const THEMES = {
   DARK: 'dark',
 };
 
+export const ROUTES = {
+  HOME: '/',
+  BOOKMARKS: '/bookmarks',
+  PROVIDERS: '/providers',
+};
+
 export const portalRoot = document.getElementById('portal-root') as HTMLElement;

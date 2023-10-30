@@ -14,10 +14,10 @@ export type TAddedProviders = Array<TAddedProvider>;
 
 export type TProviders = Array<TProvider>;
 
-type TNewsItem = {
+export type TNewsItem = {
   title: string;
   link: string;
-  time: string;
+  created: Date;
 };
 
 export type TNews = Array<TNewsItem>;

@@ -7,7 +7,11 @@ import {
 import { loadState, saveState } from 'core/localStorage';
 import thunk from 'redux-thunk';
 
-import { settings, providersReducer as providers } from './reducers';
+import {
+  settings,
+  providersReducer as providers,
+  bookmarksReducer as bookmarks,
+} from './reducers';
 
 declare global {
   interface Window {
@@ -18,6 +22,7 @@ declare global {
 export const rootReducer = combineReducers({
   settings,
   providers,
+  bookmarks,
 });
 
 const persistedState = loadState();
@@ -32,12 +37,14 @@ store.subscribe(() => {
   const {
     settings,
     providers: { added },
+    bookmarks,
   } = store.getState();
   saveState({
     settings,
     providers: {
       added,
     },
+    bookmarks,
   });
 });
 
