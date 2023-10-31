@@ -1,7 +1,7 @@
 import { useEffect, useState, useCallback } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { isEmpty } from 'lodash';
-import { useAppDispatch, useAppSelector } from 'common/hooks';
+import { useAppDispatch, useAppSelector, useLocalization } from 'common/hooks';
 
 import { IconButton } from 'components/atoms';
 import { Skeleton } from 'components/molecules';
@@ -36,6 +36,7 @@ function Item(props: TItemProps) {
     onAddBookmark,
     onRemoveBookmark,
   } = props;
+  const dic = useLocalization();
 
   const handleClick = () => {
     if (isBookmarked) {
@@ -58,7 +59,7 @@ function Item(props: TItemProps) {
       </a>
       <IconButton
         icon={isBookmarked ? 'bookmark' : 'bookmark-empty'}
-        title={isBookmarked ? 'Remove bookmark' : 'Add bookmark'}
+        title={isBookmarked ? dic.removeBookmark : dic.addBookmark}
         onClick={handleClick}
         size="small"
         className="ml-auto"
@@ -70,7 +71,7 @@ function Item(props: TItemProps) {
 function Widget({ provider }: TWidgetProps) {
   const [news, setNews] = useState([] as TNews);
   const [isLoading, setIsLoading] = useState(false);
-
+  const dic = useLocalization();
   const dispatch = useAppDispatch();
   const bookmarks = useAppSelector(selectBookmarksData);
 
@@ -103,13 +104,13 @@ function Widget({ provider }: TWidgetProps) {
         <h3>{provider.name}</h3>
         <IconButton
           icon="arrows-cw"
-          title="Refresh"
+          title={dic.refresh}
           onClick={handleRefresh}
           className={isLoading ? 'animation-rotate' : ''}
         />
       </div>
       {isLoading && <Skeleton />}
-      {isEmpty(news) && !isLoading && <div>No news</div>}
+      {isEmpty(news) && !isLoading && <div>{dic.noNews}</div>}
       {!isEmpty(news) && !isLoading && (
         <ul className="item-list">
           {news.map((item: TNewsItem) => (

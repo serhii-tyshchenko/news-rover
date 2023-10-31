@@ -1,6 +1,6 @@
 import { doUpdateSettings } from 'store/actions';
 import { selectTheme } from 'store/selectors';
-import { useAppDispatch, useAppSelector } from 'common/hooks';
+import { useAppDispatch, useAppSelector, useLocalization } from 'common/hooks';
 import { THEMES } from 'common/constants';
 
 import { IconButton } from '../icon-button';
@@ -8,6 +8,7 @@ import { IconButton } from '../icon-button';
 function ThemeToggler() {
   const dispatch = useAppDispatch();
   const theme = useAppSelector(selectTheme);
+  const dic = useLocalization();
 
   const handleThemeChange = () => {
     dispatch(
@@ -21,7 +22,7 @@ function ThemeToggler() {
     <IconButton
       icon={theme === THEMES.LIGHT ? 'moon' : 'sun'}
       onClick={handleThemeChange}
-      title="Change Theme"
+      title={dic.changeTheme}
       size="big"
       className="mr-2"
     />

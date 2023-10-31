@@ -1,8 +1,9 @@
-import { THEMES } from 'common/constants';
+import { THEMES, LANGUAGES } from 'common/constants';
 import { UPDATE_SETTINGS } from 'store/action-types';
 
 const initialState = {
   theme: THEMES.LIGHT,
+  locale: LANGUAGES.EN,
 };
 
 export const settings = (state = initialState, action) => {

@@ -1,0 +1,58 @@
+@import '~styles/variables';
+@import '~styles/mixins';
+
+.select {
+  background-clip: padding-box;
+  background-color: var(--background-controls);
+  border-radius: 0.25em;
+  color: var(--color-primary);
+  cursor: pointer;
+  line-height: 1.5;
+  max-width: 100%;
+  padding: 0.375em 0.5em;
+  text-overflow: ellipsis;
+  width: max-content;
+
+  &--small {
+    font-size: 0.75rem;
+  }
+
+  &--normal {
+    font-size: 1rem;
+  }
+
+  &--big {
+    font-size: 1.25rem;
+  }
+
+  &--large {
+    font-size: 1.5rem;
+  }
+
+  &--error {
+    border: 2px solid var(--color-error);
+  }
+
+  &__option {
+    background: var(--background-secondary);
+    color: inherit;
+    font-size: inherit;
+  }
+
+  &:disabled {
+    @include for-disabled;
+  }
+
+  &__label {
+    color: var(--color-secondary);
+    display: block;
+    font-size: 0.75em;
+    margin-bottom: 0.25em;
+  }
+
+  &__error {
+    color: var(--color-error);
+    font-size: 0.75rem;
+    padding-top: 0.25em;
+  }
+}
