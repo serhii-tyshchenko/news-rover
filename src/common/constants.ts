@@ -7,6 +7,11 @@ export const THEMES = {
   DARK: 'dark',
 };
 
+export const LANGUAGES = {
+  EN: 'en',
+  UA: 'ua',
+};
+
 export const ROUTES = {
   HOME: '/',
   BOOKMARKS: '/bookmarks',

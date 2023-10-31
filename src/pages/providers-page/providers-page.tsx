@@ -1,6 +1,6 @@
 import { selectProvidersData, selectAddedProviders } from 'store/selectors';
 import { doAddProvider, doRemoveProvider } from 'store/actions';
-import { useAppSelector, useAppDispatch } from 'common/hooks';
+import { useAppSelector, useAppDispatch, useLocalization } from 'common/hooks';
 
 import { IconButton } from 'components/atoms';
 import { BaseLayout } from 'layout';
@@ -18,20 +18,20 @@ export const groupProvidersByCategory = (providers: TProviders = []) => {
   return groupedProviders;
 };
 
-export const categoryToNameMap: { [key: string]: string } = {
-  news: 'News',
-  military: 'Military',
-  tech: 'Technology',
-  science: 'Science',
-  software_development: 'Software Development',
-  space: 'Space',
-};
-
 function ProvidersPage() {
   const dispatch = useAppDispatch();
+  const dic = useLocalization();
   const availableProviders = useAppSelector(selectProvidersData);
   const addedProviders = useAppSelector(selectAddedProviders);
   const groupedProviders = groupProvidersByCategory(availableProviders);
+
+  const categoryToNameMap: { [key: string]: string } = {
+    news: dic.category.news,
+    military: dic.category.military,
+    tech: dic.category.technology,
+    software_development: dic.category.softwareDevelopment,
+    space: dic.category.space,
+  };
 
   const handleClick = (providerId: string) => {
     if (addedProviders.includes(providerId)) {
@@ -72,8 +72,8 @@ function ProvidersPage() {
                       onClick={() => handleClick(provider.id)}
                       title={
                         addedProviders?.includes(provider.id)
-                          ? 'Hide provider'
-                          : 'Show provider'
+                          ? dic.hideProvider
+                          : dic.showProvider
                       }
                       className="ml-auto"
                       toggled={addedProviders?.includes(provider.id)}

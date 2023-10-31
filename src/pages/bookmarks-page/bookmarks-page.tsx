@@ -1,6 +1,6 @@
 import { selectBookmarksData } from 'store/selectors';
 import { doRemoveBookmark } from 'store/actions';
-import { useAppSelector, useAppDispatch } from 'common/hooks';
+import { useAppSelector, useAppDispatch, useLocalization } from 'common/hooks';
 import { isEmpty } from 'lodash';
 import { IconButton } from 'components/atoms';
 import { BaseLayout } from 'layout';
@@ -9,6 +9,7 @@ import { formatTime } from './bookmarks-page.utils';
 
 function BookmarksPage() {
   const dispatch = useAppDispatch();
+  const dic = useLocalization();
   const bookmarks = useAppSelector(selectBookmarksData);
   const handleClick = (link: string) => {
     dispatch(doRemoveBookmark(link));
@@ -17,9 +18,9 @@ function BookmarksPage() {
   return (
     <BaseLayout>
       <section className="widget h-100">
-        <h3 className="mb-4">Bookmarks</h3>
+        <h3 className="mb-4">{dic.bookmarks}</h3>
         {isEmpty(bookmarks) && (
-          <div className="text-align-center">No bookmarks added.</div>
+          <div className="text-align-center">{dic.noBookmarks}</div>
         )}
         {!isEmpty(bookmarks) && (
           <ul className="bookmark-list">
@@ -38,7 +39,7 @@ function BookmarksPage() {
                 </a>
                 <IconButton
                   icon="bookmark"
-                  title="Remove bookmark"
+                  title={dic.removeBookmark}
                   onClick={() => handleClick(item.link)}
                   className="ml-auto"
                 />
