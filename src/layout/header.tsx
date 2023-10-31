@@ -1,6 +1,6 @@
 import { useNavigate, useLocation } from 'react-router';
 import { Link } from 'react-router-dom';
-import { IconButton } from 'components/atoms';
+import { IconButton, ThemeToggler } from 'components/atoms';
 import { APP_NAME, ROUTES } from 'common/constants';
 
 function Header() {
@@ -13,6 +13,7 @@ function Header() {
     <header className="d-flex align-items-center justify-content-between">
       <Link to={ROUTES.HOME}>{APP_NAME}</Link>
       <nav>
+        <ThemeToggler />
         <IconButton
           icon="bookmark"
           onClick={() => navigate(ROUTES.BOOKMARKS)}
