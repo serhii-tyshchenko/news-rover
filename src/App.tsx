@@ -4,7 +4,7 @@ import { doGetProviders } from 'store/actions';
 import { selectProvidersData } from 'store/selectors';
 import { isEmpty } from 'lodash';
 
-import { useTheme, useAppDispatch, useAppSelector } from 'common/hooks';
+import { useAppDispatch, useAppSelector, useTheme } from 'common/hooks';
 import { ROUTES } from 'common/constants';
 
 import { HomePage, BookmarksPage, ProvidersPage } from 'pages';
@@ -15,13 +15,13 @@ function App() {
   const dispatch = useAppDispatch();
   const providers = useAppSelector(selectProvidersData);
 
+  useTheme();
+
   useEffect(() => {
     if (isEmpty(providers)) {
       dispatch(doGetProviders());
     }
   }, [dispatch, providers]);
-
-  useTheme();
 
   return (
     <Routes>
