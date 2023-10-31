@@ -38,7 +38,7 @@ export const providersReducer = (state = initialState, action) => {
     case REMOVE_PROVIDER:
       return {
         ...state,
-        added: state.added.filter((provider) => provider.id !== payload.id),
+        added: state.added.filter((provider) => provider !== payload),
       };
 
     default:
