@@ -12,11 +12,14 @@ const STR = {
   removeBookmark: 'Remove bookmark',
   noBookmarks: 'No bookmarks',
   category: {
-    news: 'News',
+    business: 'Business',
+    it: 'IT',
     military: 'Military',
+    news: 'News',
     technology: 'Technology',
+    science: 'Science',
+    softwareDevelopment: 'IT',
     space: 'Space',
-    softwareDevelopment: 'Software development',
   },
   noNews: 'No news',
 };

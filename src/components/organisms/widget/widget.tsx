@@ -9,7 +9,11 @@ import { Skeleton } from 'components/molecules';
 import { TProvider, TNews, TNewsItem } from 'common/types';
 
 import { selectBookmarksData } from 'store/selectors';
-import { doAddBookmark, doRemoveBookmark } from 'store/actions';
+import {
+  doAddBookmark,
+  doRemoveBookmark,
+  doRemoveProvider,
+} from 'store/actions';
 
 import { fetchNews, formatTime } from './widget.utils';
 
@@ -94,6 +98,10 @@ function Widget({ provider }: TWidgetProps) {
     fetchNews(provider.id, setNews, setIsLoading);
   }, [provider.id]);
 
+  const handleHideProvider = () => {
+    dispatch(doRemoveProvider(provider.id));
+  };
+
   useEffect(() => {
     handleRefresh();
   }, [handleRefresh]);
@@ -102,12 +110,20 @@ function Widget({ provider }: TWidgetProps) {
     <li className="widget">
       <div className="d-flex justify-content-between align-items-center mb-4">
         <h3>{provider.name}</h3>
-        <IconButton
-          icon="arrows-cw"
-          title={dic.refresh}
-          onClick={handleRefresh}
-          className={isLoading ? 'animation-rotate' : ''}
-        />
+        <div className="d-flex align-items-center">
+          <IconButton
+            icon="eye-off"
+            title={dic.hideProvider}
+            onClick={handleHideProvider}
+            className="mr-2"
+          />
+          <IconButton
+            icon="arrows-cw"
+            title={dic.refresh}
+            onClick={handleRefresh}
+            className={isLoading ? 'animation-rotate' : ''}
+          />
+        </div>
       </div>
       {isLoading && <Skeleton />}
       {isEmpty(news) && !isLoading && <div>{dic.noNews}</div>}

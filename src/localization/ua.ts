@@ -12,11 +12,14 @@ const STR = {
   removeBookmark: 'Видалити закладку',
   noBookmarks: 'Немає закладок',
   category: {
-    news: 'Новини',
+    business: 'Бізнес',
+    it: 'Ай Ті',
     military: 'Війна',
-    technology: 'Технології',
+    news: 'Новини',
+    science: 'Наука',
+    softwareDevelopment: 'Ай Ті',
     space: 'Космос',
-    softwareDevelopment: 'Розробка ПЗ',
+    technology: 'Технології',
   },
   noNews: 'Немає новин',
 };

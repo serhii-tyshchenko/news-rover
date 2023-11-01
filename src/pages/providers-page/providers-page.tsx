@@ -31,6 +31,8 @@ function ProvidersPage() {
     tech: dic.category.technology,
     software_development: dic.category.softwareDevelopment,
     space: dic.category.space,
+    science: dic.category.science,
+    business: dic.category.business,
   };
 
   const handleClick = (providerId: string) => {

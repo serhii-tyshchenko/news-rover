@@ -16,20 +16,20 @@ function Header() {
       <Link to={ROUTES.HOME}>{APP_NAME}</Link>
       <nav className="d-flex">
         <IconButton
-          icon="rss"
-          onClick={() => navigate(ROUTES.PROVIDERS)}
-          title={dic.providers}
-          size="big"
-          toggled={isActiveProviders}
-          className="mr-2"
-        />
-        <IconButton
           icon="bookmark"
           onClick={() => navigate(ROUTES.BOOKMARKS)}
           title={dic.bookmarks}
           size="big"
           className="mr-2"
           toggled={isActiveBookmarks}
+        />
+        <IconButton
+          icon="rss"
+          onClick={() => navigate(ROUTES.PROVIDERS)}
+          title={dic.providers}
+          size="big"
+          toggled={isActiveProviders}
+          className="mr-2"
         />
         <ThemeToggler />
         <LanguageSelector />
