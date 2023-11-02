@@ -51,37 +51,17 @@ body {
 }
 
 header {
-  font-size: calc(10px + 2vmin);
+  font-size: $font-size-xxl;
   padding: 1rem;
 
   @include for-size(mobile-large) {
     padding: 0.5rem;
-  }
-
-  a {
-    color: inherit;
-
-    &:hover {
-      text-decoration: none;
-      color: var(--color-accent);
-    }
   }
 }
 
 main {
   flex-grow: 1;
   overflow-y: auto;
-}
-
-fieldset {
-  border: 1px solid var(--color-secondary);
-  padding: $padding-sm;
-  margin-bottom: $padding-md;
-  border-radius: 0.25rem;
-
-  legend {
-    padding: 0 $padding-sm;
-  }
 }
 
 .animation-rotate {
