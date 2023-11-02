@@ -1,4 +1,5 @@
 const STR = {
+  home: 'Головна',
   changeLanguage: 'Змінити мову',
   changeTheme: 'Змінити тему',
   refresh: 'Оновити',

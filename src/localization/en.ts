@@ -1,4 +1,5 @@
 const STR = {
+  home: 'Home',
   changeLanguage: 'Change language',
   changeTheme: 'Change theme',
   refresh: 'Refresh',
