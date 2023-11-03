@@ -54,6 +54,15 @@ header {
   font-size: $font-size-xxl;
   padding: 1rem;
 
+  a {
+    color: inherit;
+
+    &:hover {
+      text-decoration: none;
+      color: var(--color-accent);
+    }
+  }
+
   @include for-size(mobile-large) {
     padding: 0.5rem;
   }
