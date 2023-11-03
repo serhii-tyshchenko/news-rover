@@ -30,6 +30,7 @@ const mapConfigs = (arg: any) => {
 
 const getClassName = (...args: any[]) =>
   args
+    .filter(Boolean)
     .map((arg) => mapConfigs(arg))
     .join(' ')
     .trim();
