@@ -1,3 +1,6 @@
+/// <reference types="vitest" />
+/// <reference types="vite/client" />
+
 import path from 'path';
 import { Alias, defineConfig } from 'vite';
 import react from '@vitejs/plugin-react-swc';
@@ -26,12 +29,13 @@ export default defineConfig({
   resolve: {
     alias: readAliasFromTsConfig(),
   },
+  test: {
+    globals: true,
+    environment: 'jsdom',
+    setupFiles: 'src/setupTests.ts',
+  },
   server: {
     port: 3000,
     open: true,
-  },
-  build: {
-    outDir: 'build',
-    emptyOutDir: true,
   },
 });

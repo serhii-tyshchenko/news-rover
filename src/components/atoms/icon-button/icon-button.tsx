@@ -16,6 +16,7 @@ function IconButton(props: TiconButtonProps) {
     disabled,
     autoFocus,
     toggled,
+    testId,
   } = props;
 
   const componentClassName = getClassName(
@@ -35,6 +36,7 @@ function IconButton(props: TiconButtonProps) {
       aria-label={title}
       disabled={disabled}
       autoFocus={autoFocus}
+      data-testid={testId}
     />
   );
 }
@@ -49,6 +51,7 @@ type TiconButtonProps = {
   disabled?: boolean;
   autoFocus?: boolean;
   toggled?: boolean;
+  testId?: string;
 };
 
 IconButton.defaultProps = {
@@ -61,6 +64,7 @@ IconButton.defaultProps = {
   disabled: false,
   autoFocus: false,
   toggled: false,
+  testId: 'icon-button',
 };
 
 export default memo(IconButton);
