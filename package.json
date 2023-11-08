@@ -47,9 +47,12 @@
     ]
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^6.1.4",
+    "@testing-library/react": "^14.1.0",
     "@types/lodash": "^4.14.200",
     "@types/uuid": "^9.0.6",
     "@vitest/coverage-v8": "^0.34.6",
+    "jsdom": "^22.1.0",
     "vitest": "^0.34.6"
   }
 }
