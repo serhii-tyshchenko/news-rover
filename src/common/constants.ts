@@ -1,6 +1,6 @@
 export const DEFAULT_POSTS_LIMIT = 10;
 
-export const APP_NAME = 'MyNews';
+export const APP_NAME = 'NewsRover';
 
 export const THEMES = {
   LIGHT: 'light',
