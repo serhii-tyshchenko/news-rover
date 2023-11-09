@@ -13,7 +13,7 @@ function readAliasFromTsConfig(): Alias[] {
   return Object.entries(tsconfig.compilerOptions.paths).reduce(
     (aliases, [fromPaths, toPaths]) => {
       const find = fromPaths.replace(pathReplaceRegex, '');
-      const toPath = root + '\\' + toPaths[0].replace(pathReplaceRegex, '');
+      const toPath = root + '//' + toPaths[0].replace(pathReplaceRegex, '');
       const replacement = path.resolve(__dirname, toPath);
       aliases.push({ find, replacement });
       return aliases;
