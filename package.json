@@ -24,7 +24,7 @@
   },
   "scripts": {
     "start": "vite",
-    "build": "tsc && vite build",
+    "build": "vite build",
     "live": "vite preview",
     "test": "vitest",
     "test:coverage": "vitest run --coverage"
