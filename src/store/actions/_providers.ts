@@ -1,4 +1,5 @@
 import { getProviders } from 'core/api';
+import { TDispatch } from 'common/types';
 
 import {
   GET_PROVDERS_REQUEST_STARTED,
@@ -8,7 +9,7 @@ import {
   REMOVE_PROVIDER,
 } from 'store/action-types';
 
-export const doGetProviders = () => async (dispatch) => {
+export const doGetProviders = () => async (dispatch: TDispatch) => {
   dispatch({ type: GET_PROVDERS_REQUEST_STARTED });
 
   try {
@@ -20,10 +21,10 @@ export const doGetProviders = () => async (dispatch) => {
   }
 };
 
-export const doAddProvider = (provider) => (dispatch) => {
+export const doAddProvider = (provider: string) => (dispatch: TDispatch) => {
   dispatch({ type: ADD_PROVIDER, payload: provider });
 };
 
-export const doRemoveProvider = (provider) => (dispatch) => {
+export const doRemoveProvider = (provider: string) => (dispatch: TDispatch) => {
   dispatch({ type: REMOVE_PROVIDER, payload: provider });
 };

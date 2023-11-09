@@ -25,3 +25,22 @@ export type TNews = Array<TNewsItem>;
 export type TConfigMap = {
   [key: string]: string;
 };
+
+export type TBookmark = {
+  id: string;
+  title: string;
+  link: string;
+  created: Date;
+};
+
+export type TSettings = {
+  theme: string;
+  locale: string;
+};
+
+export type TAction = {
+  type: string;
+  payload?: any;
+};
+
+export type TDispatch = (arg0: TAction) => void;

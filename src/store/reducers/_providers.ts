@@ -1,3 +1,4 @@
+import { TAction, TProvider } from 'common/types';
 import {
   GET_PROVDERS_REQUEST_STARTED,
   GET_PROVDERS_REQUEST_SUCCESS,
@@ -7,12 +8,12 @@ import {
 } from 'store/action-types';
 
 const initialState = {
-  data: [],
-  added: [],
+  data: [] as Array<TProvider>,
+  added: [] as Array<string>,
   isLoading: false,
 };
 
-export const providersReducer = (state = initialState, action) => {
+export const providersReducer = (state = initialState, action: TAction) => {
   const { type, payload } = action;
 
   switch (type) {
