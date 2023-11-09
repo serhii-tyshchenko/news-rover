@@ -23,13 +23,19 @@
       "@testing-library/jest-dom"
     ],
     "paths": {
-      "store": ["store/"],
-      "common": ["common/"],
-      "pages": ["pages/"],
-      "components": ["components/"],
-      "core": ["core/"],
-      "localization": ["localization/"],
-      "layout": ["layout/"],
+      "@store": ["store/"],
+      "@store/*": ["store/*"],
+      "@constants": ["constants/"],
+      "@utils": ["utils/"],
+      "@hooks": ["hooks/"],
+      "@types": ["types/"],
+      "@pages": ["pages/"],
+      "@components": ["components/"],
+      "@components/*": ["components/*"],
+      "@core": ["core/"],
+      "@core/*": ["core/*"],
+      "@localization": ["localization/"],
+      "@layout": ["layout/"],
       "~styles": ["styles/"],
       "~assets": ["assets/"]
     }

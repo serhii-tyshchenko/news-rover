@@ -1,6 +1,6 @@
-import { TAction, TSettings } from 'common/types';
-import { THEMES, LANGUAGES } from 'common/constants';
-import { UPDATE_SETTINGS } from 'store/action-types';
+import { TAction, TSettings } from '@types';
+import { THEMES, LANGUAGES } from '@constants';
+import { UPDATE_SETTINGS } from '@store/action-types';
 
 const initialState: TSettings = {
   theme: THEMES.LIGHT,
