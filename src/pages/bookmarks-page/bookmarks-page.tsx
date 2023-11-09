@@ -1,11 +1,10 @@
-import { selectBookmarksData } from 'store/selectors';
-import { doRemoveBookmark } from 'store/actions';
-import { useAppSelector, useAppDispatch, useLocalization } from 'common/hooks';
 import { isEmpty } from 'lodash';
-import { IconButton } from 'components/atoms';
-import { BaseLayout } from 'layout';
-
-import { formatTime } from './bookmarks-page.utils';
+import { selectBookmarksData } from '@store/selectors';
+import { doRemoveBookmark } from '@store/actions';
+import { useAppSelector, useAppDispatch, useLocalization } from '@hooks';
+import { formatDate } from '@utils';
+import { IconButton } from '@components/ui';
+import { BaseLayout } from '@layout';
 
 function BookmarksPage() {
   const dispatch = useAppDispatch();
@@ -27,7 +26,7 @@ function BookmarksPage() {
             {bookmarks.map((item: any) => (
               <li className="item" key={item.id}>
                 <span className="mr-2 color-secondary">
-                  {formatTime(item.created)}
+                  {formatDate(item.created)}
                 </span>
                 <a
                   href={item.link}

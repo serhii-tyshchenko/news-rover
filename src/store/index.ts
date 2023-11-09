@@ -4,7 +4,7 @@ import {
   compose,
   combineReducers,
 } from 'redux';
-import { loadState, saveState } from 'core/localStorage';
+import { loadState, saveState } from '@core/localStorage';
 import thunk from 'redux-thunk';
 
 import {

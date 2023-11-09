@@ -1,5 +1,5 @@
-import { ADD_BOOKMARK, REMOVE_BOOKMARK } from 'store/action-types';
-import { TDispatch, TBookmark } from 'common/types';
+import { ADD_BOOKMARK, REMOVE_BOOKMARK } from '@store/action-types';
+import { TDispatch, TBookmark } from '@types';
 
 export const doAddBookmark = (data: TBookmark) => (dispatch: TDispatch) => {
   dispatch({ type: ADD_BOOKMARK, payload: data });

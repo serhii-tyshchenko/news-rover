@@ -1,4 +1,4 @@
-import { APP_NAME } from 'common/constants';
+import { APP_NAME } from '@constants';
 
 export const loadState = () => {
   try {

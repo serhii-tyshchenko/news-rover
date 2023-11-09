@@ -1,10 +1,10 @@
-import { selectProvidersData, selectAddedProviders } from 'store/selectors';
-import { doAddProvider, doRemoveProvider } from 'store/actions';
-import { useAppSelector, useAppDispatch, useLocalization } from 'common/hooks';
+import { selectProvidersData, selectAddedProviders } from '@store/selectors';
+import { doAddProvider, doRemoveProvider } from '@store/actions';
+import { useAppSelector, useAppDispatch, useLocalization } from '@hooks';
 
-import { IconButton } from 'components/atoms';
-import { BaseLayout } from 'layout';
-import { TProvider, TProviders } from 'common/types';
+import { IconButton } from '@components/ui';
+import { BaseLayout } from '@layout';
+import { TProvider, TProviders } from '@types';
 
 export const groupProvidersByCategory = (providers: TProviders = []) => {
   const groupedProviders = providers.reduce((acc, provider) => {

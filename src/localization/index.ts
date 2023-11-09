@@ -1,6 +1,6 @@
 import en from './en';
 import ua from './ua';
-import { LANGUAGES } from 'common/constants';
+import { LANGUAGES } from '@constants';
 
 const DIC = {
   [LANGUAGES.EN]: en,

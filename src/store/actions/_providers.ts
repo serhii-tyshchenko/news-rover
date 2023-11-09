@@ -1,5 +1,5 @@
-import { getProviders } from 'core/api';
-import { TDispatch } from 'common/types';
+import { getProviders } from '@core/api';
+import { TDispatch } from '@types';
 
 import {
   GET_PROVDERS_REQUEST_STARTED,
@@ -7,7 +7,7 @@ import {
   GET_PROVDERS_REQUEST_FAILED,
   ADD_PROVIDER,
   REMOVE_PROVIDER,
-} from 'store/action-types';
+} from '@store/action-types';
 
 export const doGetProviders = () => async (dispatch: TDispatch) => {
   dispatch({ type: GET_PROVDERS_REQUEST_STARTED });

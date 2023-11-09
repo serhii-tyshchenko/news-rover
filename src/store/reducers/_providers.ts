@@ -1,11 +1,11 @@
-import { TAction, TProvider } from 'common/types';
+import { TAction, TProvider } from '@types';
 import {
   GET_PROVDERS_REQUEST_STARTED,
   GET_PROVDERS_REQUEST_SUCCESS,
   GET_PROVDERS_REQUEST_FAILED,
   ADD_PROVIDER,
   REMOVE_PROVIDER,
-} from 'store/action-types';
+} from '@store/action-types';
 
 const initialState = {
   data: [] as Array<TProvider>,

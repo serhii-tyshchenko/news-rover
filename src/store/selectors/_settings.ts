@@ -1,4 +1,4 @@
-import { TRootState } from 'store';
+import { TRootState } from '@store';
 
 const selectRoot = (state: TRootState) => state.settings;
 

@@ -1,16 +1,14 @@
+import { isEmpty } from 'lodash';
+
 import {
   selectProvidersData,
   selectProvidersIsLoading,
   selectAddedProviders,
-} from 'store/selectors';
-
-import { useAppSelector, useLocalization } from 'common/hooks';
-
-import { isEmpty } from 'lodash';
-import { BaseLayout } from 'layout';
-import { Widget } from 'components/organisms';
-
-import { TAddedProviders, TProvider } from 'common/types';
+} from '@store/selectors';
+import { useAppSelector, useLocalization } from '@hooks';
+import { BaseLayout } from '@layout';
+import { Widget } from '@components';
+import { TAddedProviders, TProvider } from '@types';
 
 function HomePage() {
   const dic = useLocalization();

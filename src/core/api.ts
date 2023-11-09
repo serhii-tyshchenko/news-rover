@@ -1,4 +1,4 @@
-import { DEFAULT_POSTS_LIMIT } from 'common/constants';
+import { DEFAULT_POSTS_LIMIT } from '@constants';
 
 import { PROVIDERS_ROOT_URL, NEWS_ROOT_URL } from './api.contants';
 

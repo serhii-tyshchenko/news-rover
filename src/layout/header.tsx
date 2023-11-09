@@ -1,8 +1,9 @@
 import { useNavigate, useLocation } from 'react-router';
 import { Link } from 'react-router-dom';
-import { IconButton, ThemeToggler, LanguageSelector } from 'components/atoms';
-import { APP_NAME, ROUTES } from 'common/constants';
-import { useLocalization } from 'common/hooks';
+import { IconButton } from '@components/ui';
+import { ThemeToggler, LanguageSelector } from '@components';
+import { APP_NAME, ROUTES } from '@constants';
+import { useLocalization } from '@hooks';
 
 function Header() {
   const navigate = useNavigate();
