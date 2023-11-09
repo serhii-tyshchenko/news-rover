@@ -21,6 +21,7 @@ function Select(props: TSelectProps) {
     label,
     error,
     style,
+    testId,
   } = props;
 
   const componentClassName = getClassName(
@@ -47,6 +48,7 @@ function Select(props: TSelectProps) {
         title={title}
         disabled={disabled}
         style={style}
+        data-testid={testId}
       >
         {options.map((option) => (
           <option

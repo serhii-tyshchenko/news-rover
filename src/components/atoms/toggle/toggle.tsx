@@ -7,7 +7,7 @@ import './toggle.scss';
 const NAME_SPACE = 'toggle';
 
 function Toggle(props: TToggleProps) {
-  const { id, onChange, className, size, toggled, disabled } = props;
+  const { id, onChange, className, size, toggled, disabled, testId } = props;
 
   const componentClassName = getClassName(
     NAME_SPACE,
@@ -24,26 +24,29 @@ function Toggle(props: TToggleProps) {
       onChange={onChange}
       disabled={disabled}
       checked={toggled}
+      data-testid={testId}
     />
   );
 }
 
 type TToggleProps = {
   id?: string;
-  onChange?: () => void;
+  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   className?: string;
   size?: 'small' | 'normal' | 'large';
   toggled?: boolean;
   disabled?: boolean;
+  testId?: string;
 };
 
 Toggle.defaultProps = {
   id: '',
   className: '',
-  onChange: null,
+  onChange: () => {},
   size: 'normal',
   toggled: false,
   disabled: false,
+  testId: 'toggle',
 };
 
 export default memo(Toggle);

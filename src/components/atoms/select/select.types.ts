@@ -11,6 +11,7 @@ export type TSelectProps = {
   label: string;
   error: string;
   style: React.CSSProperties;
+  testId?: string;
 };
 
 export const defaultProps: TSelectProps = {
@@ -39,4 +40,5 @@ export const defaultProps: TSelectProps = {
   size: 'normal',
   error: '',
   style: {},
+  testId: 'select',
 };

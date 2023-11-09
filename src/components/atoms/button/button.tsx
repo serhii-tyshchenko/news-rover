@@ -6,18 +6,17 @@ import './button.scss';
 
 const NAME_SPACE = 'button';
 
-type TButtonProps = {
-  onClick?: () => void;
-  className?: string;
-  type?: 'button' | 'submit' | 'reset';
-  btnType?: 'primary' | 'secondary' | 'action';
-  size?: 'small' | 'normal' | 'large';
-  children?: React.ReactNode;
-  disabled?: boolean;
-};
-
 function Button(props: TButtonProps) {
-  const { onClick, className, type, btnType, size, children, disabled } = props;
+  const {
+    onClick,
+    className,
+    type,
+    btnType,
+    size,
+    children,
+    disabled,
+    testId,
+  } = props;
 
   const componentClassName = getClassName(
     NAME_SPACE,
@@ -32,11 +31,23 @@ function Button(props: TButtonProps) {
       className={componentClassName}
       onClick={onClick}
       disabled={disabled}
+      data-testid={testId}
     >
       {children}
     </button>
   );
 }
+
+type TButtonProps = {
+  onClick?: () => void;
+  className?: string;
+  type?: 'button' | 'submit' | 'reset';
+  btnType?: 'primary' | 'secondary' | 'action';
+  size?: 'small' | 'normal' | 'large';
+  children?: React.ReactNode;
+  disabled?: boolean;
+  testId?: string;
+};
 
 Button.defaultProps = {
   className: '',
@@ -46,6 +57,7 @@ Button.defaultProps = {
   size: 'normal',
   children: null,
   disabled: false,
+  testId: 'button',
 };
 
 export default memo(Button);
