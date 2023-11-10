@@ -19,7 +19,9 @@ function BookmarksPage() {
       <section className="widget h-100">
         <h3 className="mb-4">{dic.bookmarks}</h3>
         {isEmpty(bookmarks) && (
-          <div className="text-align-center">{dic.noBookmarks}</div>
+          <div className="d-flex align-items-center justify-content-center text-align-center flex-grow-1">
+            {dic.noBookmarks}
+          </div>
         )}
         {!isEmpty(bookmarks) && (
           <ul className="bookmark-list">

@@ -3,7 +3,7 @@ import { SetStateAction } from 'react';
 import { getNewsByProvider } from '@core/api';
 
 import { DEFAULT_POSTS_LIMIT } from '@constants';
-import { TNews } from '@types';
+import { TNews, TNewsItem, TBookmark } from '@types';
 
 export async function fetchNews(
   provider: string,
@@ -21,3 +21,8 @@ export async function fetchNews(
     setIsLoading(false);
   }
 }
+
+export const checkIfBookmarked = (
+  bookmarks: Array<TBookmark>,
+  item: TNewsItem
+) => bookmarks.some((bookmark) => bookmark.link === item.link);

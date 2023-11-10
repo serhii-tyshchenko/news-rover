@@ -44,6 +44,20 @@
 .item {
   display: flex;
 
+  .btn {
+    visibility: hidden;
+
+    @include for-size(tablet) {
+      visibility: visible;
+    }
+  }
+
+  &:hover {
+    .btn {
+      visibility: visible;
+    }
+  }
+
   &:not(:last-child) {
     margin-bottom: 1.5rem;
   }
