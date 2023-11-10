@@ -1,4 +1,4 @@
-import { TAction, TSettings } from '@types';
+import { IAction, TSettings } from '@types';
 import { THEMES, LANGUAGES } from '@constants';
 import { UPDATE_SETTINGS } from '@store/action-types';
 
@@ -7,7 +7,7 @@ const initialState: TSettings = {
   locale: LANGUAGES.EN,
 };
 
-export const settings = (state = initialState, action: TAction) => {
+export const settings = (state = initialState, action: IAction) => {
   const { type, payload } = action;
 
   switch (type) {

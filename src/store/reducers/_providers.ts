@@ -1,4 +1,4 @@
-import { TAction, TProvider } from '@types';
+import { IAction, TProvider } from '@types';
 import {
   GET_PROVDERS_REQUEST_STARTED,
   GET_PROVDERS_REQUEST_SUCCESS,
@@ -13,7 +13,7 @@ const initialState = {
   isLoading: false,
 };
 
-export const providersReducer = (state = initialState, action: TAction) => {
+export const providersReducer = (state = initialState, action: IAction) => {
   const { type, payload } = action;
 
   switch (type) {

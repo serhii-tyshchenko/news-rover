@@ -1,9 +1,7 @@
 import { useEffect } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
-import { isEmpty } from 'lodash';
 import { doGetProviders } from '@store/actions';
-import { selectProvidersData } from '@store/selectors';
-import { useAppDispatch, useAppSelector, useTheme } from '@hooks';
+import { useAppDispatch, useTheme } from '@hooks';
 import { ROUTES } from '@constants';
 import { HomePage, BookmarksPage, ProvidersPage } from '@pages';
 
@@ -11,15 +9,12 @@ import './App.scss';
 
 function App() {
   const dispatch = useAppDispatch();
-  const providers = useAppSelector(selectProvidersData);
 
   useTheme();
 
   useEffect(() => {
-    if (isEmpty(providers)) {
-      dispatch(doGetProviders());
-    }
-  }, [dispatch, providers]);
+    dispatch(doGetProviders());
+  }, [dispatch]);
 
   return (
     <Routes>

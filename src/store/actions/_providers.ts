@@ -1,5 +1,5 @@
+import { Dispatch } from 'redux';
 import { getProviders } from '@core/api';
-import { TDispatch } from '@types';
 
 import {
   GET_PROVDERS_REQUEST_STARTED,
@@ -9,7 +9,7 @@ import {
   REMOVE_PROVIDER,
 } from '@store/action-types';
 
-export const doGetProviders = () => async (dispatch: TDispatch) => {
+export const doGetProviders = () => async (dispatch: Dispatch) => {
   dispatch({ type: GET_PROVDERS_REQUEST_STARTED });
 
   try {
@@ -21,10 +21,12 @@ export const doGetProviders = () => async (dispatch: TDispatch) => {
   }
 };
 
-export const doAddProvider = (provider: string) => (dispatch: TDispatch) => {
-  dispatch({ type: ADD_PROVIDER, payload: provider });
-};
+export const doAddProvider = (provider: string) => ({
+  type: ADD_PROVIDER,
+  payload: provider,
+});
 
-export const doRemoveProvider = (provider: string) => (dispatch: TDispatch) => {
-  dispatch({ type: REMOVE_PROVIDER, payload: provider });
-};
+export const doRemoveProvider = (provider: string) => ({
+  type: REMOVE_PROVIDER,
+  payload: provider,
+});
