@@ -20,7 +20,7 @@ This React web application is designed to display RSS news from different source
 2.  Navigate to the project directory:
 
     ```bash
-    cd react-rss-news-app
+    cd news-rower
     ```
 
 3.  Install dependencies:
@@ -29,17 +29,19 @@ This React web application is designed to display RSS news from different source
     ```
 4.  Start the application:
 
-        ```bash
-        npm start
-        ```
+    ```bash
+    npm start
+    ```
 
-    This will run the app in development mode. Open http://localhost:3000 to view it in the browser.
+    This will run the app in development mode. Open http://127.0.0.1:3000/ to view it in the browser.
 
 ## Technologies Used
 
 - React
 - Typescript
 - HTML/CSS
+- Vite
+- Vitest
 
 ## Usage
 
