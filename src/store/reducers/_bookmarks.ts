@@ -1,11 +1,11 @@
-import { TAction, TBookmark } from '@types';
+import { IAction, TBookmark } from '@types';
 import { ADD_BOOKMARK, REMOVE_BOOKMARK } from '@store/action-types';
 
 const initialState = {
   data: [] as Array<TBookmark>,
 };
 
-export const bookmarksReducer = (state = initialState, action: TAction) => {
+export const bookmarksReducer = (state = initialState, action: IAction) => {
   const { type, payload } = action;
 
   switch (type) {

@@ -1,3 +1,5 @@
+import { Action } from 'redux';
+
 export type TProvider = {
   id: string;
   name: string;
@@ -38,9 +40,6 @@ export type TSettings = {
   locale: string;
 };
 
-export type TAction = {
-  type: string;
+export interface IAction extends Action {
   payload?: any;
-};
-
-export type TDispatch = (arg0: TAction) => void;
+}
