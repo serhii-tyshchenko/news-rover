@@ -23,9 +23,15 @@ function HomePage() {
 
   return (
     <BaseLayout>
-      {isLoading && <div className="text-align-center">{dic.loading}</div>}
+      {isLoading && (
+        <div className="d-flex align-items-center justify-content-center h-100 p-2 text-align-center">
+          {dic.loading}
+        </div>
+      )}
       {!isLoading && isEmpty(addedProviders) && (
-        <div className="text-align-center">{dic.noProviders}</div>
+        <div className="d-flex align-items-center justify-content-center h-100 p-2 text-align-center">
+          {dic.noProviders}
+        </div>
       )}
       {!isLoading && !isEmpty(addedProviders) && (
         <ul className="widget-list">

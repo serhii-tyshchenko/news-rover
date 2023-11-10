@@ -2,7 +2,6 @@ import { useEffect, useState, useCallback } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { isEmpty } from 'lodash';
 import { useAppDispatch, useAppSelector, useLocalization } from '@hooks';
-import { formatTime } from '@utils';
 import { IconButton } from '@components/ui';
 import { Skeleton } from '@components';
 import { TProvider, TNews, TNewsItem } from '@types';
@@ -13,62 +12,14 @@ import {
   doRemoveProvider,
 } from '@store/actions';
 
-import { fetchNews } from './widget.utils';
+import { Item } from './item';
+import { fetchNews, checkIfBookmarked } from './widget.utils';
 
 import './widget.scss';
 
 type TWidgetProps = {
   provider: TProvider;
 };
-
-const checkIfBookmarked = (bookmarks: Array<any>, item: TNewsItem) =>
-  bookmarks.some((bookmark) => bookmark.link === item.link);
-
-type TItemProps = {
-  item: TNewsItem;
-  isBookmarked: boolean;
-  onAddBookmark: () => void;
-  onRemoveBookmark: () => void;
-};
-
-function Item(props: TItemProps) {
-  const {
-    item: { title, link, created },
-    isBookmarked,
-    onAddBookmark,
-    onRemoveBookmark,
-  } = props;
-  const dic = useLocalization();
-
-  const handleClick = () => {
-    if (isBookmarked) {
-      onRemoveBookmark();
-    } else {
-      onAddBookmark();
-    }
-  };
-
-  return (
-    <li className="item">
-      <span className="mr-2 color-secondary">{formatTime(created)}</span>
-      <a
-        href={link}
-        target="_blank"
-        rel="noreferrer"
-        className="color-primary mr-2"
-      >
-        {title}
-      </a>
-      <IconButton
-        icon={isBookmarked ? 'bookmark' : 'bookmark-empty'}
-        title={isBookmarked ? dic.removeBookmark : dic.addBookmark}
-        onClick={handleClick}
-        size="small"
-        className="ml-auto"
-      />
-    </li>
-  );
-}
 
 function Widget({ provider }: TWidgetProps) {
   const [news, setNews] = useState([] as TNews);
@@ -132,8 +83,8 @@ function Widget({ provider }: TWidgetProps) {
               key={item.link}
               item={item}
               isBookmarked={checkIfBookmarked(bookmarks, item)}
-              onAddBookmark={() => handleAddBookmark(item)}
-              onRemoveBookmark={() => handleRemoveBookmark(item)}
+              onAddBookmark={handleAddBookmark}
+              onRemoveBookmark={handleRemoveBookmark}
             />
           ))}
         </ul>
