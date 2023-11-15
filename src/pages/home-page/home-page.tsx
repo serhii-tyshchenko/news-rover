@@ -34,11 +34,11 @@ function HomePage() {
         </div>
       )}
       {!isLoading && !isEmpty(addedProviders) && (
-        <ul className="widget-list">
+        <section className="widget-list">
           {addedProviders.map((provider: TProvider) => (
             <Widget key={provider.id} provider={provider} />
           ))}
-        </ul>
+        </section>
       )}
     </BaseLayout>
   );

@@ -1,32 +1,36 @@
 import { useNavigate, useLocation } from 'react-router';
+import { isEmpty } from 'lodash';
 import { Link } from 'react-router-dom';
 import { IconButton } from '@components/ui';
 import { ThemeToggler, LanguageSelector } from '@components';
-import { APP_NAME, ROUTES } from '@constants';
-import { useLocalization } from '@hooks';
+import { APP_NAME, ERoute, EIcon } from '@constants';
+import { useLocalization, useAppSelector } from '@hooks';
+import { selectBookmarksData } from '@store/selectors';
 
 function Header() {
   const navigate = useNavigate();
   const location = useLocation();
   const dic = useLocalization();
-  const isActiveBookmarks = location.pathname === ROUTES.BOOKMARKS;
-  const isActiveProviders = location.pathname === ROUTES.PROVIDERS;
+  const areBookmarks = !isEmpty(useAppSelector(selectBookmarksData));
+
+  const isActiveBookmarks = location.pathname === ERoute.Bookmarks;
+  const isActiveProviders = location.pathname === ERoute.Providers;
 
   return (
     <header className="d-flex align-items-center justify-content-between">
-      <Link to={ROUTES.HOME}>{APP_NAME}</Link>
+      <Link to={ERoute.Home}>{APP_NAME}</Link>
       <nav className="d-flex">
         <IconButton
-          icon="bookmark"
-          onClick={() => navigate(ROUTES.BOOKMARKS)}
+          icon={areBookmarks ? EIcon.Bookmark : EIcon.BookmarkEmpty}
+          onClick={() => navigate(ERoute.Bookmarks)}
           title={dic.bookmarks}
           size="big"
           className="mr-2"
           toggled={isActiveBookmarks}
         />
         <IconButton
-          icon="rss"
-          onClick={() => navigate(ROUTES.PROVIDERS)}
+          icon={EIcon.Rss}
+          onClick={() => navigate(ERoute.Providers)}
           title={dic.providers}
           size="big"
           toggled={isActiveProviders}

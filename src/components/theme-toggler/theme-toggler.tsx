@@ -1,7 +1,7 @@
 import { doUpdateSettings } from '@store/actions';
 import { selectTheme } from '@store/selectors';
 import { useAppDispatch, useAppSelector, useLocalization } from '@hooks';
-import { THEMES } from '@constants';
+import { THEMES, EIcon } from '@constants';
 
 import { IconButton } from '@components/ui';
 
@@ -20,7 +20,7 @@ function ThemeToggler() {
 
   return (
     <IconButton
-      icon={theme === THEMES.LIGHT ? 'moon' : 'sun'}
+      icon={theme === THEMES.LIGHT ? EIcon.Moon : EIcon.Sun}
       onClick={handleThemeChange}
       title={dic.changeTheme}
       size="big"
