@@ -45,7 +45,7 @@ function ProvidersPage() {
 
   return (
     <BaseLayout>
-      <ul className="widget-list">
+      <section className="widget-list">
         {groupedProviders &&
           Object.keys(groupedProviders).map((category) => (
             <div className="widget" key={category}>
@@ -85,7 +85,7 @@ function ProvidersPage() {
               </ul>
             </div>
           ))}
-      </ul>
+      </section>
     </BaseLayout>
   );
 }

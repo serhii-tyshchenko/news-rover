@@ -26,11 +26,13 @@
   background-color: var(--color-surface);
   border-radius: 0.25rem;
   box-shadow: 0 0 0.5rem 0 rgba(0, 0, 0, 0.1);
+  height: calc(100vh - 8rem);
 
   @include for-size(laptop) {
     padding: 0.5rem;
     border-radius: 0;
     box-shadow: none;
+    height: 100%;
   }
 }
 

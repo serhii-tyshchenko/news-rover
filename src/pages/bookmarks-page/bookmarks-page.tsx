@@ -16,7 +16,7 @@ function BookmarksPage() {
 
   return (
     <BaseLayout>
-      <section className="widget h-100">
+      <div className="widget">
         <h3 className="mb-4">{dic.bookmarks}</h3>
         {isEmpty(bookmarks) && (
           <div className="d-flex align-items-center justify-content-center text-align-center flex-grow-1">
@@ -24,7 +24,7 @@ function BookmarksPage() {
           </div>
         )}
         {!isEmpty(bookmarks) && (
-          <ul className="bookmark-list">
+          <section className="bookmark-list">
             {bookmarks.map((item: any) => (
               <li className="item" key={item.id}>
                 <span className="mr-2 color-secondary">
@@ -46,9 +46,9 @@ function BookmarksPage() {
                 />
               </li>
             ))}
-          </ul>
+          </section>
         )}
-      </section>
+      </div>
     </BaseLayout>
   );
 }
