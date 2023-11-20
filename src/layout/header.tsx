@@ -2,12 +2,13 @@ import { useNavigate, useLocation } from 'react-router';
 import { isEmpty } from 'lodash';
 import { Link } from 'react-router-dom';
 import { IconButton } from '@components/ui';
-import { ThemeToggler, LanguageSelector } from '@components';
+import { SettingsDialog } from '@components';
 import { APP_NAME, ERoute, EIcon } from '@constants';
-import { useLocalization, useAppSelector } from '@hooks';
+import { useLocalization, useAppSelector, useToggle } from '@hooks';
 import { selectBookmarksData } from '@store/selectors';
 
 function Header() {
+  const [opened, toggle] = useToggle();
   const navigate = useNavigate();
   const location = useLocation();
   const dic = useLocalization();
@@ -36,9 +37,15 @@ function Header() {
           toggled={isActiveProviders}
           className="mr-2"
         />
-        <ThemeToggler />
-        <LanguageSelector />
+        <IconButton
+          icon={EIcon.Settings}
+          onClick={toggle}
+          title={dic.settings}
+          size="big"
+          className="mr-2"
+        />
       </nav>
+      <SettingsDialog opened={opened} onClose={toggle} />
     </header>
   );
 }

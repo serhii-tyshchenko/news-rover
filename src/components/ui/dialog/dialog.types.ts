@@ -1,10 +1,8 @@
 export type TDialogProps = {
+  opened: boolean;
   title?: string;
   closeBtnTitle?: string;
-  cancelBtnTitle?: string;
-  confirmBtnTitle?: string;
   onClose?: () => void;
-  onConfirm?: () => void;
   children?: React.ReactNode;
   className?: string;
 };

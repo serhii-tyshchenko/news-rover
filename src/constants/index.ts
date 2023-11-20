@@ -2,7 +2,7 @@ export const DEFAULT_POSTS_LIMIT = 10;
 
 export const APP_NAME = 'NewsRover';
 
-export const APP_VERSION = '1.4.1';
+export const APP_VERSION = '1.5.0';
 
 export const THEMES = {
   LIGHT: 'light',
@@ -26,6 +26,7 @@ export enum EIcon {
   Rss = 'rss',
   Moon = 'moon',
   Sun = 'sun',
+  Settings = 'cog',
 }
 
 export const portalRoot = document.getElementById('portal-root') as HTMLElement;
