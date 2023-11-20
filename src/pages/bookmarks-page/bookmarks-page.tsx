@@ -3,7 +3,7 @@ import { selectBookmarksData } from '@store/selectors';
 import { doRemoveBookmark } from '@store/actions';
 import { useAppSelector, useAppDispatch, useLocalization } from '@hooks';
 import { formatDate } from '@utils';
-import { IconButton } from '@components/ui';
+import { IconButton, Card } from '@components/ui';
 import { BaseLayout } from '@layout';
 
 function BookmarksPage() {
@@ -16,8 +16,7 @@ function BookmarksPage() {
 
   return (
     <BaseLayout>
-      <div className="widget">
-        <h3 className="mb-4">{dic.bookmarks}</h3>
+      <Card title={dic.bookmarks}>
         {isEmpty(bookmarks) && (
           <div className="d-flex align-items-center justify-content-center text-align-center flex-grow-1">
             {dic.noBookmarks}
@@ -48,7 +47,7 @@ function BookmarksPage() {
             ))}
           </section>
         )}
-      </div>
+      </Card>
     </BaseLayout>
   );
 }

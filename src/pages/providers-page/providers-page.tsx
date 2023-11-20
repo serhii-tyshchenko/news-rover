@@ -2,7 +2,7 @@ import { selectProvidersData, selectAddedProviders } from '@store/selectors';
 import { doAddProvider, doRemoveProvider } from '@store/actions';
 import { useAppSelector, useAppDispatch, useLocalization } from '@hooks';
 
-import { IconButton } from '@components/ui';
+import { IconButton, Card } from '@components/ui';
 import { BaseLayout } from '@layout';
 import { TProvider, TProviders } from '@types';
 
@@ -48,8 +48,7 @@ function ProvidersPage() {
       <section className="widget-list">
         {groupedProviders &&
           Object.keys(groupedProviders).map((category) => (
-            <div className="widget" key={category}>
-              <h3 className="mb-4">{categoryToNameMap[category]}</h3>
+            <Card key={category} title={categoryToNameMap[category]}>
               <ul className="overflow-y-auto pr-2">
                 {groupedProviders[category].map((provider) => (
                   <li key={provider.id} className="d-flex mb-4">
@@ -83,7 +82,7 @@ function ProvidersPage() {
                   </li>
                 ))}
               </ul>
-            </div>
+            </Card>
           ))}
       </section>
     </BaseLayout>

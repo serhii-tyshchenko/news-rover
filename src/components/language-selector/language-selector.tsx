@@ -15,8 +15,9 @@ function LanguageSelector() {
       value={currLanguage}
       onChange={onLanguageChange}
       options={options}
-      className="mr-2 appearance-none"
+      className="mr-2"
       title={dic.changeLanguage}
+      noArrow
     />
   );
 }

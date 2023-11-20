@@ -29,3 +29,5 @@ export enum EIcon {
 }
 
 export const portalRoot = document.getElementById('portal-root') as HTMLElement;
+
+export const noop = () => {};

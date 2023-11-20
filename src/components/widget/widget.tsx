@@ -2,7 +2,7 @@ import { useEffect, useState, useCallback } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { isEmpty } from 'lodash';
 import { useAppDispatch, useAppSelector, useLocalization } from '@hooks';
-import { IconButton } from '@components/ui';
+import { Card } from '@components/ui';
 import { Skeleton } from '@components';
 import { TProvider, TNews, TNewsItem } from '@types';
 import { selectBookmarksData } from '@store/selectors';
@@ -55,28 +55,24 @@ function Widget({ provider }: TWidgetProps) {
     handleRefresh();
   }, [handleRefresh]);
 
+  const controlsConfig = [
+    {
+      icon: 'eye-off',
+      title: dic.hideProvider,
+      onClick: handleHideProvider,
+    },
+    {
+      icon: 'arrows-cw',
+      title: dic.refresh,
+      onClick: handleRefresh,
+      className: isLoading ? 'animation-rotate' : '',
+    },
+  ];
+
   return (
-    <div className="widget">
-      <div className="d-flex justify-content-between align-items-center mb-4">
-        <h3>{provider.name}</h3>
-        <div className="d-flex align-items-center">
-          <IconButton
-            icon="eye-off"
-            title={dic.hideProvider}
-            onClick={handleHideProvider}
-            className="mr-2"
-          />
-          <IconButton
-            icon="arrows-cw"
-            title={dic.refresh}
-            onClick={handleRefresh}
-            className={isLoading ? 'animation-rotate' : ''}
-          />
-        </div>
-      </div>
+    <Card title={provider.name} controlsConfig={controlsConfig}>
       {isLoading && <Skeleton />}
-      {isEmpty(news) && !isLoading && <div>{dic.noNews}</div>}
-      {!isEmpty(news) && !isLoading && (
+      {!isLoading && (
         <ul className="item-list">
           {news.map((item: TNewsItem) => (
             <Item
@@ -89,7 +85,7 @@ function Widget({ provider }: TWidgetProps) {
           ))}
         </ul>
       )}
-    </div>
+    </Card>
   );
 }
 
