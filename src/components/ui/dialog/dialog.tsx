@@ -2,8 +2,10 @@ import { memo } from 'react';
 import { createPortal } from 'react-dom';
 
 import { getClassName } from '@utils';
-import { portalRoot } from '@constants';
+import { portalRoot, noop } from '@constants';
 import { IconButton, Button } from '@components/ui';
+
+import { TDialogProps } from './dialog.types';
 
 import './dialog.scss';
 
@@ -11,14 +13,14 @@ const NAME_SPACE = 'dialog';
 
 function Dialog(props: TDialogProps) {
   const {
-    title,
-    closeBtnTitle,
-    cancelBtnTitle,
-    confirmBtnTitle,
-    onClose,
-    onConfirm,
+    title = 'Dialog',
+    closeBtnTitle = 'Close',
+    cancelBtnTitle = 'Cancel',
+    confirmBtnTitle = 'Confirm',
+    onClose = noop,
+    onConfirm = noop,
     children,
-    className,
+    className = '',
   } = props;
 
   const componentClassName = getClassName(NAME_SPACE, className);
@@ -58,27 +60,5 @@ function Dialog(props: TDialogProps) {
     portalRoot
   );
 }
-
-type TDialogProps = {
-  title?: string;
-  closeBtnTitle?: string;
-  cancelBtnTitle?: string;
-  confirmBtnTitle?: string;
-  onClose?: () => void;
-  onConfirm?: () => void;
-  children?: React.ReactNode;
-  className?: string;
-};
-
-Dialog.defaultProps = {
-  title: 'Dialog',
-  closeBtnTitle: 'Close',
-  cancelBtnTitle: 'Cancel',
-  confirmBtnTitle: 'Confirm',
-  children: null,
-  onClose: null,
-  onConfirm: null,
-  className: '',
-};
 
 export default memo(Dialog);

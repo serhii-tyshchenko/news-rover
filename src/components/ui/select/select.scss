@@ -41,6 +41,10 @@
     border: 2px solid var(--color-error);
   }
 
+  &--no-arrow {
+    appearance: none;
+  }
+
   &__option {
     background: var(--color-background);
     color: inherit;

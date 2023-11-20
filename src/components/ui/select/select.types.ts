@@ -6,6 +6,7 @@ export type TSelectProps = {
   options: Array<{ value: string | number; label: string; disabled?: boolean }>;
   required: boolean;
   disabled: boolean;
+  noArrow?: boolean;
   size: 'normal' | 'small' | 'large' | 'big';
   name: string;
   label: string;

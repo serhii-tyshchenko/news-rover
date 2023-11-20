@@ -16,6 +16,7 @@ function Select(props: TSelectProps) {
     title,
     required,
     disabled,
+    noArrow,
     size,
     name,
     label,
@@ -27,7 +28,7 @@ function Select(props: TSelectProps) {
   const componentClassName = getClassName(
     NAME_SPACE,
     `${NAME_SPACE}--${size}`,
-    { [`${NAME_SPACE}--error`]: error },
+    { [`${NAME_SPACE}--error`]: error, [`${NAME_SPACE}--no-arrow`]: noArrow },
     className
   );
 
