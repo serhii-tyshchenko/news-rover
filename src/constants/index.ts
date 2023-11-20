@@ -26,6 +26,7 @@ export enum EIcon {
   Rss = 'rss',
   Moon = 'moon',
   Sun = 'sun',
+  Settings = 'cog',
 }
 
 export const portalRoot = document.getElementById('portal-root') as HTMLElement;

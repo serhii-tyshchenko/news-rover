@@ -3,7 +3,7 @@ import { createPortal } from 'react-dom';
 
 import { getClassName } from '@utils';
 import { portalRoot, noop } from '@constants';
-import { IconButton, Button } from '@components/ui';
+import { IconButton } from '@components/ui';
 
 import { TDialogProps } from './dialog.types';
 
@@ -13,17 +13,19 @@ const NAME_SPACE = 'dialog';
 
 function Dialog(props: TDialogProps) {
   const {
+    opened = false,
     title = 'Dialog',
     closeBtnTitle = 'Close',
-    cancelBtnTitle = 'Cancel',
-    confirmBtnTitle = 'Confirm',
     onClose = noop,
-    onConfirm = noop,
     children,
     className = '',
   } = props;
 
   const componentClassName = getClassName(NAME_SPACE, className);
+
+  if (!opened) {
+    return null;
+  }
 
   return createPortal(
     <div className={`${NAME_SPACE}__backdrop`}>
@@ -47,14 +49,6 @@ function Dialog(props: TDialogProps) {
           />
         </header>
         <main className={`${NAME_SPACE}__content`}>{children}</main>
-        <footer className={`${NAME_SPACE}__footer`}>
-          <Button onClick={onConfirm} className="mr-4">
-            {confirmBtnTitle}
-          </Button>
-          <Button onClick={onClose} btnType="secondary">
-            {cancelBtnTitle}
-          </Button>
-        </footer>
       </div>
     </div>,
     portalRoot

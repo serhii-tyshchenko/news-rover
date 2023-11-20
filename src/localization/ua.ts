@@ -1,4 +1,6 @@
-const STR = {
+import { TDic } from 'types';
+
+const STR: TDic = {
   home: 'Головна',
   changeLanguage: 'Змінити мову',
   changeTheme: 'Змінити тему',
@@ -13,6 +15,9 @@ const STR = {
   removeBookmark: 'Видалити закладку',
   noBookmarks: 'Немає закладок',
   share: 'Поділитися',
+  settings: 'Налаштування',
+  theme: 'Тема',
+  language: 'Мова',
   category: {
     business: 'Бізнес',
     it: 'Ай Ті',

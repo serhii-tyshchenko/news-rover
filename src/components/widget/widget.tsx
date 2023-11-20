@@ -1,6 +1,5 @@
 import { useEffect, useState, useCallback } from 'react';
 import { v4 as uuidv4 } from 'uuid';
-import { isEmpty } from 'lodash';
 import { useAppDispatch, useAppSelector, useLocalization } from '@hooks';
 import { Card } from '@components/ui';
 import { Skeleton } from '@components';
@@ -13,7 +12,7 @@ import {
 } from '@store/actions';
 
 import { Item } from './item';
-import { fetchNews, checkIfBookmarked } from './widget.utils';
+import { fetchNews, checkIfBookmarked, getConfig } from './widget.utils';
 
 import './widget.scss';
 
@@ -55,19 +54,12 @@ function Widget({ provider }: TWidgetProps) {
     handleRefresh();
   }, [handleRefresh]);
 
-  const controlsConfig = [
-    {
-      icon: 'eye-off',
-      title: dic.hideProvider,
-      onClick: handleHideProvider,
-    },
-    {
-      icon: 'arrows-cw',
-      title: dic.refresh,
-      onClick: handleRefresh,
-      className: isLoading ? 'animation-rotate' : '',
-    },
-  ];
+  const controlsConfig = getConfig({
+    dic,
+    isLoading,
+    handleRefresh,
+    handleHideProvider,
+  });
 
   return (
     <Card title={provider.name} controlsConfig={controlsConfig}>

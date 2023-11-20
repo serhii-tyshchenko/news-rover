@@ -43,3 +43,34 @@ export type TSettings = {
 export interface IAction extends Action {
   payload?: any;
 }
+
+export type TDic = {
+  home: string;
+  changeLanguage: string;
+  changeTheme: string;
+  refresh: string;
+  loading: string;
+  providers: string;
+  showProvider: string;
+  hideProvider: string;
+  noProviders: string;
+  bookmarks: string;
+  addBookmark: string;
+  removeBookmark: string;
+  noBookmarks: string;
+  share: string;
+  settings: string;
+  theme: string;
+  language: string;
+  category: {
+    business: string;
+    it: string;
+    military: string;
+    news: string;
+    technology: string;
+    science: string;
+    softwareDevelopment: string;
+    space: string;
+  };
+  noNews: string;
+};
