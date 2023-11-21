@@ -1,9 +1,15 @@
 import { useEffect } from 'react';
 import { selectTheme } from '@store/selectors';
-import { useAppSelector } from '@hooks';
+import { useAppSelector, useMediaQuery } from '@hooks';
+import { THEMES } from '@constants';
 
 export const useTheme = () => {
-  const theme = useAppSelector(selectTheme);
+  const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
+  let theme = useAppSelector(selectTheme);
+
+  if (theme === THEMES.SYSTEM) {
+    theme = prefersDarkMode ? THEMES.DARK : THEMES.LIGHT;
+  }
 
   useEffect(
     () => document.documentElement.setAttribute('data-theme', theme),

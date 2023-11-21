@@ -11,6 +11,7 @@ export const AUTHOR_SITE = 'https://github.com/serhii-tyshchenko';
 export const THEMES = {
   LIGHT: 'light',
   DARK: 'dark',
+  SYSTEM: 'system',
 };
 
 export const LANGUAGES = {
