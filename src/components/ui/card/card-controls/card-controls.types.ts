@@ -2,6 +2,7 @@ type TControl = {
   icon: string;
   title: string;
   onClick: () => void;
+  className?: string;
 };
 
 export type TControlsConfig = TControl[];

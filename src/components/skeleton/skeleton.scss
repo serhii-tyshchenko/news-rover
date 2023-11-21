@@ -3,15 +3,14 @@
 .skeleton {
   border-radius: 4px;
   background-color: var(--background-skeleton);
-  animation: skeleton 1s infinite;
   height: 2.5rem;
 
   &:not(:last-child) {
     margin-bottom: 1rem;
   }
 
-  @include for-reduced-motion() {
-    animation: none;
+  &--animated {
+    animation: skeleton 1s infinite;
   }
 }
 

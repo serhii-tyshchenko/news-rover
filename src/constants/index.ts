@@ -4,6 +4,10 @@ export const APP_NAME = 'NewsRover';
 
 export const APP_VERSION = '1.4.0';
 
+export const AUTHOR_NAME = 'Serhii Tyshchenko';
+
+export const AUTHOR_SITE = 'https://github.com/serhii-tyshchenko';
+
 export const THEMES = {
   LIGHT: 'light',
   DARK: 'dark',
@@ -13,6 +17,12 @@ export const LANGUAGES = {
   EN: 'en',
   UA: 'ua',
 };
+
+export enum EAnimation {
+  On = 'on',
+  Off = 'off',
+  System = 'system',
+}
 
 export enum ERoute {
   Home = '/',

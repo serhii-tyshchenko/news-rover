@@ -1,19 +1,28 @@
-import { Dialog, Select } from '@components/ui';
-import { useAppDispatch, useAppSelector, useLocalization } from '@hooks';
+import { Dialog, Select, Toggle } from '@components/ui';
+import {
+  useAppDispatch,
+  useAppSelector,
+  useLocalization,
+  useAnimation,
+} from '@hooks';
 import { doUpdateSettings } from '@store/actions';
 import { selectSettingsData } from '@store/selectors';
-import { THEMES, LANGUAGES, APP_VERSION } from '@constants';
+import {
+  THEMES,
+  LANGUAGES,
+  APP_VERSION,
+  AUTHOR_NAME,
+  AUTHOR_SITE,
+  EAnimation,
+} from '@constants';
 
+import { TSettingsDialogProps } from './settings-dialog.types';
 import { prepareOptions } from './settings-dialog.utils';
-
-type TSettingsDialogProps = {
-  opened: boolean;
-  onClose: any;
-};
 
 function SettingsDialog(props: TSettingsDialogProps) {
   const { opened, onClose } = props;
   const dic = useLocalization();
+  const isAnimationEnabled = useAnimation();
 
   const dispatch = useAppDispatch();
   const { locale, theme } = useAppSelector(selectSettingsData);
@@ -37,7 +46,7 @@ function SettingsDialog(props: TSettingsDialogProps) {
             noArrow
           />
         </div>
-        <div className="d-flex align-items-center justify-content-between">
+        <div className="d-flex align-items-center justify-content-between mb-3">
           <span>{dic.language}</span>
           <Select
             name="locale"
@@ -48,14 +57,21 @@ function SettingsDialog(props: TSettingsDialogProps) {
             noArrow
           />
         </div>
+        <div className="d-flex align-items-center justify-content-between">
+          <span>{dic.animation}</span>
+          <Toggle
+            name="animation"
+            value={isAnimationEnabled ? EAnimation.Off : EAnimation.On}
+            toggled={isAnimationEnabled}
+            onChange={handleChange}
+            animated={isAnimationEnabled}
+            size="small"
+          />
+        </div>
       </div>
       <footer className="d-flex justify-content-between">
-        <a
-          href="https://github.com/serhii-tyshchenko"
-          className="small"
-          target="_blank"
-        >
-          &copy; Serhii Tyshchenko
+        <a href={AUTHOR_SITE} className="small" target="_blank">
+          &copy; {AUTHOR_NAME}
         </a>
         <span className="small">{APP_VERSION}</span>
       </footer>

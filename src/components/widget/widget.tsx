@@ -1,9 +1,14 @@
 import { useEffect, useState, useCallback } from 'react';
 import { v4 as uuidv4 } from 'uuid';
-import { useAppDispatch, useAppSelector, useLocalization } from '@hooks';
+import {
+  useAppDispatch,
+  useAppSelector,
+  useLocalization,
+  useAnimation,
+} from '@hooks';
 import { Card } from '@components/ui';
 import { Skeleton } from '@components';
-import { TProvider, TNews, TNewsItem } from '@types';
+import { TNews, TNewsItem } from '@types';
 import { selectBookmarksData } from '@store/selectors';
 import {
   doAddBookmark,
@@ -13,12 +18,9 @@ import {
 
 import { Item } from './item';
 import { fetchNews, checkIfBookmarked, getConfig } from './widget.utils';
+import { TWidgetProps } from './widget.types';
 
 import './widget.scss';
-
-type TWidgetProps = {
-  provider: TProvider;
-};
 
 function Widget({ provider }: TWidgetProps) {
   const [news, setNews] = useState([] as TNews);
@@ -26,6 +28,7 @@ function Widget({ provider }: TWidgetProps) {
   const dic = useLocalization();
   const dispatch = useAppDispatch();
   const bookmarks = useAppSelector(selectBookmarksData);
+  const isAnimationEnabled = useAnimation();
 
   const handleAddBookmark = (item: TNewsItem) => {
     dispatch(
@@ -56,9 +59,9 @@ function Widget({ provider }: TWidgetProps) {
 
   const controlsConfig = getConfig({
     dic,
-    isLoading,
     handleRefresh,
     handleHideProvider,
+    showAnimation: isAnimationEnabled && isLoading,
   });
 
   return (
