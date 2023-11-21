@@ -2,7 +2,7 @@ export const DEFAULT_POSTS_LIMIT = 10;
 
 export const APP_NAME = 'NewsRover';
 
-export const APP_VERSION = '1.4.0';
+export const APP_VERSION = '1.5.0';
 
 export const AUTHOR_NAME = 'Serhii Tyshchenko';
 
