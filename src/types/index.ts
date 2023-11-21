@@ -1,4 +1,5 @@
 import { Action } from 'redux';
+import { EAnimation } from '@constants';
 
 export type TProvider = {
   id: string;
@@ -38,6 +39,7 @@ export type TBookmark = {
 export type TSettings = {
   theme: string;
   locale: string;
+  animation: EAnimation;
 };
 
 export interface IAction extends Action {
@@ -62,6 +64,7 @@ export type TDic = {
   settings: string;
   theme: string;
   language: string;
+  animation: string;
   category: {
     business: string;
     it: string;

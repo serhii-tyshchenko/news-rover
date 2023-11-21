@@ -18,6 +18,7 @@ const STR: TDic = {
   settings: 'Налаштування',
   theme: 'Тема',
   language: 'Мова',
+  animation: 'Анімація',
   category: {
     business: 'Бізнес',
     it: 'Ай Ті',

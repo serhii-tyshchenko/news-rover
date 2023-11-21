@@ -3,7 +3,8 @@ import { SetStateAction } from 'react';
 import { getNewsByProvider } from '@core/api';
 
 import { DEFAULT_POSTS_LIMIT } from '@constants';
-import { TNews, TNewsItem, TBookmark, TDic } from '@types';
+import { TNews, TNewsItem, TBookmark } from '@types';
+import { TGetConfig } from './widget.types';
 
 export async function fetchNews(
   provider: string,
@@ -27,18 +28,11 @@ export const checkIfBookmarked = (
   item: TNewsItem
 ) => bookmarks.some((bookmark) => bookmark.link === item.link);
 
-type TGetConfig = {
-  dic: TDic;
-  handleHideProvider: () => void;
-  handleRefresh: () => void;
-  isLoading: boolean;
-};
-
 export const getConfig = ({
   dic,
   handleHideProvider,
   handleRefresh,
-  isLoading,
+  showAnimation,
 }: TGetConfig) => [
   {
     icon: 'eye-off',
@@ -49,6 +43,6 @@ export const getConfig = ({
     icon: 'arrows-cw',
     title: dic.refresh,
     onClick: handleRefresh,
-    className: isLoading ? 'animation-rotate' : '',
+    className: showAnimation ? 'animation-rotate' : '',
   },
 ];

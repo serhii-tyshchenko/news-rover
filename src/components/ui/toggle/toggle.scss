@@ -13,11 +13,10 @@
     display: block;
     background-color: #fff;
     border-radius: 50%;
-    transition: transform 0.2s ease-in-out;
+  }
 
-    @include for-reduced-motion() {
-      transition: none;
-    }
+  &--animated::before {
+    transition: transform 0.2s ease-in-out;
   }
 
   &:checked {
@@ -60,9 +59,7 @@
 
   }
 
-
   &--large {
     font-size: 1.25rem;
   }
-
 }
