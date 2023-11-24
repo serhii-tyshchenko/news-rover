@@ -1,0 +1,28 @@
+{
+  "env": {
+    "browser": true,
+    "jest": true
+  },
+  "extends": [
+    "airbnb",
+    "prettier",
+    "plugin:react/jsx-runtime",
+    "react-app/jest"
+  ],
+  "plugins": ["prettier"],
+  "rules": {
+    // "prettier/prettier": ["error"],
+    "import/prefer-default-export": "off"
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".jsx", ".ts", ".tsx"],
+        "moduleDirectory": ["node_modules", "src/"]
+      }
+    }
+  },
+  "parserOptions": {
+    "ecmaVersion": 2020
+  }
+}
