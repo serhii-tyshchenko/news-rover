@@ -2,6 +2,11 @@ import { render } from '@testing-library/react';
 import Card from './card';
 
 describe('(Component) Card', () => {
+  it('should match the snapshot', () => {
+    const { container } = render(<Card title="Test" children="Test" />);
+    expect(container.firstChild).toMatchSnapshot();
+  });
+
   it('should render the title correctly', () => {
     const title = 'Test Title';
     const { getByText } = render(<Card title={title} children="Test" />);

@@ -3,6 +3,11 @@ import { render, fireEvent } from '@testing-library/react';
 import IconButton from './icon-button';
 
 describe('(Component) IconButton', () => {
+  it('should match the snapshot', () => {
+    const { container } = render(<IconButton icon="cog" />);
+    expect(container.firstChild).toMatchSnapshot();
+  });
+
   it('should render the icon button with the correct icon', () => {
     const icon = 'cog';
     const { getByTestId } = render(<IconButton icon={icon} />);
