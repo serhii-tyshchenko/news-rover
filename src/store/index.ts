@@ -11,6 +11,7 @@ import {
   settings,
   providersReducer as providers,
   bookmarksReducer as bookmarks,
+  newsReducer as news,
 } from './reducers';
 
 declare global {
@@ -23,6 +24,7 @@ export const rootReducer = combineReducers({
   settings,
   providers,
   bookmarks,
+  news,
 });
 
 const persistedState = loadState();

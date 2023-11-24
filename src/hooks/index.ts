@@ -4,7 +4,7 @@ import type { TRootState, TAppDispatch } from 'store';
 export * from './useTheme';
 export * from './useMediaQuery';
 export { default as useLocalization } from './useLocalization';
-export { default as useToggle } from './useToggle';
+export * from './useToggle';
 export { default as useAnimation } from './useAnimation';
 
 export const useAppDispatch: () => TAppDispatch = useDispatch;
