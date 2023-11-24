@@ -1,4 +1,5 @@
-import { useEffect, useState, useCallback } from 'react';
+import { useEffect, useCallback } from 'react';
+import { isEmpty } from 'lodash';
 import { v4 as uuidv4 } from 'uuid';
 import {
   useAppDispatch,
@@ -8,35 +9,41 @@ import {
 } from '@hooks';
 import { Card } from '@components/ui';
 import { Skeleton } from '@components';
-import { TNews, TNewsItem } from '@types';
-import { selectBookmarksData } from '@store/selectors';
+import { TNewsItem } from '@types';
+import {
+  selectBookmarksData,
+  selectProviderData,
+  selectProviderIsLoading,
+} from '@store/selectors';
 import {
   doAddBookmark,
   doRemoveBookmark,
   doRemoveProvider,
+  doGetProviderNews,
 } from '@store/actions';
 
 import { Item } from './item';
-import { fetchNews, checkIfBookmarked, getConfig } from './widget.utils';
+import { checkIfBookmarked, getConfig } from './widget.utils';
 import { TWidgetProps } from './widget.types';
 
 import './widget.scss';
 
 function Widget({ provider }: TWidgetProps) {
-  const [news, setNews] = useState([] as TNews);
-  const [isLoading, setIsLoading] = useState(false);
   const dic = useLocalization();
+
   const dispatch = useAppDispatch();
+
   const bookmarks = useAppSelector(selectBookmarksData);
+  const providerData = useAppSelector(selectProviderData(provider.id));
+  const isLoading = useAppSelector(selectProviderIsLoading(provider.id));
+
   const isAnimationEnabled = useAnimation();
 
   const handleAddBookmark = (item: TNewsItem) => {
     dispatch(
       doAddBookmark({
         id: uuidv4(),
-        title: item.title,
-        link: item.link,
-        created: item.created,
+        ...item,
       })
     );
   };
@@ -46,7 +53,7 @@ function Widget({ provider }: TWidgetProps) {
   };
 
   const handleRefresh = useCallback(() => {
-    fetchNews(provider.id, setNews, setIsLoading);
+    dispatch(doGetProviderNews(provider.id));
   }, [provider.id]);
 
   const handleHideProvider = () => {
@@ -54,8 +61,10 @@ function Widget({ provider }: TWidgetProps) {
   };
 
   useEffect(() => {
-    handleRefresh();
-  }, [handleRefresh]);
+    if (isEmpty(providerData)) {
+      dispatch(doGetProviderNews(provider.id));
+    }
+  }, [provider.id]);
 
   const controlsConfig = getConfig({
     dic,
@@ -69,7 +78,7 @@ function Widget({ provider }: TWidgetProps) {
       {isLoading && <Skeleton />}
       {!isLoading && (
         <ul className="item-list">
-          {news.map((item: TNewsItem) => (
+          {providerData.map((item: TNewsItem) => (
             <Item
               key={item.link}
               item={item}
