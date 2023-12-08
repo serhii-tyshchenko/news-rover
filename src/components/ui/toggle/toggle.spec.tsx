@@ -3,6 +3,11 @@ import { render, fireEvent } from '@testing-library/react';
 import Toggle from './toggle';
 
 describe('(Component) Toggle', () => {
+  it('should match the snapshot', () => {
+    const { container } = render(<Toggle />);
+    expect(container.firstChild).toMatchSnapshot();
+  });
+
   it('should render the toggle with the correct size', () => {
     const size = 'large';
     const { getByTestId } = render(<Toggle size={size} />);

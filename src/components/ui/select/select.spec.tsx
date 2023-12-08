@@ -1,4 +1,4 @@
-import { render, fireEvent, getByTestId } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 import Select from './select';
 
 describe('(Component) Select', () => {
@@ -7,6 +7,11 @@ describe('(Component) Select', () => {
     { value: 'option2', label: 'Option 2' },
     { value: 'option3', label: 'Option 3' },
   ];
+
+  it('should match the snapshot', () => {
+    const { container } = render(<Select options={options} />);
+    expect(container.firstChild).toMatchSnapshot();
+  });
 
   it('should render the select with the correct options', () => {
     const { getByTestId } = render(<Select options={options} />);

@@ -44,7 +44,7 @@ function Widget({ provider }: TWidgetProps) {
       doAddBookmark({
         id: uuidv4(),
         ...item,
-      })
+      }),
     );
   };
 

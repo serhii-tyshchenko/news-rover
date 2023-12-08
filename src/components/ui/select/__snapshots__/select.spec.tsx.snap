@@ -1,0 +1,30 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`(Component) Select > should match the snapshot 1`] = `
+<select
+  class="select select--normal"
+  data-testid="select"
+  id="select"
+  name="select"
+  title="Select option"
+>
+  <option
+    class="select__option"
+    value="option1"
+  >
+    Option 1
+  </option>
+  <option
+    class="select__option"
+    value="option2"
+  >
+    Option 2
+  </option>
+  <option
+    class="select__option"
+    value="option3"
+  >
+    Option 3
+  </option>
+</select>
+`;

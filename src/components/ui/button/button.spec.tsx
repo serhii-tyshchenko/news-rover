@@ -2,6 +2,11 @@ import { render, fireEvent } from '@testing-library/react';
 import Button from './button';
 
 describe('(Component) Button', () => {
+  it('should match the snapshot', () => {
+    const { container } = render(<Button>Click me</Button>);
+    expect(container.firstChild).toMatchSnapshot();
+  });
+
   it('should render the button with the correct text', () => {
     const buttonText = 'Click me';
     const { getByText } = render(<Button>{buttonText}</Button>);
