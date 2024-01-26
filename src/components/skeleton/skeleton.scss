@@ -3,10 +3,11 @@
 .skeleton {
   border-radius: 4px;
   background-color: var(--background-skeleton);
-  height: 2.5rem;
+  min-height: 4rem;
+  flex-grow: 1;
 
   &:not(:last-child) {
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
   }
 
   &--animated {
