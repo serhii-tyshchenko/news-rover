@@ -14,15 +14,15 @@ export const getProviders = async () => {
 
 export const getNewsByProvider = async (
   provider: string,
-  limit = DEFAULT_POSTS_LIMIT
+  limit = DEFAULT_POSTS_LIMIT,
 ) => {
   try {
     const response = await fetch(
-      `${NEWS_ROOT_URL}?provider=${provider}&limit=${limit}`
+      `${NEWS_ROOT_URL}?provider=${provider}&limit=${limit}`,
     );
     const data = await response.json();
     return data;
   } catch (error) {
-    return error;
+    throw error;
   }
 };

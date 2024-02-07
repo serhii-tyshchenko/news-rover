@@ -9,6 +9,7 @@ const initialState: {
   [key: string]: {
     isLoading: boolean;
     data: Array<TNewsItem>;
+    error: string;
   };
 } = {};
 
@@ -22,6 +23,7 @@ export const newsReducer = (state = initialState, action: IAction) => {
         [payload?.provider]: {
           ...state[payload?.provider],
           isLoading: true,
+          error: '',
         },
       };
     case GET_PROVDER_NEWS_REQUEST_SUCCESS:
@@ -31,6 +33,7 @@ export const newsReducer = (state = initialState, action: IAction) => {
           ...state[payload?.provider],
           isLoading: false,
           data: payload.data,
+          error: '',
         },
       };
     case GET_PROVDER_NEWS_REQUEST_FAILED:
@@ -39,6 +42,7 @@ export const newsReducer = (state = initialState, action: IAction) => {
         [payload?.provider]: {
           ...state[payload?.provider],
           isLoading: false,
+          error: 'Something went wrong',
         },
       };
 

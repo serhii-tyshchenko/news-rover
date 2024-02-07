@@ -9,11 +9,17 @@ const selectProvider = (provider: string) =>
 export const selectProviderData = (provider: string) =>
   createSelector(
     selectProvider(provider),
-    (providerData) => providerData.data ?? []
+    (providerData) => providerData.data ?? [],
   );
 
 export const selectProviderIsLoading = (provider: string) =>
   createSelector(
     selectProvider(provider),
-    (providerData) => providerData.isLoading ?? false
+    (providerData) => providerData.isLoading ?? false,
+  );
+
+export const selectProviderError = (provider: string) =>
+  createSelector(
+    selectProvider(provider),
+    (providerData) => providerData.error,
   );

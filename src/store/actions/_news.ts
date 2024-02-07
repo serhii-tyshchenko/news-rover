@@ -20,7 +20,7 @@ export const doGetProviderNews =
     } catch (error) {
       dispatch({
         type: GET_PROVDER_NEWS_REQUEST_FAILED,
-        payload: { provider },
+        payload: { provider, error },
       });
       console.error(error);
     }
