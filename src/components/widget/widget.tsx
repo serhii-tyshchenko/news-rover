@@ -14,6 +14,7 @@ import {
   selectBookmarksData,
   selectProviderData,
   selectProviderIsLoading,
+  selectProviderError,
 } from '@store/selectors';
 import {
   doAddBookmark,
@@ -36,6 +37,7 @@ function Widget({ provider }: TWidgetProps) {
   const bookmarks = useAppSelector(selectBookmarksData);
   const providerData = useAppSelector(selectProviderData(provider.id));
   const isLoading = useAppSelector(selectProviderIsLoading(provider.id));
+  const error = useAppSelector(selectProviderError(provider.id));
 
   const isAnimationEnabled = useAnimation();
 
@@ -73,10 +75,14 @@ function Widget({ provider }: TWidgetProps) {
     showAnimation: isAnimationEnabled && isLoading,
   });
 
+  const shouldShowError = !isLoading && !isEmpty(error);
+  const shouldShowContent = !isLoading && isEmpty(error);
+
   return (
     <Card title={provider.name} controlsConfig={controlsConfig}>
       {isLoading && <Skeleton />}
-      {!isLoading && (
+      {shouldShowError && <div className="error">{error}</div>}
+      {shouldShowContent && (
         <ul className="item-list">
           {providerData.map((item: TNewsItem) => (
             <Item
