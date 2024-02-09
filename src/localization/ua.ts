@@ -30,6 +30,7 @@ const STR: TDic = {
     technology: 'Технології',
   },
   noNews: 'Немає новин',
+  genericError: 'Щось пішло не так. Спробуйте пізніше.',
 };
 
 export default STR;

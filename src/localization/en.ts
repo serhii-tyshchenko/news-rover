@@ -30,6 +30,7 @@ const STR: TDic = {
     space: 'Space',
   },
   noNews: 'No news',
+  genericError: 'Something went wrong. Try again later.',
 };
 
 export default STR;

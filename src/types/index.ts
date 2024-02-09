@@ -76,4 +76,5 @@ export type TDic = {
     space: string;
   };
   noNews: string;
+  genericError: string;
 };
