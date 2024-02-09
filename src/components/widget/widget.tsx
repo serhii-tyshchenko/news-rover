@@ -75,13 +75,17 @@ function Widget({ provider }: TWidgetProps) {
     showAnimation: isAnimationEnabled && isLoading,
   });
 
-  const shouldShowError = !isLoading && !isEmpty(error);
   const shouldShowContent = !isLoading && isEmpty(error);
+  const shouldShowError = !isLoading && !isEmpty(error);
 
   return (
     <Card title={provider.name} controlsConfig={controlsConfig}>
       {isLoading && <Skeleton />}
-      {shouldShowError && <div className="error">{error}</div>}
+      {shouldShowError && (
+        <div className="d-flex align-items-center justify-content-center h-100 p-2 text-align-center">
+          {dic.genericError}
+        </div>
+      )}
       {shouldShowContent && (
         <ul className="item-list">
           {providerData.map((item: TNewsItem) => (
