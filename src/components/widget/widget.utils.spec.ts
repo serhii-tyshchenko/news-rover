@@ -1,5 +1,5 @@
 import { TBookmark } from 'types';
-import { checkIfBookmarked } from './widget.utils';
+import { checkIfBookmarked, getDateLabel } from './widget.utils';
 
 describe('(Function) checkIfBookmarked', () => {
   const bookmarks: TBookmark[] = [
@@ -32,5 +32,23 @@ describe('(Function) checkIfBookmarked', () => {
   it('should return false if the bookmarks array is empty', () => {
     const emptyBookmarks: TBookmark[] = [];
     expect(checkIfBookmarked(emptyBookmarks, item)).toBe(false);
+  });
+});
+
+describe('(Function) getDateLabel', () => {
+  it('should return null if the date is today', () => {
+    const today = new Date();
+    expect(getDateLabel(today)).toBe(null);
+  });
+
+  it('should return "Yesterday" if the date is yesterday', () => {
+    const yesterday = new Date();
+    yesterday.setDate(yesterday.getDate() - 1);
+    expect(getDateLabel(yesterday)).toBe('Yesterday');
+  });
+
+  it('should return the formatted date if the date is not today', () => {
+    const pastDate = new Date('2022-01-01');
+    expect(getDateLabel(pastDate)).toBe('01.01.2022');
   });
 });
