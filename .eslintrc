@@ -7,11 +7,19 @@
     "airbnb",
     "prettier",
     "plugin:react/jsx-runtime",
-    "react-app/jest"
+    "react-app/jest",
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:prettier/recommended"
   ],
-  "plugins": ["prettier"],
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["prettier", "react"],
   "rules": {
-    // "prettier/prettier": ["error"],
+    "semi": ["error", "always"],
+    "quotes": ["error", "single"],
+    "no-unused-vars": ["error", { "argsIgnorePattern": "^_" }],
+    "@typescript-eslint/explicit-function-return-type": "off",
     "import/prefer-default-export": "off"
   },
   "settings": {
