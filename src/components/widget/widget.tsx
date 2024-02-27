@@ -24,36 +24,10 @@ import {
 } from '@store/actions';
 
 import { Item } from './item';
-import { checkIfBookmarked, getConfig } from './widget.utils';
+import { checkIfBookmarked, getConfig, getDateLabel } from './widget.utils';
 import { TWidgetProps } from './widget.types';
 
 import './widget.scss';
-
-const isToday = (someDate: Date) => {
-  const today = new Date();
-  return (
-    someDate.getDate() === today.getDate() &&
-    someDate.getMonth() === today.getMonth() &&
-    someDate.getFullYear() === today.getFullYear()
-  );
-};
-
-const isYesterday = (someDate: Date) => {
-  const yesterday = new Date();
-  yesterday.setDate(yesterday.getDate() - 1);
-  return (
-    someDate.getDate() === yesterday.getDate() &&
-    someDate.getMonth() === yesterday.getMonth() &&
-    someDate.getFullYear() === yesterday.getFullYear()
-  );
-};
-
-const getDateLabel = (date: Date) => {
-  if (isToday(date)) {
-    return null;
-  }
-  return date.toLocaleDateString();
-};
 
 function Widget({ provider }: TWidgetProps) {
   const dic = useLocalization();
@@ -120,7 +94,7 @@ function Widget({ provider }: TWidgetProps) {
           {Object.keys(groupByDay).map((date) => (
             <>
               <li className="text-align-center small mb-2" key={date}>
-                <strong>{getDateLabel(new Date(date))}</strong>
+                {getDateLabel(new Date(date))}
               </li>
               {groupByDay[date].map((item: TNewsItem) => (
                 <Item
