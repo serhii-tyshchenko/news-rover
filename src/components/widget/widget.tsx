@@ -1,5 +1,5 @@
 import { useEffect, useCallback } from 'react';
-import { isEmpty } from 'lodash';
+import { isEmpty, groupBy } from 'lodash';
 import { v4 as uuidv4 } from 'uuid';
 import {
   useAppDispatch,
@@ -29,6 +29,32 @@ import { TWidgetProps } from './widget.types';
 
 import './widget.scss';
 
+const isToday = (someDate: Date) => {
+  const today = new Date();
+  return (
+    someDate.getDate() === today.getDate() &&
+    someDate.getMonth() === today.getMonth() &&
+    someDate.getFullYear() === today.getFullYear()
+  );
+};
+
+const isYesterday = (someDate: Date) => {
+  const yesterday = new Date();
+  yesterday.setDate(yesterday.getDate() - 1);
+  return (
+    someDate.getDate() === yesterday.getDate() &&
+    someDate.getMonth() === yesterday.getMonth() &&
+    someDate.getFullYear() === yesterday.getFullYear()
+  );
+};
+
+const getDateLabel = (date: Date) => {
+  if (isToday(date)) {
+    return null;
+  }
+  return date.toLocaleDateString();
+};
+
 function Widget({ provider }: TWidgetProps) {
   const dic = useLocalization();
 
@@ -36,6 +62,9 @@ function Widget({ provider }: TWidgetProps) {
 
   const bookmarks = useAppSelector(selectBookmarksData);
   const providerData = useAppSelector(selectProviderData(provider.id));
+  const groupByDay = groupBy(providerData.reverse(), (item: TNewsItem) =>
+    new Date(item.created).toLocaleDateString(),
+  );
   const isLoading = useAppSelector(selectProviderIsLoading(provider.id));
   const error = useAppSelector(selectProviderError(provider.id));
 
@@ -88,14 +117,21 @@ function Widget({ provider }: TWidgetProps) {
       )}
       {shouldShowContent && (
         <ul className="item-list">
-          {providerData.map((item: TNewsItem) => (
-            <Item
-              key={item.link}
-              item={item}
-              isBookmarked={checkIfBookmarked(bookmarks, item)}
-              onAddBookmark={handleAddBookmark}
-              onRemoveBookmark={handleRemoveBookmark}
-            />
+          {Object.keys(groupByDay).map((date) => (
+            <>
+              <li className="text-align-center small mb-2" key={date}>
+                <strong>{getDateLabel(new Date(date))}</strong>
+              </li>
+              {groupByDay[date].map((item: TNewsItem) => (
+                <Item
+                  key={item.link}
+                  item={item}
+                  isBookmarked={checkIfBookmarked(bookmarks, item)}
+                  onAddBookmark={handleAddBookmark}
+                  onRemoveBookmark={handleRemoveBookmark}
+                />
+              ))}
+            </>
           ))}
         </ul>
       )}
