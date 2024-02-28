@@ -31,6 +31,8 @@ const STR: TDic = {
   },
   noNews: 'Немає новин',
   genericError: 'Щось пішло не так. Спробуйте пізніше.',
+  today: 'Сьогодні',
+  yesterday: 'Вчора',
 };
 
 export default STR;

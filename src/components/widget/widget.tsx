@@ -36,9 +36,11 @@ function Widget({ provider }: TWidgetProps) {
 
   const bookmarks = useAppSelector(selectBookmarksData);
   const providerData = useAppSelector(selectProviderData(provider.id));
-  const groupByDay = groupBy(providerData.reverse(), (item: TNewsItem) =>
-    new Date(item.created).toLocaleDateString(),
+  const groupByDay = groupBy(
+    providerData.toSorted((a, b) => b.created - a.created),
+    (item: TNewsItem) => new Date(item.created).toLocaleDateString(),
   );
+
   const isLoading = useAppSelector(selectProviderIsLoading(provider.id));
   const error = useAppSelector(selectProviderError(provider.id));
 
@@ -85,7 +87,7 @@ function Widget({ provider }: TWidgetProps) {
     <Card title={provider.name} controlsConfig={controlsConfig}>
       {isLoading && <Skeleton />}
       {shouldShowError && (
-        <div className="d-flex align-items-center justify-content-center h-100 p-2 text-align-center">
+        <div className="d-flex align-items-center justify-content-center h-100 p-2 text-center">
           {dic.genericError}
         </div>
       )}
@@ -93,8 +95,11 @@ function Widget({ provider }: TWidgetProps) {
         <ul className="item-list">
           {Object.keys(groupByDay).map((date) => (
             <>
-              <li className="text-align-center small mb-2" key={date}>
-                {getDateLabel(new Date(date))}
+              <li
+                className="color-secondary font-weight-bold small mb-3"
+                key={`${provider.name}-${date}`}
+              >
+                {getDateLabel(new Date(date), dic)}
               </li>
               {groupByDay[date].map((item: TNewsItem) => (
                 <Item

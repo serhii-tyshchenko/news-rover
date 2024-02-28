@@ -18,7 +18,7 @@ function BookmarksPage() {
     <BaseLayout>
       <Card title={dic.bookmarks}>
         {isEmpty(bookmarks) && (
-          <div className="d-flex align-items-center justify-content-center text-align-center flex-grow-1">
+          <div className="d-flex align-items-center justify-content-center text-center flex-grow-1">
             {dic.noBookmarks}
           </div>
         )}

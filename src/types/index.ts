@@ -20,7 +20,7 @@ export type TProviders = Array<TProvider>;
 export type TNewsItem = {
   title: string;
   link: string;
-  created: Date;
+  created: number;
 };
 
 export type TNews = Array<TNewsItem>;
@@ -33,7 +33,7 @@ export type TBookmark = {
   id: string;
   title: string;
   link: string;
-  created: Date;
+  created: number;
 };
 
 export type TSettings = {
@@ -77,4 +77,6 @@ export type TDic = {
   };
   noNews: string;
   genericError: string;
+  today: string;
+  yesterday: string;
 };
