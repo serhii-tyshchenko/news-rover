@@ -18,18 +18,18 @@ function HomePage() {
     useAppSelector(selectAddedProviders);
 
   const addedProviders = providers?.filter((provider: TProvider) =>
-    addedProvidersIds?.includes(provider.id)
+    addedProvidersIds?.includes(provider.id),
   );
 
   return (
     <BaseLayout>
       {isLoading && (
-        <div className="d-flex align-items-center justify-content-center h-100 p-2 text-align-center">
+        <div className="d-flex align-items-center justify-content-center h-100 p-2 text-center">
           {dic.loading}
         </div>
       )}
       {!isLoading && isEmpty(addedProviders) && (
-        <div className="d-flex align-items-center justify-content-center h-100 p-2 text-align-center">
+        <div className="d-flex align-items-center justify-content-center h-100 p-2 text-center">
           {dic.noProviders}
         </div>
       )}

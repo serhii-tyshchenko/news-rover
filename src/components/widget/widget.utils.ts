@@ -1,4 +1,4 @@
-import { TNewsItem, TBookmark } from '@types';
+import { TNewsItem, TBookmark, TDic } from '@types';
 import { TGetConfig } from './widget.types';
 
 const isToday = (someDate: Date) => {
@@ -20,12 +20,12 @@ const isYesterday = (someDate: Date) => {
   );
 };
 
-export const getDateLabel = (date: Date) => {
+export const getDateLabel = (date: Date, dic: TDic) => {
   if (isToday(date)) {
-    return null;
+    return dic.today;
   }
   if (isYesterday(date)) {
-    return 'Yesterday';
+    return dic.yesterday;
   }
   return date.toLocaleDateString();
 };

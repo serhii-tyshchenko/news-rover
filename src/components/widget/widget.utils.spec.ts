@@ -1,18 +1,18 @@
-import { TBookmark } from 'types';
+import { TBookmark, TDic } from 'types';
 import { checkIfBookmarked, getDateLabel } from './widget.utils';
 
 describe('(Function) checkIfBookmarked', () => {
   const bookmarks: TBookmark[] = [
-    { id: 'id1', title: 'title1', link: 'bookmark1', created: new Date() },
-    { id: 'id2', title: 'title2', link: 'bookmark2', created: new Date() },
-    { id: 'id3', title: 'title3', link: 'bookmark3', created: new Date() },
+    { id: 'id1', title: 'title1', link: 'bookmark1', created: 1709116577844 },
+    { id: 'id2', title: 'title2', link: 'bookmark2', created: 1709116577850 },
+    { id: 'id3', title: 'title3', link: 'bookmark3', created: 1709116577860 },
   ];
 
   const item = {
     id: 'id2',
     title: 'title2',
     link: 'bookmark2',
-    created: new Date(),
+    created: 1709116577844,
   };
 
   it('should return true if the item is bookmarked', () => {
@@ -24,7 +24,7 @@ describe('(Function) checkIfBookmarked', () => {
       id: 'id2',
       title: 'title2',
       link: 'bookmark4',
-      created: new Date(),
+      created: 1709116577864,
     };
     expect(checkIfBookmarked(bookmarks, nonBookmarkedItem)).toBe(false);
   });
@@ -36,19 +36,24 @@ describe('(Function) checkIfBookmarked', () => {
 });
 
 describe('(Function) getDateLabel', () => {
-  it('should return null if the date is today', () => {
+  const dic = {
+    today: 'Today',
+    yesterday: 'Yesterday',
+  } as TDic;
+
+  it('should return the label for today', () => {
     const today = new Date();
-    expect(getDateLabel(today)).toBe(null);
+    expect(getDateLabel(today, dic)).toBe(dic.today);
   });
 
-  it('should return "Yesterday" if the date is yesterday', () => {
+  it('should return the label for yesterday', () => {
     const yesterday = new Date();
     yesterday.setDate(yesterday.getDate() - 1);
-    expect(getDateLabel(yesterday)).toBe('Yesterday');
+    expect(getDateLabel(yesterday, dic)).toBe(dic.yesterday);
   });
 
-  it('should return the formatted date if the date is not today', () => {
+  it('should return the formatted date if the date is not today or yesterday', () => {
     const pastDate = new Date('2022-01-01');
-    expect(getDateLabel(pastDate)).toBe('01.01.2022');
+    expect(getDateLabel(pastDate, dic)).toBe(pastDate.toLocaleDateString());
   });
 });
