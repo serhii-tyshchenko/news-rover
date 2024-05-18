@@ -1,5 +1,5 @@
-import { useEffect, useCallback } from 'react';
-import { isEmpty, groupBy } from 'lodash';
+import { useEffect, useCallback, useState } from 'react';
+import { isEmpty } from 'lodash';
 import { v4 as uuidv4 } from 'uuid';
 import {
   useAppDispatch,
@@ -7,7 +7,7 @@ import {
   useLocalization,
   useAnimation,
 } from '@hooks';
-import { Card } from '@components/ui';
+import { Card, Button } from '@components/ui';
 import { Skeleton } from '@components';
 import { TNewsItem } from '@types';
 import {
@@ -22,29 +22,44 @@ import {
   doRemoveProvider,
   doGetProviderNews,
 } from '@store/actions';
+import { DEFAULT_POSTS_LIMIT } from '@constants';
 
 import { Item } from './item';
-import { checkIfBookmarked, getConfig, getDateLabel } from './widget.utils';
+import {
+  checkIfBookmarked,
+  getConfig,
+  getDateLabel,
+  groupDataByDay,
+} from './widget.utils';
 import { TWidgetProps } from './widget.types';
 
 import './widget.scss';
 
 function Widget({ provider }: TWidgetProps) {
   const dic = useLocalization();
+  const [limit, setLimit] = useState(DEFAULT_POSTS_LIMIT);
 
   const dispatch = useAppDispatch();
 
   const bookmarks = useAppSelector(selectBookmarksData);
   const providerData = useAppSelector(selectProviderData(provider.id));
-  const groupByDay = groupBy(
-    providerData.toSorted((a, b) => b.created - a.created),
-    (item: TNewsItem) => new Date(item.created).toLocaleDateString(),
-  );
-
-  const isLoading = useAppSelector(selectProviderIsLoading(provider.id));
+  const loading = useAppSelector(selectProviderIsLoading(provider.id));
   const error = useAppSelector(selectProviderError(provider.id));
+  const groupedData = groupDataByDay(providerData);
 
-  const isAnimationEnabled = useAnimation();
+  useEffect(() => {
+    if (isEmpty(providerData)) {
+      dispatch(doGetProviderNews(provider.id));
+    }
+  }, [provider.id]);
+
+  useEffect(() => {
+    if (limit > DEFAULT_POSTS_LIMIT) {
+      dispatch(doGetProviderNews(provider.id, limit));
+    }
+  }, [limit]);
+
+  const animationEnabled = useAnimation();
 
   const handleAddBookmark = (item: TNewsItem) => {
     dispatch(
@@ -60,6 +75,7 @@ function Widget({ provider }: TWidgetProps) {
   };
 
   const handleRefresh = useCallback(() => {
+    setLimit(DEFAULT_POSTS_LIMIT);
     dispatch(doGetProviderNews(provider.id));
   }, [provider.id]);
 
@@ -67,25 +83,25 @@ function Widget({ provider }: TWidgetProps) {
     dispatch(doRemoveProvider(provider.id));
   };
 
-  useEffect(() => {
-    if (isEmpty(providerData)) {
-      dispatch(doGetProviderNews(provider.id));
-    }
-  }, [provider.id]);
+  const handleLoadMoreClick = () => {
+    setLimit((prev) => prev + 10);
+  };
 
   const controlsConfig = getConfig({
     dic,
     handleRefresh,
     handleHideProvider,
-    showAnimation: isAnimationEnabled && isLoading,
+    showAnimation: animationEnabled && loading,
   });
 
-  const shouldShowContent = !isLoading && isEmpty(error);
-  const shouldShowError = !isLoading && !isEmpty(error);
+  const shouldShowContent = !loading && isEmpty(error);
+  const shouldShowLoadMoreButton =
+    !loading && !isEmpty(providerData) && limit <= providerData.length;
+  const shouldShowError = !loading && !isEmpty(error);
 
   return (
     <Card title={provider.name} controlsConfig={controlsConfig}>
-      {isLoading && <Skeleton />}
+      {loading && <Skeleton />}
       {shouldShowError && (
         <div className="d-flex align-items-center justify-content-center h-100 p-2 text-center">
           {dic.genericError}
@@ -93,7 +109,7 @@ function Widget({ provider }: TWidgetProps) {
       )}
       {shouldShowContent && (
         <ul className="item-list">
-          {Object.keys(groupByDay).map((date) => (
+          {Object.keys(groupedData).map((date) => (
             <>
               <li
                 className="color-secondary font-weight-bold small mb-3"
@@ -101,17 +117,28 @@ function Widget({ provider }: TWidgetProps) {
               >
                 {getDateLabel(new Date(date), dic)}
               </li>
-              {groupByDay[date].map((item: TNewsItem) => (
+              {groupedData[date].map((item: TNewsItem) => (
                 <Item
                   key={item.link}
                   item={item}
-                  isBookmarked={checkIfBookmarked(bookmarks, item)}
+                  bookmarked={checkIfBookmarked(bookmarks, item)}
                   onAddBookmark={handleAddBookmark}
                   onRemoveBookmark={handleRemoveBookmark}
                 />
               ))}
             </>
           ))}
+          {shouldShowLoadMoreButton && (
+            <li className="text-center" key="button">
+              <Button
+                onClick={handleLoadMoreClick}
+                size="small"
+                btnType="action"
+              >
+                {dic.loadMore}
+              </Button>
+            </li>
+          )}
         </ul>
       )}
     </Card>

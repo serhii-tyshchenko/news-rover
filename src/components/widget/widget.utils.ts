@@ -1,3 +1,4 @@
+import { groupBy } from 'lodash';
 import { TNewsItem, TBookmark, TDic } from '@types';
 import { TGetConfig } from './widget.types';
 
@@ -53,3 +54,9 @@ export const getConfig = ({
     className: showAnimation ? 'animation-rotate' : '',
   },
 ];
+
+export const groupDataByDay = (data: TNewsItem[]) =>
+  groupBy(
+    data.toSorted((a, b) => b.created - a.created),
+    (item: TNewsItem) => new Date(item.created).toLocaleDateString(),
+  );

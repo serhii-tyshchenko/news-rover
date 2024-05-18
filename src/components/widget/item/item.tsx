@@ -5,22 +5,25 @@ import { TNewsItem } from '@types';
 
 type TItemProps = {
   item: TNewsItem;
-  isBookmarked: boolean;
+  bookmarked: boolean;
   onAddBookmark: (item: TNewsItem) => void;
   onRemoveBookmark: (item: TNewsItem) => void;
 };
 
 function Item(props: TItemProps) {
-  const { item, isBookmarked, onAddBookmark, onRemoveBookmark } = props;
+  const { item, bookmarked, onAddBookmark, onRemoveBookmark } = props;
   const dic = useLocalization();
 
   const handleBookmarkClick = () => {
-    isBookmarked ? onRemoveBookmark(item) : onAddBookmark(item);
+    bookmarked ? onRemoveBookmark(item) : onAddBookmark(item);
   };
 
   const handleShareClick = () => {
     navigator.share({ title: item.title, url: item.link });
   };
+
+  const bookmarkIcon = bookmarked ? 'bookmark' : 'bookmark-empty';
+  const bookmarkTitle = bookmarked ? dic.removeBookmark : dic.addBookmark;
 
   const isShareSupported = !!navigator.share;
 
@@ -37,8 +40,8 @@ function Item(props: TItemProps) {
       </a>
       <div className="d-flex ml-auto flex-shrink-0 gap-1">
         <IconButton
-          icon={isBookmarked ? 'bookmark' : 'bookmark-empty'}
-          title={isBookmarked ? dic.removeBookmark : dic.addBookmark}
+          icon={bookmarkIcon}
+          title={bookmarkTitle}
           onClick={handleBookmarkClick}
           size="small"
           className="btn"

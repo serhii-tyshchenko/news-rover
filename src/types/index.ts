@@ -79,4 +79,5 @@ export type TDic = {
   genericError: string;
   today: string;
   yesterday: string;
+  loadMore: string;
 };
