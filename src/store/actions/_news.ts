@@ -8,11 +8,11 @@ import {
 } from '@store/action-types';
 
 export const doGetProviderNews =
-  (provider: string) => async (dispatch: Dispatch) => {
+  (provider: string, limit?: number) => async (dispatch: Dispatch) => {
     dispatch({ type: GET_PROVDER_NEWS_REQUEST_STARTED, payload: { provider } });
 
     try {
-      const data = await getNewsByProvider(provider);
+      const data = await getNewsByProvider(provider, limit);
       dispatch({
         type: GET_PROVDER_NEWS_REQUEST_SUCCESS,
         payload: { provider, data },

@@ -33,6 +33,7 @@ const STR: TDic = {
   theme: 'Theme',
   today: 'Today',
   yesterday: 'Yesterday',
+  loadMore: 'Load more',
 };
 
 export default STR;
