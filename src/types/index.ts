@@ -21,6 +21,7 @@ export type TNewsItem = {
   title: string;
   link: string;
   created: number;
+  thumbnail?: string;
 };
 
 export type TNews = Array<TNewsItem>;

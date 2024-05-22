@@ -24,7 +24,6 @@
 }
 
 .item {
-  display: flex;
 
   .btn {
     visibility: hidden;
@@ -33,6 +32,16 @@
       visibility: visible;
     }
   }
+
+  img {
+    opacity: 0.7;
+    transition: opacity 0.3s ease-in;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
 
   &:hover {
     .btn {
