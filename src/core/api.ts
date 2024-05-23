@@ -1,15 +1,16 @@
-import { DEFAULT_POSTS_LIMIT } from '@constants';
+import {
+  DEFAULT_POSTS_LIMIT,
+  PROVIDERS_ROOT_URL,
+  NEWS_ROOT_URL,
+} from '@constants';
 
-import { PROVIDERS_ROOT_URL, NEWS_ROOT_URL } from './api.contants';
-
-const formatResponse = (data: any[]) => {
-  return data.map((item) => ({
+const formatResponse = (data: any[]) =>
+  data.map((item) => ({
     created: item.created,
     title: item.title,
     link: item.link,
     thumbnail: item?.enclosures[0]?.url || null,
   }));
-};
 
 export const getProviders = async () => {
   try {
