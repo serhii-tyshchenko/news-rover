@@ -18,6 +18,7 @@ const STR: TDic = {
   share: 'Поділитися',
   settings: 'Налаштування',
   theme: 'Тема',
+  thumbnail: 'Мініатюра',
   language: 'Мова',
   animation: 'Анімація',
   category: {

@@ -1,5 +1,5 @@
 import { Action } from 'redux';
-import { EAnimation } from '@constants';
+import { EAnimation, EThumbnail } from '@constants';
 
 export type TProvider = {
   id: string;
@@ -10,10 +10,6 @@ export type TProvider = {
   logo: string;
   category: string;
 };
-
-export type TAddedProvider = string;
-
-export type TAddedProviders = Array<TAddedProvider>;
 
 export type TProviders = Array<TProvider>;
 
@@ -41,6 +37,7 @@ export type TSettings = {
   theme: string;
   locale: string;
   animation: EAnimation;
+  thumbnail: EThumbnail;
 };
 
 export interface IAction extends Action {
@@ -64,6 +61,7 @@ export type TDic = {
   share: string;
   settings: string;
   theme: string;
+  thumbnail: string;
   language: string;
   animation: string;
   category: {

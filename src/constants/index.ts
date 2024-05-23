@@ -25,6 +25,11 @@ export enum EAnimation {
   System = 'system',
 }
 
+export enum EThumbnail {
+  On = 'on',
+  Off = 'off',
+}
+
 export enum ERoute {
   Home = '/',
   Bookmarks = '/bookmarks',

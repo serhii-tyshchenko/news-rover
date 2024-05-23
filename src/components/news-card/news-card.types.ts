@@ -1,8 +1,8 @@
 import { TProvider, TDic } from '@types';
 
-export type TWidgetProps = {
+export interface INewsCardProps {
   provider: TProvider;
-};
+}
 
 export type TGetConfig = {
   dic: TDic;

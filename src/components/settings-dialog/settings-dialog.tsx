@@ -14,6 +14,7 @@ import {
   AUTHOR_NAME,
   AUTHOR_SITE,
   EAnimation,
+  EThumbnail,
 } from '@constants';
 
 import { TSettingsDialogProps } from './settings-dialog.types';
@@ -25,7 +26,11 @@ function SettingsDialog(props: TSettingsDialogProps) {
   const isAnimationEnabled = useAnimation();
 
   const dispatch = useAppDispatch();
-  const { locale, theme } = useAppSelector(selectSettingsData);
+  const {
+    locale,
+    theme,
+    thumbnail: showThumbnail,
+  } = useAppSelector(selectSettingsData);
 
   const handleChange = (e: { target: { name: string; value: string } }) => {
     const { name, value } = e.target;
@@ -57,12 +62,25 @@ function SettingsDialog(props: TSettingsDialogProps) {
             noArrow
           />
         </div>
-        <div className="d-flex align-items-center justify-content-between">
+        <div className="d-flex align-items-center justify-content-between mb-4">
           <span>{dic.animation}</span>
           <Toggle
             name="animation"
             value={isAnimationEnabled ? EAnimation.Off : EAnimation.On}
             toggled={isAnimationEnabled}
+            onChange={handleChange}
+            animated={isAnimationEnabled}
+            size="small"
+          />
+        </div>
+        <div className="d-flex align-items-center justify-content-between">
+          <span>{dic.thumbnail}</span>
+          <Toggle
+            name="thumbnail"
+            value={
+              showThumbnail === EThumbnail.Off ? EThumbnail.On : EThumbnail.Off
+            }
+            toggled={showThumbnail === EThumbnail.On}
             onChange={handleChange}
             animated={isAnimationEnabled}
             size="small"

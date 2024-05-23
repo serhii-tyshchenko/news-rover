@@ -1,5 +1,5 @@
-import { TBookmark, TDic } from 'types';
-import { checkIfBookmarked, getDateLabel } from './widget.utils';
+import { TBookmark, TDic } from '@types';
+import { checkIfBookmarked, getDateLabel } from '../news-card.utils';
 
 describe('(Function) checkIfBookmarked', () => {
   const bookmarks: TBookmark[] = [
