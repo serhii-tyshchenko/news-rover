@@ -1,25 +1,19 @@
 import { isEmpty } from 'lodash';
 
 import {
-  selectProvidersData,
-  selectProvidersIsLoading,
-  selectAddedProviders,
+  selectProvidersLoading,
+  selectAddedProvidersData,
 } from '@store/selectors';
 import { useAppSelector, useLocalization } from '@hooks';
 import { BaseLayout } from '@layout';
-import { Widget } from '@components';
-import { TAddedProviders, TProvider } from '@types';
+import { NewsCard, CardList } from '@components';
+import { TProvider } from '@types';
 
 function HomePage() {
   const dic = useLocalization();
-  const isLoading = useAppSelector(selectProvidersIsLoading);
-  const providers = useAppSelector(selectProvidersData);
-  const addedProvidersIds: TAddedProviders =
-    useAppSelector(selectAddedProviders);
+  const isLoading = useAppSelector(selectProvidersLoading);
 
-  const addedProviders = providers?.filter((provider: TProvider) =>
-    addedProvidersIds?.includes(provider.id),
-  );
+  const addedProviders = useAppSelector(selectAddedProvidersData);
 
   return (
     <BaseLayout>
@@ -34,11 +28,11 @@ function HomePage() {
         </div>
       )}
       {!isLoading && !isEmpty(addedProviders) && (
-        <section className="widget-list">
+        <CardList>
           {addedProviders.map((provider: TProvider) => (
-            <Widget key={provider.id} provider={provider} />
+            <NewsCard key={provider.id} provider={provider} />
           ))}
-        </section>
+        </CardList>
       )}
     </BaseLayout>
   );

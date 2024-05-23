@@ -1,52 +1,63 @@
-import { useLocalization } from '@hooks';
+import { isEmpty } from 'lodash';
+import { selectSettingsData } from '@store/selectors';
+import { useLocalization, useAppSelector } from '@hooks';
 import { formatTime } from '@utils';
 import { IconButton } from '@components/ui';
 import { TNewsItem } from '@types';
+import { EThumbnail } from '@constants';
 
-type TItemProps = {
-  item: TNewsItem;
+import './news-list-item.styles.scss';
+
+interface INewsListItemProps {
+  data: TNewsItem;
   bookmarked: boolean;
   onAddBookmark: (item: TNewsItem) => void;
   onRemoveBookmark: (item: TNewsItem) => void;
-};
+}
 
-function Item(props: TItemProps) {
-  const { item, bookmarked, onAddBookmark, onRemoveBookmark } = props;
+function NewsListItem(props: INewsListItemProps) {
+  const { data, bookmarked, onAddBookmark, onRemoveBookmark } = props;
+  const { title, link: url, thumbnail: thumbnailUrl, created } = data;
+
   const dic = useLocalization();
+  const { thumbnail } = useAppSelector(selectSettingsData);
 
   const handleBookmarkClick = () => {
-    bookmarked ? onRemoveBookmark(item) : onAddBookmark(item);
+    bookmarked ? onRemoveBookmark(data) : onAddBookmark(data);
   };
 
   const handleShareClick = () => {
-    navigator.share({ title: item.title, url: item.link });
+    navigator.share({ title, url });
   };
 
   const bookmarkIcon = bookmarked ? 'bookmark' : 'bookmark-empty';
   const bookmarkTitle = bookmarked ? dic.removeBookmark : dic.addBookmark;
 
   const isShareSupported = !!navigator.share;
+  const shouldShowThumbnail =
+    thumbnail === EThumbnail.On && !isEmpty(thumbnailUrl);
 
   return (
-    <li className="item">
-      {item.thumbnail && (
-        <a href={item.link} target="_blank" rel="noreferrer">
+    <li className="news-list-item">
+      {shouldShowThumbnail && (
+        <a href={url} target="_blank" rel="noreferrer">
           <img
-            src={item.thumbnail}
-            alt={item.title}
-            className="d-block w-100 mb-1 rounded"
+            src={thumbnailUrl}
+            alt={title}
+            className="d-block w-100 mb-2 rounded"
+            loading="lazy"
           />
         </a>
       )}
       <div className="d-flex gap-2">
-        <span className="color-secondary">{formatTime(item.created)}</span>
+        <span className="color-secondary">{formatTime(created)}</span>
         <a
-          href={item.link}
+          href={url}
           target="_blank"
           rel="noreferrer"
           className="color-primary"
         >
-          {item.title}
+          {title}
         </a>
         <div className="d-flex ml-auto flex-shrink-0 gap-1">
           <IconButton
@@ -71,4 +82,4 @@ function Item(props: TItemProps) {
   );
 }
 
-export default Item;
+export default NewsListItem;

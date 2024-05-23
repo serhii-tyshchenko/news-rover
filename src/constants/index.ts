@@ -2,7 +2,7 @@ export const DEFAULT_POSTS_LIMIT = 10;
 
 export const APP_NAME = 'NewsRover';
 
-export const APP_VERSION = '1.6.1';
+export const APP_VERSION = '1.6.2';
 
 export const AUTHOR_NAME = 'Serhii Tyshchenko';
 
@@ -23,6 +23,11 @@ export enum EAnimation {
   On = 'on',
   Off = 'off',
   System = 'system',
+}
+
+export enum EThumbnail {
+  On = 'on',
+  Off = 'off',
 }
 
 export enum ERoute {

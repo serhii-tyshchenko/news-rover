@@ -1,0 +1,34 @@
+@import '~styles/variables';
+@import '~styles/mixins';
+
+
+.news-list-item {
+
+  .btn {
+    visibility: hidden;
+
+    @include for-size(tablet) {
+      visibility: visible;
+    }
+  }
+
+  img {
+    opacity: 0.7;
+    transition: opacity 0.3s ease-in;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+
+  &:hover {
+    .btn {
+      visibility: visible;
+    }
+  }
+
+  &:not(:last-child) {
+    margin-bottom: 1.5rem;
+  }
+}

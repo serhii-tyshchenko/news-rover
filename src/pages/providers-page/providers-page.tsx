@@ -2,18 +2,21 @@ import { selectProvidersData, selectAddedProviders } from '@store/selectors';
 import { doAddProvider, doRemoveProvider } from '@store/actions';
 import { useAppSelector, useAppDispatch, useLocalization } from '@hooks';
 
-import { IconButton, Card } from '@components/ui';
+import { IconButton, Card, CardList } from '@components/ui';
 import { BaseLayout } from '@layout';
 import { TProvider, TProviders } from '@types';
 
 export const groupProvidersByCategory = (providers: TProviders = []) => {
-  const groupedProviders = providers.reduce((acc, provider) => {
-    if (!acc[provider.category]) {
-      acc[provider.category] = [];
-    }
-    acc[provider.category].push(provider);
-    return acc;
-  }, {} as { [key: string]: TProvider[] });
+  const groupedProviders = providers.reduce(
+    (acc, provider) => {
+      if (!acc[provider.category]) {
+        acc[provider.category] = [];
+      }
+      acc[provider.category].push(provider);
+      return acc;
+    },
+    {} as { [key: string]: TProvider[] },
+  );
 
   return groupedProviders;
 };
@@ -45,7 +48,7 @@ function ProvidersPage() {
 
   return (
     <BaseLayout>
-      <section className="widget-list">
+      <CardList>
         {groupedProviders &&
           Object.keys(groupedProviders).map((category) => (
             <Card key={category} title={categoryToNameMap[category]}>
@@ -84,7 +87,7 @@ function ProvidersPage() {
               </ul>
             </Card>
           ))}
-      </section>
+      </CardList>
     </BaseLayout>
   );
 }

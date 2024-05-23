@@ -28,6 +28,7 @@ const STR: TDic = {
   refresh: 'Refresh',
   removeBookmark: 'Remove bookmark',
   settings: 'Settings',
+  thumbnail: 'Thumbnail',
   share: 'Share',
   showProvider: 'Show provider',
   theme: 'Theme',
