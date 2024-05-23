@@ -17,10 +17,14 @@ import {
   EThumbnail,
 } from '@constants';
 
-import { TSettingsDialogProps } from './settings-dialog.types';
 import { prepareOptions } from './settings-dialog.utils';
 
-function SettingsDialog(props: TSettingsDialogProps) {
+interface ISettingsDialogProps {
+  opened: boolean;
+  onClose: any;
+}
+
+function SettingsDialog(props: ISettingsDialogProps) {
   const { opened, onClose } = props;
   const dic = useLocalization();
   const isAnimationEnabled = useAnimation();

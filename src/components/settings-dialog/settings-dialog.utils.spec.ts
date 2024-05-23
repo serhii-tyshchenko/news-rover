@@ -2,7 +2,7 @@ import { expect, describe, it } from 'vitest';
 
 import { prepareOptions } from './settings-dialog.utils';
 
-describe('prepareOptions', () => {
+describe('(Function) prepareOptions', () => {
   it('should return an empty array when an empty object is passed', () => {
     expect(prepareOptions({})).toEqual([]);
   });

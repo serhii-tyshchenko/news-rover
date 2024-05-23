@@ -1,3 +1,5 @@
+export * from './api';
+
 export const DEFAULT_POSTS_LIMIT = 10;
 
 export const APP_NAME = 'NewsRover';

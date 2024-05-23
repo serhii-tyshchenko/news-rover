@@ -1,8 +1,8 @@
 import { IAction, TNewsItem } from '@types';
 import {
-  GET_PROVDER_NEWS_REQUEST_STARTED,
-  GET_PROVDER_NEWS_REQUEST_SUCCESS,
-  GET_PROVDER_NEWS_REQUEST_FAILED,
+  GET_PROVIDER_NEWS_REQUEST_STARTED,
+  GET_PROVIDER_NEWS_REQUEST_SUCCESS,
+  GET_PROVIDER_NEWS_REQUEST_FAILED,
 } from '@store/action-types';
 
 const initialState: {
@@ -17,7 +17,7 @@ export const newsReducer = (state = initialState, action: IAction) => {
   const { type, payload } = action;
 
   switch (type) {
-    case GET_PROVDER_NEWS_REQUEST_STARTED:
+    case GET_PROVIDER_NEWS_REQUEST_STARTED:
       return {
         ...state,
         [payload?.provider]: {
@@ -26,7 +26,7 @@ export const newsReducer = (state = initialState, action: IAction) => {
           error: '',
         },
       };
-    case GET_PROVDER_NEWS_REQUEST_SUCCESS:
+    case GET_PROVIDER_NEWS_REQUEST_SUCCESS:
       return {
         ...state,
         [payload?.provider]: {
@@ -36,7 +36,7 @@ export const newsReducer = (state = initialState, action: IAction) => {
           error: '',
         },
       };
-    case GET_PROVDER_NEWS_REQUEST_FAILED:
+    case GET_PROVIDER_NEWS_REQUEST_FAILED:
       return {
         ...state,
         [payload?.provider]: {
