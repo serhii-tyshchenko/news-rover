@@ -55,6 +55,16 @@ function SettingsDialog(props: ISettingsDialogProps) {
             noArrow
           />
         </div>
+        <div className="d-flex align-items-center justify-content-between mb-4">
+          <span>{dic.animation}</span>
+          <Toggle
+            name="animation"
+            value={isAnimationEnabled ? EAnimation.Off : EAnimation.On}
+            toggled={isAnimationEnabled}
+            onChange={handleChange}
+            animated={isAnimationEnabled}
+          />
+        </div>
         <div className="d-flex align-items-center justify-content-between mb-3">
           <span>{dic.language}</span>
           <Select
@@ -64,17 +74,6 @@ function SettingsDialog(props: ISettingsDialogProps) {
             options={prepareOptions(LANGUAGES)}
             title={dic.changeLanguage}
             noArrow
-          />
-        </div>
-        <div className="d-flex align-items-center justify-content-between mb-4">
-          <span>{dic.animation}</span>
-          <Toggle
-            name="animation"
-            value={isAnimationEnabled ? EAnimation.Off : EAnimation.On}
-            toggled={isAnimationEnabled}
-            onChange={handleChange}
-            animated={isAnimationEnabled}
-            size="small"
           />
         </div>
         <div className="d-flex align-items-center justify-content-between">
@@ -87,7 +86,6 @@ function SettingsDialog(props: ISettingsDialogProps) {
             toggled={showThumbnail === EThumbnail.On}
             onChange={handleChange}
             animated={isAnimationEnabled}
-            size="small"
           />
         </div>
       </div>

@@ -1,23 +1,34 @@
-import { memo } from 'react';
-
 import { getClassName } from '@utils';
 
 import './toggle.scss';
 
 const NAME_SPACE = 'toggle';
 
-function Toggle(props: TToggleProps) {
+interface IToggleProps {
+  id?: string;
+  name?: string;
+  value?: string | number;
+  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  className?: string;
+  size?: 'small' | 'normal' | 'large';
+  toggled?: boolean;
+  disabled?: boolean;
+  testId?: string;
+  animated?: boolean;
+}
+
+function Toggle(props: IToggleProps) {
   const {
-    id,
-    name,
-    value,
-    onChange,
-    className,
-    size,
-    toggled,
-    disabled,
-    testId,
-    animated,
+    id = NAME_SPACE,
+    name = NAME_SPACE,
+    value = '',
+    onChange = () => {},
+    className = '',
+    size = 'normal',
+    toggled = false,
+    disabled = false,
+    testId = NAME_SPACE,
+    animated = false,
   } = props;
 
   const componentClassName = getClassName(
@@ -26,7 +37,7 @@ function Toggle(props: TToggleProps) {
     {
       [`${NAME_SPACE}--animated`]: animated,
     },
-    className
+    className,
   );
 
   return (
@@ -44,30 +55,4 @@ function Toggle(props: TToggleProps) {
   );
 }
 
-type TToggleProps = {
-  id?: string;
-  name?: string;
-  value?: string | number;
-  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  className?: string;
-  size?: 'small' | 'normal' | 'large';
-  toggled?: boolean;
-  disabled?: boolean;
-  testId?: string;
-  animated?: boolean;
-};
-
-Toggle.defaultProps = {
-  id: '',
-  name: '',
-  value: '',
-  className: '',
-  onChange: () => {},
-  size: 'normal',
-  toggled: false,
-  disabled: false,
-  testId: 'toggle',
-  animated: false,
-};
-
-export default memo(Toggle);
+export { Toggle };
