@@ -40,11 +40,11 @@ function NewsListItem(props: INewsListItemProps) {
   return (
     <li className="news-list-item">
       {shouldShowThumbnail && (
-        <a href={url} target="_blank" rel="noreferrer">
+        <a href={url} target="_blank" rel="noreferrer" className="d-block mb-2">
           <img
             src={thumbnailUrl}
             alt={title}
-            className="d-block w-100 mb-2 rounded"
+            className="w-100 rounded"
             loading="lazy"
           />
         </a>
