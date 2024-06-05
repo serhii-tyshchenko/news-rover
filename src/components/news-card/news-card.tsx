@@ -8,8 +8,9 @@ import {
   useAnimation,
 } from '@hooks';
 import { Card } from '@components/ui';
-import { Skeleton } from '@components';
+import { Skeleton, NewsList } from '@components';
 import { TNewsItem } from '@types';
+import { groupDataByDay } from '@utils';
 import {
   selectProviderData,
   selectProviderIsLoading,
@@ -23,8 +24,7 @@ import {
 } from '@store/actions';
 import { DEFAULT_POSTS_LIMIT } from '@constants';
 
-import NewsList from './news-list';
-import { getConfig, groupDataByDay } from './news-card.utils';
+import { getConfig } from './news-card.utils';
 import { INewsCardProps } from './news-card.types';
 
 import './news-card.styles.scss';

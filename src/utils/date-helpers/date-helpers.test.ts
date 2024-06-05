@@ -1,17 +1,10 @@
 import { expect, describe, it } from 'vitest';
-import { formatDate, formatTime, isToday, isYesterday } from './date-helpers';
-
-describe('(Function) formatDate', () => {
-  it('should format the date correctly', () => {
-    const date = new Date('2022-01-01T00:00:00.000Z');
-    expect(formatDate(date)).toEqual('1/1');
-  });
-
-  it('should format a different date correctly', () => {
-    const date = new Date('2022-02-14T00:00:00.000Z');
-    expect(formatDate(date)).toEqual('14/2');
-  });
-});
+import {
+  formatTime,
+  isToday,
+  isYesterday,
+  groupDataByDay,
+} from './date-helpers';
 
 describe('(Function) formatTime', () => {
   it('should format a date with hours and minutes', () => {
@@ -53,5 +46,31 @@ describe('(Function) isYesterday', () => {
   it('should return false when the given date is not yesterday', () => {
     const today = new Date();
     expect(isYesterday(today)).toBe(false);
+  });
+});
+
+describe('(Function) groupDataByDay', () => {
+  it('should group data by day', () => {
+    const data = [
+      {
+        created: new Date('2022-01-01T12:34:56').getTime(),
+        title: 'Title 1',
+        link: 'link1',
+      },
+      {
+        created: new Date('2022-01-02T12:34:56').getTime(),
+        title: 'Title 2',
+        link: 'link2',
+      },
+      {
+        created: new Date('2022-01-02T12:34:56').getTime(),
+        title: 'Title 3',
+        link: 'link3',
+      },
+    ];
+    expect(groupDataByDay(data)).toEqual({
+      '1/1/2022': [data[0]],
+      '1/2/2022': [data[1], data[2]],
+    });
   });
 });

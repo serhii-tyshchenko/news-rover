@@ -1,17 +1,5 @@
-import { groupBy } from 'lodash';
-import { TNewsItem, TBookmark, TDic } from '@types';
-import { isToday, isYesterday } from '@utils';
+import { TNewsItem, TBookmark } from '@types';
 import { TGetConfig } from './news-card.types';
-
-export const getDateLabel = (date: Date, dic: TDic) => {
-  if (isToday(date)) {
-    return dic.today;
-  }
-  if (isYesterday(date)) {
-    return dic.yesterday;
-  }
-  return date.toLocaleDateString();
-};
 
 export const checkIfBookmarked = (
   bookmarks: Array<TBookmark>,
@@ -36,9 +24,3 @@ export const getConfig = ({
     className: showAnimation ? 'animation-rotate' : '',
   },
 ];
-
-export const groupDataByDay = (data: TNewsItem[]) =>
-  groupBy(
-    data.toSorted((a, b) => b.created - a.created),
-    (item: TNewsItem) => new Date(item.created).toLocaleDateString(),
-  );

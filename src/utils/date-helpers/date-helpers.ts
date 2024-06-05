@@ -1,10 +1,5 @@
-export const formatDate = (date: Date) => {
-  const rawDate = new Date(date);
-  const month = rawDate.getMonth() + 1;
-  const day = rawDate.getDate();
-
-  return `${day}/${month}`;
-};
+import { groupBy } from 'lodash';
+import { TNewsItem } from '@types';
 
 export const formatTime = (dateRaw: number) => {
   const rawDate = new Date(dateRaw);
@@ -31,3 +26,9 @@ export const isYesterday = (someDate: Date) => {
     someDate.getFullYear() === yesterday.getFullYear()
   );
 };
+
+export const groupDataByDay = (data: TNewsItem[]) =>
+  groupBy(
+    data.toSorted((a, b) => b.created - a.created),
+    (item: TNewsItem) => new Date(item.created).toLocaleDateString(),
+  );
