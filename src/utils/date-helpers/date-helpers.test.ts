@@ -53,24 +53,41 @@ describe('(Function) groupDataByDay', () => {
   it('should group data by day', () => {
     const data = [
       {
-        created: new Date('2022-01-01T12:34:56').getTime(),
+        created: new Date('2022-01-01T12:00:00').getTime(),
         title: 'Title 1',
         link: 'link1',
       },
       {
-        created: new Date('2022-01-02T12:34:56').getTime(),
+        created: new Date('2022-01-02T12:10:00').getTime(),
         title: 'Title 2',
         link: 'link2',
       },
       {
-        created: new Date('2022-01-02T12:34:56').getTime(),
+        created: new Date('2022-01-02T12:15:00').getTime(),
         title: 'Title 3',
         link: 'link3',
       },
     ];
     expect(groupDataByDay(data)).toEqual({
-      '1/1/2022': [data[0]],
-      '1/2/2022': [data[1], data[2]],
+      '01.01.2022': [
+        {
+          created: new Date('2022-01-01T12:00:00').getTime(),
+          title: 'Title 1',
+          link: 'link1',
+        },
+      ],
+      '02.01.2022': [
+        {
+          created: new Date('2022-01-02T12:15:00').getTime(),
+          title: 'Title 3',
+          link: 'link3',
+        },
+        {
+          created: new Date('2022-01-02T12:10:00').getTime(),
+          title: 'Title 2',
+          link: 'link2',
+        },
+      ],
     });
   });
 });
