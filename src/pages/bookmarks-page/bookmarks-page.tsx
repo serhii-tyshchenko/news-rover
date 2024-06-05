@@ -2,16 +2,18 @@ import { isEmpty } from 'lodash';
 import { selectBookmarksData } from '@store/selectors';
 import { doRemoveBookmark } from '@store/actions';
 import { useAppSelector, useAppDispatch, useLocalization } from '@hooks';
-import { formatDate } from '@utils';
-import { IconButton, Card } from '@components/ui';
+import { Card } from '@components/ui';
+import { NewsList } from '@components';
 import { BaseLayout } from '@layout';
+import { groupDataByDay } from '@utils';
+import { TNewsItem } from 'types';
 
 function BookmarksPage() {
   const dispatch = useAppDispatch();
   const dic = useLocalization();
   const bookmarks = useAppSelector(selectBookmarksData);
-  const handleClick = (link: string) => {
-    dispatch(doRemoveBookmark(link));
+  const handleClick = (item: TNewsItem) => {
+    dispatch(doRemoveBookmark(item.link));
   };
 
   return (
@@ -23,29 +25,10 @@ function BookmarksPage() {
           </div>
         )}
         {!isEmpty(bookmarks) && (
-          <section className="bookmark-list">
-            {bookmarks.map((item: any) => (
-              <li className="item" key={item.id}>
-                <span className="mr-2 color-secondary">
-                  {formatDate(item.created)}
-                </span>
-                <a
-                  href={item.link}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="color-primary mr-1"
-                >
-                  {item.title}
-                </a>
-                <IconButton
-                  icon="bookmark"
-                  title={dic.removeBookmark}
-                  onClick={() => handleClick(item.link)}
-                  className="ml-auto"
-                />
-              </li>
-            ))}
-          </section>
+          <NewsList
+            data={groupDataByDay(bookmarks)}
+            onRemoveBookmark={handleClick}
+          />
         )}
       </Card>
     </BaseLayout>

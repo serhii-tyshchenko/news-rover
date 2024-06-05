@@ -2,17 +2,17 @@ import { useLocalization, useAppSelector } from '@hooks';
 import { Button } from '@components/ui';
 import { TNewsItem } from '@types';
 import { selectBookmarksData } from '@store/selectors';
-import { checkIfBookmarked, getDateLabel } from './news-card.utils';
+import { checkIfBookmarked, getDateLabel } from './news-list.utils';
 import NewsListItem from './news-list-item';
 
 import './news-list.styles.scss';
 
 interface INewsListProps {
   data: Record<string, TNewsItem[]>;
-  onAddBookmark: (item: TNewsItem) => void;
+  onAddBookmark?: (item: TNewsItem) => void;
   onRemoveBookmark: (item: TNewsItem) => void;
-  onLoadMoreClick: () => void;
-  showLoadMoreButton: boolean;
+  onLoadMoreClick?: () => void;
+  showLoadMoreButton?: boolean;
 }
 
 function NewsList(props: INewsListProps) {
