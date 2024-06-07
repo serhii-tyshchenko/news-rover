@@ -96,7 +96,7 @@ function NewsCard({ provider }: INewsCardProps) {
         <Skeleton animated={animationEnabled} count={DEFAULT_POSTS_LIMIT} />
       )}
       {!loading && !isEmpty(error) && (
-        <div className="d-flex align-items-center justify-content-center h-100 p-2 text-center">
+        <div className="d-flex align-items-center justify-content-center h-100 p-2 text-center text-danger">
           {dic.genericError}
         </div>
       )}

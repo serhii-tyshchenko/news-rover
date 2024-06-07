@@ -38,7 +38,7 @@
   }
 
   &--error {
-    border: 2px solid var(--color-error);
+    border: 2px solid var(--color-danger);
   }
 
   &--no-arrow {
@@ -59,7 +59,7 @@
   }
 
   &__error {
-    color: var(--color-error);
+    color: var(--color-danger);
     font-size: 0.75rem;
     padding-top: 0.25em;
   }
