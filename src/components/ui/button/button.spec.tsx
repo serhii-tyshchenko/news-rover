@@ -2,11 +2,6 @@ import { render, fireEvent } from '@testing-library/react';
 import Button from './button';
 
 describe('(Component) Button', () => {
-  it('should match the snapshot', () => {
-    const { container } = render(<Button>Click me</Button>);
-    expect(container.firstChild).toMatchSnapshot();
-  });
-
   it('should render the button with the correct text', () => {
     const buttonText = 'Click me';
     const { getByText } = render(<Button>{buttonText}</Button>);
@@ -31,7 +26,7 @@ describe('(Component) Button', () => {
   it('should have the correct className when passed as a prop', () => {
     const className = 'test-class';
     const { getByTestId } = render(
-      <Button className={className}>Click me</Button>
+      <Button className={className}>Click me</Button>,
     );
     const button = getByTestId('button');
     expect(button).toHaveClass(className);

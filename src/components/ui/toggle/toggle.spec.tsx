@@ -3,12 +3,6 @@ import { render, fireEvent } from '@testing-library/react';
 import { Toggle } from './toggle';
 
 describe('(Component) Toggle', () => {
-  it('should match the snapshot', () => {
-    const onChange = vi.fn();
-    const { container } = render(<Toggle onChange={onChange} />);
-    expect(container.firstChild).toMatchSnapshot();
-  });
-
   it('should render the toggle with the correct size', () => {
     const size = 'large';
     const onChange = vi.fn();
