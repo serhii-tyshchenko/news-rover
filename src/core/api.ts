@@ -4,13 +4,15 @@ import {
   NEWS_ROOT_URL,
 } from '@constants';
 
-const formatResponse = (data: any[]) =>
-  data.map((item) => ({
+const formatResponse = (rawData: { data: any[]; count: number }) => ({
+  data: rawData.data.map((item) => ({
     created: item.created,
     title: item.title,
     link: item.link,
     thumbnail: item?.enclosures[0]?.url || null,
-  }));
+  })),
+  count: rawData.count,
+});
 
 export const getProviders = async () => {
   try {
