@@ -1,6 +1,6 @@
 {
   "name": "news-rover",
-  "version": "1.7.0",
+  "version": "1.8.0",
   "private": false,
   "description": "A news app that fetches news from rss feeds",
   "keywords": [
@@ -35,6 +35,7 @@
     "lodash": "^4.17.21",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-query": "^3.39.3",
     "react-redux": "^8.0.5",
     "react-router-dom": "^6.17.0",
     "redux": "^4.2.1",
