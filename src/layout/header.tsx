@@ -4,15 +4,15 @@ import { Link } from 'react-router-dom';
 import { IconButton } from '@components/ui';
 import { SettingsDialog } from '@components';
 import { APP_NAME, ERoute, EIcon } from '@constants';
-import { useLocalization, useAppSelector, useToggle } from '@hooks';
+import { useLocalization, useAppSelector, useDialogState } from '@hooks';
 import { selectBookmarksData } from '@store/selectors';
 
 function Header() {
-  const [opened, toggle] = useToggle();
+  const { opened, openDialog, closeDialog } = useDialogState();
   const navigate = useNavigate();
   const location = useLocation();
   const dic = useLocalization();
-  const areBookmarks = !isEmpty(useAppSelector(selectBookmarksData));
+  const noBookmarks = isEmpty(useAppSelector(selectBookmarksData));
 
   const isActiveBookmarks = location.pathname === ERoute.Bookmarks;
   const isActiveProviders = location.pathname === ERoute.Providers;
@@ -22,7 +22,7 @@ function Header() {
       <Link to={ERoute.Home}>{APP_NAME}</Link>
       <nav className="d-flex">
         <IconButton
-          icon={areBookmarks ? EIcon.Bookmark : EIcon.BookmarkEmpty}
+          icon={noBookmarks ? EIcon.BookmarkEmpty : EIcon.Bookmark}
           onClick={() => navigate(ERoute.Bookmarks)}
           title={dic.bookmarks}
           size="big"
@@ -39,13 +39,13 @@ function Header() {
         />
         <IconButton
           icon={EIcon.Settings}
-          onClick={toggle}
+          onClick={openDialog}
           title={dic.settings}
           size="big"
           className="mr-2"
         />
       </nav>
-      <SettingsDialog opened={opened} onClose={toggle} />
+      <SettingsDialog opened={opened} onClose={closeDialog} />
     </header>
   );
 }

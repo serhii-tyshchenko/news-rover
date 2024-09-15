@@ -1,9 +1,7 @@
 import { useCallback, useState } from 'react';
 import { isEmpty } from 'lodash';
 import { v4 as uuidv4 } from 'uuid';
-import { useQuery } from 'react-query';
 import { useAppDispatch, useLocalization, useAnimation } from '@hooks';
-import { getNewsByProvider } from '@core/api';
 import { Card } from '@components/ui';
 import { Skeleton, NewsList } from '@components';
 import { TNewsItem } from '@types';
@@ -84,7 +82,11 @@ function NewsCard({ provider }: INewsCardProps) {
           {dic.genericError}
         </div>
       )}
-      {!isDataLoading && isEmpty(error) && (
+      {!isDataLoading && isEmpty(error) && isEmpty(providerData?.data) ? (
+        <div className="d-flex align-items-center justify-content-center text-center flex-grow-1">
+          {dic.noNews}
+        </div>
+      ) : (
         <NewsList
           data={groupDataByDay(providerData?.data ?? [])}
           onAddBookmark={handleAddBookmark}
