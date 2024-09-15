@@ -3,10 +3,10 @@ import type { TRootState, TAppDispatch } from 'store';
 
 export * from './useTheme';
 export * from './useMediaQuery';
+export * from './use-dialog-state';
 export { default as useLocalization } from './useLocalization';
 export * from './useToggle';
 export { default as useAnimation } from './useAnimation';
-
 
 export const useAppDispatch: () => TAppDispatch = useDispatch;
 

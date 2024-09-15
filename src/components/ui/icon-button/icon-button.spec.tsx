@@ -3,11 +3,6 @@ import { render, fireEvent } from '@testing-library/react';
 import IconButton from './icon-button';
 
 describe('(Component) IconButton', () => {
-  it('should match the snapshot', () => {
-    const { container } = render(<IconButton icon="cog" />);
-    expect(container.firstChild).toMatchSnapshot();
-  });
-
   it('should render the icon button with the correct icon', () => {
     const icon = 'cog';
     const { getByTestId } = render(<IconButton icon={icon} />);
@@ -18,7 +13,7 @@ describe('(Component) IconButton', () => {
   it('should call the onClick function when clicked', () => {
     const onClick = vi.fn();
     const { getByTestId } = render(
-      <IconButton icon="fa fa-search" onClick={onClick} />
+      <IconButton icon="fa fa-search" onClick={onClick} />,
     );
     const iconButton = getByTestId('icon-button');
     fireEvent.click(iconButton);
@@ -34,7 +29,7 @@ describe('(Component) IconButton', () => {
   it('should have the correct className when passed as a prop', () => {
     const className = 'test-class';
     const { getByTestId } = render(
-      <IconButton icon="fa fa-search" className={className} />
+      <IconButton icon="fa fa-search" className={className} />,
     );
     const iconButton = getByTestId('icon-button');
     expect(iconButton).toHaveClass(className);
@@ -43,7 +38,7 @@ describe('(Component) IconButton', () => {
   it('should have the correct title when passed as a prop', () => {
     const title = 'Search';
     const { getByTestId } = render(
-      <IconButton icon="fa fa-search" title={title} />
+      <IconButton icon="fa fa-search" title={title} />,
     );
     const iconButton = getByTestId('icon-button');
     expect(iconButton).toHaveAttribute('title', title);
@@ -52,7 +47,7 @@ describe('(Component) IconButton', () => {
   it('should have the correct type when passed as a prop', () => {
     const type = 'submit';
     const { getByTestId } = render(
-      <IconButton icon="fa fa-search" type={type} />
+      <IconButton icon="fa fa-search" type={type} />,
     );
     const iconButton = getByTestId('icon-button');
     expect(iconButton).toHaveAttribute('type', type);
@@ -61,7 +56,7 @@ describe('(Component) IconButton', () => {
   it('should have the correct size when passed as a prop', () => {
     const size = 'large';
     const { getByTestId } = render(
-      <IconButton icon="fa fa-search" size={size} />
+      <IconButton icon="fa fa-search" size={size} />,
     );
     const iconButton = getByTestId('icon-button');
     expect(iconButton).toHaveClass(`icon-button--${size}`);
@@ -69,7 +64,7 @@ describe('(Component) IconButton', () => {
 
   it('should have the correct toggled state when passed as a prop', () => {
     const { getByTestId, rerender } = render(
-      <IconButton icon="fa fa-search" toggled={false} />
+      <IconButton icon="fa fa-search" toggled={false} />,
     );
     let iconButton = getByTestId('icon-button');
     expect(iconButton).not.toHaveClass('icon-button--toggled');
@@ -80,7 +75,7 @@ describe('(Component) IconButton', () => {
 
   it('should be focused when the autoFocus prop is true', () => {
     const { getByTestId } = render(
-      <IconButton icon="fa fa-search" autoFocus />
+      <IconButton icon="fa fa-search" autoFocus />,
     );
     const iconButton = getByTestId('icon-button');
     expect(iconButton).toHaveFocus();

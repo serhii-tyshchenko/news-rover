@@ -45,25 +45,9 @@ export interface IAction extends Action {
 }
 
 export type TDic = {
-  home: string;
-  changeLanguage: string;
-  changeTheme: string;
-  refresh: string;
-  loading: string;
-  providers: string;
-  showProvider: string;
-  hideProvider: string;
-  noProviders: string;
-  bookmarks: string;
   addBookmark: string;
-  removeBookmark: string;
-  noBookmarks: string;
-  share: string;
-  settings: string;
-  theme: string;
-  thumbnail: string;
-  language: string;
   animation: string;
+  bookmarks: string;
   category: {
     business: string;
     it: string;
@@ -74,9 +58,25 @@ export type TDic = {
     softwareDevelopment: string;
     space: string;
   };
-  noNews: string;
+  changeLanguage: string;
+  changeTheme: string;
   genericError: string;
+  hideProvider: string;
+  home: string;
+  language: string;
+  loading: string;
+  loadMore: string;
+  noBookmarks: string;
+  noNews: string;
+  noProviders: string;
+  providers: string;
+  removeBookmark: string;
+  refresh: string;
+  settings: string;
+  share: string;
+  showProvider: string;
+  theme: string;
+  thumbnail: string;
   today: string;
   yesterday: string;
-  loadMore: string;
 };

@@ -21,7 +21,7 @@ import { prepareOptions } from './settings-dialog.utils';
 
 interface ISettingsDialogProps {
   opened: boolean;
-  onClose: any;
+  onClose: () => void;
 }
 
 function SettingsDialog(props: ISettingsDialogProps) {

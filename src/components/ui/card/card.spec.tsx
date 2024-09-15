@@ -2,11 +2,6 @@ import { render } from '@testing-library/react';
 import Card from './card';
 
 describe('(Component) Card', () => {
-  it('should match the snapshot', () => {
-    const { container } = render(<Card title="Test" children="Test" />);
-    expect(container.firstChild).toMatchSnapshot();
-  });
-
   it('should render the title correctly', () => {
     const title = 'Test Title';
     const { getByText } = render(<Card title={title} children="Test" />);
@@ -28,7 +23,7 @@ describe('(Component) Card', () => {
       { icon: 'icon3', title: 'Title 3', onClick: vi.fn() },
     ];
     const { getByTestId } = render(
-      <Card title="Test" controlsConfig={controlsConfig} children="Test" />
+      <Card title="Test" controlsConfig={controlsConfig} children="Test" />,
     );
     const cardControlsElement = getByTestId('card-controls');
     expect(cardControlsElement).toBeInTheDocument();

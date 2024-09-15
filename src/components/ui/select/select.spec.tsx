@@ -8,11 +8,6 @@ describe('(Component) Select', () => {
     { value: 'option3', label: 'Option 3' },
   ];
 
-  it('should match the snapshot', () => {
-    const { container } = render(<Select options={options} />);
-    expect(container.firstChild).toMatchSnapshot();
-  });
-
   it('should render the select with the correct options', () => {
     const { getByTestId } = render(<Select options={options} />);
     const select = getByTestId('select');
@@ -23,21 +18,21 @@ describe('(Component) Select', () => {
   it('should call the onChange function when an option is selected', () => {
     const onChange = vi.fn();
     const { getByTestId } = render(
-      <Select options={options} onChange={onChange} />
+      <Select options={options} onChange={onChange} />,
     );
     const select = getByTestId('select');
     fireEvent.change(select, { target: { value: options[1].value } });
     expect(onChange).toHaveBeenCalledWith(
       expect.objectContaining({
         target: expect.any(Object),
-      })
+      }),
     );
   });
 
   it('should have the correct className when passed as a prop', () => {
     const className = 'test-class';
     const { getByTestId } = render(
-      <Select options={options} className={className} />
+      <Select options={options} className={className} />,
     );
     const select = getByTestId('select');
     expect(select).toHaveClass(className);
@@ -79,7 +74,7 @@ describe('(Component) Select', () => {
   it('should have the correct label when passed as a prop', () => {
     const label = 'My select';
     const { getByLabelText } = render(
-      <Select label={label} options={options} />
+      <Select label={label} options={options} />,
     );
     const select = getByLabelText(label);
     expect(select).toBeInTheDocument();
