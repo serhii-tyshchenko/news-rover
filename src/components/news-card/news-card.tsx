@@ -72,21 +72,28 @@ function NewsCard({ provider }: INewsCardProps) {
   const shouldShowLoadMoreButton =
     !isEmpty(providerData?.data) && limit <= (providerData?.count ?? 0);
 
+  const shouldShowLoader = isDataLoading;
+  const shouldShowError = !isDataLoading && !isEmpty(error);
+  const shouldShowEmptyState = !isDataLoading && isEmpty(providerData?.data);
+  const shouldShowContent =
+    !shouldShowLoader && !shouldShowError && !shouldShowEmptyState;
+
   return (
     <Card title={provider.name} controlsConfig={controlsConfig}>
-      {isDataLoading && (
+      {shouldShowLoader && (
         <Skeleton animated={isAnimationEnabled} count={DEFAULT_POSTS_LIMIT} />
       )}
-      {!isDataLoading && !isEmpty(error) && (
+      {shouldShowError && (
         <div className="d-flex align-items-center justify-content-center h-100 p-2 text-center text-danger">
           {dic.genericError}
         </div>
       )}
-      {!isDataLoading && isEmpty(error) && isEmpty(providerData?.data) ? (
+      {shouldShowEmptyState && (
         <div className="d-flex align-items-center justify-content-center text-center flex-grow-1">
           {dic.noNews}
         </div>
-      ) : (
+      )}
+      {shouldShowContent && (
         <NewsList
           data={groupDataByDay(providerData?.data ?? [])}
           onAddBookmark={handleAddBookmark}
