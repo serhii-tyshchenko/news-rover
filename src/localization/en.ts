@@ -1,4 +1,4 @@
-import { TDic } from 'types';
+import { TDic } from '@types';
 
 const STR: TDic = {
   addBookmark: 'Add bookmark',
@@ -20,7 +20,12 @@ const STR: TDic = {
   hideProvider: 'Hide provider',
   home: 'Home',
   language: 'Language',
+  languages: {
+    en: 'English',
+    ua: 'Ukrainian',
+  },
   loading: 'L O A D I N G ...',
+  loadMore: 'Load more',
   noBookmarks: 'No bookmarks',
   noNews: 'No news',
   noProviders: 'No providers added. Add some from the Providers page.',
@@ -28,13 +33,19 @@ const STR: TDic = {
   refresh: 'Refresh',
   removeBookmark: 'Remove bookmark',
   settings: 'Settings',
-  thumbnail: 'Thumbnail',
   share: 'Share',
   showProvider: 'Show provider',
+  thumbnail: 'Thumbnail',
   theme: 'Theme',
+  themes: {
+    system: 'System',
+    light: 'Light',
+    dark: 'Dark',
+    'dark-blue': 'Dark Blue',
+    'dark-red': 'Dark Red',
+  },
   today: 'Today',
   yesterday: 'Yesterday',
-  loadMore: 'Load more',
 };
 
 export default STR;

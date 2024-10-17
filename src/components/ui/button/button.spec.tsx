@@ -1,5 +1,7 @@
 import { render, fireEvent } from '@testing-library/react';
-import Button from './button';
+import { EControlSize } from '@types';
+
+import { Button } from './button';
 
 describe('(Component) Button', () => {
   it('should render the button with the correct text', () => {
@@ -47,7 +49,7 @@ describe('(Component) Button', () => {
   });
 
   it('should have the correct size when passed as a prop', () => {
-    const size = 'large';
+    const size = EControlSize.Big;
     const { getByTestId } = render(<Button size={size}>Click me</Button>);
     const button = getByTestId('button');
     expect(button).toHaveClass(`button--${size}`);

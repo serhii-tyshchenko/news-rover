@@ -6,8 +6,8 @@ import { IconButton, Card, CardList } from '@components/ui';
 import { BaseLayout } from '@layout';
 import { TProvider, TProviders } from '@types';
 
-export const groupProvidersByCategory = (providers: TProviders = []) => {
-  const groupedProviders = providers.reduce(
+const groupProvidersByCategory = (providers: TProviders = []) =>
+  providers.reduce(
     (acc, provider) => {
       if (!acc[provider.category]) {
         acc[provider.category] = [];
@@ -17,9 +17,6 @@ export const groupProvidersByCategory = (providers: TProviders = []) => {
     },
     {} as { [key: string]: TProvider[] },
   );
-
-  return groupedProviders;
-};
 
 function ProvidersPage() {
   const dispatch = useAppDispatch();

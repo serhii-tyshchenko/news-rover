@@ -6,6 +6,7 @@ import { SettingsDialog } from '@components';
 import { APP_NAME, ERoute, EIcon } from '@constants';
 import { useLocalization, useAppSelector, useDialogState } from '@hooks';
 import { selectBookmarksData } from '@store/selectors';
+import { EControlSize } from '@types';
 
 function Header() {
   const { opened, openDialog, closeDialog } = useDialogState();
@@ -19,13 +20,15 @@ function Header() {
 
   return (
     <header className="d-flex align-items-center justify-content-between">
-      <Link to={ERoute.Home}>{APP_NAME}</Link>
+      <Link to={ERoute.Home} className="color-primary">
+        {APP_NAME}
+      </Link>
       <nav className="d-flex">
         <IconButton
           icon={noBookmarks ? EIcon.BookmarkEmpty : EIcon.Bookmark}
           onClick={() => navigate(ERoute.Bookmarks)}
           title={dic.bookmarks}
-          size="big"
+          size={EControlSize.Big}
           className="mr-2"
           toggled={isActiveBookmarks}
         />
@@ -33,7 +36,7 @@ function Header() {
           icon={EIcon.Rss}
           onClick={() => navigate(ERoute.Providers)}
           title={dic.providers}
-          size="big"
+          size={EControlSize.Big}
           toggled={isActiveProviders}
           className="mr-2"
         />
@@ -41,7 +44,7 @@ function Header() {
           icon={EIcon.Settings}
           onClick={openDialog}
           title={dic.settings}
-          size="big"
+          size={EControlSize.Big}
           className="mr-2"
         />
       </nav>

@@ -64,6 +64,10 @@ export type TDic = {
   hideProvider: string;
   home: string;
   language: string;
+  languages: {
+    en: string;
+    ua: string;
+  };
   loading: string;
   loadMore: string;
   noBookmarks: string;
@@ -76,6 +80,13 @@ export type TDic = {
   share: string;
   showProvider: string;
   theme: string;
+  themes: {
+    system: string;
+    light: string;
+    dark: string;
+    'dark-blue': string;
+    'dark-red': string;
+  };
   thumbnail: string;
   today: string;
   yesterday: string;
@@ -84,5 +95,6 @@ export type TDic = {
 export enum EControlSize {
   Small = 'small',
   Normal = 'normal',
+  Big = 'big',
   Large = 'large',
 }
