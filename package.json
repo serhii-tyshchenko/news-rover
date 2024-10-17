@@ -1,6 +1,6 @@
 {
   "name": "news-rover",
-  "version": "1.8.2",
+  "version": "1.8.3",
   "private": false,
   "description": "A news app that fetches news from rss feeds",
   "keywords": [
