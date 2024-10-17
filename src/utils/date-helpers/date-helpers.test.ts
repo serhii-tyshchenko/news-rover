@@ -3,6 +3,8 @@ import {
   formatTime,
   isToday,
   isYesterday,
+  isThisWeek,
+  isThisYear,
   groupDataByDay,
 } from './date-helpers';
 
@@ -46,6 +48,31 @@ describe('(Function) isYesterday', () => {
   it('should return false when the given date is not yesterday', () => {
     const today = new Date();
     expect(isYesterday(today)).toBe(false);
+  });
+});
+
+describe('(Function) isThisYear', () => {
+  it('should return true when the given date is in the current year', () => {
+    const date = new Date();
+    expect(isThisYear(date)).toBe(true);
+  });
+
+  it('should return false when the given date is not in the current year', () => {
+    const date = new Date('2021-01-01');
+    expect(isThisYear(date)).toBe(false);
+  });
+});
+
+describe('(Function) isThisWeek', () => {
+  it('should return true when the given date is within the last 7 days', () => {
+    const yesterday = new Date();
+    yesterday.setDate(yesterday.getDate() - 1);
+    expect(isThisWeek(yesterday)).toBe(true);
+  });
+
+  it('should return false when the given date is not within the last 7 days', () => {
+    const date = new Date('2022-01-01');
+    expect(isThisWeek(date)).toBe(false);
   });
 });
 

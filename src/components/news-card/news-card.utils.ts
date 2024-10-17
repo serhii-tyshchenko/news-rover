@@ -22,5 +22,6 @@ export const getConfig = ({
     title: dic.refresh,
     onClick: handleRefresh,
     className: showAnimation ? 'animation-rotate' : '',
+    disabled: showAnimation,
   },
 ];

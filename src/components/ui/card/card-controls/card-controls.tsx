@@ -19,6 +19,7 @@ function CardControls(props: TCardControlsProps) {
           title={control.title}
           onClick={control.onClick}
           className={control.className}
+          disabled={control.disabled}
         />
       ))}
     </div>

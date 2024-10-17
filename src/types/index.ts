@@ -80,3 +80,9 @@ export type TDic = {
   today: string;
   yesterday: string;
 };
+
+export enum EControlSize {
+  Small = 'small',
+  Normal = 'normal',
+  Large = 'large',
+}

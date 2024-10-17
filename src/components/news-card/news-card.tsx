@@ -72,15 +72,15 @@ function NewsCard({ provider }: INewsCardProps) {
   const shouldShowLoadMoreButton =
     !isEmpty(providerData?.data) && limit <= (providerData?.count ?? 0);
 
-  const shouldShowLoader = isDataLoading;
+  const shouldShowSkeleton = isLoading;
   const shouldShowError = !isDataLoading && !isEmpty(error);
   const shouldShowEmptyState = !isDataLoading && isEmpty(providerData?.data);
   const shouldShowContent =
-    !shouldShowLoader && !shouldShowError && !shouldShowEmptyState;
+    !shouldShowSkeleton && !shouldShowError && !shouldShowEmptyState;
 
   return (
     <Card title={provider.name} controlsConfig={controlsConfig}>
-      {shouldShowLoader && (
+      {shouldShowSkeleton && (
         <Skeleton animated={isAnimationEnabled} count={DEFAULT_POSTS_LIMIT} />
       )}
       {shouldShowError && (

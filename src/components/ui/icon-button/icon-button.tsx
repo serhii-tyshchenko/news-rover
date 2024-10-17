@@ -1,22 +1,35 @@
-import { memo } from 'react';
 import { getClassName } from '@utils';
+import { EControlSize } from '@types';
 
 import './icon-button.scss';
 
 const NAME_SPACE = 'icon-button';
 
-function IconButton(props: TiconButtonProps) {
+interface IProps {
+  onClick: React.MouseEventHandler<HTMLButtonElement>;
+  className?: string;
+  icon?: string;
+  type?: 'button' | 'submit' | 'reset';
+  title?: string;
+  size?: EControlSize;
+  disabled?: boolean;
+  autoFocus?: boolean;
+  toggled?: boolean;
+  testId?: string;
+}
+
+function IconButton(props: IProps) {
   const {
-    icon,
+    icon = '',
     onClick,
-    className,
-    title,
-    type,
-    size,
-    disabled,
-    autoFocus,
-    toggled,
-    testId,
+    className = '',
+    title = 'Click me',
+    type = 'button',
+    size = EControlSize.Normal,
+    disabled = false,
+    autoFocus = false,
+    toggled = false,
+    testId = NAME_SPACE,
   } = props;
 
   const componentClassName = getClassName(
@@ -24,7 +37,7 @@ function IconButton(props: TiconButtonProps) {
     `icon-${icon}`,
     `${NAME_SPACE}--${size}`,
     { [`${NAME_SPACE}--toggled`]: toggled },
-    className
+    className,
   );
 
   return (
@@ -41,30 +54,4 @@ function IconButton(props: TiconButtonProps) {
   );
 }
 
-type TiconButtonProps = {
-  onClick?: () => void;
-  className?: string;
-  icon?: string;
-  type?: 'button' | 'submit' | 'reset';
-  title?: string;
-  size?: 'small' | 'normal' | 'big' | 'large';
-  disabled?: boolean;
-  autoFocus?: boolean;
-  toggled?: boolean;
-  testId?: string;
-};
-
-IconButton.defaultProps = {
-  className: '',
-  onClick: null,
-  type: 'button',
-  icon: '',
-  title: 'Click me',
-  size: 'normal',
-  disabled: false,
-  autoFocus: false,
-  toggled: false,
-  testId: 'icon-button',
-};
-
-export default memo(IconButton);
+export { IconButton };

@@ -1,4 +1,5 @@
 import { getClassName } from '@utils';
+import { EControlSize } from '@types';
 
 import './toggle.scss';
 
@@ -10,7 +11,7 @@ interface IToggleProps {
   value?: string | number;
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   className?: string;
-  size?: 'small' | 'normal' | 'large';
+  size?: EControlSize;
   toggled?: boolean;
   disabled?: boolean;
   testId?: string;
@@ -24,7 +25,7 @@ function Toggle(props: IToggleProps) {
     value = '',
     onChange = () => {},
     className = '',
-    size = 'normal',
+    size = EControlSize.Normal,
     toggled = false,
     disabled = false,
     testId = NAME_SPACE,

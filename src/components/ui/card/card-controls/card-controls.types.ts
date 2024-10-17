@@ -3,6 +3,7 @@ type TControl = {
   title: string;
   onClick: () => void;
   className?: string;
+  disabled?: boolean;
 };
 
 export type TControlsConfig = TControl[];
