@@ -4,14 +4,22 @@ import { createPortal } from 'react-dom';
 import { getClassName } from '@utils';
 import { portalRoot, noop } from '@constants';
 import { IconButton } from '@components/ui';
+import { EControlSize } from '@types';
 
-import { TDialogProps } from './dialog.types';
-
-import './dialog.scss';
+import './dialog.styles.scss';
 
 const NAME_SPACE = 'dialog';
 
-function Dialog(props: TDialogProps) {
+interface IProps {
+  opened: boolean;
+  title?: string;
+  closeBtnTitle?: string;
+  onClose?: () => void;
+  children?: React.ReactNode;
+  className?: string;
+}
+
+function Dialog(props: IProps) {
   const {
     opened = false,
     title = 'Dialog',
@@ -44,14 +52,14 @@ function Dialog(props: TDialogProps) {
             icon="cancel"
             onClick={onClose}
             title={closeBtnTitle}
-            size="big"
+            size={EControlSize.Big}
             autoFocus
           />
         </header>
         <main className={`${NAME_SPACE}__content`}>{children}</main>
       </div>
     </div>,
-    portalRoot
+    portalRoot,
   );
 }
 

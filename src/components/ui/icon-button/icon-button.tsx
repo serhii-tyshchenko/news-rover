@@ -1,7 +1,7 @@
 import { getClassName } from '@utils';
 import { EControlSize } from '@types';
 
-import './icon-button.scss';
+import './icon-button.styles.scss';
 
 const NAME_SPACE = 'icon-button';
 

@@ -1,11 +1,11 @@
 import { getClassName } from '@utils';
 import { EControlSize } from '@types';
 
-import './toggle.scss';
+import './toggle.styles.scss';
 
 const NAME_SPACE = 'toggle';
 
-interface IToggleProps {
+interface IProps {
   id?: string;
   name?: string;
   value?: string | number;
@@ -18,7 +18,7 @@ interface IToggleProps {
   animated?: boolean;
 }
 
-function Toggle(props: IToggleProps) {
+function Toggle(props: IProps) {
   const {
     id = NAME_SPACE,
     name = NAME_SPACE,

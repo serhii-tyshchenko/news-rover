@@ -50,7 +50,7 @@ describe('(Component) IconButton', () => {
   });
 
   it('should have the correct size when passed as a prop', () => {
-    const size = EControlSize.Large;
+    const size = EControlSize.Big;
     const { getByTestId } = render(<IconButton onClick={noop} size={size} />);
     const iconButton = getByTestId('icon-button');
     expect(iconButton).toHaveClass(`icon-button--${size}`);

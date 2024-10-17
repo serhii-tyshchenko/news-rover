@@ -1,4 +1,4 @@
-import { TDic } from 'types';
+import { TDic } from '@types';
 
 const STR: TDic = {
   home: 'Головна',
@@ -18,8 +18,19 @@ const STR: TDic = {
   share: 'Поділитися',
   settings: 'Налаштування',
   theme: 'Тема',
+  themes: {
+    system: 'Системна',
+    light: 'Світла',
+    dark: 'Темна',
+    'dark-blue': 'Темно-синя',
+    'dark-red': 'Темно-червона',
+  },
   thumbnail: 'Мініатюра',
   language: 'Мова',
+  languages: {
+    en: 'Англійська',
+    ua: 'Українська',
+  },
   animation: 'Анімація',
   category: {
     business: 'Бізнес',

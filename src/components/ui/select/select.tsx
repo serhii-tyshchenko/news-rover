@@ -3,9 +3,10 @@ import { memo } from 'react';
 import { getClassName } from '@utils';
 
 import { TSelectProps, defaultProps } from './select.types';
-import { NAME_SPACE } from './select.constants';
 
-import './select.scss';
+import './select.styles.scss';
+
+const NAME_SPACE = 'select';
 
 function Select(props: TSelectProps) {
   const {
@@ -29,7 +30,7 @@ function Select(props: TSelectProps) {
     NAME_SPACE,
     `${NAME_SPACE}--${size}`,
     { [`${NAME_SPACE}--error`]: error, [`${NAME_SPACE}--no-arrow`]: noArrow },
-    className
+    className,
   );
 
   return (

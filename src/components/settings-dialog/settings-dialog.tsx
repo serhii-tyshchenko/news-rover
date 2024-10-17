@@ -51,9 +51,8 @@ function SettingsDialog(props: ISettingsDialogProps) {
             name="theme"
             value={theme}
             onChange={handleChange}
-            options={prepareOptions(THEMES)}
+            options={prepareOptions(THEMES, dic.themes)}
             title={dic.changeLanguage}
-            noArrow
           />
         </div>
         <div className="d-flex align-items-center justify-content-between mb-4">
@@ -73,9 +72,8 @@ function SettingsDialog(props: ISettingsDialogProps) {
             name="locale"
             value={locale}
             onChange={handleChange}
-            options={prepareOptions(LANGUAGES)}
+            options={prepareOptions(LANGUAGES, dic.languages)}
             title={dic.changeLanguage}
-            noArrow
           />
         </div>
         <div className="d-flex align-items-center justify-content-between">

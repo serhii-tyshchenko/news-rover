@@ -1,13 +1,13 @@
 import { useLocalization, useAppSelector } from '@hooks';
 import { Button } from '@components/ui';
-import { TNewsItem } from '@types';
+import { EControlSize, TNewsItem } from '@types';
 import { selectBookmarksData } from '@store/selectors';
 import { checkIfBookmarked, getDateLabel } from './news-list.utils';
 import NewsListItem from './news-list-item';
 
 import './news-list.styles.scss';
 
-interface INewsListProps {
+interface IProps {
   data: Record<string, TNewsItem[]>;
   onAddBookmark?: (item: TNewsItem) => void;
   onRemoveBookmark: (item: TNewsItem) => void;
@@ -15,7 +15,7 @@ interface INewsListProps {
   showLoadMoreButton?: boolean;
 }
 
-function NewsList(props: INewsListProps) {
+function NewsList(props: IProps) {
   const {
     data,
     onAddBookmark,
@@ -49,7 +49,11 @@ function NewsList(props: INewsListProps) {
       ))}
       {showLoadMoreButton && (
         <li className="text-center" key="button">
-          <Button onClick={onLoadMoreClick} size="small" btnType="action">
+          <Button
+            onClick={onLoadMoreClick}
+            size={EControlSize.Small}
+            btnType="action"
+          >
             {dic.loadMore}
           </Button>
         </li>

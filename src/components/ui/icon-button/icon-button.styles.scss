@@ -32,10 +32,6 @@
     font-size: $font-size-xl;
   }
 
-  &--large {
-    font-size: $font-size-xxl;
-  }
-
   &--toggled,
   &:hover:not(:disabled) {
     background-color: var(--color-background-controls);

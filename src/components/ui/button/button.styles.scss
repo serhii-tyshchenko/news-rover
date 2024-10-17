@@ -23,15 +23,15 @@
     filter: brightness(110%);
   }
 
-  &--normal {
-    font-size: 1rem;
-  }
-
   &--small {
     font-size: 0.75rem;
   }
 
-  &--large {
+  &--normal {
+    font-size: 1rem;
+  }
+
+  &--big {
     font-size: 1.25rem;
   }
 
