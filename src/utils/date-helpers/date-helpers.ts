@@ -27,6 +27,20 @@ export const isYesterday = (someDate: Date) => {
   );
 };
 
+export const isThisYear = (someDate: Date) => {
+  return someDate.getFullYear() === new Date().getFullYear();
+};
+
+export const isThisWeek = (someDate: Date) => {
+  const today = new Date();
+  const diff = today.getDate() - someDate.getDate();
+  return (
+    isThisYear(someDate) &&
+    today.getMonth() === someDate.getMonth() &&
+    diff <= 7
+  );
+};
+
 export const groupDataByDay = (data: TNewsItem[]) =>
   groupBy(
     data.toSorted((a, b) => b.created - a.created),

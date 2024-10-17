@@ -3,7 +3,7 @@ import { selectSettingsData } from '@store/selectors';
 import { useLocalization, useAppSelector } from '@hooks';
 import { formatTime } from '@utils';
 import { IconButton } from '@components/ui';
-import { TNewsItem } from '@types';
+import { TNewsItem, EControlSize } from '@types';
 import { EThumbnail } from '@constants';
 
 import './news-list-item.styles.scss';
@@ -40,7 +40,7 @@ function NewsListItem(props: INewsListItemProps) {
   return (
     <li className="news-list-item">
       {shouldShowThumbnail && (
-        <a href={url} target="_blank" rel="noreferrer" className="d-block mb-2">
+        <a href={url} target="_blank" rel="noreferrer" className="d-block mb-1">
           <img
             src={thumbnailUrl}
             alt={title}
@@ -64,7 +64,7 @@ function NewsListItem(props: INewsListItemProps) {
             icon={bookmarkIcon}
             title={bookmarkTitle}
             onClick={handleBookmarkClick}
-            size="small"
+            size={EControlSize.Small}
             className="btn"
           />
           {isShareSupported && (
@@ -72,7 +72,7 @@ function NewsListItem(props: INewsListItemProps) {
               icon="share"
               title={dic.share}
               onClick={handleShareClick}
-              size="small"
+              size={EControlSize.Small}
               className="btn"
             />
           )}

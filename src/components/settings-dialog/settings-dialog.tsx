@@ -16,6 +16,7 @@ import {
   EAnimation,
   EThumbnail,
 } from '@constants';
+import { EControlSize } from '@types';
 
 import { prepareOptions } from './settings-dialog.utils';
 
@@ -63,6 +64,7 @@ function SettingsDialog(props: ISettingsDialogProps) {
             toggled={isAnimationEnabled}
             onChange={handleChange}
             animated={isAnimationEnabled}
+            size={EControlSize.Small}
           />
         </div>
         <div className="d-flex align-items-center justify-content-between mb-3">
@@ -86,6 +88,7 @@ function SettingsDialog(props: ISettingsDialogProps) {
             toggled={showThumbnail === EThumbnail.On}
             onChange={handleChange}
             animated={isAnimationEnabled}
+            size={EControlSize.Small}
           />
         </div>
       </div>
