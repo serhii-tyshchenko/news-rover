@@ -24,8 +24,7 @@
     "test": "vitest run",
     "test:watch": "vitest run --watch",
     "test:coverage": "vitest run --coverage",
-    "prepare": "husky install",
-    "lint:staged": "lint-staged"
+    "prepare": "husky install"
   },
   "dependencies": {
     "@types/node": "^16.18.19",

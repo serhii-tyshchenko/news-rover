@@ -4,15 +4,7 @@ import {
   NEWS_ROOT_URL,
 } from '@constants';
 
-const formatResponse = (rawData: { data: any[]; count: number }) => ({
-  data: rawData.data.map((item) => ({
-    created: item.created,
-    title: item.title,
-    link: item.link,
-    thumbnail: item?.enclosures[0]?.url || null,
-  })),
-  count: rawData.count,
-});
+import { formatGetNewsByProviderResponse } from '@utils';
 
 export const getProviders = async () => {
   try {
@@ -33,7 +25,7 @@ export const getNewsByProvider = async (
       `${NEWS_ROOT_URL}?provider=${provider}&limit=${limit}`,
     );
     const data = await response.json();
-    return formatResponse(data);
+    return formatGetNewsByProviderResponse(data);
   } catch (error) {
     throw error;
   }

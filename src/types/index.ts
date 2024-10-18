@@ -26,6 +26,18 @@ export type TConfigMap = {
   [key: string]: string;
 };
 
+export type TEnclosure = {
+  url: string;
+  type: string;
+  length: number;
+};
+
+export enum EEnclosureType {
+  Image = 'image/jpeg',
+  Video = 'video/mp4',
+  Audio = 'audio/mpeg',
+}
+
 export type TBookmark = {
   id: string;
   title: string;
