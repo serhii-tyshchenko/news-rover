@@ -33,6 +33,7 @@ const STR: TDic = {
   },
   animation: 'Анімація',
   category: {
+    blogs: 'Блоги',
     business: 'Бізнес',
     it: 'Ай Ті',
     military: 'Війна',

@@ -5,6 +5,7 @@ const STR: TDic = {
   animation: 'Animation',
   bookmarks: 'Bookmarks',
   category: {
+    blogs: 'Blogs',
     business: 'Business',
     it: 'IT',
     military: 'Military',

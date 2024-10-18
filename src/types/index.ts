@@ -61,6 +61,7 @@ export type TDic = {
   animation: string;
   bookmarks: string;
   category: {
+    blogs: string;
     business: string;
     it: string;
     military: string;

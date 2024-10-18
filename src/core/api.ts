@@ -17,13 +17,11 @@ export const getProviders = async () => {
 };
 
 export const getNewsByProvider = async (
-  provider: string,
+  url: string,
   limit = DEFAULT_POSTS_LIMIT,
 ) => {
   try {
-    const response = await fetch(
-      `${NEWS_ROOT_URL}?provider=${provider}&limit=${limit}`,
-    );
+    const response = await fetch(`${NEWS_ROOT_URL}?url=${url}&limit=${limit}`);
     const data = await response.json();
     return formatGetNewsByProviderResponse(data);
   } catch (error) {
