@@ -33,6 +33,7 @@ function ProvidersPage() {
     space: dic.category.space,
     science: dic.category.science,
     business: dic.category.business,
+    blogs: dic.category.blogs,
   };
 
   const handleClick = (providerId: string) => {

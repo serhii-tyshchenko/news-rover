@@ -32,7 +32,7 @@ function NewsCard({ provider }: INewsCardProps) {
     error,
     refetch,
     isFetching,
-  } = useNewsProviderData(provider.id, limit);
+  } = useNewsProviderData(provider.url, limit);
 
   const handleAddBookmark = (item: TNewsItem) => {
     dispatch(
