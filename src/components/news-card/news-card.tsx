@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react';
+import { useCallback, useMemo, useState } from 'react';
 import { isEmpty } from 'lodash';
 import { v4 as uuidv4 } from 'uuid';
 import { useAppDispatch, useLocalization, useAnimation } from '@hooks';
@@ -78,6 +78,11 @@ function NewsCard({ provider }: INewsCardProps) {
   const shouldShowContent =
     !shouldShowSkeleton && !shouldShowError && !shouldShowEmptyState;
 
+  const groupedData = useMemo(
+    () => groupDataByDay(providerData?.data ?? []),
+    [providerData?.data],
+  );
+
   return (
     <Card title={provider.name} controlsConfig={controlsConfig}>
       {shouldShowSkeleton && (
@@ -95,7 +100,8 @@ function NewsCard({ provider }: INewsCardProps) {
       )}
       {shouldShowContent && (
         <NewsList
-          data={groupDataByDay(providerData?.data ?? [])}
+          providerId={provider.id}
+          data={groupedData}
           onAddBookmark={handleAddBookmark}
           onRemoveBookmark={handleRemoveBookmark}
           onLoadMoreClick={handleLoadMoreClick}

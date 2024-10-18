@@ -1,15 +1,19 @@
+import { Fragment } from 'react';
 import { useLocalization, useAppSelector } from '@hooks';
 import { Button } from '@components/ui';
 import { EControlSize, TNewsItem } from '@types';
 import { selectBookmarksData } from '@store/selectors';
-import { checkIfBookmarked, getDateLabel } from './news-list.utils';
+import { getDateLabel } from '@utils';
+
+import { checkIfBookmarked } from './news-list.utils';
 import NewsListItem from './news-list-item';
 
 import './news-list.styles.scss';
 
 interface IProps {
   data: Record<string, TNewsItem[]>;
-  onAddBookmark?: (item: TNewsItem) => void;
+  providerId: string;
+  onAddBookmark: (item: TNewsItem) => void;
   onRemoveBookmark: (item: TNewsItem) => void;
   onLoadMoreClick?: () => void;
   showLoadMoreButton?: boolean;
@@ -18,6 +22,7 @@ interface IProps {
 function NewsList(props: IProps) {
   const {
     data,
+    providerId,
     onAddBookmark,
     onRemoveBookmark,
     onLoadMoreClick,
@@ -29,10 +34,10 @@ function NewsList(props: IProps) {
   return (
     <ul className="news-list">
       {Object.keys(data).map((date) => (
-        <>
+        <Fragment key={`${providerId}-${date}`}>
           <li
             className="color-secondary font-weight-bold small mb-3"
-            key={date}
+            key={`${providerId}-${date}`}
           >
             {getDateLabel(new Date(date), dic)}
           </li>
@@ -45,10 +50,10 @@ function NewsList(props: IProps) {
               onRemoveBookmark={onRemoveBookmark}
             />
           ))}
-        </>
+        </Fragment>
       ))}
       {showLoadMoreButton && (
-        <li className="text-center" key="button">
+        <li className="text-center" key={`${providerId}-load-more`}>
           <Button
             onClick={onLoadMoreClick}
             size={EControlSize.Small}

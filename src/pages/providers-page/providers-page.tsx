@@ -1,4 +1,8 @@
-import { selectProvidersData, selectAddedProviders } from '@store/selectors';
+import {
+  selectProvidersData,
+  selectAddedProviders,
+  selectProvidersLoading,
+} from '@store/selectors';
 import { doAddProvider, doRemoveProvider } from '@store/actions';
 import { useAppSelector, useAppDispatch, useLocalization } from '@hooks';
 
@@ -23,6 +27,7 @@ function ProvidersPage() {
   const dic = useLocalization();
   const availableProviders = useAppSelector(selectProvidersData);
   const addedProviders = useAppSelector(selectAddedProviders);
+  const isLoading = useAppSelector(selectProvidersLoading);
   const groupedProviders = groupProvidersByCategory(availableProviders);
 
   const categoryToNameMap: { [key: string]: string } = {
@@ -46,9 +51,14 @@ function ProvidersPage() {
 
   return (
     <BaseLayout>
-      <CardList>
-        {groupedProviders &&
-          Object.keys(groupedProviders).map((category) => (
+      {isLoading && (
+        <div className="d-flex align-items-center justify-content-center h-100 p-2 text-center">
+          {dic.loading}
+        </div>
+      )}
+      {!isLoading && groupedProviders && (
+        <CardList>
+          {Object.keys(groupedProviders).map((category) => (
             <Card key={category} title={categoryToNameMap[category]}>
               <ul className="overflow-y-auto pr-2">
                 {groupedProviders[category].map((provider) => (
@@ -85,7 +95,8 @@ function ProvidersPage() {
               </ul>
             </Card>
           ))}
-      </CardList>
+        </CardList>
+      )}
     </BaseLayout>
   );
 }

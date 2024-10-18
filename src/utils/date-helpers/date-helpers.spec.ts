@@ -1,4 +1,5 @@
 import { expect, describe, it } from 'vitest';
+import { TNewsItem, TDic } from '@types';
 import {
   formatTime,
   isToday,
@@ -6,6 +7,7 @@ import {
   isThisWeek,
   isThisYear,
   groupDataByDay,
+  getDateLabel,
 } from './date-helpers';
 
 describe('(Function) formatTime', () => {
@@ -83,24 +85,29 @@ describe('(Function) groupDataByDay', () => {
         created: new Date('2022-01-01T12:00:00').getTime(),
         title: 'Title 1',
         link: 'link1',
+        thumbnail: 'thumbnail1',
       },
       {
         created: new Date('2022-01-02T12:10:00').getTime(),
         title: 'Title 2',
         link: 'link2',
+        thumbnail: 'thumbnail2',
       },
       {
         created: new Date('2022-01-02T12:15:00').getTime(),
         title: 'Title 3',
         link: 'link3',
+        thumbnail: 'thumbnail3',
       },
-    ];
+    ] as TNewsItem[];
+
     expect(groupDataByDay(data)).toEqual({
       '01.01.2022': [
         {
           created: new Date('2022-01-01T12:00:00').getTime(),
           title: 'Title 1',
           link: 'link1',
+          thumbnail: 'thumbnail1',
         },
       ],
       '02.01.2022': [
@@ -108,11 +115,13 @@ describe('(Function) groupDataByDay', () => {
           created: new Date('2022-01-02T12:15:00').getTime(),
           title: 'Title 3',
           link: 'link3',
+          thumbnail: 'thumbnail3',
         },
         {
           created: new Date('2022-01-02T12:10:00').getTime(),
           title: 'Title 2',
           link: 'link2',
+          thumbnail: 'thumbnail2',
         },
       ],
     });

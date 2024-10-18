@@ -1,5 +1,6 @@
 import { groupBy } from 'lodash';
-import { TNewsItem } from '@types';
+import { TNewsItem, TDic } from '@types';
+import { capitalizeFirstLetter } from '@utils';
 
 export const formatTime = (dateRaw: number) => {
   const rawDate = new Date(dateRaw);
@@ -46,3 +47,19 @@ export const groupDataByDay = (data: TNewsItem[]) =>
     data.toSorted((a, b) => b.created - a.created),
     (item: TNewsItem) => new Date(item.created).toLocaleDateString(),
   );
+
+export const getDateLabel = (date: Date, dic: TDic) => {
+  if (isToday(date)) {
+    return dic.today;
+  }
+  if (isYesterday(date)) {
+    return dic.yesterday;
+  }
+  const options: Intl.DateTimeFormatOptions = {
+    weekday: 'long',
+    year: isThisYear(date) ? undefined : 'numeric',
+    month: isThisWeek(date) ? undefined : 'long',
+    day: isThisWeek(date) ? undefined : 'numeric',
+  };
+  return capitalizeFirstLetter(date.toLocaleDateString(undefined, options));
+};
