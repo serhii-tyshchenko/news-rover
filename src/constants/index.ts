@@ -1,10 +1,7 @@
 export * from './api';
+export * from './app';
 
 export const DEFAULT_POSTS_LIMIT = 10;
-
-export const APP_NAME = 'NewsRover';
-
-export const APP_VERSION = '1.9.0';
 
 export const AUTHOR_NAME = 'Serhii Tyshchenko';
 
