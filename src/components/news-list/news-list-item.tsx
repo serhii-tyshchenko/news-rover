@@ -55,7 +55,7 @@ function NewsListItem(props: INewsListItemProps) {
           href={url}
           target="_blank"
           rel="noreferrer"
-          className="color-primary"
+          className="color-primary overflow-hidden text-overflow-ellipsis"
         >
           {title}
         </a>

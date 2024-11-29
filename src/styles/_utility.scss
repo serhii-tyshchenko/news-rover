@@ -22,6 +22,14 @@
     align-items: center;
 }
 
+.overflow-hidden {
+    overflow: hidden;
+}
+
+.text-overflow-ellipsis {
+    text-overflow: ellipsis;
+}
+
 .overflow-y-auto {
     overflow-y: auto;
 }
