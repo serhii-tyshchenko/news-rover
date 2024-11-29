@@ -1,29 +1,47 @@
-import { memo } from 'react';
-
 import { getClassName } from '@utils';
-
-import { TSelectProps, defaultProps } from './select.types';
+import { EControlSize } from '@types';
 
 import './select.styles.scss';
 
 const NAME_SPACE = 'select';
 
-function Select(props: TSelectProps) {
+interface IProps {
+  className?: string;
+  onChange?: (e: React.ChangeEvent<HTMLSelectElement>) => void;
+  value?: string | number;
+  title?: string;
+  options?: Array<{
+    value: string | number;
+    label: string;
+    disabled?: boolean;
+  }>;
+  required?: boolean;
+  disabled?: boolean;
+  noArrow?: boolean;
+  size?: EControlSize;
+  name?: string;
+  label?: string;
+  error?: string;
+  style?: React.CSSProperties;
+  testId?: string;
+}
+
+function Select(props: IProps) {
   const {
-    value,
-    onChange,
-    options,
-    className,
-    title,
-    required,
-    disabled,
-    noArrow,
-    size,
-    name,
-    label,
-    error,
-    style,
-    testId,
+    value = '',
+    onChange = () => {},
+    options = [],
+    className = '',
+    title = 'Select option',
+    required = false,
+    disabled = false,
+    noArrow = false,
+    size = EControlSize.Normal,
+    name = NAME_SPACE,
+    label = '',
+    error = '',
+    style = {},
+    testId = NAME_SPACE,
   } = props;
 
   const componentClassName = getClassName(
@@ -68,6 +86,4 @@ function Select(props: TSelectProps) {
   );
 }
 
-Select.defaultProps = defaultProps;
-
-export default memo(Select);
+export { Select };

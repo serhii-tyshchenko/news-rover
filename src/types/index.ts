@@ -17,7 +17,7 @@ export type TNewsItem = {
   title: string;
   link: string;
   created: number;
-  thumbnail?: string;
+  thumbnail: string | null;
 };
 
 export type TNews = Array<TNewsItem>;

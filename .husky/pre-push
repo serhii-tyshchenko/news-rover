@@ -3,10 +3,6 @@
 
 branch="$(git rev-parse --abbrev-ref HEAD)"
 
-if [ "$branch" = "main"]; then
-  npm run test;
-fi
-
-if [ "$branch" = "develop"]; then
+if [ "$branch" = "main" ] || [ "$branch" = "develop" ]; then
   npm run test;
 fi

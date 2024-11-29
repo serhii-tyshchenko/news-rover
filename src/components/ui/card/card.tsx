@@ -1,7 +1,7 @@
 import { TCardProps } from './card.types';
 import { CardControls } from './card-controls';
 
-import './card.scss';
+import './card.styles.scss';
 
 function Card(props: TCardProps) {
   const { title, children, controlsConfig = [] } = props;
