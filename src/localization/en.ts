@@ -28,7 +28,6 @@ const STR: TDic = {
     [ELanguage.En]: 'English',
     [ELanguage.Uk]: 'Ukrainian',
   },
-  loading: 'L O A D I N G ...',
   loadMore: 'Load more',
   noBookmarks: 'No bookmarks',
   noNews: 'No news',

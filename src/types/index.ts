@@ -88,7 +88,6 @@ export type TDic = {
     [ELanguage.En]: string;
     [ELanguage.Uk]: string;
   };
-  loading: string;
   loadMore: string;
   noBookmarks: string;
   noNews: string;

@@ -9,7 +9,6 @@ const STR: TDic = {
   changeTheme: 'Змінити тему',
   refresh: 'Оновити',
   loadMore: 'Завантажити ще',
-  loading: 'З А В А Н Т А Ж Е Н Н Я ...',
   providers: 'Провайдери',
   showProvider: 'Показати провайдера',
   noProviders: 'Немає провайдерів.',

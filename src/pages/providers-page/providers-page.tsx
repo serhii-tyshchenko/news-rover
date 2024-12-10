@@ -5,7 +5,7 @@ import {
 } from '@store/selectors';
 import { doAddProvider, doRemoveProvider } from '@store/actions';
 import { useAppSelector, useAppDispatch, useLocalization } from '@hooks';
-
+import { AppLoader } from '@components';
 import { IconButton, Card, CardList } from '@components/ui';
 import { BaseLayout } from '@layout';
 import { TProvider, TProviders } from '@types';
@@ -41,21 +41,17 @@ function ProvidersPage() {
     blogs: dic.category.blogs,
   };
 
-  const handleClick = (providerId: string) => {
-    if (addedProviders.includes(providerId)) {
-      dispatch(doRemoveProvider(providerId));
-    } else {
-      dispatch(doAddProvider(providerId));
-    }
-  };
+  const handleClick = (providerId: string) =>
+    addedProviders.includes(providerId)
+      ? dispatch(doRemoveProvider(providerId))
+      : dispatch(doAddProvider(providerId));
+
+  if (isLoading) {
+    return <AppLoader />;
+  }
 
   return (
     <BaseLayout>
-      {isLoading && (
-        <div className="d-flex align-items-center justify-content-center h-100 p-2 text-center">
-          {dic.loading}
-        </div>
-      )}
       {!isLoading && groupedProviders && (
         <CardList>
           {Object.keys(groupedProviders).map((category) => (
