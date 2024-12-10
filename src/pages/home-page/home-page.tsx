@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { isEmpty } from 'lodash';
 
 import {
@@ -8,6 +9,7 @@ import { useAppSelector, useLocalization } from '@hooks';
 import { BaseLayout } from '@layout';
 import { NewsCard, CardList } from '@components';
 import { TProvider } from '@types';
+import { ERoute } from '@constants';
 
 function HomePage() {
   const dic = useLocalization();
@@ -24,7 +26,7 @@ function HomePage() {
       )}
       {!isLoading && isEmpty(addedProviders) && (
         <div className="d-flex align-items-center justify-content-center h-100 p-2 text-center">
-          {dic.noProviders}
+          {dic.noProviders}&nbsp;<Link to={ERoute.Providers}>{dic.add}</Link>
         </div>
       )}
       {!isLoading && !isEmpty(addedProviders) && (

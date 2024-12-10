@@ -7,18 +7,18 @@ export const AUTHOR_NAME = 'Serhii Tyshchenko';
 
 export const AUTHOR_SITE = 'https://github.com/serhii-tyshchenko';
 
-export const THEMES = {
-  SYSTEM: 'system',
-  LIGHT: 'light',
-  DARK: 'dark',
-  DARK_BLUE: 'dark-blue',
-  DARK_RED: 'dark-red',
-};
+export enum ETheme {
+  System = 'system',
+  Light = 'light',
+  Dark = 'dark',
+  DarkBlue = 'dark-blue',
+  DarkRed = 'dark-red',
+}
 
-export const LANGUAGES = {
-  EN: 'en',
-  UA: 'ua',
-};
+export enum ELanguage {
+  En = 'en',
+  Uk = 'uk',
+}
 
 export enum EAnimation {
   On = 'on',
@@ -46,10 +46,17 @@ export enum EIcon {
   Settings = 'cog',
 }
 
+export enum EAutoRefresh {
+  On = 'on',
+  Off = 'off',
+}
+
 export const portalRoot = document.getElementById('portal-root') as HTMLElement;
 
-export const ONE_SECOND = 1000;
+export const ONE_SECOND_IN_MILLISECONDS = 1000;
 
-export const ONE_MINUTE = 60 * ONE_SECOND;
+export const ONE_MINUTE_IN_MILLISECONDS = 60 * ONE_SECOND_IN_MILLISECONDS;
+
+export const AUTOREFRESH_INTERVAL = 5 * ONE_MINUTE_IN_MILLISECONDS;
 
 export const noop = () => {};

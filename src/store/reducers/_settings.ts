@@ -1,12 +1,19 @@
 import { IAction, TSettings } from '@types';
-import { THEMES, LANGUAGES, EAnimation, EThumbnail } from '@constants';
+import {
+  ETheme,
+  ELanguage,
+  EAnimation,
+  EThumbnail,
+  EAutoRefresh,
+} from '@constants';
 import { UPDATE_SETTINGS } from '@store/action-types';
 
 const initialState: TSettings = {
-  theme: THEMES.LIGHT,
-  locale: LANGUAGES.EN,
+  theme: ETheme.Light,
+  locale: ELanguage.En,
   animation: EAnimation.On,
   thumbnail: EThumbnail.On,
+  autorefresh: EAutoRefresh.Off,
 };
 
 export const settings = (state = initialState, action: IAction) => {

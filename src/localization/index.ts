@@ -1,10 +1,10 @@
+import { ELanguage } from '@constants';
 import en from './en';
-import ua from './ua';
-import { LANGUAGES } from '@constants';
+import uk from './uk';
 
 const DIC = {
-  [LANGUAGES.EN]: en,
-  [LANGUAGES.UA]: ua,
+  [ELanguage.En]: en,
+  [ELanguage.Uk]: uk,
 };
 
 export default DIC;

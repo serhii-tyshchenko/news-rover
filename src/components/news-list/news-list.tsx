@@ -8,8 +8,6 @@ import { getDateLabel } from '@utils';
 import { checkIfBookmarked } from './news-list.utils';
 import NewsListItem from './news-list-item';
 
-import './news-list.styles.scss';
-
 interface IProps {
   data: Record<string, TNewsItem[]>;
   providerId: string;
@@ -32,7 +30,7 @@ function NewsList(props: IProps) {
   const bookmarks = useAppSelector(selectBookmarksData);
 
   return (
-    <ul className="news-list">
+    <ul className="news-list pr-1 flex-grow-1 overflow-y-auto">
       {Object.keys(data).map((date) => (
         <Fragment key={`${providerId}-${date}`}>
           <li

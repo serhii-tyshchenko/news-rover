@@ -1,5 +1,11 @@
 import { Action } from 'redux';
-import { EAnimation, EThumbnail } from '@constants';
+import {
+  EAnimation,
+  EAutoRefresh,
+  EThumbnail,
+  ETheme,
+  ELanguage,
+} from '@constants';
 
 export type TProvider = {
   id: string;
@@ -19,8 +25,6 @@ export type TNewsItem = {
   created: number;
   thumbnail: string | null;
 };
-
-export type TNews = Array<TNewsItem>;
 
 export type TConfigMap = {
   [key: string]: string;
@@ -50,6 +54,7 @@ export type TSettings = {
   locale: string;
   animation: EAnimation;
   thumbnail: EThumbnail;
+  autorefresh: EAutoRefresh;
 };
 
 export interface IAction extends Action {
@@ -57,8 +62,10 @@ export interface IAction extends Action {
 }
 
 export type TDic = {
+  add: string;
   addBookmark: string;
   animation: string;
+  autorefresh: string;
   bookmarks: string;
   category: {
     blogs: string;
@@ -78,8 +85,8 @@ export type TDic = {
   home: string;
   language: string;
   languages: {
-    en: string;
-    ua: string;
+    [ELanguage.En]: string;
+    [ELanguage.Uk]: string;
   };
   loading: string;
   loadMore: string;
@@ -94,11 +101,11 @@ export type TDic = {
   showProvider: string;
   theme: string;
   themes: {
-    system: string;
-    light: string;
-    dark: string;
-    'dark-blue': string;
-    'dark-red': string;
+    [ETheme.System]: string;
+    [ETheme.Light]: string;
+    [ETheme.Dark]: string;
+    [ETheme.DarkBlue]: string;
+    [ETheme.DarkRed]: string;
   };
   thumbnail: string;
   today: string;

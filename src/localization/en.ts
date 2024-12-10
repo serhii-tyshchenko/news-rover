@@ -1,8 +1,11 @@
+import { ETheme, ELanguage } from '@constants';
 import { TDic } from '@types';
 
 const STR: TDic = {
+  add: 'Add',
   addBookmark: 'Add bookmark',
   animation: 'Animation',
+  autorefresh: 'Autorefresh',
   bookmarks: 'Bookmarks',
   category: {
     blogs: 'Blogs',
@@ -22,14 +25,14 @@ const STR: TDic = {
   home: 'Home',
   language: 'Language',
   languages: {
-    en: 'English',
-    ua: 'Ukrainian',
+    [ELanguage.En]: 'English',
+    [ELanguage.Uk]: 'Ukrainian',
   },
   loading: 'L O A D I N G ...',
   loadMore: 'Load more',
   noBookmarks: 'No bookmarks',
   noNews: 'No news',
-  noProviders: 'No providers added. Add some from the Providers page.',
+  noProviders: 'No providers added.',
   providers: 'Providers',
   refresh: 'Refresh',
   removeBookmark: 'Remove bookmark',
@@ -39,11 +42,11 @@ const STR: TDic = {
   thumbnail: 'Thumbnail',
   theme: 'Theme',
   themes: {
-    system: 'System',
-    light: 'Light',
-    dark: 'Dark',
-    'dark-blue': 'Dark Blue',
-    'dark-red': 'Dark Red',
+    [ETheme.System]: 'System',
+    [ETheme.Light]: 'Light',
+    [ETheme.Dark]: 'Dark',
+    [ETheme.DarkBlue]: 'Dark Blue',
+    [ETheme.DarkRed]: 'Dark Red',
   },
   today: 'Today',
   yesterday: 'Yesterday',
