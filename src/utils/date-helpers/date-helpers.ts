@@ -1,12 +1,19 @@
 import { groupBy } from 'lodash';
 import { TNewsItem, TDic } from '@types';
 import { capitalizeFirstLetter } from '@utils';
+import { ONE_MINUTE_IN_MILLISECONDS } from '@constants';
 
 export const formatTime = (dateRaw: number) => {
-  const rawDate = new Date(dateRaw);
-  const hours = rawDate.getHours().toString().padStart(2, '0');
-  const minutes = rawDate.getMinutes().toString().padStart(2, '0');
+  const date = new Date(dateRaw);
+  const hours = date.getHours().toString().padStart(2, '0');
+  const minutes = date.getMinutes().toString().padStart(2, '0');
   return `${hours}:${minutes}`;
+};
+
+export const isWithinLastHour = (dateRaw: number) => {
+  const someDate = new Date(dateRaw);
+  const now = new Date();
+  return now.getTime() - someDate.getTime() < 60 * ONE_MINUTE_IN_MILLISECONDS;
 };
 
 export const isToday = (someDate: Date) => {

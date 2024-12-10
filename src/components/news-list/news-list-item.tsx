@@ -1,7 +1,7 @@
 import { isEmpty } from 'lodash';
 import { selectSettingsData } from '@store/selectors';
 import { useLocalization, useAppSelector } from '@hooks';
-import { formatTime } from '@utils';
+import { formatTime, isWithinLastHour, getClassName } from '@utils';
 import { IconButton } from '@components/ui';
 import { TNewsItem, EControlSize } from '@types';
 import { EThumbnail } from '@constants';
@@ -22,35 +22,40 @@ function NewsListItem(props: INewsListItemProps) {
   const dic = useLocalization();
   const { thumbnail } = useAppSelector(selectSettingsData);
 
-  const handleBookmarkClick = () => {
+  const handleBookmarkClick = () =>
     bookmarked ? onRemoveBookmark(data) : onAddBookmark(data);
-  };
 
   const handleShareClick = () => {
     navigator.share({ title, url });
   };
 
+  const itemTime = formatTime(created);
   const bookmarkIcon = bookmarked ? 'bookmark' : 'bookmark-empty';
   const bookmarkTitle = bookmarked ? dic.removeBookmark : dic.addBookmark;
 
   const isShareSupported = !!navigator.share;
   const shouldShowThumbnail =
     thumbnail === EThumbnail.On && !isEmpty(thumbnailUrl);
+  const isFresh = isWithinLastHour(created);
 
   return (
     <li className="news-list-item">
       {shouldShowThumbnail && (
         <a href={url} target="_blank" rel="noreferrer" className="d-block mb-1">
           <img
-            src={thumbnailUrl}
+            src={thumbnailUrl ?? ''}
             alt={title}
             className="w-100 rounded"
             loading="lazy"
           />
         </a>
       )}
-      <div className="d-flex gap-2">
-        <span className="color-secondary">{formatTime(created)}</span>
+      <div
+        className={getClassName('d-flex gap-2', {
+          'font-weight-semibold': isFresh,
+        })}
+      >
+        <span className="color-secondary">{itemTime}</span>
         <a
           href={url}
           target="_blank"

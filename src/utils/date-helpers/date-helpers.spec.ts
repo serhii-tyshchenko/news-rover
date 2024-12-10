@@ -7,7 +7,6 @@ import {
   isThisWeek,
   isThisYear,
   groupDataByDay,
-  getDateLabel,
 } from './date-helpers';
 
 describe('(Function) formatTime', () => {
