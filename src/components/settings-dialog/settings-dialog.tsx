@@ -8,13 +8,14 @@ import {
 import { doUpdateSettings } from '@store/actions';
 import { selectSettingsData } from '@store/selectors';
 import {
-  THEMES,
-  LANGUAGES,
+  ETheme,
+  ELanguage,
   APP_VERSION,
   AUTHOR_NAME,
   AUTHOR_SITE,
   EAnimation,
   EThumbnail,
+  EAutoRefresh,
 } from '@constants';
 import { EControlSize } from '@types';
 
@@ -31,11 +32,8 @@ function SettingsDialog(props: ISettingsDialogProps) {
   const isAnimationEnabled = useAnimation();
 
   const dispatch = useAppDispatch();
-  const {
-    locale,
-    theme,
-    thumbnail: showThumbnail,
-  } = useAppSelector(selectSettingsData);
+  const { locale, theme, thumbnail, autorefresh } =
+    useAppSelector(selectSettingsData);
 
   const handleChange = (e: { target: { name: string; value: string } }) => {
     const { name, value } = e.target;
@@ -44,18 +42,18 @@ function SettingsDialog(props: ISettingsDialogProps) {
 
   return (
     <Dialog opened={opened} onClose={onClose} title={dic.settings}>
-      <div className="flex-grow-1">
-        <div className="d-flex align-items-center justify-content-between mb-3">
+      <div className="flex-grow-1 d-flex flex-direction-column gap-4">
+        <div className="d-flex align-items-center justify-content-between">
           <span>{dic.theme}</span>
           <Select
             name="theme"
             value={theme}
             onChange={handleChange}
-            options={prepareOptions(THEMES, dic.themes)}
+            options={prepareOptions(ETheme, dic.themes)}
             title={dic.changeLanguage}
           />
         </div>
-        <div className="d-flex align-items-center justify-content-between mb-4">
+        <div className="d-flex align-items-center justify-content-between">
           <span>{dic.animation}</span>
           <Toggle
             name="animation"
@@ -66,13 +64,13 @@ function SettingsDialog(props: ISettingsDialogProps) {
             size={EControlSize.Small}
           />
         </div>
-        <div className="d-flex align-items-center justify-content-between mb-3">
+        <div className="d-flex align-items-center justify-content-between">
           <span>{dic.language}</span>
           <Select
             name="locale"
             value={locale}
             onChange={handleChange}
-            options={prepareOptions(LANGUAGES, dic.languages)}
+            options={prepareOptions(ELanguage, dic.languages)}
             title={dic.changeLanguage}
           />
         </div>
@@ -81,9 +79,24 @@ function SettingsDialog(props: ISettingsDialogProps) {
           <Toggle
             name="thumbnail"
             value={
-              showThumbnail === EThumbnail.Off ? EThumbnail.On : EThumbnail.Off
+              thumbnail === EThumbnail.Off ? EThumbnail.On : EThumbnail.Off
             }
-            toggled={showThumbnail === EThumbnail.On}
+            toggled={thumbnail === EThumbnail.On}
+            onChange={handleChange}
+            animated={isAnimationEnabled}
+            size={EControlSize.Small}
+          />
+        </div>
+        <div className="d-flex align-items-center justify-content-between">
+          <span>{dic.autorefresh}</span>
+          <Toggle
+            name="autorefresh"
+            value={
+              autorefresh === EAutoRefresh.Off
+                ? EAutoRefresh.On
+                : EAutoRefresh.Off
+            }
+            toggled={autorefresh === EAutoRefresh.On}
             onChange={handleChange}
             animated={isAnimationEnabled}
             size={EControlSize.Small}

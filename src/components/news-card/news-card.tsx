@@ -1,7 +1,13 @@
 import { useCallback, useMemo, useState } from 'react';
 import { isEmpty } from 'lodash';
 import { v4 as uuidv4 } from 'uuid';
-import { useAppDispatch, useLocalization, useAnimation } from '@hooks';
+import {
+  useAppDispatch,
+  useAppSelector,
+  useLocalization,
+  useAnimation,
+} from '@hooks';
+import { selectSettingsData } from '@store/selectors';
 import { Card } from '@components/ui';
 import { Skeleton, NewsList } from '@components';
 import { TNewsItem } from '@types';
@@ -11,17 +17,16 @@ import {
   doRemoveBookmark,
   doRemoveProvider,
 } from '@store/actions';
-import { DEFAULT_POSTS_LIMIT } from '@constants';
+import { DEFAULT_POSTS_LIMIT, EAutoRefresh } from '@constants';
 
 import { useNewsProviderData } from './news-card.queries';
 import { getConfig } from './news-card.utils';
 import { INewsCardProps } from './news-card.types';
 
-import './news-card.styles.scss';
-
 function NewsCard({ provider }: INewsCardProps) {
   const dic = useLocalization();
   const dispatch = useAppDispatch();
+  const { autorefresh } = useAppSelector(selectSettingsData);
   const isAnimationEnabled = useAnimation();
 
   const [limit, setLimit] = useState(DEFAULT_POSTS_LIMIT);
@@ -32,7 +37,7 @@ function NewsCard({ provider }: INewsCardProps) {
     error,
     refetch,
     isFetching,
-  } = useNewsProviderData(provider.url, limit);
+  } = useNewsProviderData(provider.url, limit, autorefresh === EAutoRefresh.On);
 
   const handleAddBookmark = (item: TNewsItem) => {
     dispatch(
@@ -72,7 +77,7 @@ function NewsCard({ provider }: INewsCardProps) {
   const shouldShowLoadMoreButton =
     !isEmpty(providerData?.data) && limit <= (providerData?.count ?? 0);
 
-  const shouldShowSkeleton = isLoading;
+  const shouldShowSkeleton = isDataLoading;
   const shouldShowError = !isDataLoading && !isEmpty(error);
   const shouldShowEmptyState = !isDataLoading && isEmpty(providerData?.data);
   const shouldShowContent =
