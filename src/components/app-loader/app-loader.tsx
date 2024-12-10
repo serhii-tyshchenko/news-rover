@@ -1,15 +1,14 @@
-import { useLocalization, useAnimation } from '@hooks';
+import { useAnimation } from '@hooks';
 import logo from '~assets/images/logo96.png';
 
 function AppLoader() {
-  const dic = useLocalization();
   const isAnimationEnabled = useAnimation();
 
   return (
-    <div className="d-flex align-items-center justify-content-center h-100">
+    <div className="align-content-center text-center h-100">
       <img
         src={logo}
-        alt={dic.loading}
+        alt="Logo"
         className={`${isAnimationEnabled ? 'animation-pulse' : ''}`}
       />
     </div>
