@@ -1,11 +1,5 @@
 import { Action } from 'redux';
-import {
-  EAnimation,
-  EAutoRefresh,
-  EThumbnail,
-  ETheme,
-  ELanguage,
-} from '@constants';
+import { ETheme, ELanguage } from '@constants';
 
 export type TProvider = {
   id: string;
@@ -50,11 +44,11 @@ export type TBookmark = {
 };
 
 export type TSettings = {
-  theme: string;
-  locale: string;
-  animation: EAnimation;
-  thumbnail: EThumbnail;
-  autorefresh: EAutoRefresh;
+  theme: ETheme;
+  locale: ELanguage;
+  animation: boolean;
+  thumbnail: boolean;
+  autorefresh: boolean;
 };
 
 export interface IAction extends Action {

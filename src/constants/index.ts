@@ -20,17 +20,6 @@ export enum ELanguage {
   Uk = 'uk',
 }
 
-export enum EAnimation {
-  On = 'on',
-  Off = 'off',
-  System = 'system',
-}
-
-export enum EThumbnail {
-  On = 'on',
-  Off = 'off',
-}
-
 export enum ERoute {
   Home = '/',
   Bookmarks = '/bookmarks',
@@ -44,11 +33,6 @@ export enum EIcon {
   Moon = 'moon',
   Sun = 'sun',
   Settings = 'cog',
-}
-
-export enum EAutoRefresh {
-  On = 'on',
-  Off = 'off',
 }
 
 export const portalRoot = document.getElementById('portal-root') as HTMLElement;

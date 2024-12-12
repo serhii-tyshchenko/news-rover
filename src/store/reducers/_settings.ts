@@ -1,19 +1,14 @@
 import { IAction, TSettings } from '@types';
-import {
-  ETheme,
-  ELanguage,
-  EAnimation,
-  EThumbnail,
-  EAutoRefresh,
-} from '@constants';
+import { ETheme } from '@constants';
 import { UPDATE_SETTINGS } from '@store/action-types';
+import { shouldReduceMotion, getSystemLocale } from '@utils';
 
 const initialState: TSettings = {
-  theme: ETheme.Light,
-  locale: ELanguage.En,
-  animation: EAnimation.On,
-  thumbnail: EThumbnail.On,
-  autorefresh: EAutoRefresh.Off,
+  theme: ETheme.System,
+  locale: getSystemLocale(),
+  animation: !shouldReduceMotion(),
+  thumbnail: false,
+  autorefresh: false,
 };
 
 export const settings = (state = initialState, action: IAction) => {

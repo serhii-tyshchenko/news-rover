@@ -4,7 +4,6 @@ import { useLocalization, useAppSelector } from '@hooks';
 import { formatTime, isWithinLastHour, getClassName } from '@utils';
 import { IconButton } from '@components/ui';
 import { TNewsItem, EControlSize } from '@types';
-import { EThumbnail } from '@constants';
 
 import './news-list-item.styles.scss';
 
@@ -34,8 +33,7 @@ function NewsListItem(props: INewsListItemProps) {
   const bookmarkTitle = bookmarked ? dic.removeBookmark : dic.addBookmark;
 
   const isShareSupported = !!navigator.share;
-  const shouldShowThumbnail =
-    thumbnail === EThumbnail.On && !isEmpty(thumbnailUrl);
+  const shouldShowThumbnail = thumbnail && !isEmpty(thumbnailUrl);
   const isFresh = isWithinLastHour(created);
 
   return (

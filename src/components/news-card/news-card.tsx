@@ -17,7 +17,7 @@ import {
   doRemoveBookmark,
   doRemoveProvider,
 } from '@store/actions';
-import { DEFAULT_POSTS_LIMIT, EAutoRefresh } from '@constants';
+import { DEFAULT_POSTS_LIMIT } from '@constants';
 
 import { useNewsProviderData } from './news-card.queries';
 import { getConfig } from './news-card.utils';
@@ -37,7 +37,7 @@ function NewsCard({ provider }: INewsCardProps) {
     error,
     refetch,
     isFetching,
-  } = useNewsProviderData(provider.url, limit, autorefresh === EAutoRefresh.On);
+  } = useNewsProviderData(provider.url, limit, autorefresh);
 
   const handleAddBookmark = (item: TNewsItem) => {
     dispatch(
