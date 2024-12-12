@@ -13,11 +13,10 @@ import {
   APP_VERSION,
   AUTHOR_NAME,
   AUTHOR_SITE,
-  EAnimation,
-  EThumbnail,
-  EAutoRefresh,
 } from '@constants';
 import { EControlSize } from '@types';
+
+import { SettingsGroup } from './components';
 
 import { prepareOptions } from './settings-dialog.utils';
 
@@ -25,6 +24,14 @@ interface ISettingsDialogProps {
   opened: boolean;
   onClose: () => void;
 }
+
+type TChangeEvent = {
+  target: {
+    name: string;
+    value: string;
+    checked?: boolean;
+  };
+};
 
 function SettingsDialog(props: ISettingsDialogProps) {
   const { opened, onClose } = props;
@@ -35,37 +42,33 @@ function SettingsDialog(props: ISettingsDialogProps) {
   const { locale, theme, thumbnail, autorefresh } =
     useAppSelector(selectSettingsData);
 
-  const handleChange = (e: { target: { name: string; value: string } }) => {
-    const { name, value } = e.target;
-    dispatch(doUpdateSettings({ [name]: value }));
+  const handleChange = ({ target: { name, value, checked } }: TChangeEvent) => {
+    const newValue = checked ? (value ? value : checked) : value;
+    dispatch(doUpdateSettings({ [name]: newValue }));
   };
 
   return (
     <Dialog opened={opened} onClose={onClose} title={dic.settings}>
-      <div className="flex-grow-1 d-flex flex-direction-column gap-4">
-        <div className="d-flex align-items-center justify-content-between">
-          <span>{dic.theme}</span>
+      <div className="d-flex flex-direction-column mb-4">
+        <SettingsGroup label={dic.theme}>
           <Select
             name="theme"
             value={theme}
             onChange={handleChange}
             options={prepareOptions(ETheme, dic.themes)}
-            title={dic.changeLanguage}
+            title={dic.changeTheme}
           />
-        </div>
-        <div className="d-flex align-items-center justify-content-between">
-          <span>{dic.animation}</span>
+        </SettingsGroup>
+        <SettingsGroup label={dic.animation}>
           <Toggle
             name="animation"
-            value={isAnimationEnabled ? EAnimation.Off : EAnimation.On}
             toggled={isAnimationEnabled}
             onChange={handleChange}
             animated={isAnimationEnabled}
             size={EControlSize.Small}
           />
-        </div>
-        <div className="d-flex align-items-center justify-content-between">
-          <span>{dic.language}</span>
+        </SettingsGroup>
+        <SettingsGroup label={dic.language}>
           <Select
             name="locale"
             value={locale}
@@ -73,35 +76,25 @@ function SettingsDialog(props: ISettingsDialogProps) {
             options={prepareOptions(ELanguage, dic.languages)}
             title={dic.changeLanguage}
           />
-        </div>
-        <div className="d-flex align-items-center justify-content-between">
-          <span>{dic.thumbnail}</span>
+        </SettingsGroup>
+        <SettingsGroup label={dic.thumbnail}>
           <Toggle
             name="thumbnail"
-            value={
-              thumbnail === EThumbnail.Off ? EThumbnail.On : EThumbnail.Off
-            }
-            toggled={thumbnail === EThumbnail.On}
+            toggled={thumbnail}
             onChange={handleChange}
             animated={isAnimationEnabled}
             size={EControlSize.Small}
           />
-        </div>
-        <div className="d-flex align-items-center justify-content-between">
-          <span>{dic.autorefresh}</span>
+        </SettingsGroup>
+        <SettingsGroup label={dic.autorefresh}>
           <Toggle
             name="autorefresh"
-            value={
-              autorefresh === EAutoRefresh.Off
-                ? EAutoRefresh.On
-                : EAutoRefresh.Off
-            }
-            toggled={autorefresh === EAutoRefresh.On}
+            toggled={autorefresh}
             onChange={handleChange}
             animated={isAnimationEnabled}
             size={EControlSize.Small}
           />
-        </div>
+        </SettingsGroup>
       </div>
       <footer className="d-flex justify-content-between">
         <a href={AUTHOR_SITE} className="small" target="_blank">
