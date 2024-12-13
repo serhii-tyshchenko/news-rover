@@ -11,7 +11,6 @@ import {
   settings,
   providersReducer as providers,
   bookmarksReducer as bookmarks,
-  newsReducer as news,
 } from './reducers';
 
 declare global {
@@ -24,7 +23,6 @@ export const rootReducer = combineReducers({
   settings,
   providers,
   bookmarks,
-  news,
 });
 
 const persistedState = loadState();
@@ -32,7 +30,7 @@ const composeTools = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(
   rootReducer,
   persistedState,
-  composeTools(applyMiddleware(thunk))
+  composeTools(applyMiddleware(thunk)),
 );
 
 store.subscribe(() => {
