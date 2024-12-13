@@ -11,8 +11,6 @@ export type TProvider = {
   category: string;
 };
 
-export type TProviders = Array<TProvider>;
-
 export type TNewsItem = {
   title: string;
   link: string;
@@ -81,6 +79,7 @@ export type TDic = {
   languages: {
     [ELanguage.En]: string;
     [ELanguage.Uk]: string;
+    [ELanguage.Ge]: string;
   };
   loadMore: string;
   noBookmarks: string;

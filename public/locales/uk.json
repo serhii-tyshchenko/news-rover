@@ -1,0 +1,50 @@
+{
+  "add": "Додати",
+  "addBookmark": "Додати закладку",
+  "animation": "Анімація",
+  "autorefresh": "Автооновлення",
+  "bookmarks": "Закладки",
+  "category": {
+    "blogs": "Блоги",
+    "business": "Бізнес",
+    "it": "Ай Ті",
+    "military": "Війна",
+    "news": "Новини",
+    "science": "Наука",
+    "softwareDevelopment": "Ай Ті",
+    "space": "Космос",
+    "technology": "Технології"
+  },
+  "changeLanguage": "Змінити мову",
+  "changeTheme": "Змінити тему",
+  "genericError": "Щось пішло не так. Спробуйте пізніше.",
+  "hideProvider": "Приховати провайдера",
+  "home": "Головна",
+  "language": "Мова",
+  "languages": {
+    "en": "Англійська",
+    "uk": "Українська",
+    "de": "Німецька"
+  },
+  "loadMore": "Завантажити ще",
+  "noBookmarks": "Немає закладок",
+  "noNews": "Немає новин",
+  "noProviders": "Немає провайдерів.",
+  "providers": "Провайдери",
+  "removeBookmark": "Видалити закладку",
+  "refresh": "Оновити",
+  "settings": "Налаштування",
+  "share": "Поділитися",
+  "showProvider": "Показати провайдера",
+  "theme": "Тема",
+  "themes": {
+    "system": "Системна",
+    "light": "Світла",
+    "dark": "Темна",
+    "dark-blue": "Темно-синя",
+    "dark-red": "Темно-червона"
+  },
+  "thumbnail": "Мініатюра",
+  "today": "Сьогодні",
+  "yesterday": "Вчора"
+}

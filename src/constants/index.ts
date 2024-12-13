@@ -18,6 +18,7 @@ export enum ETheme {
 export enum ELanguage {
   En = 'en',
   Uk = 'uk',
+  Ge = 'de',
 }
 
 export enum ERoute {

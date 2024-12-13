@@ -8,19 +8,11 @@ import { useAppSelector, useAppDispatch, useLocalization } from '@hooks';
 import { AppLoader } from '@components';
 import { IconButton, Card, CardList } from '@components/ui';
 import { BaseLayout } from '@layout';
-import { TProvider, TProviders } from '@types';
 
-const groupProvidersByCategory = (providers: TProviders = []) =>
-  providers.reduce(
-    (acc, provider) => {
-      if (!acc[provider.category]) {
-        acc[provider.category] = [];
-      }
-      acc[provider.category].push(provider);
-      return acc;
-    },
-    {} as { [key: string]: TProvider[] },
-  );
+import {
+  groupProvidersByCategory,
+  getCategoryTitle,
+} from './providers-page.utils';
 
 function ProvidersPage() {
   const dispatch = useAppDispatch();
@@ -29,17 +21,6 @@ function ProvidersPage() {
   const addedProviders = useAppSelector(selectAddedProviders);
   const isLoading = useAppSelector(selectProvidersLoading);
   const groupedProviders = groupProvidersByCategory(availableProviders);
-
-  const categoryToNameMap: { [key: string]: string } = {
-    news: dic.category.news,
-    military: dic.category.military,
-    tech: dic.category.technology,
-    software_development: dic.category.softwareDevelopment,
-    space: dic.category.space,
-    science: dic.category.science,
-    business: dic.category.business,
-    blogs: dic.category.blogs,
-  };
 
   const handleClick = (providerId: string) =>
     addedProviders.includes(providerId)
@@ -55,7 +36,7 @@ function ProvidersPage() {
       {!isLoading && groupedProviders && (
         <CardList>
           {Object.keys(groupedProviders).map((category) => (
-            <Card key={category} title={categoryToNameMap[category]}>
+            <Card key={category} title={getCategoryTitle(category, dic)}>
               <ul className="overflow-y-auto pr-2">
                 {groupedProviders[category].map((provider) => (
                   <li key={provider.id} className="d-flex mb-4">
