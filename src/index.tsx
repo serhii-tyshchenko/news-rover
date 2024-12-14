@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { QueryClient, QueryClientProvider } from 'react-query';
+import { LocalizationProvider } from '@contexts';
 
 import store from './store';
 
@@ -19,9 +20,11 @@ root.render(
   <Provider store={store}>
     <React.StrictMode>
       <QueryClientProvider client={queryClient}>
-        <BrowserRouter>
-          <App />
-        </BrowserRouter>
+        <LocalizationProvider>
+          <BrowserRouter>
+            <App />
+          </BrowserRouter>
+        </LocalizationProvider>
       </QueryClientProvider>
     </React.StrictMode>
   </Provider>,
