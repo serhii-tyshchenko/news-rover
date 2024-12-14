@@ -26,6 +26,7 @@
       "@store": ["store/"],
       "@store/*": ["store/*"],
       "@constants": ["constants/"],
+      "@contexts": ["contexts/"],
       "@utils": ["utils/"],
       "@hooks": ["hooks/"],
       "@types": ["types/"],
