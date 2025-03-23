@@ -1,11 +1,7 @@
-import {
-  selectProvidersData,
-  selectAddedProviders,
-  selectProvidersLoading,
-} from '@store/selectors';
+import { isEmpty } from 'lodash';
+import { selectProvidersData, selectAddedProviders } from '@store/selectors';
 import { doAddProvider, doRemoveProvider } from '@store/actions';
 import { useAppSelector, useAppDispatch, useLocalization } from '@hooks';
-import { AppLoader } from '@components';
 import { IconButton, Card, CardList } from '@components/ui';
 import { BaseLayout } from '@layout';
 
@@ -19,7 +15,6 @@ function ProvidersPage() {
   const dic = useLocalization();
   const availableProviders = useAppSelector(selectProvidersData);
   const addedProviders = useAppSelector(selectAddedProviders);
-  const isLoading = useAppSelector(selectProvidersLoading);
   const groupedProviders = groupProvidersByCategory(availableProviders);
 
   const handleClick = (providerId: string) =>
@@ -27,13 +22,14 @@ function ProvidersPage() {
       ? dispatch(doRemoveProvider(providerId))
       : dispatch(doAddProvider(providerId));
 
-  if (isLoading) {
-    return <AppLoader />;
-  }
-
   return (
     <BaseLayout>
-      {!isLoading && groupedProviders && (
+      {isEmpty(groupedProviders) && (
+        <div className="d-flex align-items-center justify-content-center h-100 p-2 text-center">
+          {dic.noProviders}
+        </div>
+      )}
+      {!isEmpty(groupedProviders) && (
         <CardList>
           {Object.keys(groupedProviders).map((category) => (
             <Card key={category} title={getCategoryTitle(category, dic)}>

@@ -16,6 +16,7 @@ interface IProps {
   disabled?: boolean;
   testId?: string;
   animated?: boolean;
+  label: string;
 }
 
 function Toggle(props: IProps) {
@@ -30,6 +31,7 @@ function Toggle(props: IProps) {
     disabled = false,
     testId = NAME_SPACE,
     animated = false,
+    label = '',
   } = props;
 
   const componentClassName = getClassName(
@@ -52,6 +54,7 @@ function Toggle(props: IProps) {
       checked={toggled}
       value={value}
       data-testid={testId}
+      aria-label={label}
     />
   );
 }
