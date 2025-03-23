@@ -78,10 +78,11 @@ function NewsCard({ provider }: INewsCardProps) {
     !isEmpty(providerData?.data) && limit <= (providerData?.count ?? 0);
 
   const shouldShowSkeleton = isDataLoading;
-  const shouldShowError = !isDataLoading && !isEmpty(error);
-  const shouldShowEmptyState = !isDataLoading && isEmpty(providerData?.data);
+  const shouldShowError = !isDataLoading && !!error;
+  const shouldShowEmptyState =
+    !isDataLoading && !error && isEmpty(providerData?.data);
   const shouldShowContent =
-    !shouldShowSkeleton && !shouldShowError && !shouldShowEmptyState;
+    !shouldShowSkeleton && !error && !isEmpty(providerData?.data);
 
   const groupedData = useMemo(
     () => groupDataByDay(providerData?.data ?? []),
