@@ -66,6 +66,7 @@ function SettingsDialog(props: ISettingsDialogProps) {
             onChange={handleChange}
             animated={isAnimationEnabled}
             size={EControlSize.Small}
+            label={dic.animation}
           />
         </SettingsGroup>
         <SettingsGroup label={dic.language}>
@@ -84,6 +85,7 @@ function SettingsDialog(props: ISettingsDialogProps) {
             onChange={handleChange}
             animated={isAnimationEnabled}
             size={EControlSize.Small}
+            label={dic.thumbnail}
           />
         </SettingsGroup>
         <SettingsGroup label={dic.autorefresh}>
@@ -93,6 +95,7 @@ function SettingsDialog(props: ISettingsDialogProps) {
             onChange={handleChange}
             animated={isAnimationEnabled}
             size={EControlSize.Small}
+            label={dic.autorefresh}
           />
         </SettingsGroup>
       </div>
