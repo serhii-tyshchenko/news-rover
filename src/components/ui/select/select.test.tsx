@@ -75,8 +75,9 @@ describe('(Component) Select', () => {
 
   it('should have the correct label when passed as a prop', () => {
     const label = 'My select';
+    const name = 'my-select';
     const { getByLabelText } = render(
-      <Select label={label} options={options} />,
+      <Select label={label} options={options} name={name} />,
     );
     const select = getByLabelText(label);
     expect(select).toBeInTheDocument();

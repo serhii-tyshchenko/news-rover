@@ -29,7 +29,7 @@ interface IProps {
 
 function Select(props: IProps) {
   const {
-    id = '',
+    id,
     value = '',
     onChange = () => {},
     options = [],
