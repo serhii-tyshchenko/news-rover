@@ -7,6 +7,7 @@ const NAME_SPACE = 'select';
 
 interface IProps {
   className?: string;
+  id?: string;
   onChange?: (e: React.ChangeEvent<HTMLSelectElement>) => void;
   value?: string | number;
   title?: string;
@@ -28,6 +29,7 @@ interface IProps {
 
 function Select(props: IProps) {
   const {
+    id = '',
     value = '',
     onChange = () => {},
     options = [],
@@ -54,13 +56,13 @@ function Select(props: IProps) {
   return (
     <>
       {label && (
-        <label htmlFor={name} className={`${NAME_SPACE}__label`}>
+        <label htmlFor={id ?? name} className={`${NAME_SPACE}__label`}>
           {label}
         </label>
       )}
       <select
         name={name}
-        id={name}
+        id={id ?? name}
         onChange={onChange}
         value={value}
         required={required}

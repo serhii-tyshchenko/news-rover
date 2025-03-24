@@ -26,7 +26,8 @@ import { INewsCardProps } from './news-card.types';
 function NewsCard({ provider }: INewsCardProps) {
   const dic = useLocalization();
   const dispatch = useAppDispatch();
-  const { autorefresh } = useAppSelector(selectSettingsData);
+  const { autorefresh, autorefreshInterval } =
+    useAppSelector(selectSettingsData);
   const isAnimationEnabled = useAnimation();
 
   const [limit, setLimit] = useState(DEFAULT_POSTS_LIMIT);
@@ -37,7 +38,12 @@ function NewsCard({ provider }: INewsCardProps) {
     error,
     refetch,
     isFetching,
-  } = useNewsProviderData(provider.url, limit, autorefresh);
+  } = useNewsProviderData({
+    url: provider.url,
+    limit,
+    autorefresh,
+    autorefreshInterval,
+  });
 
   const handleAddBookmark = (item: TNewsItem) => {
     dispatch(

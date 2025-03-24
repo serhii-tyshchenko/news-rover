@@ -3,6 +3,7 @@
   "addBookmark": "Lesezeichen hinzufügen",
   "animation": "Animation",
   "autorefresh": "Automatische Aktualisierung",
+  "autorefreshInterval": "Automatische Aktualisierung Intervall, min",
   "bookmarks": "Lesezeichen",
   "category": {
     "blogs": "Blogs",
@@ -15,6 +16,7 @@
     "softwareDevelopment": "IT",
     "space": "Weltraum"
   },
+  "changeAutorefreshInterval": "Automatische Aktualisierung Intervall ändern",
   "changeLanguage": "Sprache ändern",
   "changeTheme": "Thema ändern",
   "genericError": "Etwas ist schief gelaufen. Versuchen Sie es später noch einmal.",

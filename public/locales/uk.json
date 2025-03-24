@@ -3,6 +3,7 @@
   "addBookmark": "Додати закладку",
   "animation": "Анімація",
   "autorefresh": "Автооновлення",
+  "autorefreshInterval": "Інтервал автооновлення, хв",
   "bookmarks": "Закладки",
   "category": {
     "blogs": "Блоги",
@@ -15,6 +16,7 @@
     "space": "Космос",
     "technology": "Технології"
   },
+  "changeAutorefreshInterval": "Змінити інтервал автооновлення",
   "changeLanguage": "Змінити мову",
   "changeTheme": "Змінити тему",
   "genericError": "Щось пішло не так. Спробуйте пізніше.",

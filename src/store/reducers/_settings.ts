@@ -1,5 +1,5 @@
 import { IAction, TSettings } from '@types';
-import { ETheme } from '@constants';
+import { ETheme, DEFAULT_AUTOREFERSH_INTERVAL } from '@constants';
 import { UPDATE_SETTINGS } from '@store/action-types';
 import { shouldReduceMotion, getSystemLocale } from '@utils';
 
@@ -9,6 +9,7 @@ const initialState: TSettings = {
   animation: !shouldReduceMotion(),
   thumbnail: false,
   autorefresh: false,
+  autorefreshInterval: DEFAULT_AUTOREFERSH_INTERVAL,
 };
 
 export const settings = (state = initialState, action: IAction) => {
