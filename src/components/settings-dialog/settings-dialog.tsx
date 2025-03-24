@@ -13,6 +13,8 @@ import {
   APP_VERSION,
   AUTHOR_NAME,
   AUTHOR_SITE,
+  AUTOREFRESH_INTERVAL_OPTIONS,
+  DEFAULT_AUTOREFERSH_INTERVAL,
 } from '@constants';
 import { EControlSize } from '@types';
 
@@ -39,12 +41,19 @@ function SettingsDialog(props: ISettingsDialogProps) {
   const isAnimationEnabled = useAnimation();
 
   const dispatch = useAppDispatch();
-  const { locale, theme, thumbnail, autorefresh } =
+  const { locale, theme, thumbnail, autorefresh, autorefreshInterval } =
     useAppSelector(selectSettingsData);
 
-  const handleChange = ({ target: { name, value, checked } }: TChangeEvent) => {
-    const newValue = checked ? (value ? value : checked) : value;
-    dispatch(doUpdateSettings({ [name]: newValue }));
+  const handleStringChange = ({ target: { name, value } }: TChangeEvent) => {
+    dispatch(doUpdateSettings({ [name]: value }));
+  };
+
+  const handleNumberChange = ({ target: { name, value } }: TChangeEvent) => {
+    dispatch(doUpdateSettings({ [name]: Number(value) }));
+  };
+
+  const handleBooleanChange = ({ target: { name, checked } }: TChangeEvent) => {
+    dispatch(doUpdateSettings({ [name]: checked }));
   };
 
   return (
@@ -54,7 +63,7 @@ function SettingsDialog(props: ISettingsDialogProps) {
           <Select
             name="theme"
             value={theme}
-            onChange={handleChange}
+            onChange={handleStringChange}
             options={prepareOptions(ETheme, dic.themes)}
             title={dic.changeTheme}
           />
@@ -63,7 +72,7 @@ function SettingsDialog(props: ISettingsDialogProps) {
           <Toggle
             name="animation"
             toggled={isAnimationEnabled}
-            onChange={handleChange}
+            onChange={handleBooleanChange}
             animated={isAnimationEnabled}
             size={EControlSize.Small}
             label={dic.animation}
@@ -73,7 +82,7 @@ function SettingsDialog(props: ISettingsDialogProps) {
           <Select
             name="locale"
             value={locale}
-            onChange={handleChange}
+            onChange={handleStringChange}
             options={prepareOptions(ELanguage, dic.languages)}
             title={dic.changeLanguage}
           />
@@ -82,7 +91,7 @@ function SettingsDialog(props: ISettingsDialogProps) {
           <Toggle
             name="thumbnail"
             toggled={thumbnail}
-            onChange={handleChange}
+            onChange={handleBooleanChange}
             animated={isAnimationEnabled}
             size={EControlSize.Small}
             label={dic.thumbnail}
@@ -92,12 +101,23 @@ function SettingsDialog(props: ISettingsDialogProps) {
           <Toggle
             name="autorefresh"
             toggled={autorefresh}
-            onChange={handleChange}
+            onChange={handleBooleanChange}
             animated={isAnimationEnabled}
             size={EControlSize.Small}
             label={dic.autorefresh}
           />
         </SettingsGroup>
+        {autorefresh && (
+          <SettingsGroup label={dic.autorefreshInterval}>
+            <Select
+              name="autorefreshInterval"
+              value={autorefreshInterval ?? DEFAULT_AUTOREFERSH_INTERVAL}
+              onChange={handleNumberChange}
+              options={AUTOREFRESH_INTERVAL_OPTIONS}
+              title={dic.changeAutorefreshInterval}
+            />
+          </SettingsGroup>
+        )}
       </div>
       <footer className="d-flex justify-content-between">
         <a href={AUTHOR_SITE} className="small" target="_blank">

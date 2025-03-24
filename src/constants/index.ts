@@ -42,8 +42,18 @@ export const ONE_SECOND_IN_MILLISECONDS = 1000;
 
 export const ONE_MINUTE_IN_MILLISECONDS = 60 * ONE_SECOND_IN_MILLISECONDS;
 
-export const AUTOREFRESH_INTERVAL =
-  import.meta.env.VITE_AUTOREFRESH_INTERVAL_MINUTES *
-    ONE_MINUTE_IN_MILLISECONDS || 10 * ONE_MINUTE_IN_MILLISECONDS;
+const autorefreshIntervals =
+  import.meta.env.VITE_AUTOREFRESH_INTERVALS_MINUTES?.split(',').map(
+    Number,
+  ) ?? [5, 10, 15, 30, 60];
+
+export const AUTOREFRESH_INTERVAL_OPTIONS = autorefreshIntervals.map(
+  (value: number) => ({
+    value,
+    label: value.toString(),
+  }),
+);
+
+export const DEFAULT_AUTOREFERSH_INTERVAL = autorefreshIntervals[0];
 
 export const noop = () => {};

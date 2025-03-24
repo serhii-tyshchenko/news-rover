@@ -3,6 +3,7 @@
   "addBookmark": "Add bookmark",
   "animation": "Animation",
   "autorefresh": "Autorefresh",
+  "autorefreshInterval": "Autorefresh interval, min",
   "bookmarks": "Bookmarks",
   "category": {
     "blogs": "Blogs",
@@ -15,6 +16,7 @@
     "softwareDevelopment": "IT",
     "space": "Space"
   },
+  "changeAutorefreshInterval": "Change autorefresh interval",
   "changeLanguage": "Change language",
   "changeTheme": "Change theme",
   "genericError": "Something went wrong. Try again later.",

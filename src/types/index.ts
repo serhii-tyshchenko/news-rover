@@ -47,6 +47,7 @@ export type TSettings = {
   animation: boolean;
   thumbnail: boolean;
   autorefresh: boolean;
+  autorefreshInterval: number;
 };
 
 export interface IAction extends Action {
@@ -58,6 +59,7 @@ export type TDic = {
   addBookmark: string;
   animation: string;
   autorefresh: string;
+  autorefreshInterval: string;
   bookmarks: string;
   category: {
     blogs: string;
@@ -70,6 +72,7 @@ export type TDic = {
     softwareDevelopment: string;
     space: string;
   };
+  changeAutorefreshInterval: string;
   changeLanguage: string;
   changeTheme: string;
   genericError: string;
