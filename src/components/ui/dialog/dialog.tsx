@@ -1,4 +1,3 @@
-import { memo } from 'react';
 import { createPortal } from 'react-dom';
 
 import { getClassName } from '@utils';
@@ -63,4 +62,4 @@ function Dialog(props: IProps) {
   );
 }
 
-export default memo(Dialog);
+export default Dialog;

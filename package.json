@@ -23,7 +23,9 @@
     "preview": "vite preview",
     "test": "vitest run",
     "test:coverage": "vitest run --coverage",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "storybook": "storybook dev -p 6006",
+    "storybook:build": "storybook build"
   },
   "dependencies": {
     "@types/node": "^22.7.6",
@@ -48,6 +50,10 @@
     "web-vitals": "^2.1.4"
   },
   "devDependencies": {
+    "@storybook/addon-essentials": "^8.6.9",
+    "@storybook/blocks": "^8.6.9",
+    "@storybook/react": "^8.6.9",
+    "@storybook/react-vite": "^8.6.9",
     "@testing-library/jest-dom": "^6.6.2",
     "@testing-library/react": "^16.0.1",
     "@types/lodash": "^4.14.200",
@@ -67,6 +73,7 @@
     "jsdom": "^22.1.0",
     "lint-staged": "^15.1.0",
     "prettier": "^3.2.5",
+    "storybook": "^8.6.9",
     "vitest": "^2.1.3"
   }
 }
