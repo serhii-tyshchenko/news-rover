@@ -5,17 +5,19 @@ import './select.styles.scss';
 
 const NAME_SPACE = 'select';
 
+type TOption = {
+  value: string | number;
+  label: string;
+  disabled?: boolean;
+};
+
 interface IProps {
   className?: string;
   id?: string;
   onChange?: (e: React.ChangeEvent<HTMLSelectElement>) => void;
   value?: string | number;
   title?: string;
-  options?: Array<{
-    value: string | number;
-    label: string;
-    disabled?: boolean;
-  }>;
+  options: TOption[];
   required?: boolean;
   disabled?: boolean;
   noArrow?: boolean;

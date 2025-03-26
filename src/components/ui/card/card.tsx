@@ -8,7 +8,7 @@ function Card(props: TCardProps) {
 
   return (
     <div className="card">
-      <div className="d-flex justify-content-between align-items-center mb-4">
+      <div className="d-flex justify-content-between align-items-center mb-4 gap-4">
         <h3>{title}</h3>
         <CardControls config={controlsConfig} />
       </div>

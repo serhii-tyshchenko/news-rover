@@ -5,7 +5,7 @@ import './button.styles.scss';
 
 const NAME_SPACE = 'button';
 
-interface IProps {
+export interface IProps {
   onClick?: () => void;
   className?: string;
   type?: 'button' | 'submit' | 'reset';
