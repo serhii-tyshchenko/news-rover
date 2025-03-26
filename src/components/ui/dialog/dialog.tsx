@@ -1,4 +1,5 @@
 import { createPortal } from 'react-dom';
+import { FocusTrap } from 'focus-trap-react';
 
 import { getClassName } from '@utils';
 import { portalRoot, noop } from '@constants';
@@ -7,6 +8,7 @@ import { EControlSize } from '@types';
 
 import './dialog.styles.scss';
 
+import { useDialog } from './use-dialog';
 const NAME_SPACE = 'dialog';
 
 interface IProps {
@@ -22,24 +24,27 @@ function Dialog(props: IProps) {
   const {
     opened = false,
     title = 'Dialog',
-    closeBtnTitle = 'Close',
+    closeBtnTitle = 'Close dialog',
     onClose = noop,
     children,
     className = '',
   } = props;
 
-  const componentClassName = getClassName(NAME_SPACE, className);
+  const dialogRef = useDialog(opened, onClose);
 
   if (!opened) {
     return null;
   }
 
+  const componentClassName = getClassName(NAME_SPACE, className);
+
   return createPortal(
-    <div className={`${NAME_SPACE}__backdrop`}>
-      <div
-        role="dialog"
+    <FocusTrap>
+      <dialog
+        ref={dialogRef}
         aria-labelledby="dialog-title"
         aria-modal="true"
+        aria-live="assertive"
         className={componentClassName}
       >
         <header className={`${NAME_SPACE}__header`}>
@@ -56,8 +61,8 @@ function Dialog(props: IProps) {
           />
         </header>
         <main className={`${NAME_SPACE}__content`}>{children}</main>
-      </div>
-    </div>,
+      </dialog>
+    </FocusTrap>,
     portalRoot,
   );
 }

@@ -17,6 +17,17 @@
   width: 100%;
   z-index: $zindex-modal;
 
+  &::backdrop {
+    backdrop-filter: blur(6px);
+    background: #000c;
+    height: 100vh;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    z-index: $zindex-modal-backdrop;
+  }
+
   @include for-size(mobile-large) {
     border-radius: 0;
     height: 100vh;
@@ -28,16 +39,7 @@
     width: 100%;
   }
 
-  &__backdrop {
-    backdrop-filter: blur(6px);
-    background: #000c;
-    height: 100vh;
-    left: 0;
-    position: fixed;
-    top: 0;
-    width: 100vw;
-    z-index: $zindex-modal-backdrop;
-  }
+
 
   &__header {
     align-items: center;
