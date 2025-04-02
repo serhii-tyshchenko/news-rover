@@ -18,7 +18,7 @@ function readAliasFromTsConfig(): Alias[] {
       aliases.push({ find, replacement });
       return aliases;
     },
-    [] as Alias[]
+    [] as Alias[],
   );
 }
 
@@ -33,6 +33,15 @@ export default defineConfig({
     globals: true,
     environment: 'jsdom',
     setupFiles: 'src/setupTests.ts',
+    coverage: {
+      exclude: [
+        'node_modules/',
+        'build/',
+        'dist/',
+        'storybook-static/',
+        '**/*.stories.{js,jsx,ts,tsx}',
+      ],
+    },
   },
   server: {
     port: 3000,

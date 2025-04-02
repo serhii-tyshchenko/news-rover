@@ -7,6 +7,8 @@ const byImageType = (enclosure: TEnclosure) =>
 export const extractThumbnailUrl = (enclosures: TEnclosure[] = []) =>
   first(enclosures.filter(byImageType))?.url ?? null;
 
+export const isValidResponse = (response: Response) => response.status === 200;
+
 export const formatGetNewsByProviderResponse = (rawData: {
   data: any[];
   count: number;
