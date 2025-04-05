@@ -1,7 +1,10 @@
 import { Link } from 'react-router-dom';
 import { isEmpty } from 'lodash';
 
-import { selectAddedProvidersData } from '@store/selectors';
+import {
+  selectAddedProvidersData,
+  selectProvidersError,
+} from '@store/selectors';
 import { useAppSelector, useLocalization } from '@hooks';
 import { BaseLayout } from '@layout';
 import { NewsCard, CardList } from '@components';
@@ -12,21 +15,34 @@ function HomePage() {
   const dic = useLocalization();
 
   const addedProviders = useAppSelector(selectAddedProvidersData);
+  const error = useAppSelector(selectProvidersError);
 
-  return (
-    <BaseLayout>
-      {isEmpty(addedProviders) && (
+  if (!isEmpty(error)) {
+    return (
+      <BaseLayout>
+        <div className="d-flex align-items-center justify-content-center h-100 p-2 text-center text-danger">
+          {dic.genericError}
+        </div>
+      </BaseLayout>
+    );
+  }
+  if (isEmpty(addedProviders)) {
+    return (
+      <BaseLayout>
         <div className="d-flex align-items-center justify-content-center h-100 p-2 text-center">
           {dic.noProviders}&nbsp;<Link to={ERoute.Providers}>{dic.add}</Link>
         </div>
-      )}
-      {!isEmpty(addedProviders) && (
-        <CardList>
-          {addedProviders.map((provider: TProvider) => (
-            <NewsCard key={provider.id} provider={provider} />
-          ))}
-        </CardList>
-      )}
+      </BaseLayout>
+    );
+  }
+
+  return (
+    <BaseLayout>
+      <CardList>
+        {addedProviders.map((provider: TProvider) => (
+          <NewsCard key={provider.id} provider={provider} />
+        ))}
+      </CardList>
     </BaseLayout>
   );
 }

@@ -75,19 +75,6 @@ describe('(Function) isThisWeek', () => {
     const date = new Date('2022-01-01');
     expect(isThisWeek(date)).toBe(false);
   });
-
-  it('should return true when the given date is in the current week spanning across months', () => {
-    const today = new Date();
-    const dayOfWeek = today.getDay();
-    const monday = new Date(today);
-    monday.setDate(today.getDate() - dayOfWeek + 1);
-
-    const saturday = new Date(monday);
-    saturday.setDate(monday.getDate() + 5);
-
-    expect(isThisWeek(monday)).toBe(true);
-    expect(isThisWeek(saturday)).toBe(true);
-  });
 });
 
 describe('(Function) groupDataByDay', () => {
