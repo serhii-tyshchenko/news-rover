@@ -18,6 +18,7 @@ export const formatGetNewsByProviderResponse = (rawData: {
     title: item.title,
     link: item.link,
     thumbnail: extractThumbnailUrl(item?.enclosures),
+    description: item.description,
   })),
   count: rawData.count,
 });

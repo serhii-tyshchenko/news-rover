@@ -10,6 +10,7 @@ const initialState: TSettings = {
   thumbnail: false,
   autorefresh: false,
   autorefreshInterval: DEFAULT_AUTOREFERSH_INTERVAL,
+  showDescription: false,
 };
 
 export const settings = (state = initialState, action: IAction) => {

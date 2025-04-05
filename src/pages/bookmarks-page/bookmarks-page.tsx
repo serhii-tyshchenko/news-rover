@@ -2,11 +2,11 @@ import { isEmpty } from 'lodash';
 import { selectBookmarksData } from '@store/selectors';
 import { doRemoveBookmark } from '@store/actions';
 import { useAppSelector, useAppDispatch, useLocalization } from '@hooks';
-import { Card } from '@components/ui';
+import { Card, CardList } from '@components/ui';
 import { NewsList } from '@components';
 import { BaseLayout } from '@layout';
 import { groupDataByDay } from '@utils';
-import { TNewsItem } from 'types';
+import { TNewsItem } from '@types';
 
 function BookmarksPage() {
   const dispatch = useAppDispatch();
@@ -18,19 +18,21 @@ function BookmarksPage() {
 
   return (
     <BaseLayout>
-      <Card title={dic.bookmarks}>
-        {isEmpty(bookmarks) && (
-          <div className="d-flex align-items-center justify-content-center text-center flex-grow-1">
-            {dic.noBookmarks}
-          </div>
-        )}
-        {!isEmpty(bookmarks) && (
-          <NewsList
-            data={groupDataByDay(bookmarks)}
-            onRemoveBookmark={handleClick}
-          />
-        )}
-      </Card>
+      <CardList>
+        <Card title={dic.bookmarks}>
+          {isEmpty(bookmarks) && (
+            <div className="d-flex align-items-center justify-content-center text-center flex-grow-1">
+              {dic.noBookmarks}
+            </div>
+          )}
+          {!isEmpty(bookmarks) && (
+            <NewsList
+              data={groupDataByDay(bookmarks)}
+              onRemoveBookmark={handleClick}
+            />
+          )}
+        </Card>
+      </CardList>
     </BaseLayout>
   );
 }

@@ -21,3 +21,6 @@ export const selectAddedProvidersData = createSelector(
 
 export const selectProvidersLoading = (state: TRootState) =>
   selectRoot(state).isLoading;
+
+export const selectProvidersError = (state: TRootState) =>
+  selectRoot(state).error;

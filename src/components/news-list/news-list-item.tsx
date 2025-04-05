@@ -16,10 +16,16 @@ interface INewsListItemProps {
 
 function NewsListItem(props: INewsListItemProps) {
   const { data, bookmarked, onAddBookmark, onRemoveBookmark } = props;
-  const { title, link: url, thumbnail: thumbnailUrl, created } = data;
+  const {
+    title,
+    link: url,
+    thumbnail: thumbnailUrl,
+    created,
+    description,
+  } = data;
 
   const dic = useLocalization();
-  const { thumbnail } = useAppSelector(selectSettingsData);
+  const { thumbnail, showDescription } = useAppSelector(selectSettingsData);
 
   const handleBookmarkClick = () =>
     bookmarked ? onRemoveBookmark(data) : onAddBookmark(data);
@@ -34,6 +40,7 @@ function NewsListItem(props: INewsListItemProps) {
 
   const isShareSupported = !!navigator.share;
   const shouldShowThumbnail = thumbnail && !isEmpty(thumbnailUrl);
+  const shouldShowDescription = showDescription && !isEmpty(description);
   const isFresh = isWithinLastHour(created);
 
   return (
@@ -54,14 +61,21 @@ function NewsListItem(props: INewsListItemProps) {
         })}
       >
         <span className="color-secondary">{itemTime}</span>
-        <a
-          href={url}
-          target="_blank"
-          rel="noreferrer"
-          className="color-primary overflow-hidden text-overflow-ellipsis"
-        >
-          {title}
-        </a>
+        <div className="d-flex flex-direction-column gap-1">
+          <a
+            href={url}
+            target="_blank"
+            rel="noreferrer"
+            className="color-primary overflow-hidden text-overflow-ellipsis"
+          >
+            {title}
+          </a>
+          {shouldShowDescription && (
+            <p className="color-secondary small text-overflow-ellipsis">
+              {data.description}
+            </p>
+          )}
+        </div>
         <div className="d-flex ml-auto flex-shrink-0 gap-1">
           <IconButton
             icon={bookmarkIcon}

@@ -16,8 +16,11 @@ export const doGetProviders = () => async (dispatch: Dispatch) => {
     const data = await getProviders();
     dispatch({ type: GET_PROVIDERS_REQUEST_SUCCESS, payload: data });
   } catch (error) {
-    dispatch({ type: GET_PROVIDERS_REQUEST_FAILED });
-    console.log(error);
+    dispatch({
+      type: GET_PROVIDERS_REQUEST_FAILED,
+      payload: (error as Error)?.message || 'Unknown error',
+    });
+    console.error(error);
   }
 };
 

@@ -16,6 +16,7 @@ export type TNewsItem = {
   link: string;
   created: number;
   thumbnail: string | null;
+  description: string;
 };
 
 export type TConfigMap = {
@@ -48,6 +49,7 @@ export type TSettings = {
   thumbnail: boolean;
   autorefresh: boolean;
   autorefreshInterval: number;
+  showDescription: boolean;
 };
 
 export interface IAction extends Action {
@@ -93,6 +95,7 @@ export type TDic = {
   refresh: string;
   settings: string;
   share: string;
+  showDescription: string;
   showProvider: string;
   theme: string;
   themes: {

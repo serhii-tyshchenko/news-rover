@@ -41,8 +41,14 @@ function SettingsDialog(props: ISettingsDialogProps) {
   const isAnimationEnabled = useAnimation();
 
   const dispatch = useAppDispatch();
-  const { locale, theme, thumbnail, autorefresh, autorefreshInterval } =
-    useAppSelector(selectSettingsData);
+  const {
+    locale,
+    theme,
+    thumbnail,
+    autorefresh,
+    autorefreshInterval,
+    showDescription,
+  } = useAppSelector(selectSettingsData);
 
   const handleStringChange = ({ target: { name, value } }: TChangeEvent) => {
     dispatch(doUpdateSettings({ [name]: value }));
@@ -68,7 +74,7 @@ function SettingsDialog(props: ISettingsDialogProps) {
             title={dic.changeTheme}
           />
         </SettingsGroup>
-        <SettingsGroup label={dic.animation}>
+        <SettingsGroup label={dic.animation} disabled={!isAnimationEnabled}>
           <Toggle
             name="animation"
             toggled={isAnimationEnabled}
@@ -87,7 +93,7 @@ function SettingsDialog(props: ISettingsDialogProps) {
             title={dic.changeLanguage}
           />
         </SettingsGroup>
-        <SettingsGroup label={dic.thumbnail}>
+        <SettingsGroup label={dic.thumbnail} disabled={!thumbnail}>
           <Toggle
             name="thumbnail"
             toggled={thumbnail}
@@ -97,7 +103,17 @@ function SettingsDialog(props: ISettingsDialogProps) {
             label={dic.thumbnail}
           />
         </SettingsGroup>
-        <SettingsGroup label={dic.autorefresh}>
+        <SettingsGroup label={dic.showDescription} disabled={!showDescription}>
+          <Toggle
+            name="showDescription"
+            toggled={showDescription}
+            onChange={handleBooleanChange}
+            animated={isAnimationEnabled}
+            size={EControlSize.Small}
+            label={dic.description}
+          />
+        </SettingsGroup>
+        <SettingsGroup label={dic.autorefresh} disabled={!autorefresh}>
           <Toggle
             name="autorefresh"
             toggled={autorefresh}
