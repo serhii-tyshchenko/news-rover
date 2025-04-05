@@ -41,12 +41,14 @@ export const isThisYear = (someDate: Date) => {
 
 export const isThisWeek = (someDate: Date) => {
   const today = new Date();
-  const diff = today.getDate() - someDate.getDate();
-  return (
-    isThisYear(someDate) &&
-    today.getMonth() === someDate.getMonth() &&
-    diff <= 7
-  );
+
+  const startOfWeek = new Date(today);
+  const dayOfWeek = today.getDay();
+  const diffToMonday = dayOfWeek === 0 ? 6 : dayOfWeek - 1;
+  startOfWeek.setDate(today.getDate() - diffToMonday);
+  startOfWeek.setHours(0, 0, 0, 0);
+
+  return someDate >= startOfWeek && someDate <= today;
 };
 
 export const groupDataByDay = (data: TNewsItem[]) =>
@@ -55,18 +57,19 @@ export const groupDataByDay = (data: TNewsItem[]) =>
     (item: TNewsItem) => new Date(item.created).toLocaleDateString(),
   );
 
-export const getDateLabel = (date: Date, dic: TDic) => {
+export const getDateLabel = (date: Date, dic: TDic, locale: string) => {
   if (isToday(date)) {
     return dic.today;
   }
   if (isYesterday(date)) {
     return dic.yesterday;
   }
+
   const options: Intl.DateTimeFormatOptions = {
     weekday: 'long',
     year: isThisYear(date) ? undefined : 'numeric',
     month: isThisWeek(date) ? undefined : 'long',
     day: isThisWeek(date) ? undefined : 'numeric',
   };
-  return capitalizeFirstLetter(date.toLocaleDateString(undefined, options));
+  return capitalizeFirstLetter(date.toLocaleDateString(locale, options));
 };

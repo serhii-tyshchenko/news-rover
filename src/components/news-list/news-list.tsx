@@ -2,7 +2,7 @@ import { Fragment } from 'react';
 import { useLocalization, useAppSelector } from '@hooks';
 import { Button } from '@components/ui';
 import { EControlSize, TNewsItem } from '@types';
-import { selectBookmarksData } from '@store/selectors';
+import { selectBookmarksData, selectLocale } from '@store/selectors';
 import { getDateLabel } from '@utils';
 
 import { checkIfBookmarked } from './news-list.utils';
@@ -28,6 +28,7 @@ function NewsList(props: IProps) {
   } = props;
   const dic = useLocalization();
   const bookmarks = useAppSelector(selectBookmarksData);
+  const locale = useAppSelector(selectLocale);
 
   return (
     <ul className="news-list pr-1 flex-grow-1 overflow-y-auto">
@@ -37,7 +38,7 @@ function NewsList(props: IProps) {
             className="color-secondary font-weight-bold small mb-3"
             key={`${providerId}-${date}`}
           >
-            {getDateLabel(new Date(date), dic)}
+            {getDateLabel(new Date(date), dic, locale)}
           </li>
           {data[date].map((item: TNewsItem) => (
             <NewsListItem
