@@ -32,7 +32,7 @@ function ProvidersPage() {
   if (!isEmpty(error)) {
     return (
       <BaseLayout>
-        <div className="d-flex align-items-center justify-content-center h-100 p-2 text-center text-danger">
+        <div className="flex items-center justify-center h-full p-2 text-center color-danger">
           {dic.genericError}
         </div>
       </BaseLayout>
@@ -42,7 +42,7 @@ function ProvidersPage() {
   if (isEmpty(groupedProviders)) {
     return (
       <BaseLayout>
-        <div className="d-flex align-items-center justify-content-center h-100 p-2 text-center">
+        <div className="flex items-center justify-center h-full p-2 text-center">
           {dic.noProviders}
         </div>
       </BaseLayout>

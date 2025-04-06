@@ -11,7 +11,7 @@ function CardControls(props: TCardControlsProps) {
   }
 
   return (
-    <div className="d-flex align-items-center gap-1" data-testid={testId}>
+    <div className="flex items-center gap-1" data-testid={testId}>
       {config.map((control) => (
         <IconButton
           key={control.icon}

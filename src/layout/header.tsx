@@ -19,11 +19,11 @@ function Header() {
   const isActiveProviders = location.pathname === ERoute.Providers;
 
   return (
-    <header className="d-flex align-items-center justify-content-between">
+    <header className="flex items-center justify-between">
       <Link to={ERoute.Home} className="color-primary">
         {APP_NAME}
       </Link>
-      <nav className="d-flex">
+      <nav className="flex">
         <IconButton
           icon={noBookmarks ? EIcon.BookmarkEmpty : EIcon.Bookmark}
           onClick={() => navigate(ERoute.Bookmarks)}

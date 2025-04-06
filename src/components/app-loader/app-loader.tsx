@@ -5,7 +5,7 @@ function AppLoader() {
   const isAnimationEnabled = useAnimation();
 
   return (
-    <div className="align-content-center text-center h-100">
+    <div className="content-center text-center h-full">
       <img
         src={logo}
         alt="Logo"

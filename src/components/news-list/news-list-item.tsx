@@ -46,37 +46,37 @@ function NewsListItem(props: INewsListItemProps) {
   return (
     <li className="news-list-item">
       {shouldShowThumbnail && (
-        <a href={url} target="_blank" rel="noreferrer" className="d-block mb-1">
+        <a href={url} target="_blank" rel="noreferrer" className="block mb-1">
           <img
             src={thumbnailUrl ?? ''}
             alt={title}
-            className="w-100 rounded"
+            className="w-full rounded-sm"
             loading="lazy"
           />
         </a>
       )}
       <div
-        className={getClassName('d-flex gap-2', {
-          'font-weight-semibold': isFresh,
+        className={getClassName('flex gap-2', {
+          'font-semibold': isFresh,
         })}
       >
         <span className="color-secondary">{itemTime}</span>
-        <div className="d-flex flex-direction-column gap-1">
+        <div className="flex flex-col gap-1">
           <a
             href={url}
             target="_blank"
             rel="noreferrer"
-            className="color-primary overflow-hidden text-overflow-ellipsis"
+            className="color-primary overflow-hidden text-ellipsis"
           >
             {title}
           </a>
           {shouldShowDescription && (
-            <p className="color-secondary small text-overflow-ellipsis">
+            <p className="color-secondary text-sm text-ellipsis">
               {data.description}
             </p>
           )}
         </div>
-        <div className="d-flex ml-auto flex-shrink-0 gap-1">
+        <div className="flex ml-auto shrink-0 gap-1">
           <IconButton
             icon={bookmarkIcon}
             title={bookmarkTitle}

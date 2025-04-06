@@ -19,6 +19,8 @@
   "changeAutorefreshInterval": "Change autorefresh interval",
   "changeLanguage": "Change language",
   "changeTheme": "Change theme",
+  "descriptionOn": "Description on",
+  "descriptionOff": "Description off",
   "genericError": "Something went wrong. Try again later.",
   "hideProvider": "Hide provider",
   "home": "Home",

@@ -64,7 +64,7 @@ function SettingsDialog(props: ISettingsDialogProps) {
 
   return (
     <Dialog opened={opened} onClose={onClose} title={dic.settings}>
-      <div className="d-flex flex-direction-column mb-4">
+      <div className="flex flex-col mb-4">
         <SettingsGroup label={dic.theme}>
           <Select
             name="theme"
@@ -74,7 +74,7 @@ function SettingsDialog(props: ISettingsDialogProps) {
             title={dic.changeTheme}
           />
         </SettingsGroup>
-        <SettingsGroup label={dic.animation} disabled={!isAnimationEnabled}>
+        <SettingsGroup label={dic.animation}>
           <Toggle
             name="animation"
             toggled={isAnimationEnabled}
@@ -93,7 +93,7 @@ function SettingsDialog(props: ISettingsDialogProps) {
             title={dic.changeLanguage}
           />
         </SettingsGroup>
-        <SettingsGroup label={dic.thumbnail} disabled={!thumbnail}>
+        <SettingsGroup label={dic.thumbnail}>
           <Toggle
             name="thumbnail"
             toggled={thumbnail}
@@ -103,17 +103,17 @@ function SettingsDialog(props: ISettingsDialogProps) {
             label={dic.thumbnail}
           />
         </SettingsGroup>
-        <SettingsGroup label={dic.showDescription} disabled={!showDescription}>
+        <SettingsGroup label={dic.showDescription}>
           <Toggle
             name="showDescription"
             toggled={showDescription}
             onChange={handleBooleanChange}
             animated={isAnimationEnabled}
             size={EControlSize.Small}
-            label={dic.description}
+            label={showDescription ? dic.descriptionOn : dic.descriptionOff}
           />
         </SettingsGroup>
-        <SettingsGroup label={dic.autorefresh} disabled={!autorefresh}>
+        <SettingsGroup label={dic.autorefresh}>
           <Toggle
             name="autorefresh"
             toggled={autorefresh}
@@ -135,11 +135,11 @@ function SettingsDialog(props: ISettingsDialogProps) {
           </SettingsGroup>
         )}
       </div>
-      <footer className="d-flex justify-content-between">
-        <a href={AUTHOR_SITE} className="small" target="_blank">
+      <footer className="flex justify-between">
+        <a href={AUTHOR_SITE} className="text-sm" target="_blank">
           &copy; {AUTHOR_NAME}
         </a>
-        <span className="small">{APP_VERSION}</span>
+        <span className="text-sm">{APP_VERSION}</span>
       </footer>
     </Dialog>
   );

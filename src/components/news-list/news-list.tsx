@@ -31,11 +31,11 @@ function NewsList(props: IProps) {
   const locale = useAppSelector(selectLocale);
 
   return (
-    <ul className="news-list pr-1 flex-grow-1 overflow-y-auto">
+    <ul className="news-list pr-1 grow overflow-y-auto">
       {Object.keys(data).map((date) => (
         <Fragment key={`${providerId}-${date}`}>
           <li
-            className="color-secondary font-weight-bold small mb-3"
+            className="color-secondary font-bold text-sm mb-3"
             key={`${providerId}-${date}`}
           >
             {getDateLabel(new Date(date), dic, locale)}

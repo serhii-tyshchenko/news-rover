@@ -101,12 +101,12 @@ function NewsCard({ provider }: INewsCardProps) {
         <Skeleton animated={isAnimationEnabled} count={DEFAULT_POSTS_LIMIT} />
       )}
       {shouldShowError && (
-        <div className="d-flex align-items-center justify-content-center h-100 p-2 text-center text-danger">
+        <div className="flex items-center justify-center h-full p-2 text-center color-danger">
           {dic.genericError}
         </div>
       )}
       {shouldShowEmptyState && (
-        <div className="d-flex align-items-center justify-content-center text-center flex-grow-1">
+        <div className="flex items-center justify-center text-center grow">
           {dic.noNews}
         </div>
       )}

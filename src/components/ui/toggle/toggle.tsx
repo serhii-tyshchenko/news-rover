@@ -55,6 +55,7 @@ function Toggle(props: IProps) {
       value={value}
       data-testid={testId}
       aria-label={label}
+      title={label}
     />
   );
 }

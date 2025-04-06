@@ -21,7 +21,7 @@ function BookmarksPage() {
       <CardList>
         <Card title={dic.bookmarks}>
           {isEmpty(bookmarks) && (
-            <div className="d-flex align-items-center justify-content-center text-center flex-grow-1">
+            <div className="flex items-center justify-center text-center grow">
               {dic.noBookmarks}
             </div>
           )}

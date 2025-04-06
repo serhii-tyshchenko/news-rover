@@ -1,28 +1,28 @@
-.d-block {
+.block {
     display: block;
 }
 
-.d-flex {
+.flex {
     display: flex;
 }
 
-.flex-direction-column {
+.flex-col {
     flex-direction: column;
 }
 
-.justify-content-between {
+.justify-between {
     justify-content: space-between;
 }
 
-.justify-content-center {
+.justify-center {
     justify-content: center;
 }
 
-.align-items-center {
+.items-center {
     align-items: center;
 }
 
-.align-content-center {
+.content-center {
     align-content: center;
 }
 
@@ -30,19 +30,19 @@
     overflow: hidden;
 }
 
-.text-overflow-ellipsis {
-    text-overflow: ellipsis;
-}
-
 .overflow-y-auto {
     overflow-y: auto;
 }
 
-.flex-grow-1 {
+.text-ellipsis {
+    text-overflow: ellipsis;
+}
+
+.grow {
     flex-grow: 1;
 }
 
-.flex-shrink-0 {
+.shrink-0 {
     flex-shrink: 0;
 }
 
@@ -138,15 +138,15 @@
     padding-right: 0.5rem;
 }
 
-.small {
-    font-size: 0.875rem;
-}
-
 .text-center {
     text-align: center;
 }
 
-.text-danger {
+.text-sm {
+    font-size: 0.875rem;
+}
+
+.color-danger {
     color: var(--color-danger);
 }
 
@@ -158,11 +158,11 @@
     color: var(--color-secondary);
 }
 
-.h-100 {
+.h-full {
     height: 100%;
 }
 
-.w-100 {
+.w-full {
     width: 100%;
 }
 
@@ -170,14 +170,14 @@
     appearance: none;
 }
 
-.rounded {
+.rounded-sm {
     border-radius: 0.25rem;
 }
 
-.font-weight-semibold {
+.font-semibold {
     font-weight: 600;
 }
 
-.font-weight-bold {
-    font-weight: bold;
+.font-bold {
+    font-weight: 700;
 }
