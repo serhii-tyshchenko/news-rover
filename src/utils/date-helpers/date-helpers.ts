@@ -39,16 +39,17 @@ export const isThisYear = (someDate: Date) => {
   return someDate.getFullYear() === new Date().getFullYear();
 };
 
-export const isThisWeek = (someDate: Date) => {
-  const today = new Date();
-
-  const startOfWeek = new Date(today);
-  const dayOfWeek = today.getDay();
-  const diffToMonday = dayOfWeek === 0 ? 6 : dayOfWeek - 1;
-  startOfWeek.setDate(today.getDate() - diffToMonday);
+export const isThisWeek = (date: Date): boolean => {
+  const now = new Date();
+  const startOfWeek = new Date(now);
+  startOfWeek.setDate(now.getDate() - now.getDay());
   startOfWeek.setHours(0, 0, 0, 0);
 
-  return someDate >= startOfWeek && someDate <= today;
+  const endOfWeek = new Date(startOfWeek);
+  endOfWeek.setDate(startOfWeek.getDate() + 6);
+  endOfWeek.setHours(23, 59, 59, 999);
+
+  return date >= startOfWeek && date <= endOfWeek;
 };
 
 export const groupDataByDay = (data: TNewsItem[]) =>
