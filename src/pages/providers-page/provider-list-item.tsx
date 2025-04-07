@@ -28,14 +28,14 @@ function ProviderListItem({
   const title = added ? dic.hideProvider : dic.showProvider;
 
   return (
-    <li key={id} className="d-flex mb-4">
+    <li key={id} className="flex mb-4">
       <div className="mr-2">
         <h5 className="mb-1">
           <a href={homepage} target="_blank" rel="noreferrer">
             {name}
           </a>
         </h5>
-        <p className="small color-secondary">{description}</p>
+        <p className="text-sm color-secondary">{description}</p>
       </div>
       <IconButton
         icon={icon}

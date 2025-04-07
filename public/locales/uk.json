@@ -45,9 +45,11 @@
     "light": "Світла",
     "dark": "Темна",
     "dark-blue": "Темно-синя",
+    "light-blue": "Світло-синя",
     "dark-red": "Темно-червона"
   },
   "thumbnail": "Мініатюра",
   "today": "Сьогодні",
-  "yesterday": "Вчора"
+  "yesterday": "Вчора",
+  "viewMode": "Режим перегляду"
 }

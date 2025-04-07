@@ -7,12 +7,14 @@ import { NewsList } from '@components';
 import { BaseLayout } from '@layout';
 import { groupDataByDay } from '@utils';
 import { TNewsItem } from '@types';
+import { noop } from '@constants';
 
 function BookmarksPage() {
   const dispatch = useAppDispatch();
   const dic = useLocalization();
   const bookmarks = useAppSelector(selectBookmarksData);
-  const handleClick = (item: TNewsItem) => {
+
+  const handleRemoveBookmark = (item: TNewsItem) => {
     dispatch(doRemoveBookmark(item.link));
   };
 
@@ -21,14 +23,16 @@ function BookmarksPage() {
       <CardList>
         <Card title={dic.bookmarks}>
           {isEmpty(bookmarks) && (
-            <div className="d-flex align-items-center justify-content-center text-center flex-grow-1">
+            <div className="flex items-center justify-center text-center grow">
               {dic.noBookmarks}
             </div>
           )}
           {!isEmpty(bookmarks) && (
             <NewsList
+              providerId="bookmarks"
               data={groupDataByDay(bookmarks)}
-              onRemoveBookmark={handleClick}
+              onAddBookmark={noop}
+              onRemoveBookmark={handleRemoveBookmark}
             />
           )}
         </Card>

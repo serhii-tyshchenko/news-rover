@@ -1,3 +1,4 @@
+// TODO  move to utils
 export const prepareOptions = (
   arr: { [key: string]: string },
   dic: { [key: string]: string },

@@ -10,6 +10,7 @@ import thunk from 'redux-thunk';
 import {
   settings,
   providersReducer as providers,
+  addedProvidersReducer as addedProviders,
   bookmarksReducer as bookmarks,
 } from './reducers';
 
@@ -22,6 +23,7 @@ declare global {
 export const rootReducer = combineReducers({
   settings,
   providers,
+  addedProviders,
   bookmarks,
 });
 
@@ -37,10 +39,12 @@ store.subscribe(() => {
   const {
     settings,
     providers: { added },
+    addedProviders,
     bookmarks,
   } = store.getState();
   saveState({
     settings,
+    addedProviders,
     providers: {
       added,
     },

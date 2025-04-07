@@ -21,7 +21,7 @@ interface IProps {
 
 function Toggle(props: IProps) {
   const {
-    id = NAME_SPACE,
+    id,
     name = NAME_SPACE,
     value = '',
     onChange = () => {},
@@ -46,7 +46,7 @@ function Toggle(props: IProps) {
   return (
     <input
       type="checkbox"
-      id={id}
+      id={id ?? name}
       name={name}
       className={componentClassName}
       onChange={onChange}
@@ -55,6 +55,7 @@ function Toggle(props: IProps) {
       value={value}
       data-testid={testId}
       aria-label={label}
+      title={label}
     />
   );
 }

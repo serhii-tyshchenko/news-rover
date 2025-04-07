@@ -11,6 +11,11 @@ export type TProvider = {
   category: string;
 };
 
+export type TAddedProvider = {
+  id: string;
+  viewMode: EViewMode;
+};
+
 export type TNewsItem = {
   title: string;
   link: string;
@@ -29,6 +34,11 @@ export type TEnclosure = {
   length: number;
 };
 
+export enum EViewMode {
+  TitleOnly = 'title-only',
+  Full = 'full',
+}
+
 export enum EEnclosureType {
   Image = 'image/jpeg',
   Video = 'video/mp4',
@@ -46,10 +56,8 @@ export type TSettings = {
   theme: ETheme;
   locale: ELanguage;
   animation: boolean;
-  thumbnail: boolean;
   autorefresh: boolean;
   autorefreshInterval: number;
-  showDescription: boolean;
 };
 
 export interface IAction extends Action {
@@ -81,11 +89,7 @@ export type TDic = {
   hideProvider: string;
   home: string;
   language: string;
-  languages: {
-    [ELanguage.En]: string;
-    [ELanguage.Uk]: string;
-    [ELanguage.Ge]: string;
-  };
+  languages: TLanguageKeys;
   loadMore: string;
   noBookmarks: string;
   noNews: string;
@@ -98,16 +102,19 @@ export type TDic = {
   showDescription: string;
   showProvider: string;
   theme: string;
-  themes: {
-    [ETheme.System]: string;
-    [ETheme.Light]: string;
-    [ETheme.Dark]: string;
-    [ETheme.DarkBlue]: string;
-    [ETheme.DarkRed]: string;
-  };
+  themes: TThemeKeys;
   thumbnail: string;
   today: string;
   yesterday: string;
+  viewMode: EViewMode;
+};
+
+type TThemeKeys = {
+  [key in ETheme]: string;
+};
+
+type TLanguageKeys = {
+  [key in ELanguage]: string;
 };
 
 export enum EControlSize {

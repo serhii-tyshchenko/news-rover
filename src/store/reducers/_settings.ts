@@ -7,10 +7,8 @@ const initialState: TSettings = {
   theme: ETheme.System,
   locale: getSystemLocale(),
   animation: !shouldReduceMotion(),
-  thumbnail: false,
   autorefresh: false,
   autorefreshInterval: DEFAULT_AUTOREFERSH_INTERVAL,
-  showDescription: false,
 };
 
 export const settings = (state = initialState, action: IAction) => {

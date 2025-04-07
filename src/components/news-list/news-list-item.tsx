@@ -1,21 +1,21 @@
 import { isEmpty } from 'lodash';
-import { selectSettingsData } from '@store/selectors';
-import { useLocalization, useAppSelector } from '@hooks';
+import { useLocalization } from '@hooks';
 import { formatTime, isWithinLastHour, getClassName } from '@utils';
 import { IconButton } from '@components/ui';
-import { TNewsItem, EControlSize } from '@types';
+import { TNewsItem, EControlSize, EViewMode } from '@types';
 
 import './news-list-item.styles.scss';
 
 interface INewsListItemProps {
   data: TNewsItem;
   bookmarked: boolean;
+  viewMode: EViewMode;
   onAddBookmark: (item: TNewsItem) => void;
   onRemoveBookmark: (item: TNewsItem) => void;
 }
 
 function NewsListItem(props: INewsListItemProps) {
-  const { data, bookmarked, onAddBookmark, onRemoveBookmark } = props;
+  const { data, bookmarked, viewMode, onAddBookmark, onRemoveBookmark } = props;
   const {
     title,
     link: url,
@@ -25,7 +25,6 @@ function NewsListItem(props: INewsListItemProps) {
   } = data;
 
   const dic = useLocalization();
-  const { thumbnail, showDescription } = useAppSelector(selectSettingsData);
 
   const handleBookmarkClick = () =>
     bookmarked ? onRemoveBookmark(data) : onAddBookmark(data);
@@ -39,44 +38,45 @@ function NewsListItem(props: INewsListItemProps) {
   const bookmarkTitle = bookmarked ? dic.removeBookmark : dic.addBookmark;
 
   const isShareSupported = !!navigator.share;
-  const shouldShowThumbnail = thumbnail && !isEmpty(thumbnailUrl);
-  const shouldShowDescription = showDescription && !isEmpty(description);
+  const isFullMode = viewMode === EViewMode.Full;
+  const shouldShowThumbnail = !isEmpty(thumbnailUrl) && isFullMode;
+  const shouldShowDescription = !isEmpty(description) && isFullMode;
   const isFresh = isWithinLastHour(created);
 
   return (
     <li className="news-list-item">
       {shouldShowThumbnail && (
-        <a href={url} target="_blank" rel="noreferrer" className="d-block mb-1">
+        <a href={url} target="_blank" rel="noreferrer" className="block mb-1">
           <img
             src={thumbnailUrl ?? ''}
             alt={title}
-            className="w-100 rounded"
+            className="w-full rounded-sm"
             loading="lazy"
           />
         </a>
       )}
       <div
-        className={getClassName('d-flex gap-2', {
-          'font-weight-semibold': isFresh,
+        className={getClassName('flex gap-2', {
+          'font-semibold': isFresh,
         })}
       >
         <span className="color-secondary">{itemTime}</span>
-        <div className="d-flex flex-direction-column gap-1">
+        <div className="flex flex-col gap-1">
           <a
             href={url}
             target="_blank"
             rel="noreferrer"
-            className="color-primary overflow-hidden text-overflow-ellipsis"
+            className="color-primary overflow-hidden text-ellipsis"
           >
             {title}
           </a>
           {shouldShowDescription && (
-            <p className="color-secondary small text-overflow-ellipsis">
+            <p className="color-secondary text-sm text-ellipsis">
               {data.description}
             </p>
           )}
         </div>
-        <div className="d-flex ml-auto flex-shrink-0 gap-1">
+        <div className="flex ml-auto shrink-0 gap-1">
           <IconButton
             icon={bookmarkIcon}
             title={bookmarkTitle}

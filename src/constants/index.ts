@@ -11,6 +11,7 @@ export enum ETheme {
   System = 'system',
   Light = 'light',
   Dark = 'dark',
+  LightBlue = 'light-blue',
   DarkBlue = 'dark-blue',
   DarkRed = 'dark-red',
 }

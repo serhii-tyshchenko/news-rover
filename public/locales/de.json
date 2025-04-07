@@ -46,8 +46,10 @@
     "light": "Hell",
     "dark": "Dunkel",
     "dark-blue": "Dunkelblau",
+    "light-blue": "Hellblau",
     "dark-red": "Dunkelrot"
   },
   "today": "Heute",
-  "yesterday": "Gestern"
+  "yesterday": "Gestern",
+  "viewMode": "Ansichtsmodus"
 }

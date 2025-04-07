@@ -2,7 +2,8 @@ import { Link } from 'react-router-dom';
 import { isEmpty } from 'lodash';
 
 import {
-  selectAddedProvidersData,
+  selectAddedProviders,
+  selectProvidersData,
   selectProvidersError,
 } from '@store/selectors';
 import { useAppSelector, useLocalization } from '@hooks';
@@ -14,13 +15,17 @@ import { ERoute } from '@constants';
 function HomePage() {
   const dic = useLocalization();
 
-  const addedProviders = useAppSelector(selectAddedProvidersData);
+  const availableProviders = useAppSelector(selectProvidersData) ?? [];
+  const addedProviders = useAppSelector(selectAddedProviders);
+  const addedProvidersData = availableProviders.filter((provider: TProvider) =>
+    addedProviders.some((addedProvider) => addedProvider.id === provider.id),
+  );
   const error = useAppSelector(selectProvidersError);
 
   if (!isEmpty(error)) {
     return (
       <BaseLayout>
-        <div className="d-flex align-items-center justify-content-center h-100 p-2 text-center text-danger">
+        <div className="flex items-center justify-center h-full p-2 text-center color-danger">
           {dic.genericError}
         </div>
       </BaseLayout>
@@ -29,7 +34,7 @@ function HomePage() {
   if (isEmpty(addedProviders)) {
     return (
       <BaseLayout>
-        <div className="d-flex align-items-center justify-content-center h-100 p-2 text-center">
+        <div className="flex items-center justify-center h-full p-2 text-center">
           {dic.noProviders}&nbsp;<Link to={ERoute.Providers}>{dic.add}</Link>
         </div>
       </BaseLayout>
@@ -39,7 +44,7 @@ function HomePage() {
   return (
     <BaseLayout>
       <CardList>
-        {addedProviders.map((provider: TProvider) => (
+        {addedProvidersData.map((provider: TProvider) => (
           <NewsCard key={provider.id} provider={provider} />
         ))}
       </CardList>
