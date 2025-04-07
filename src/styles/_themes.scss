@@ -35,6 +35,17 @@
   --background-skeleton-lighten: #{lighten(#282c34, 10%)};
 }
 
+[data-theme='light-blue'] {
+  --color-background: #E7F3FF;
+  --color-surface: #FFFFFF;
+  --color-primary: #050505;
+  --color-secondary: #65676B;
+  --color-background-controls: #d9e0f5;
+  --color-accent: #1876f2;
+  --background-skeleton: #D0E1FF;
+  --background-skeleton-lighten: #{lighten(#D0E1FF, 10%)};
+}
+
 [data-theme='dark-blue'] {
   --color-background: #0A192F;
   --color-surface: #112D4E;
@@ -48,19 +59,11 @@
 
 [data-theme='dark-red'] {
   --color-background: #330101;
-  /* Very dark red, almost burgundy */
   --color-surface: #5C0B0B;
-  /* A slightly brighter shade for surfaces such as cards and modal backgrounds */
   --color-primary: #FAFAFA;
-  /* Very pale (almost white) gray for primary text, offers maximum contrast */
   --color-secondary: #D7CCCC;
-  /* Light dusky pink for secondary text, soft on the eyes */
   --color-background-controls: #420808;
-  /* Darker and more intense red for buttons and interactive elements */
   --color-accent: #FF4545;
-  /* Bright red for accents to catch the eye, still harmonizes with the darker tones */
-
   --background-skeleton: #381313;
-  /* Dark red-brown used for loading states or skeleton elements */
   --background-skeleton-lighten: #{lighten(#381313, 10%)};
 }

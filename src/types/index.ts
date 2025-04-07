@@ -89,11 +89,7 @@ export type TDic = {
   hideProvider: string;
   home: string;
   language: string;
-  languages: {
-    [ELanguage.En]: string;
-    [ELanguage.Uk]: string;
-    [ELanguage.Ge]: string;
-  };
+  languages: TLanguageKeys;
   loadMore: string;
   noBookmarks: string;
   noNews: string;
@@ -106,17 +102,19 @@ export type TDic = {
   showDescription: string;
   showProvider: string;
   theme: string;
-  themes: {
-    [ETheme.System]: string;
-    [ETheme.Light]: string;
-    [ETheme.Dark]: string;
-    [ETheme.DarkBlue]: string;
-    [ETheme.DarkRed]: string;
-  };
+  themes: TThemeKeys;
   thumbnail: string;
   today: string;
   yesterday: string;
   viewMode: EViewMode;
+};
+
+type TThemeKeys = {
+  [key in ETheme]: string;
+};
+
+type TLanguageKeys = {
+  [key in ELanguage]: string;
 };
 
 export enum EControlSize {
