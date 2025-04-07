@@ -2,6 +2,7 @@
 @import '~styles/mixins';
 
 .news-list-item {
+  margin-bottom: 1.5rem;
 
   .btn {
     visibility: hidden;
@@ -27,7 +28,4 @@
     }
   }
 
-  &:not(:last-child) {
-    margin-bottom: 1.5rem;
-  }
 }

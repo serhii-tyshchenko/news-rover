@@ -1,21 +1,21 @@
 import { isEmpty } from 'lodash';
-import { selectSettingsData } from '@store/selectors';
-import { useLocalization, useAppSelector } from '@hooks';
+import { useLocalization } from '@hooks';
 import { formatTime, isWithinLastHour, getClassName } from '@utils';
 import { IconButton } from '@components/ui';
-import { TNewsItem, EControlSize } from '@types';
+import { TNewsItem, EControlSize, EViewMode } from '@types';
 
 import './news-list-item.styles.scss';
 
 interface INewsListItemProps {
   data: TNewsItem;
   bookmarked: boolean;
+  viewMode: EViewMode;
   onAddBookmark: (item: TNewsItem) => void;
   onRemoveBookmark: (item: TNewsItem) => void;
 }
 
 function NewsListItem(props: INewsListItemProps) {
-  const { data, bookmarked, onAddBookmark, onRemoveBookmark } = props;
+  const { data, bookmarked, viewMode, onAddBookmark, onRemoveBookmark } = props;
   const {
     title,
     link: url,
@@ -25,7 +25,6 @@ function NewsListItem(props: INewsListItemProps) {
   } = data;
 
   const dic = useLocalization();
-  const { thumbnail, showDescription } = useAppSelector(selectSettingsData);
 
   const handleBookmarkClick = () =>
     bookmarked ? onRemoveBookmark(data) : onAddBookmark(data);
@@ -39,8 +38,9 @@ function NewsListItem(props: INewsListItemProps) {
   const bookmarkTitle = bookmarked ? dic.removeBookmark : dic.addBookmark;
 
   const isShareSupported = !!navigator.share;
-  const shouldShowThumbnail = thumbnail && !isEmpty(thumbnailUrl);
-  const shouldShowDescription = showDescription && !isEmpty(description);
+  const isFullMode = viewMode === EViewMode.Full;
+  const shouldShowThumbnail = !isEmpty(thumbnailUrl) && isFullMode;
+  const shouldShowDescription = !isEmpty(description) && isFullMode;
   const isFresh = isWithinLastHour(created);
 
   return (

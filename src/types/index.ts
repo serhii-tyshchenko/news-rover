@@ -11,6 +11,11 @@ export type TProvider = {
   category: string;
 };
 
+export type TAddedProvider = {
+  id: string;
+  viewMode: EViewMode;
+};
+
 export type TNewsItem = {
   title: string;
   link: string;
@@ -29,6 +34,11 @@ export type TEnclosure = {
   length: number;
 };
 
+export enum EViewMode {
+  TitleOnly = 'title-only',
+  Full = 'full',
+}
+
 export enum EEnclosureType {
   Image = 'image/jpeg',
   Video = 'video/mp4',
@@ -46,10 +56,8 @@ export type TSettings = {
   theme: ETheme;
   locale: ELanguage;
   animation: boolean;
-  thumbnail: boolean;
   autorefresh: boolean;
   autorefreshInterval: number;
-  showDescription: boolean;
 };
 
 export interface IAction extends Action {
@@ -108,6 +116,7 @@ export type TDic = {
   thumbnail: string;
   today: string;
   yesterday: string;
+  viewMode: EViewMode;
 };
 
 export enum EControlSize {

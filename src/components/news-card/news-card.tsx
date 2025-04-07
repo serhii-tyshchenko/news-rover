@@ -7,20 +7,21 @@ import {
   useLocalization,
   useAnimation,
 } from '@hooks';
-import { selectSettingsData } from '@store/selectors';
-import { Card } from '@components/ui';
+import { selectSettingsData, selectProviderById } from '@store/selectors';
+import { Card, Button } from '@components/ui';
 import { Skeleton, NewsList } from '@components';
-import { TNewsItem } from '@types';
+import { TNewsItem, EControlSize, EViewMode } from '@types';
 import { groupDataByDay } from '@utils';
 import {
   doAddBookmark,
   doRemoveBookmark,
   doRemoveProvider,
+  doUpdateProvider,
 } from '@store/actions';
 import { DEFAULT_POSTS_LIMIT } from '@constants';
 
 import { useNewsProviderData } from './news-card.queries';
-import { getConfig } from './news-card.utils';
+import { getConfig, changeViewMode } from './news-card.utils';
 import { INewsCardProps } from './news-card.types';
 
 function NewsCard({ provider }: INewsCardProps) {
@@ -28,6 +29,7 @@ function NewsCard({ provider }: INewsCardProps) {
   const dispatch = useAppDispatch();
   const { autorefresh, autorefreshInterval } =
     useAppSelector(selectSettingsData);
+  const providerSettings = useAppSelector(selectProviderById(provider.id));
   const isAnimationEnabled = useAnimation();
 
   const [limit, setLimit] = useState(DEFAULT_POSTS_LIMIT);
@@ -63,6 +65,14 @@ function NewsCard({ provider }: INewsCardProps) {
     refetch();
   }, [refetch]);
 
+  const handleViewModeChange = useCallback(() => {
+    dispatch(
+      doUpdateProvider(provider.id, {
+        viewMode: changeViewMode(providerSettings?.viewMode),
+      }),
+    );
+  }, [dispatch, provider.id, providerSettings?.viewMode]);
+
   const handleHideProvider = () => {
     dispatch(doRemoveProvider(provider.id));
   };
@@ -77,7 +87,9 @@ function NewsCard({ provider }: INewsCardProps) {
     dic,
     handleRefresh,
     handleHideProvider,
+    onViewModeClick: handleViewModeChange,
     showAnimation: isAnimationEnabled && isDataLoading,
+    viewMode: providerSettings?.viewMode,
   });
 
   const shouldShowLoadMoreButton =
@@ -111,14 +123,24 @@ function NewsCard({ provider }: INewsCardProps) {
         </div>
       )}
       {shouldShowContent && (
-        <NewsList
-          providerId={provider.id}
-          data={groupedData}
-          onAddBookmark={handleAddBookmark}
-          onRemoveBookmark={handleRemoveBookmark}
-          onLoadMoreClick={handleLoadMoreClick}
-          showLoadMoreButton={shouldShowLoadMoreButton}
-        />
+        <div className="pr-1 overflow-y-auto">
+          <NewsList
+            providerId={provider.id}
+            data={groupedData}
+            onAddBookmark={handleAddBookmark}
+            onRemoveBookmark={handleRemoveBookmark}
+          />
+          {shouldShowLoadMoreButton && (
+            <Button
+              onClick={handleLoadMoreClick}
+              size={EControlSize.Small}
+              btnType="action"
+              className="block mx-auto"
+            >
+              {dic.loadMore}
+            </Button>
+          )}
+        </div>
       )}
     </Card>
   );

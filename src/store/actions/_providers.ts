@@ -5,8 +5,6 @@ import {
   GET_PROVIDERS_REQUEST_STARTED,
   GET_PROVIDERS_REQUEST_SUCCESS,
   GET_PROVIDERS_REQUEST_FAILED,
-  ADD_PROVIDER,
-  REMOVE_PROVIDER,
 } from '@store/action-types';
 
 export const doGetProviders = () => async (dispatch: Dispatch) => {
@@ -23,13 +21,3 @@ export const doGetProviders = () => async (dispatch: Dispatch) => {
     console.error(error);
   }
 };
-
-export const doAddProvider = (provider: string) => ({
-  type: ADD_PROVIDER,
-  payload: provider,
-});
-
-export const doRemoveProvider = (provider: string) => ({
-  type: REMOVE_PROVIDER,
-  payload: provider,
-});

@@ -62,6 +62,11 @@
     gap: 1rem;
 }
 
+.mx-auto {
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .m-0 {
     margin: 0;
 }
@@ -146,6 +151,18 @@
     font-size: 0.875rem;
 }
 
+.background-primary {
+    background-color: var(--color-background);
+}
+
+.background-secondary {
+    background-color: var(--color-surface);
+}
+
+.background-controls {
+    background-color: var(--color-background-controls);
+}
+
 .color-danger {
     color: var(--color-danger);
 }
@@ -180,4 +197,24 @@
 
 .font-bold {
     font-weight: 700;
+}
+
+.absolute {
+    position: absolute;
+}
+
+.relative {
+    position: relative;
+}
+
+.top-0 {
+    top: 0;
+}
+
+.top-full {
+    top: 100%;
+}
+
+.right-0 {
+    right: 0;
 }

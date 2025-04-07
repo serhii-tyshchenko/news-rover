@@ -19,8 +19,6 @@
   "changeAutorefreshInterval": "Automatische Aktualisierung Intervall ändern",
   "changeLanguage": "Sprache ändern",
   "changeTheme": "Thema ändern",
-  "descriptionOn": "Beschreibung ein",
-  "descriptionOff": "Beschreibung aus",
   "genericError": "Etwas ist schief gelaufen. Versuchen Sie es später noch einmal.",
   "hideProvider": "Anbieter ausblenden",
   "home": "Startseite",
@@ -51,5 +49,6 @@
     "dark-red": "Dunkelrot"
   },
   "today": "Heute",
-  "yesterday": "Gestern"
+  "yesterday": "Gestern",
+  "viewMode": "Ansichtsmodus"
 }

@@ -19,8 +19,6 @@
   "changeAutorefreshInterval": "Змінити інтервал автооновлення",
   "changeLanguage": "Змінити мову",
   "changeTheme": "Змінити тему",
-  "descriptionOn": "Опис увімкнено",
-  "descriptionOff": "Опис вимкнено",
   "genericError": "Щось пішло не так. Спробуйте пізніше.",
   "hideProvider": "Приховати провайдера",
   "home": "Головна",
@@ -51,5 +49,6 @@
   },
   "thumbnail": "Мініатюра",
   "today": "Сьогодні",
-  "yesterday": "Вчора"
+  "yesterday": "Вчора",
+  "viewMode": "Режим перегляду"
 }

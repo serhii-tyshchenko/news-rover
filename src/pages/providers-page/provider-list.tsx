@@ -1,4 +1,4 @@
-import { selectAddedProviders } from '@store/selectors';
+import { selectProviderById } from '@store/selectors';
 import { TProvider } from '@types';
 import { useAppSelector } from '@hooks';
 
@@ -15,7 +15,8 @@ function ProviderList({
   onAddProvider,
   onRemoveProvider,
 }: IProviderListProps) {
-  const addedProviders = useAppSelector(selectAddedProviders);
+  const isAdded = (id: string) =>
+    Boolean(useAppSelector(selectProviderById(id)));
 
   return (
     <ul className="overflow-y-auto pr-2">
@@ -23,7 +24,7 @@ function ProviderList({
         <ProviderListItem
           key={provider.id}
           data={provider}
-          added={addedProviders?.includes(provider.id)}
+          added={isAdded(provider.id)}
           onAddProvider={onAddProvider}
           onRemoveProvider={onRemoveProvider}
         />

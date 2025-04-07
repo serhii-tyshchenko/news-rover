@@ -7,12 +7,14 @@ import { NewsList } from '@components';
 import { BaseLayout } from '@layout';
 import { groupDataByDay } from '@utils';
 import { TNewsItem } from '@types';
+import { noop } from '@constants';
 
 function BookmarksPage() {
   const dispatch = useAppDispatch();
   const dic = useLocalization();
   const bookmarks = useAppSelector(selectBookmarksData);
-  const handleClick = (item: TNewsItem) => {
+
+  const handleRemoveBookmark = (item: TNewsItem) => {
     dispatch(doRemoveBookmark(item.link));
   };
 
@@ -27,8 +29,10 @@ function BookmarksPage() {
           )}
           {!isEmpty(bookmarks) && (
             <NewsList
+              providerId="bookmarks"
               data={groupDataByDay(bookmarks)}
-              onRemoveBookmark={handleClick}
+              onAddBookmark={noop}
+              onRemoveBookmark={handleRemoveBookmark}
             />
           )}
         </Card>

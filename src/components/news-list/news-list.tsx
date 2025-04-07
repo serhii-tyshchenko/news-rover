@@ -1,8 +1,11 @@
 import { Fragment } from 'react';
 import { useLocalization, useAppSelector } from '@hooks';
-import { Button } from '@components/ui';
-import { EControlSize, TNewsItem } from '@types';
-import { selectBookmarksData, selectLocale } from '@store/selectors';
+import { TNewsItem } from '@types';
+import {
+  selectBookmarksData,
+  selectLocale,
+  selectProviderById,
+} from '@store/selectors';
 import { getDateLabel } from '@utils';
 
 import { checkIfBookmarked } from './news-list.utils';
@@ -13,25 +16,17 @@ interface IProps {
   providerId: string;
   onAddBookmark: (item: TNewsItem) => void;
   onRemoveBookmark: (item: TNewsItem) => void;
-  onLoadMoreClick?: () => void;
-  showLoadMoreButton?: boolean;
 }
 
 function NewsList(props: IProps) {
-  const {
-    data,
-    providerId,
-    onAddBookmark,
-    onRemoveBookmark,
-    onLoadMoreClick,
-    showLoadMoreButton = false,
-  } = props;
+  const { data, providerId, onAddBookmark, onRemoveBookmark } = props;
   const dic = useLocalization();
   const bookmarks = useAppSelector(selectBookmarksData);
   const locale = useAppSelector(selectLocale);
+  const providerSettings = useAppSelector(selectProviderById(providerId));
 
   return (
-    <ul className="news-list pr-1 grow overflow-y-auto">
+    <ul>
       {Object.keys(data).map((date) => (
         <Fragment key={`${providerId}-${date}`}>
           <li
@@ -45,23 +40,13 @@ function NewsList(props: IProps) {
               key={item.link}
               data={item}
               bookmarked={checkIfBookmarked(bookmarks, item)}
+              viewMode={providerSettings?.viewMode}
               onAddBookmark={onAddBookmark}
               onRemoveBookmark={onRemoveBookmark}
             />
           ))}
         </Fragment>
       ))}
-      {showLoadMoreButton && (
-        <li className="text-center" key={`${providerId}-load-more`}>
-          <Button
-            onClick={onLoadMoreClick}
-            size={EControlSize.Small}
-            btnType="action"
-          >
-            {dic.loadMore}
-          </Button>
-        </li>
-      )}
     </ul>
   );
 }
