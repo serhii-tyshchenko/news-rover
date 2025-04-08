@@ -1,12 +1,14 @@
+import { first } from 'lodash';
+
 export * from './api';
-export * from './app';
 
+export const APP_NAME = 'NewsRover';
+export const APP_VERSION = '2.2.1';
 export const DEFAULT_POSTS_LIMIT = 10;
-
 export const AUTHOR_NAME = 'Serhii Tyshchenko';
-
 export const AUTHOR_SITE = 'https://github.com/serhii-tyshchenko';
 
+// TODO  move enums to types
 export enum ETheme {
   System = 'system',
   Light = 'light',
@@ -27,7 +29,7 @@ export enum ERoute {
   Bookmarks = '/bookmarks',
   Providers = '/providers',
 }
-
+// TODO add rest icons
 export enum EIcon {
   Bookmark = 'bookmark',
   BookmarkEmpty = 'bookmark-empty',
@@ -38,9 +40,7 @@ export enum EIcon {
 }
 
 export const portalRoot = document.getElementById('portal-root') as HTMLElement;
-
 export const ONE_SECOND_IN_MILLISECONDS = 1000;
-
 export const ONE_MINUTE_IN_MILLISECONDS = 60 * ONE_SECOND_IN_MILLISECONDS;
 
 const autorefreshIntervals =
@@ -54,7 +54,6 @@ export const AUTOREFRESH_INTERVAL_OPTIONS = autorefreshIntervals.map(
     label: value.toString(),
   }),
 );
-
-export const DEFAULT_AUTOREFERSH_INTERVAL = autorefreshIntervals[0];
+export const DEFAULT_AUTOREFERSH_INTERVAL = first(autorefreshIntervals);
 
 export const noop = () => {};

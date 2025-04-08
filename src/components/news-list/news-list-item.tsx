@@ -38,9 +38,14 @@ function NewsListItem(props: INewsListItemProps) {
   const bookmarkTitle = bookmarked ? dic.removeBookmark : dic.addBookmark;
 
   const isShareSupported = !!navigator.share;
+  const isTitleWithDescriptionMode =
+    viewMode === EViewMode.TitleWithDescription;
+  const isThumbnailMode = viewMode === EViewMode.TitleWithThumbnail;
   const isFullMode = viewMode === EViewMode.Full;
-  const shouldShowThumbnail = !isEmpty(thumbnailUrl) && isFullMode;
-  const shouldShowDescription = !isEmpty(description) && isFullMode;
+  const shouldShowThumbnail =
+    !isEmpty(thumbnailUrl) && (isFullMode || isThumbnailMode);
+  const shouldShowDescription =
+    !isEmpty(description) && (isFullMode || isTitleWithDescriptionMode);
   const isFresh = isWithinLastHour(created);
 
   return (

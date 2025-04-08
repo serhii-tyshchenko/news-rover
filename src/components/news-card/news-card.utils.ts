@@ -1,19 +1,27 @@
-import { TNewsItem, TBookmark, EViewMode } from '@types';
+import { EViewMode } from '@types';
 import { TGetConfig } from './news-card.types';
 
-// TODO : Move this to a separate file
-export const checkIfBookmarked = (
-  bookmarks: Array<TBookmark>,
-  item: TNewsItem,
-) => bookmarks.some((bookmark) => bookmark.link === item.link);
-
-export const changeViewMode = (viewMode: EViewMode) =>
-  viewMode === EViewMode.TitleOnly ? EViewMode.Full : EViewMode.TitleOnly;
+export const changeViewMode = (viewMode: EViewMode) => {
+  switch (viewMode) {
+    case EViewMode.TitleOnly:
+      return EViewMode.TitleWithDescription;
+    case EViewMode.TitleWithDescription:
+      return EViewMode.TitleWithThumbnail;
+    case EViewMode.TitleWithThumbnail:
+      return EViewMode.Full;
+    case EViewMode.Full:
+      return EViewMode.TitleOnly;
+    default:
+      return EViewMode.TitleOnly;
+  }
+};
 
 const getViewModeIcon = (viewMode: EViewMode) => {
   switch (viewMode) {
     case EViewMode.TitleOnly:
+    case EViewMode.TitleWithDescription:
       return 'th-list';
+    case EViewMode.TitleWithThumbnail:
     case EViewMode.Full:
       return 'th-large';
     default:

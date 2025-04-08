@@ -13,40 +13,45 @@ function Header() {
   const navigate = useNavigate();
   const location = useLocation();
   const dic = useLocalization();
+
   const noBookmarks = isEmpty(useAppSelector(selectBookmarksData));
 
-  const isActiveBookmarks = location.pathname === ERoute.Bookmarks;
-  const isActiveProviders = location.pathname === ERoute.Providers;
+  const navItemsConfig = [
+    {
+      icon: noBookmarks ? EIcon.BookmarkEmpty : EIcon.Bookmark,
+      onClick: () => navigate(ERoute.Bookmarks),
+      title: dic.bookmarks,
+      isActive: location.pathname === ERoute.Bookmarks,
+    },
+    {
+      icon: EIcon.Rss,
+      onClick: () => navigate(ERoute.Providers),
+      title: dic.providers,
+      isActive: location.pathname === ERoute.Providers,
+    },
+    {
+      icon: EIcon.Settings,
+      onClick: openDialog,
+      title: dic.settings,
+    },
+  ];
 
   return (
     <header className="flex items-center justify-between">
       <Link to={ERoute.Home} className="color-primary">
         {APP_NAME}
       </Link>
-      <nav className="flex">
-        <IconButton
-          icon={noBookmarks ? EIcon.BookmarkEmpty : EIcon.Bookmark}
-          onClick={() => navigate(ERoute.Bookmarks)}
-          title={dic.bookmarks}
-          size={EControlSize.Big}
-          className="mr-2"
-          toggled={isActiveBookmarks}
-        />
-        <IconButton
-          icon={EIcon.Rss}
-          onClick={() => navigate(ERoute.Providers)}
-          title={dic.providers}
-          size={EControlSize.Big}
-          toggled={isActiveProviders}
-          className="mr-2"
-        />
-        <IconButton
-          icon={EIcon.Settings}
-          onClick={openDialog}
-          title={dic.settings}
-          size={EControlSize.Big}
-          className="mr-2"
-        />
+      <nav className="flex gap-2">
+        {navItemsConfig.map((item) => (
+          <IconButton
+            key={item.title}
+            icon={item.icon}
+            onClick={item.onClick}
+            title={item.title}
+            size={EControlSize.Big}
+            toggled={item.isActive}
+          />
+        ))}
       </nav>
       <SettingsDialog opened={opened} onClose={closeDialog} />
     </header>
