@@ -36,6 +36,8 @@ export type TEnclosure = {
 
 export enum EViewMode {
   TitleOnly = 'title-only',
+  TitleWithDescription = 'title-with-description',
+  TitleWithThumbnail = 'title-with-thumbnail',
   Full = 'full',
 }
 
