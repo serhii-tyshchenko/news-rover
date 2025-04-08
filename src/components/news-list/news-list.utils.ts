@@ -1,6 +1,5 @@
 import { TNewsItem, TBookmark } from '@types';
 
-// TODO move to utils
 export const checkIfBookmarked = (
   bookmarks: Array<TBookmark>,
   item: TNewsItem,
