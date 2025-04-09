@@ -3,6 +3,7 @@ import { useLocalization } from '@hooks';
 import { formatTime, isWithinLastHour, getClassName } from '@utils';
 import { IconButton } from '@components/ui';
 import { TNewsItem, EControlSize, EViewMode } from '@types';
+import NotFound from '~assets/images/not-found.png';
 
 import './news-list-item.styles.scss';
 
@@ -33,6 +34,10 @@ function NewsListItem(props: INewsListItemProps) {
     navigator.share({ title, url });
   };
 
+  const handleImageError = (e: React.SyntheticEvent<HTMLImageElement>) => {
+    e.currentTarget.src = NotFound;
+  };
+
   const itemTime = formatTime(created);
   const bookmarkIcon = bookmarked ? 'bookmark' : 'bookmark-empty';
   const bookmarkTitle = bookmarked ? dic.removeBookmark : dic.addBookmark;
@@ -57,6 +62,7 @@ function NewsListItem(props: INewsListItemProps) {
             alt={title}
             className="w-full rounded-sm"
             loading="lazy"
+            onError={handleImageError}
           />
         </a>
       )}
@@ -66,7 +72,7 @@ function NewsListItem(props: INewsListItemProps) {
         })}
       >
         <span className="color-secondary">{itemTime}</span>
-        <div className="flex flex-col gap-1">
+        <div className="flex flex-col gap-1 overflow-hidden">
           <a
             href={url}
             target="_blank"
@@ -76,7 +82,7 @@ function NewsListItem(props: INewsListItemProps) {
             {title}
           </a>
           {shouldShowDescription && (
-            <p className="color-secondary text-sm text-ellipsis">
+            <p className="color-secondary text-sm text-ellipsis overflow-x-auto">
               {data.description}
             </p>
           )}

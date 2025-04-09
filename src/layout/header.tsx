@@ -44,7 +44,7 @@ function Header() {
       <nav className="flex gap-2">
         {navItemsConfig.map((item) => (
           <IconButton
-            key={item.title}
+            key={item.icon}
             icon={item.icon}
             onClick={item.onClick}
             title={item.title}
