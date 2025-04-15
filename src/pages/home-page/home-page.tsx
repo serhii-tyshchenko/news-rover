@@ -31,7 +31,7 @@ function HomePage() {
       </BaseLayout>
     );
   }
-  if (isEmpty(addedProviders)) {
+  if (isEmpty(addedProvidersData)) {
     return (
       <BaseLayout>
         <div className="flex items-center justify-center h-full p-2 text-center">
