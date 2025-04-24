@@ -1,5 +1,9 @@
 import { isEmpty } from 'lodash';
-import { selectProvidersData, selectProvidersError } from '@store/selectors';
+import {
+  selectLocale,
+  selectProvidersData,
+  selectProvidersError,
+} from '@store/selectors';
 import { doAddProvider, doRemoveProvider } from '@store/actions';
 import { useAppSelector, useAppDispatch, useLocalization } from '@hooks';
 import { Card, CardList } from '@components/ui';
@@ -7,10 +11,7 @@ import { BaseLayout } from '@layout';
 
 import ProviderList from './provider-list';
 
-import {
-  groupProvidersByCategory,
-  getCategoryTitle,
-} from './providers-page.utils';
+import { groupProvidersByCategory } from './providers-page.utils';
 
 function ProvidersPage() {
   const dic = useLocalization();
@@ -18,8 +19,13 @@ function ProvidersPage() {
   const dispatch = useAppDispatch();
   const availableProviders = useAppSelector(selectProvidersData);
   const error = useAppSelector(selectProvidersError);
+  const locale = useAppSelector(selectLocale);
 
-  const groupedProviders = groupProvidersByCategory(availableProviders);
+  const groupedProviders = groupProvidersByCategory(
+    availableProviders,
+    locale,
+    dic,
+  );
 
   const handleAddProvider = (providerId: string) => {
     dispatch(doAddProvider(providerId));
@@ -52,10 +58,10 @@ function ProvidersPage() {
   return (
     <BaseLayout>
       <CardList>
-        {Object.keys(groupedProviders).map((category) => (
-          <Card key={category} title={getCategoryTitle(category, dic)}>
+        {groupedProviders.map((provider) => (
+          <Card key={provider.category} title={provider.title}>
             <ProviderList
-              data={groupedProviders[category]}
+              data={provider.data}
               onAddProvider={handleAddProvider}
               onRemoveProvider={handleRemoveProvider}
             ></ProviderList>

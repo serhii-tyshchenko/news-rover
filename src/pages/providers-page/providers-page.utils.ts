@@ -1,18 +1,6 @@
 import { TProvider, TDic } from '@types';
 
-export const groupProvidersByCategory = (providers: TProvider[] = []) =>
-  providers.reduce(
-    (acc, provider) => {
-      if (!acc[provider.category]) {
-        acc[provider.category] = [];
-      }
-      acc[provider.category].push(provider);
-      return acc;
-    },
-    {} as { [key: string]: TProvider[] },
-  );
-
-export const getCategoryTitle = (category: string, dic: TDic) => {
+const getCategoryTitle = (category: string, dic: TDic) => {
   const categoryToNameMap: { [key: string]: string } = {
     news: dic.category?.news,
     military: dic.category?.military,
@@ -28,3 +16,18 @@ export const getCategoryTitle = (category: string, dic: TDic) => {
     categoryToNameMap[category as keyof typeof categoryToNameMap] ?? category
   );
 };
+
+export const groupProvidersByCategory = (
+  providers: TProvider[] = [],
+  locale: string,
+  dic: TDic,
+) =>
+  [...new Set<string>(providers.map(({ category }) => category))]
+    .map((category) => ({
+      category,
+      title: getCategoryTitle(category, dic),
+      data: providers
+        .filter((provider) => provider.category === category)
+        .sort((a, b) => a.name.localeCompare(b.name, locale)),
+    }))
+    .sort((a, b) => a.title.localeCompare(b.title, locale));
