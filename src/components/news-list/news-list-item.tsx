@@ -1,9 +1,11 @@
-import { isEmpty } from 'lodash';
-import { useLocalization } from '@hooks';
-import { formatTime, isWithinLastHour, getClassName } from '@utils';
-import { IconButton } from '@components/ui';
-import { TNewsItem, EControlSize, EViewMode } from '@types';
 import NotFound from '~assets/images/not-found.png';
+
+import { isEmpty } from 'lodash';
+
+import { IconButton } from '@components/ui';
+import { useLocalization } from '@hooks';
+import { EControlSize, EViewMode, TNewsItem } from '@types';
+import { formatTime, getClassName, isWithinLastHour } from '@utils';
 
 import './news-list-item.styles.scss';
 

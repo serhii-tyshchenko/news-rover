@@ -1,9 +1,9 @@
-import { IAction, TProvider } from '@types';
 import {
+  GET_PROVIDERS_REQUEST_FAILED,
   GET_PROVIDERS_REQUEST_STARTED,
   GET_PROVIDERS_REQUEST_SUCCESS,
-  GET_PROVIDERS_REQUEST_FAILED,
 } from '@store/action-types';
+import { IAction, TProvider } from '@types';
 
 const initialState = {
   data: [] as Array<TProvider>,

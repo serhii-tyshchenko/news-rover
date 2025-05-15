@@ -1,13 +1,14 @@
 import { isEmpty } from 'lodash';
-import { selectBookmarksData } from '@store/selectors';
-import { doRemoveBookmark } from '@store/actions';
-import { useAppSelector, useAppDispatch, useLocalization } from '@hooks';
-import { Card, CardList } from '@components/ui';
+
 import { NewsList } from '@components';
-import { BaseLayout } from '@layout';
-import { groupDataByDay } from '@utils';
-import { TNewsItem } from '@types';
+import { Card, CardList } from '@components/ui';
 import { noop } from '@constants';
+import { useAppDispatch, useAppSelector, useLocalization } from '@hooks';
+import { BaseLayout } from '@layout';
+import { doRemoveBookmark } from '@store/actions';
+import { selectBookmarksData } from '@store/selectors';
+import { TNewsItem } from '@types';
+import { groupDataByDay } from '@utils';
 
 function BookmarksPage() {
   const dispatch = useAppDispatch();

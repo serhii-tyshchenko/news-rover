@@ -1,5 +1,6 @@
-import { TRootState } from '@store';
 import { createSelector } from 'reselect';
+
+import { TRootState } from '@store';
 
 const selectRoot = (state: TRootState) => state.addedProviders;
 

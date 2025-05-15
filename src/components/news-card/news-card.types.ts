@@ -1,4 +1,4 @@
-import { TProvider, TDic, EViewMode } from '@types';
+import { EViewMode, TDic, TProvider } from '@types';
 
 export interface INewsCardProps {
   provider: TProvider;

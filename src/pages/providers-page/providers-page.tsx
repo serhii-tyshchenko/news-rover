@@ -1,16 +1,16 @@
 import { isEmpty } from 'lodash';
+
+import { Card, CardList } from '@components/ui';
+import { useAppDispatch, useAppSelector, useLocalization } from '@hooks';
+import { BaseLayout } from '@layout';
+import { doAddProvider, doRemoveProvider } from '@store/actions';
 import {
   selectLocale,
   selectProvidersData,
   selectProvidersError,
 } from '@store/selectors';
-import { doAddProvider, doRemoveProvider } from '@store/actions';
-import { useAppSelector, useAppDispatch, useLocalization } from '@hooks';
-import { Card, CardList } from '@components/ui';
-import { BaseLayout } from '@layout';
 
 import ProviderList from './provider-list';
-
 import { groupProvidersByCategory } from './providers-page.utils';
 
 function ProvidersPage() {

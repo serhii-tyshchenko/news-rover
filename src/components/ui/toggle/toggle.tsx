@@ -1,5 +1,5 @@
-import { getClassName } from '@utils';
 import { EControlSize } from '@types';
+import { getClassName } from '@utils';
 
 import './toggle.styles.scss';
 

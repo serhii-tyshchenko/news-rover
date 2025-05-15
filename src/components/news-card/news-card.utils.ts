@@ -1,4 +1,5 @@
 import { EViewMode } from '@types';
+
 import { TGetConfig } from './news-card.types';
 
 export const changeViewMode = (viewMode: EViewMode) => {

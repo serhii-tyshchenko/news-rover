@@ -1,5 +1,5 @@
-import { IAction, TBookmark } from '@types';
 import { ADD_BOOKMARK, REMOVE_BOOKMARK } from '@store/action-types';
+import { IAction, TBookmark } from '@types';
 
 const initialState = {
   data: [] as Array<TBookmark>,

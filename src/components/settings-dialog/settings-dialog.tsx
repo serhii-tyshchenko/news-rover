@@ -1,26 +1,23 @@
 import { Dialog, Select, Toggle } from '@components/ui';
 import {
-  useAppDispatch,
-  useAppSelector,
-  useLocalization,
-  useAnimation,
-} from '@hooks';
-import { doUpdateSettings } from '@store/actions';
-import { selectSettingsData } from '@store/selectors';
-import {
-  ETheme,
-  ELanguage,
   APP_VERSION,
   AUTHOR_NAME,
   AUTHOR_SITE,
   AUTOREFRESH_INTERVAL_OPTIONS,
   DEFAULT_AUTOREFERSH_INTERVAL,
 } from '@constants';
-import { EControlSize } from '@types';
+import {
+  useAnimation,
+  useAppDispatch,
+  useAppSelector,
+  useLocalization,
+} from '@hooks';
+import { doUpdateSettings } from '@store/actions';
+import { selectSettingsData } from '@store/selectors';
+import { EControlSize, ELanguage, ETheme } from '@types';
+import { prepareOptions } from '@utils';
 
 import { SettingsGroup } from './components';
-
-import { prepareOptions } from './settings-dialog.utils';
 
 interface ISettingsDialogProps {
   opened: boolean;

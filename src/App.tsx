@@ -1,19 +1,20 @@
 import { useEffect } from 'react';
-import { Routes, Route, Navigate } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
+
+import { AppLoader } from '@components';
+import { useAppDispatch, useAppSelector, useTheme } from '@hooks';
+import { BookmarksPage, HomePage, ProvidersPage } from '@pages';
 import { doGetProviders } from '@store/actions';
 import { selectProvidersLoading } from '@store/selectors';
-import { useAppDispatch, useAppSelector, useTheme } from '@hooks';
-import { ERoute } from '@constants';
-import { AppLoader } from '@components';
-
-import { HomePage, BookmarksPage, ProvidersPage } from '@pages';
+import { ERoute } from '@types';
 
 import './App.scss';
 
 function App() {
+  useTheme();
+
   const dispatch = useAppDispatch();
   const isLoading = useAppSelector(selectProvidersLoading);
-  useTheme();
 
   useEffect(() => {
     dispatch(doGetProviders());

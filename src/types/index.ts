@@ -1,5 +1,35 @@
 import { Action } from 'redux';
-import { ETheme, ELanguage } from '@constants';
+
+export enum ETheme {
+  System = 'system',
+  Light = 'light',
+  Dark = 'dark',
+  LightBlue = 'light-blue',
+  DarkBlue = 'dark-blue',
+  DarkRed = 'dark-red',
+}
+
+export enum ELanguage {
+  En = 'en',
+  Uk = 'uk',
+  Ge = 'de',
+}
+
+export enum ERoute {
+  Home = '/',
+  Bookmarks = '/bookmarks',
+  Providers = '/providers',
+}
+
+// TODO add rest icons
+export enum EIcon {
+  Bookmark = 'bookmark',
+  BookmarkEmpty = 'bookmark-empty',
+  Rss = 'rss',
+  Moon = 'moon',
+  Sun = 'sun',
+  Settings = 'cog',
+}
 
 export type TProvider = {
   id: string;

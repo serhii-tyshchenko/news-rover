@@ -1,9 +1,8 @@
 import {
   DEFAULT_POSTS_LIMIT,
-  PROVIDERS_ROOT_URL,
   NEWS_ROOT_URL,
+  PROVIDERS_ROOT_URL,
 } from '@constants';
-
 import { formatGetNewsByProviderResponse, isValidResponse } from '@utils';
 
 export const getProviders = async () => {

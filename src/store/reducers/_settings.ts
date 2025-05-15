@@ -1,7 +1,7 @@
-import { IAction, TSettings } from '@types';
-import { ETheme, DEFAULT_AUTOREFERSH_INTERVAL } from '@constants';
+import { DEFAULT_AUTOREFERSH_INTERVAL } from '@constants';
 import { UPDATE_SETTINGS } from '@store/action-types';
-import { shouldReduceMotion, getSystemLocale } from '@utils';
+import { ETheme, IAction, TSettings } from '@types';
+import { getSystemLocale, shouldReduceMotion } from '@utils';
 
 const initialState: TSettings = {
   theme: ETheme.System,

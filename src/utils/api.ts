@@ -1,5 +1,6 @@
 import { first } from 'lodash';
-import { TEnclosure, EEnclosureType } from '@types';
+
+import { EEnclosureType, TEnclosure } from '@types';
 
 const byImageType = (enclosure: TEnclosure) =>
   enclosure.type === EEnclosureType.Image;

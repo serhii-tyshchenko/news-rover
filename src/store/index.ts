@@ -1,17 +1,18 @@
 import {
-  legacy_createStore as createStore,
   applyMiddleware,
-  compose,
   combineReducers,
+  compose,
+  legacy_createStore as createStore,
 } from 'redux';
-import { loadState, saveState } from '@core/localStorage';
 import thunk from 'redux-thunk';
 
+import { loadState, saveState } from '@core/localStorage';
+
 import {
-  settings,
-  providersReducer as providers,
   addedProvidersReducer as addedProviders,
   bookmarksReducer as bookmarks,
+  providersReducer as providers,
+  settings,
 } from './reducers';
 
 declare global {
@@ -36,18 +37,10 @@ const store = createStore(
 );
 
 store.subscribe(() => {
-  const {
-    settings,
-    providers: { added },
-    addedProviders,
-    bookmarks,
-  } = store.getState();
+  const { settings, addedProviders, bookmarks } = store.getState();
   saveState({
     settings,
     addedProviders,
-    providers: {
-      added,
-    },
     bookmarks,
   });
 });

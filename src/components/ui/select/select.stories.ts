@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
+import { EControlSize } from '@types';
 
 import { Select } from './select';
-import { EControlSize } from '@types';
 
 const meta = {
   title: 'UI/Select',

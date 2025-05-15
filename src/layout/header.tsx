@@ -1,12 +1,14 @@
-import { useNavigate, useLocation } from 'react-router';
-import { isEmpty } from 'lodash';
+import { useLocation, useNavigate } from 'react-router';
 import { Link } from 'react-router-dom';
-import { IconButton } from '@components/ui';
+
+import { isEmpty } from 'lodash';
+
 import { SettingsDialog } from '@components';
-import { APP_NAME, ERoute, EIcon } from '@constants';
-import { useLocalization, useAppSelector, useDialogState } from '@hooks';
+import { IconButton } from '@components/ui';
+import { APP_NAME } from '@constants';
+import { useAppSelector, useDialogState, useLocalization } from '@hooks';
 import { selectBookmarksData } from '@store/selectors';
-import { EControlSize } from '@types';
+import { EControlSize, EIcon, ERoute } from '@types';
 
 function Header() {
   const { opened, openDialog, closeDialog } = useDialogState();

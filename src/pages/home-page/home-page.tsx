@@ -1,16 +1,16 @@
 import { Link } from 'react-router-dom';
+
 import { isEmpty } from 'lodash';
 
+import { CardList, NewsCard } from '@components';
+import { useAppSelector, useLocalization } from '@hooks';
+import { BaseLayout } from '@layout';
 import {
   selectAddedProviders,
   selectProvidersData,
   selectProvidersError,
 } from '@store/selectors';
-import { useAppSelector, useLocalization } from '@hooks';
-import { BaseLayout } from '@layout';
-import { NewsCard, CardList } from '@components';
-import { TProvider } from '@types';
-import { ERoute } from '@constants';
+import { ERoute, TProvider } from '@types';
 
 function HomePage() {
   const dic = useLocalization();

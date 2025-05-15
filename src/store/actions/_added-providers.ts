@@ -1,7 +1,7 @@
 import {
   ADD_PROVIDER,
-  UPDATE_PROVIDER,
   REMOVE_PROVIDER,
+  UPDATE_PROVIDER,
 } from '@store/action-types';
 import { EViewMode, TAddedProvider } from '@types';
 

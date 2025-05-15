@@ -1,9 +1,11 @@
 import { vi } from 'vitest';
-import { renderHook } from '@testing-library/react';
-import { useTheme } from './use-theme';
-import { ETheme } from '@constants';
+
 import * as hooks from '@hooks';
 import * as selectors from '@store/selectors';
+import { renderHook } from '@testing-library/react';
+import { ETheme } from '@types';
+
+import { useTheme } from './use-theme';
 
 vi.mock('@hooks', () => ({
   useAppSelector: vi.fn(),

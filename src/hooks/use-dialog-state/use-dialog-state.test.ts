@@ -1,5 +1,7 @@
-import { describe, it, expect } from 'vitest';
-import { renderHook, act } from '@testing-library/react';
+import { describe, expect, it } from 'vitest';
+
+import { act, renderHook } from '@testing-library/react';
+
 import { useDialogState } from './use-dialog-state';
 
 describe('useDialogState', () => {
