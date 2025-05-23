@@ -24,31 +24,25 @@ function HomePage() {
 
   if (!isEmpty(error)) {
     return (
-      <BaseLayout>
-        <div className="flex items-center justify-center h-full p-2 text-center color-danger">
-          {dic.genericError}
-        </div>
-      </BaseLayout>
+      <div className="flex items-center justify-center h-full p-2 text-center color-danger">
+        {dic.genericError}
+      </div>
     );
   }
   if (isEmpty(addedProvidersData)) {
     return (
-      <BaseLayout>
-        <div className="flex items-center justify-center h-full p-2 text-center">
-          {dic.noProviders}&nbsp;<Link to={ERoute.Providers}>{dic.add}</Link>
-        </div>
-      </BaseLayout>
+      <div className="flex items-center justify-center h-full p-2 text-center">
+        {dic.noProviders}&nbsp;<Link to={ERoute.Providers}>{dic.add}</Link>
+      </div>
     );
   }
 
   return (
-    <BaseLayout>
-      <CardList>
-        {addedProvidersData.map((provider: TProvider) => (
-          <NewsCard key={provider.id} provider={provider} />
-        ))}
-      </CardList>
-    </BaseLayout>
+    <CardList>
+      {addedProvidersData.map((provider: TProvider) => (
+        <NewsCard key={provider.id} provider={provider} />
+      ))}
+    </CardList>
   );
 }
 

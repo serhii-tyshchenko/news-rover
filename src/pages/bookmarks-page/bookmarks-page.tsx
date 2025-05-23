@@ -20,25 +20,23 @@ function BookmarksPage() {
   };
 
   return (
-    <BaseLayout>
-      <CardList>
-        <Card title={dic.bookmarks}>
-          {isEmpty(bookmarks) && (
-            <div className="flex items-center justify-center text-center grow">
-              {dic.noBookmarks}
-            </div>
-          )}
-          {!isEmpty(bookmarks) && (
-            <NewsList
-              providerId="bookmarks"
-              data={groupDataByDay(bookmarks)}
-              onAddBookmark={noop}
-              onRemoveBookmark={handleRemoveBookmark}
-            />
-          )}
-        </Card>
-      </CardList>
-    </BaseLayout>
+    <CardList>
+      <Card title={dic.bookmarks}>
+        {isEmpty(bookmarks) && (
+          <div className="flex items-center justify-center text-center grow">
+            {dic.noBookmarks}
+          </div>
+        )}
+        {!isEmpty(bookmarks) && (
+          <NewsList
+            providerId="bookmarks"
+            data={groupDataByDay(bookmarks)}
+            onAddBookmark={noop}
+            onRemoveBookmark={handleRemoveBookmark}
+          />
+        )}
+      </Card>
+    </CardList>
   );
 }
 

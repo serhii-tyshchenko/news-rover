@@ -17,8 +17,8 @@ export enum ELanguage {
 
 export enum ERoute {
   Home = '/',
-  Bookmarks = '/bookmarks',
-  Providers = '/providers',
+  Bookmarks = 'bookmarks',
+  Providers = 'providers',
 }
 
 // TODO add rest icons

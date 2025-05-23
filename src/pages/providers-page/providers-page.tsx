@@ -37,38 +37,32 @@ function ProvidersPage() {
 
   if (!isEmpty(error)) {
     return (
-      <BaseLayout>
-        <div className="flex items-center justify-center h-full p-2 text-center color-danger">
-          {dic.genericError}
-        </div>
-      </BaseLayout>
+      <div className="flex items-center justify-center h-full p-2 text-center color-danger">
+        {dic.genericError}
+      </div>
     );
   }
 
   if (isEmpty(groupedProviders)) {
     return (
-      <BaseLayout>
-        <div className="flex items-center justify-center h-full p-2 text-center">
-          {dic.noProviders}
-        </div>
-      </BaseLayout>
+      <div className="flex items-center justify-center h-full p-2 text-center">
+        {dic.noProviders}
+      </div>
     );
   }
 
   return (
-    <BaseLayout>
-      <CardList>
-        {groupedProviders.map((provider) => (
-          <Card key={provider.category} title={provider.title}>
-            <ProviderList
-              data={provider.data}
-              onAddProvider={handleAddProvider}
-              onRemoveProvider={handleRemoveProvider}
-            ></ProviderList>
-          </Card>
-        ))}
-      </CardList>
-    </BaseLayout>
+    <CardList>
+      {groupedProviders.map((provider) => (
+        <Card key={provider.category} title={provider.title}>
+          <ProviderList
+            data={provider.data}
+            onAddProvider={handleAddProvider}
+            onRemoveProvider={handleRemoveProvider}
+          ></ProviderList>
+        </Card>
+      ))}
+    </CardList>
   );
 }
 
