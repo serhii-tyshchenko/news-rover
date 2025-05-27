@@ -4,6 +4,11 @@
 branch="$(git rev-parse --abbrev-ref HEAD)"
 
 if [ "$branch" = "main" ] || [ "$branch" = "develop" ]; then
+  echo "Running pre-push checks for branch: $branch"
+  echo "Running linter"
   npm run lint;
+  echo "Running tests"
   npm run test;
+  echo "Running build"
+  npm run build;
 fi
