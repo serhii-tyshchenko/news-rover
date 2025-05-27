@@ -1,34 +1,38 @@
 type TActionsConfig = {
-  [key: string]: (arg: any) => string;
+  [key: string]: (arg: unknown) => string | boolean | undefined;
 };
 
 type TTypesConfig = {
-  [key: string]: (arg: any) => boolean;
+  [key: string]: (arg: unknown) => boolean;
 };
 
 const actionsConfig: TActionsConfig = {
-  string: (arg: string) => arg,
-  object: (arg: Record<string, any>) =>
-    Object.keys(arg)
-      .filter((key) => arg[key])
-      .join(' ')
-      .trim(),
-  array: (arg: any[]) => arg.join(' ').trim(),
+  string: (arg: unknown) => arg as string,
+  object: (arg: unknown) => {
+    if (typeof arg === 'object' && arg !== null && !Array.isArray(arg)) {
+      return Object.keys(arg)
+        .filter((key) => (arg as Record<string, unknown>)[key])
+        .join(' ')
+        .trim();
+    }
+    return '';
+  },
+  array: (arg: unknown) => (arg as unknown[]).join(' ').trim(),
 };
 
 const typesConfig: TTypesConfig = {
-  string: (arg: any): arg is string => typeof arg === 'string',
-  object: (arg: any): arg is Record<string, any> =>
+  string: (arg: unknown): arg is string => typeof arg === 'string',
+  object: (arg: unknown): arg is Record<string, unknown> =>
     typeof arg === 'object' && !Array.isArray(arg),
-  array: (arg: any): arg is any[] => Array.isArray(arg),
+  array: (arg: unknown): arg is unknown[] => Array.isArray(arg),
 };
 
-const mapConfigs = (arg: any) => {
+const mapConfigs = (arg: unknown) => {
   const argType = Object.keys(typesConfig).find((key) => typesConfig[key](arg));
   return actionsConfig[argType!](arg);
 };
 
-const getClassName = (...args: any[]) =>
+const getClassName = (...args: unknown[]) =>
   args
     .filter(Boolean)
     .map((arg) => mapConfigs(arg))

@@ -2,7 +2,6 @@ import { isEmpty } from 'lodash';
 
 import { Card, CardList } from '@components/ui';
 import { useAppDispatch, useAppSelector, useLocalization } from '@hooks';
-import { BaseLayout } from '@layout';
 import { doAddProvider, doRemoveProvider } from '@store/actions';
 import {
   selectLocale,

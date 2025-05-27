@@ -1,7 +1,6 @@
 import { vi } from 'vitest';
 
 import * as hooks from '@hooks';
-import * as selectors from '@store/selectors';
 import { renderHook } from '@testing-library/react';
 import { ETheme } from '@types';
 

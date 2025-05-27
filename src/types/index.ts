@@ -46,6 +46,14 @@ export type TAddedProvider = {
   viewMode: EViewMode;
 };
 
+export type TRawNewsItem = {
+  created: number;
+  title: string;
+  link: string;
+  enclosures?: TEnclosure[];
+  description?: string;
+};
+
 export type TNewsItem = {
   title: string;
   link: string;
@@ -86,7 +94,8 @@ export type TSettings = {
 };
 
 export interface IAction extends Action {
-  payload?: any;
+  type: string;
+  payload?: unknown;
 }
 
 export type TDic = {

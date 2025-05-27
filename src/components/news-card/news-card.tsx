@@ -1,7 +1,6 @@
 import { useCallback, useMemo, useState } from 'react';
 
 import { isEmpty } from 'lodash';
-import { v4 as uuidv4 } from 'uuid';
 
 import { NewsList, Skeleton } from '@components';
 import { Button, Card } from '@components/ui';
