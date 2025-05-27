@@ -1,5 +1,7 @@
 import { Mock, vi } from 'vitest';
-import { renderHook, act } from '@testing-library/react';
+
+import { act, renderHook } from '@testing-library/react';
+
 import { useDialog } from './use-dialog';
 
 describe('useDialog', () => {

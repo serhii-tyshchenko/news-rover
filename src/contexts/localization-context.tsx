@@ -1,4 +1,5 @@
-import { useState, useEffect, createContext } from 'react';
+import { createContext, useEffect, useState } from 'react';
+
 import { useAppSelector } from '@hooks';
 import { selectLocale } from '@store/selectors';
 import { TDic } from '@types';

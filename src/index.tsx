@@ -1,14 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { BrowserRouter } from 'react-router-dom';
-import { Provider } from 'react-redux';
 import { QueryClient, QueryClientProvider } from 'react-query';
-import { LocalizationProvider } from '@contexts';
+import { Provider } from 'react-redux';
+import { BrowserRouter } from 'react-router-dom';
 
-import store from './store';
+import { LocalizationProvider } from '@contexts';
 
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import store from './store';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement,

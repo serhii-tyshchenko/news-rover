@@ -1,9 +1,9 @@
-import { IAction, TAddedProvider } from '@types';
 import {
   ADD_PROVIDER,
-  UPDATE_PROVIDER,
   REMOVE_PROVIDER,
+  UPDATE_PROVIDER,
 } from '@store/action-types';
+import { IAction, TAddedProvider } from '@types';
 
 const initialState = [] as TAddedProvider[];
 

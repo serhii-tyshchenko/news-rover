@@ -1,5 +1,6 @@
-import { useAnimation } from '@hooks';
 import logo from '~assets/images/logo96.png';
+
+import { useAnimation } from '@hooks';
 
 function AppLoader() {
   const isAnimationEnabled = useAnimation();

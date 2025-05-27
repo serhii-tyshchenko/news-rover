@@ -1,21 +1,24 @@
 import { useEffect } from 'react';
-import { Routes, Route, Navigate } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
+
+import { AppLoader } from '@components';
+import { useAppDispatch, useAppSelector, useTheme } from '@hooks';
+import { BaseLayout } from '@layout';
+import { BookmarksPage, HomePage, ProvidersPage } from '@pages';
 import { doGetProviders } from '@store/actions';
 import { selectProvidersLoading } from '@store/selectors';
-import { useAppDispatch, useAppSelector, useTheme } from '@hooks';
-import { ERoute } from '@constants';
-import { AppLoader } from '@components';
-
-import { HomePage, BookmarksPage, ProvidersPage } from '@pages';
+import { ERoute } from '@types';
 
 import './App.scss';
 
 function App() {
-  const dispatch = useAppDispatch();
-  const isLoading = useAppSelector(selectProvidersLoading);
   useTheme();
 
+  const dispatch = useAppDispatch();
+  const isLoading = useAppSelector(selectProvidersLoading);
+
   useEffect(() => {
+    // @ts-expect-error: dispatch supports thunk actions
     dispatch(doGetProviders());
   }, [dispatch]);
 
@@ -25,10 +28,12 @@ function App() {
 
   return (
     <Routes>
-      <Route path={ERoute.Home} element={<HomePage />} />
-      <Route path={ERoute.Bookmarks} element={<BookmarksPage />} />
-      <Route path={ERoute.Providers} element={<ProvidersPage />} />
-      <Route path="*" element={<Navigate to={ERoute.Home} replace />} />
+      <Route path={ERoute.Home} element={<BaseLayout />}>
+        <Route index element={<HomePage />} />
+        <Route path={ERoute.Bookmarks} element={<BookmarksPage />} />
+        <Route path={ERoute.Providers} element={<ProvidersPage />} />
+        <Route path="*" element={<Navigate to={ERoute.Home} replace />} />
+      </Route>
     </Routes>
   );
 }

@@ -1,15 +1,16 @@
 import { Fragment } from 'react';
-import { useLocalization, useAppSelector } from '@hooks';
-import { TNewsItem } from '@types';
+
+import { useAppSelector, useLocalization } from '@hooks';
 import {
   selectBookmarksData,
   selectLocale,
   selectProviderById,
 } from '@store/selectors';
+import { TNewsItem } from '@types';
 import { getDateLabel } from '@utils';
 
-import { checkIfBookmarked } from './news-list.utils';
 import NewsListItem from './news-list-item';
+import { checkIfBookmarked } from './news-list.utils';
 
 interface IProps {
   data: Record<string, TNewsItem[]>;

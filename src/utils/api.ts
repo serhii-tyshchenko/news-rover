@@ -1,5 +1,6 @@
 import { first } from 'lodash';
-import { TEnclosure, EEnclosureType } from '@types';
+
+import { EEnclosureType, TEnclosure, TRawNewsItem } from '@types';
 
 const byImageType = (enclosure: TEnclosure) =>
   enclosure.type === EEnclosureType.Image;
@@ -10,7 +11,7 @@ export const extractThumbnailUrl = (enclosures: TEnclosure[] = []) =>
 export const isValidResponse = (response: Response) => response.status === 200;
 
 export const formatGetNewsByProviderResponse = (rawData: {
-  data: any[];
+  data: TRawNewsItem[];
   count: number;
 }) => ({
   data: rawData.data.map((item) => ({

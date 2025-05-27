@@ -2,5 +2,17 @@
     "singleQuote": true,
     "printWidth": 80,
     "semi": true,
-    "trailingComma": "all"
+    "trailingComma": "all",
+    "plugins": [
+        "@trivago/prettier-plugin-sort-imports"
+    ],
+    "importOrder": [
+        "^react",
+        "^[a-z]",
+        "^@",
+        "^[./]"
+    ],
+    "importOrderSeparation": true,
+    "importOrderSortSpecifiers": true,
+    "importOrderSeparateGroups": true
 }

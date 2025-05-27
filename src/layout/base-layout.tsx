@@ -1,17 +1,15 @@
-import { ReactNode } from 'react';
+import { Outlet } from 'react-router-dom';
 
 import Header from './header';
 import Main from './main';
 
-type TProps = {
-  children: ReactNode;
-};
-
-function BaseLayout({ children }: TProps) {
+function BaseLayout() {
   return (
     <>
       <Header />
-      <Main>{children}</Main>
+      <Main>
+        <Outlet />
+      </Main>
     </>
   );
 }

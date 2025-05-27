@@ -1,6 +1,8 @@
-import { describe, it, expect, vi } from 'vitest';
-import { ELanguage } from '@constants';
-import { shouldReduceMotion, getSystemLocale } from './system-preferences';
+import { describe, expect, it, vi } from 'vitest';
+
+import { ELanguage } from '@types';
+
+import { getSystemLocale, shouldReduceMotion } from './system-preferences';
 
 describe('(Function) shouldReduceMotion', () => {
   it('should return true if prefers-reduced-motion is set to reduce', () => {

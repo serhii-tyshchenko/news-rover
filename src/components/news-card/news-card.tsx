@@ -1,28 +1,29 @@
 import { useCallback, useMemo, useState } from 'react';
+
 import { isEmpty } from 'lodash';
-import { v4 as uuidv4 } from 'uuid';
+
+import { NewsList, Skeleton } from '@components';
+import { Button, Card } from '@components/ui';
+import { DEFAULT_POSTS_LIMIT } from '@constants';
 import {
+  useAnimation,
   useAppDispatch,
   useAppSelector,
   useLocalization,
-  useAnimation,
 } from '@hooks';
-import { selectSettingsData, selectProviderById } from '@store/selectors';
-import { Card, Button } from '@components/ui';
-import { Skeleton, NewsList } from '@components';
-import { TNewsItem, EControlSize, EViewMode } from '@types';
-import { groupDataByDay } from '@utils';
 import {
   doAddBookmark,
   doRemoveBookmark,
   doRemoveProvider,
   doUpdateProvider,
 } from '@store/actions';
-import { DEFAULT_POSTS_LIMIT } from '@constants';
+import { selectProviderById, selectSettingsData } from '@store/selectors';
+import { EControlSize, TNewsItem } from '@types';
+import { groupDataByDay } from '@utils';
 
 import { useNewsProviderData } from './news-card.queries';
-import { getConfig, changeViewMode } from './news-card.utils';
 import { INewsCardProps } from './news-card.types';
+import { changeViewMode, getConfig } from './news-card.utils';
 
 function NewsCard({ provider }: INewsCardProps) {
   const dic = useLocalization();
@@ -48,12 +49,7 @@ function NewsCard({ provider }: INewsCardProps) {
   });
 
   const handleAddBookmark = (item: TNewsItem) => {
-    dispatch(
-      doAddBookmark({
-        id: uuidv4(),
-        ...item,
-      }),
-    );
+    dispatch(doAddBookmark(item));
   };
 
   const handleRemoveBookmark = (item: TNewsItem) => {
@@ -123,7 +119,7 @@ function NewsCard({ provider }: INewsCardProps) {
         </div>
       )}
       {shouldShowContent && (
-        <div className="pr-1 overflow-y-auto">
+        <div className="overflow-y-auto scrollbar-none">
           <NewsList
             providerId={provider.id}
             data={groupedData}

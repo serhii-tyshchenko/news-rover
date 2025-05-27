@@ -1,16 +1,15 @@
 import { isEmpty } from 'lodash';
+
+import { Card, CardList } from '@components/ui';
+import { useAppDispatch, useAppSelector, useLocalization } from '@hooks';
+import { doAddProvider, doRemoveProvider } from '@store/actions';
 import {
   selectLocale,
   selectProvidersData,
   selectProvidersError,
 } from '@store/selectors';
-import { doAddProvider, doRemoveProvider } from '@store/actions';
-import { useAppSelector, useAppDispatch, useLocalization } from '@hooks';
-import { Card, CardList } from '@components/ui';
-import { BaseLayout } from '@layout';
 
 import ProviderList from './provider-list';
-
 import { groupProvidersByCategory } from './providers-page.utils';
 
 function ProvidersPage() {
@@ -37,38 +36,32 @@ function ProvidersPage() {
 
   if (!isEmpty(error)) {
     return (
-      <BaseLayout>
-        <div className="flex items-center justify-center h-full p-2 text-center color-danger">
-          {dic.genericError}
-        </div>
-      </BaseLayout>
+      <div className="flex items-center justify-center h-full p-2 text-center color-danger">
+        {dic.genericError}
+      </div>
     );
   }
 
   if (isEmpty(groupedProviders)) {
     return (
-      <BaseLayout>
-        <div className="flex items-center justify-center h-full p-2 text-center">
-          {dic.noProviders}
-        </div>
-      </BaseLayout>
+      <div className="flex items-center justify-center h-full p-2 text-center">
+        {dic.noProviders}
+      </div>
     );
   }
 
   return (
-    <BaseLayout>
-      <CardList>
-        {groupedProviders.map((provider) => (
-          <Card key={provider.category} title={provider.title}>
-            <ProviderList
-              data={provider.data}
-              onAddProvider={handleAddProvider}
-              onRemoveProvider={handleRemoveProvider}
-            ></ProviderList>
-          </Card>
-        ))}
-      </CardList>
-    </BaseLayout>
+    <CardList>
+      {groupedProviders.map((provider) => (
+        <Card key={provider.category} title={provider.title}>
+          <ProviderList
+            data={provider.data}
+            onAddProvider={handleAddProvider}
+            onRemoveProvider={handleRemoveProvider}
+          ></ProviderList>
+        </Card>
+      ))}
+    </CardList>
   );
 }
 

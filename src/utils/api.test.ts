@@ -1,6 +1,8 @@
-import { describe, it, expect } from 'vitest';
-import { extractThumbnailUrl, formatGetNewsByProviderResponse } from './api';
+import { describe, expect, it } from 'vitest';
+
 import { EEnclosureType, TEnclosure } from '@types';
+
+import { extractThumbnailUrl, formatGetNewsByProviderResponse } from './api';
 
 describe('extractThumbnailUrl', () => {
   it('should return the URL of the first image enclosure', () => {

@@ -1,5 +1,7 @@
 import { vi } from 'vitest';
+
 import { renderHook } from '@testing-library/react';
+
 import useMediaQuery from './use-media-query';
 
 describe('useMediaQuery', () => {

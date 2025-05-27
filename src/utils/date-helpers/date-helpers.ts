@@ -1,7 +1,8 @@
 import { groupBy } from 'lodash';
-import { TNewsItem, TDic } from '@types';
-import { capitalizeFirstLetter } from '@utils';
+
 import { ONE_MINUTE_IN_MILLISECONDS } from '@constants';
+import { TDic, TNewsItem } from '@types';
+import { capitalizeFirstLetter } from '@utils';
 
 export const formatTime = (dateRaw: number) => {
   const date = new Date(dateRaw);

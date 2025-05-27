@@ -1,6 +1,6 @@
+import { useAppSelector } from '@hooks';
 import { selectProviderById } from '@store/selectors';
 import { TProvider } from '@types';
-import { useAppSelector } from '@hooks';
 
 import ProviderListItem from './provider-list-item';
 

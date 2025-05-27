@@ -1,4 +1,4 @@
-import { TProvider, TDic } from '@types';
+import { TDic, TProvider } from '@types';
 
 const getCategoryTitle = (category: string, dic: TDic) => {
   const categoryToNameMap: { [key: string]: string } = {

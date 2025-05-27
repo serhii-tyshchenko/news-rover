@@ -1,5 +1,35 @@
 import { Action } from 'redux';
-import { ETheme, ELanguage } from '@constants';
+
+export enum ETheme {
+  System = 'system',
+  Light = 'light',
+  Dark = 'dark',
+  LightBlue = 'light-blue',
+  DarkBlue = 'dark-blue',
+  DarkRed = 'dark-red',
+}
+
+export enum ELanguage {
+  En = 'en',
+  Uk = 'uk',
+  Ge = 'de',
+}
+
+export enum ERoute {
+  Home = '/',
+  Bookmarks = 'bookmarks',
+  Providers = 'providers',
+}
+
+// TODO add rest icons
+export enum EIcon {
+  Bookmark = 'bookmark',
+  BookmarkEmpty = 'bookmark-empty',
+  Rss = 'rss',
+  Moon = 'moon',
+  Sun = 'sun',
+  Settings = 'cog',
+}
 
 export type TProvider = {
   id: string;
@@ -14,6 +44,14 @@ export type TProvider = {
 export type TAddedProvider = {
   id: string;
   viewMode: EViewMode;
+};
+
+export type TRawNewsItem = {
+  created: number;
+  title: string;
+  link: string;
+  enclosures?: TEnclosure[];
+  description?: string;
 };
 
 export type TNewsItem = {
@@ -47,13 +85,6 @@ export enum EEnclosureType {
   Audio = 'audio/mpeg',
 }
 
-export type TBookmark = {
-  id: string;
-  title: string;
-  link: string;
-  created: number;
-};
-
 export type TSettings = {
   theme: ETheme;
   locale: ELanguage;
@@ -63,7 +94,8 @@ export type TSettings = {
 };
 
 export interface IAction extends Action {
-  payload?: any;
+  type: string;
+  payload?: unknown;
 }
 
 export type TDic = {

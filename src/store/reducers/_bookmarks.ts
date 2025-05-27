@@ -1,8 +1,8 @@
-import { IAction, TBookmark } from '@types';
 import { ADD_BOOKMARK, REMOVE_BOOKMARK } from '@store/action-types';
+import { IAction, TNewsItem } from '@types';
 
 const initialState = {
-  data: [] as Array<TBookmark>,
+  data: [] as Array<TNewsItem>,
 };
 
 export const bookmarksReducer = (state = initialState, action: IAction) => {

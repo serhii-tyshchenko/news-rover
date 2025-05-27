@@ -1,14 +1,15 @@
 import { createPortal } from 'react-dom';
+
 import { FocusTrap } from 'focus-trap-react';
 
-import { getClassName } from '@utils';
-import { portalRoot, noop } from '@constants';
 import { IconButton } from '@components/ui';
+import { noop, portalRoot } from '@constants';
 import { EControlSize } from '@types';
+import { getClassName } from '@utils';
 
 import './dialog.styles.scss';
-
 import { useDialog } from './use-dialog';
+
 const NAME_SPACE = 'dialog';
 
 interface IProps {

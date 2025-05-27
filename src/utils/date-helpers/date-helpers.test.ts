@@ -1,12 +1,14 @@
-import { expect, describe, it } from 'vitest';
-import { TNewsItem, TDic } from '@types';
+import { describe, expect, it } from 'vitest';
+
+import { TNewsItem } from '@types';
+
 import {
   formatTime,
-  isToday,
-  isYesterday,
+  groupDataByDay,
   isThisWeek,
   isThisYear,
-  groupDataByDay,
+  isToday,
+  isYesterday,
 } from './date-helpers';
 
 describe('(Function) formatTime', () => {

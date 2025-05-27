@@ -1,5 +1,6 @@
 import { first } from 'lodash';
-import { ELanguage } from '@constants';
+
+import { ELanguage } from '@types';
 
 export const shouldReduceMotion = () =>
   window.matchMedia &&

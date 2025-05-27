@@ -1,10 +1,10 @@
 import { Dispatch } from 'redux';
-import { getProviders } from '@core/api';
 
+import { getProviders } from '@core/api';
 import {
+  GET_PROVIDERS_REQUEST_FAILED,
   GET_PROVIDERS_REQUEST_STARTED,
   GET_PROVIDERS_REQUEST_SUCCESS,
-  GET_PROVIDERS_REQUEST_FAILED,
 } from '@store/action-types';
 
 export const doGetProviders = () => async (dispatch: Dispatch) => {
