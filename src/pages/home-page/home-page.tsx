@@ -4,7 +4,6 @@ import { isEmpty } from 'lodash';
 
 import { CardList, NewsCard } from '@components';
 import { useAppSelector, useLocalization } from '@hooks';
-import { BaseLayout } from '@layout';
 import {
   selectAddedProviders,
   selectProvidersData,

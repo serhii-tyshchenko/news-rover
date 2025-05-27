@@ -1,7 +1,7 @@
 import { ADD_BOOKMARK, REMOVE_BOOKMARK } from '@store/action-types';
-import { TBookmark } from '@types';
+import { TNewsItem } from '@types';
 
-export const doAddBookmark = (data: TBookmark) => ({
+export const doAddBookmark = (data: TNewsItem) => ({
   type: ADD_BOOKMARK,
   payload: data,
 });

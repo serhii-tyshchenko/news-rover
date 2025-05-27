@@ -18,6 +18,7 @@ function App() {
   const isLoading = useAppSelector(selectProvidersLoading);
 
   useEffect(() => {
+    // @ts-expect-error: dispatch supports thunk actions
     dispatch(doGetProviders());
   }, [dispatch]);
 

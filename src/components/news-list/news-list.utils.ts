@@ -1,6 +1,6 @@
-import { TBookmark, TNewsItem } from '@types';
+import { TNewsItem } from '@types';
 
 export const checkIfBookmarked = (
-  bookmarks: Array<TBookmark>,
+  bookmarks: Array<TNewsItem>,
   item: TNewsItem,
-) => bookmarks.some((bookmark) => bookmark.link === item.link);
+) => bookmarks?.some((bookmark) => bookmark.link === item.link);

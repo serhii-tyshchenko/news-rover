@@ -77,13 +77,6 @@ export enum EEnclosureType {
   Audio = 'audio/mpeg',
 }
 
-export type TBookmark = {
-  id: string;
-  title: string;
-  link: string;
-  created: number;
-};
-
 export type TSettings = {
   theme: ETheme;
   locale: ELanguage;

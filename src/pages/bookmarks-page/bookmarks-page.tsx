@@ -4,7 +4,6 @@ import { NewsList } from '@components';
 import { Card, CardList } from '@components/ui';
 import { noop } from '@constants';
 import { useAppDispatch, useAppSelector, useLocalization } from '@hooks';
-import { BaseLayout } from '@layout';
 import { doRemoveBookmark } from '@store/actions';
 import { selectBookmarksData } from '@store/selectors';
 import { TNewsItem } from '@types';

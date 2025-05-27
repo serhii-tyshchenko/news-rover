@@ -19,7 +19,7 @@ import {
   doUpdateProvider,
 } from '@store/actions';
 import { selectProviderById, selectSettingsData } from '@store/selectors';
-import { EControlSize, EViewMode, TNewsItem } from '@types';
+import { EControlSize, TNewsItem } from '@types';
 import { groupDataByDay } from '@utils';
 
 import { useNewsProviderData } from './news-card.queries';
@@ -50,12 +50,7 @@ function NewsCard({ provider }: INewsCardProps) {
   });
 
   const handleAddBookmark = (item: TNewsItem) => {
-    dispatch(
-      doAddBookmark({
-        id: uuidv4(),
-        ...item,
-      }),
-    );
+    dispatch(doAddBookmark(item));
   };
 
   const handleRemoveBookmark = (item: TNewsItem) => {
@@ -125,7 +120,7 @@ function NewsCard({ provider }: INewsCardProps) {
         </div>
       )}
       {shouldShowContent && (
-        <div className="pr-1 overflow-y-auto">
+        <div className="overflow-y-auto scrollbar-none">
           <NewsList
             providerId={provider.id}
             data={groupedData}
