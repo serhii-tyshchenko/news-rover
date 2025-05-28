@@ -55,7 +55,7 @@ function SettingsDialog(props: ISettingsDialogProps) {
 
   return (
     <Dialog opened={opened} onClose={onClose} title={dic.settings}>
-      <div className="flex flex-col mb-4">
+      <div className="flex flex-col grow">
         <SettingsGroup label={dic.theme}>
           <Select
             name="theme"

@@ -1,7 +1,7 @@
 import { isEmpty } from 'lodash';
 
 import { NewsList } from '@components';
-import { Card, CardList } from '@components/ui';
+import { Card } from '@components/ui';
 import { noop } from '@constants';
 import { useAppDispatch, useAppSelector, useLocalization } from '@hooks';
 import { doRemoveBookmark } from '@store/actions';
@@ -19,23 +19,23 @@ function BookmarksPage() {
   };
 
   return (
-    <CardList>
-      <Card title={dic.bookmarks}>
-        {isEmpty(bookmarks) && (
-          <div className="flex items-center justify-center text-center grow">
-            {dic.noBookmarks}
-          </div>
-        )}
-        {!isEmpty(bookmarks) && (
+    <Card title={dic.bookmarks}>
+      {isEmpty(bookmarks) && (
+        <div className="flex items-center justify-center text-center grow">
+          {dic.noBookmarks}
+        </div>
+      )}
+      {!isEmpty(bookmarks) && (
+        <div className="overflow-y-auto scrollbar-none">
           <NewsList
             providerId="bookmarks"
             data={groupDataByDay(bookmarks)}
             onAddBookmark={noop}
             onRemoveBookmark={handleRemoveBookmark}
           />
-        )}
-      </Card>
-    </CardList>
+        </div>
+      )}
+    </Card>
   );
 }
 
