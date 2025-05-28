@@ -59,7 +59,7 @@ export type TNewsItem = {
   link: string;
   created: number;
   thumbnail: string | null;
-  description: string;
+  description: string | undefined;
 };
 
 export type TConfigMap = {

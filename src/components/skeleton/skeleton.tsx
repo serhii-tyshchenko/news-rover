@@ -15,7 +15,7 @@ function Skeleton(props: ISkeletonProps) {
   });
 
   return (
-    <ul className="flex flex-col h-full overflow-y-auto pr-1">
+    <ul className="flex flex-col h-full overflow-y-auto scrollbar-none">
       {Array.from({ length: count }).map((_, index) => (
         <li className={classNames} key={index} data-testid="skeleton-item" />
       ))}

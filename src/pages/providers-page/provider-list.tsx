@@ -19,7 +19,7 @@ function ProviderList({
     Boolean(useAppSelector(selectProviderById(id)));
 
   return (
-    <ul className="overflow-y-auto pr-2">
+    <ul className="overflow-y-auto scrollbar-none">
       {providers.map((provider) => (
         <ProviderListItem
           key={provider.id}

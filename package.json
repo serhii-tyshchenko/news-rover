@@ -1,8 +1,9 @@
 {
   "name": "news-rover",
-  "version": "2.2.4",
+  "version": "2.2.5",
   "private": false,
-  "description": "A news app that fetches news from rss feeds",
+  "description": "A React application for reading news from various sources using RSS feeds. It features a responsive design, themes, and supports multiple languages.",
+  "homepage": "https://news-rover.netlify.app/",
   "keywords": [
     "news",
     "rss",
@@ -58,6 +59,7 @@
     "@storybook/blocks": "^8.6.9",
     "@storybook/react": "^8.6.9",
     "@storybook/react-vite": "^8.6.9",
+    "@storybook/test": "^8.6.14",
     "@testing-library/jest-dom": "^6.6.2",
     "@testing-library/react": "^16.0.1",
     "@trivago/prettier-plugin-sort-imports": "^5.2.2",
