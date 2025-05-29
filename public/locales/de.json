@@ -47,7 +47,10 @@
     "dark": "Dunkel",
     "dark-blue": "Dunkelblau",
     "light-blue": "Hellblau",
-    "dark-red": "Dunkelrot"
+    "light-red": "Hellrot",
+    "dark-red": "Dunkelrot",
+    "dark-green": "Dunkelgrün",
+    "light-green": "Hellgrün"
   },
   "today": "Heute",
   "yesterday": "Gestern",

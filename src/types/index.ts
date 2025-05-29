@@ -6,6 +6,9 @@ export enum ETheme {
   Dark = 'dark',
   LightBlue = 'light-blue',
   DarkBlue = 'dark-blue',
+  LightGreen = 'light-green',
+  DarkGreen = 'dark-green',
+  LightRed = 'light-red',
   DarkRed = 'dark-red',
 }
 

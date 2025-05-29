@@ -2,7 +2,7 @@ import { createPortal } from 'react-dom';
 
 import { FocusTrap } from 'focus-trap-react';
 
-import { IconButton } from '@components/ui';
+import { IconButton } from '@components';
 import { noop, portalRoot } from '@constants';
 import { EControlSize } from '@types';
 import { getClassName } from '@utils';

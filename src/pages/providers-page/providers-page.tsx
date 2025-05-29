@@ -1,6 +1,6 @@
 import { isEmpty } from 'lodash';
 
-import { Card, CardList } from '@components/ui';
+import { Card, CardList } from '@components';
 import { useAppDispatch, useAppSelector, useLocalization } from '@hooks';
 import { doAddProvider, doRemoveProvider } from '@store/actions';
 import {

@@ -1,7 +1,6 @@
 import { isEmpty } from 'lodash';
 
-import { NewsList } from '@components';
-import { Card } from '@components/ui';
+import { Card, NewsList } from '@components';
 import { noop } from '@constants';
 import { useAppDispatch, useAppSelector, useLocalization } from '@hooks';
 import { doRemoveBookmark } from '@store/actions';

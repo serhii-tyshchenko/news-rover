@@ -3,8 +3,7 @@ import { Link } from 'react-router-dom';
 
 import { isEmpty } from 'lodash';
 
-import { SettingsDialog } from '@components';
-import { IconButton } from '@components/ui';
+import { IconButton, SettingsDialog } from '@components';
 import { APP_NAME } from '@constants';
 import { useAppSelector, useDialogState, useLocalization } from '@hooks';
 import { selectBookmarksData } from '@store/selectors';
@@ -20,16 +19,16 @@ function Header() {
 
   const navItemsConfig = [
     {
-      icon: noBookmarks ? EIcon.BookmarkEmpty : EIcon.Bookmark,
-      onClick: () => navigate(ERoute.Bookmarks),
-      title: dic.bookmarks,
-      isActive: location.pathname === ERoute.Bookmarks,
-    },
-    {
       icon: EIcon.Rss,
       onClick: () => navigate(ERoute.Providers),
       title: dic.providers,
-      isActive: location.pathname === ERoute.Providers,
+      isActive: location.pathname.includes(ERoute.Providers),
+    },
+    {
+      icon: noBookmarks ? EIcon.BookmarkEmpty : EIcon.Bookmark,
+      onClick: () => navigate(ERoute.Bookmarks),
+      title: dic.bookmarks,
+      isActive: location.pathname.includes(ERoute.Bookmarks),
     },
     {
       icon: EIcon.Settings,

@@ -2,8 +2,7 @@ import { useCallback, useMemo, useState } from 'react';
 
 import { isEmpty } from 'lodash';
 
-import { NewsList, Skeleton } from '@components';
-import { Button, Card } from '@components/ui';
+import { Button, Card, NewsList, Skeleton } from '@components';
 import { DEFAULT_POSTS_LIMIT } from '@constants';
 import {
   useAnimation,

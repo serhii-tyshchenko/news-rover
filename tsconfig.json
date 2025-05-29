@@ -23,8 +23,12 @@
       "@testing-library/jest-dom"
     ],
     "paths": {
+      "@api": ["api/"],
+      "@api/*": ["api/*"],
       "@store": ["store/"],
       "@store/*": ["store/*"],
+      "@storage": ["storage/"],
+      "@storage/*": ["storage/*"],
       "@constants": ["constants/"],
       "@contexts": ["contexts/"],
       "@utils": ["utils/"],

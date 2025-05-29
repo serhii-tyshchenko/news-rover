@@ -1,6 +1,6 @@
 import { Dispatch } from 'redux';
 
-import { getProviders } from '@core/api';
+import { getProviders } from '@api';
 import {
   GET_PROVIDERS_REQUEST_FAILED,
   GET_PROVIDERS_REQUEST_STARTED,
