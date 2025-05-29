@@ -1,6 +1,6 @@
 {
   "name": "news-rover",
-  "version": "2.2.4",
+  "version": "2.2.5",
   "private": false,
   "description": "A React application for reading news from various sources using RSS feeds. It features a responsive design, themes, and supports multiple languages.",
   "homepage": "https://news-rover.netlify.app/",
