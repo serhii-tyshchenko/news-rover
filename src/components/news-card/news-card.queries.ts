@@ -1,10 +1,10 @@
 import { useQuery } from 'react-query';
 
+import { getNewsByProvider } from '@api';
 import {
   DEFAULT_AUTOREFERSH_INTERVAL,
   ONE_MINUTE_IN_MILLISECONDS,
 } from '@constants';
-import { getNewsByProvider } from '@core/api';
 
 interface IProps {
   url: string;

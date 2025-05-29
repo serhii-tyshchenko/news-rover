@@ -20,7 +20,3 @@ export const saveState = (state: Record<string, unknown>) => {
     throw new Error('Unable to save to Local Storage');
   }
 };
-
-export const clearState = () => {
-  localStorage.removeItem(APP_NAME);
-};

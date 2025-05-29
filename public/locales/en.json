@@ -47,7 +47,10 @@
     "dark": "Dark",
     "dark-blue": "Dark Blue",
     "light-blue": "Light Blue",
-    "dark-red": "Dark Red"
+    "light-red": "Light Red",
+    "dark-red": "Dark Red",
+    "dark-green": "Dark Green",
+    "light-green": "Light Green"
   },
   "today": "Today",
   "yesterday": "Yesterday",

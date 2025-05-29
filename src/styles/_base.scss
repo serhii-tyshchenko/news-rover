@@ -25,6 +25,15 @@ body {
   box-sizing: border-box;
 }
 
+input,
+textarea,
+select,
+button {
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+}
+
 ::-webkit-scrollbar {
   height: 4px;
   width: 4px;
@@ -35,79 +44,10 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #779299;
+  background: var(--color-scrollbar);
   border-radius: 2px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #61dafb;
-}
-
-.container {
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-  max-width: 1920px;
-}
-
-header {
-  font-size: $font-size-xxl;
-  padding: 1rem;
-
-  a {
-    color: inherit;
-
-    &:hover {
-      text-decoration: none;
-      color: var(--color-accent);
-    }
-  }
-
-  @include for-size(mobile-large) {
-    padding: 0.5rem;
-  }
-}
-
-main {
-  flex-grow: 1;
-  overflow-y: auto;
-  padding: 0 1rem 1rem;
-
-  @include for-size(laptop) {
-    padding: 0;
-  }
-}
-
-.animation-rotate {
-  animation: rotate 1s linear infinite;
-}
-
-@keyframes rotate {
-  0% {
-    transform: rotate(0deg);
-  }
-
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-.animation-pulse {
-  animation: pulse 2s ease infinite;
-}
-
-
-@keyframes pulse {
-  0% {
-    transform: scale(1);
-  }
-
-  50% {
-    transform: scale(1.1);
-  }
-
-  100% {
-    transform: scale(1);
-  }
+  background: var(--color-scrollbar-hover);
 }

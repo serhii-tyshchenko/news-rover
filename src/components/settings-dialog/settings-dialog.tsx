@@ -1,4 +1,4 @@
-import { Dialog, Select, Toggle } from '@components/ui';
+import { Dialog, Select, Toggle } from '@components';
 import {
   APP_VERSION,
   AUTHOR_NAME,

@@ -6,7 +6,7 @@ import {
 } from 'redux';
 import thunk from 'redux-thunk';
 
-import { loadState, saveState } from '@core/localStorage';
+import { loadState, saveState } from '@storage';
 
 import {
   addedProvidersReducer as addedProviders,

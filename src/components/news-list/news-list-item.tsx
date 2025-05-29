@@ -2,7 +2,7 @@ import NotFound from '~assets/images/not-found.png';
 
 import { isEmpty } from 'lodash';
 
-import { IconButton } from '@components/ui';
+import { IconButton } from '@components';
 import { useLocalization } from '@hooks';
 import { EControlSize, EViewMode, TNewsItem } from '@types';
 import { formatTime, getClassName, isWithinLastHour } from '@utils';
