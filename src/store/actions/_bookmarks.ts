@@ -3,10 +3,10 @@ import { TNewsItem } from '@types';
 
 export const doAddBookmark = (data: TNewsItem) => ({
   type: ADD_BOOKMARK,
-  payload: data,
+  payload: data as TNewsItem,
 });
 
 export const doRemoveBookmark = (bookmarkUrl: string) => ({
   type: REMOVE_BOOKMARK,
-  payload: bookmarkUrl,
+  payload: bookmarkUrl as string,
 });

@@ -9,21 +9,23 @@ const initialState = [] as TAddedProvider[];
 
 export const addedProvidersReducer = (
   state = initialState,
-  action: IAction,
+  action: IAction<TAddedProvider> | IAction<string>,
 ) => {
   const { type, payload } = action;
 
   switch (type) {
     case ADD_PROVIDER:
-      return [...state, payload];
+      return [...state, payload as TAddedProvider];
 
     case UPDATE_PROVIDER:
       return state.map((provider) =>
-        provider.id !== payload.id ? provider : { ...provider, ...payload },
+        provider.id !== (payload as TAddedProvider).id
+          ? provider
+          : { ...provider, ...(payload as TAddedProvider) },
       );
 
     case REMOVE_PROVIDER:
-      return state.filter(({ id }) => id !== payload);
+      return state.filter(({ id }) => id !== (payload as string));
 
     default:
       return state;

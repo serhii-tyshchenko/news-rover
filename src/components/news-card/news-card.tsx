@@ -17,7 +17,7 @@ import {
   doUpdateProvider,
 } from '@store/actions';
 import { selectProviderById, selectSettingsData } from '@store/selectors';
-import { EControlSize, TNewsItem } from '@types';
+import { EControlSize, EViewMode, TNewsItem } from '@types';
 import { groupDataByDay } from '@utils';
 
 import { useNewsProviderData } from './news-card.queries';
@@ -63,7 +63,9 @@ function NewsCard({ provider }: INewsCardProps) {
   const handleViewModeChange = useCallback(() => {
     dispatch(
       doUpdateProvider(provider.id, {
-        viewMode: changeViewMode(providerSettings?.viewMode),
+        viewMode: changeViewMode(
+          providerSettings?.viewMode ?? EViewMode.TitleOnly,
+        ),
       }),
     );
   }, [dispatch, provider.id, providerSettings?.viewMode]);
@@ -84,7 +86,7 @@ function NewsCard({ provider }: INewsCardProps) {
     handleHideProvider,
     onViewModeClick: handleViewModeChange,
     showAnimation: isAnimationEnabled && isDataLoading,
-    viewMode: providerSettings?.viewMode,
+    viewMode: providerSettings?.viewMode ?? EViewMode.TitleOnly,
   });
 
   const shouldShowLoadMoreButton =

@@ -11,12 +11,15 @@ const initialState: TSettings = {
   autorefreshInterval: DEFAULT_AUTOREFERSH_INTERVAL,
 };
 
-export const settings = (state = initialState, action: IAction) => {
+export const settings = (
+  state = initialState,
+  action: IAction<Partial<TSettings>>,
+) => {
   const { type, payload } = action;
 
   switch (type) {
     case UPDATE_SETTINGS:
-      return { ...state, ...payload };
+      return { ...state, ...(payload as TSettings) };
     default:
       return state;
   }

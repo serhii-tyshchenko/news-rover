@@ -26,5 +26,5 @@ export const doUpdateProvider = (
 
 export const doRemoveProvider = (providerId: string) => ({
   type: REMOVE_PROVIDER,
-  payload: providerId,
+  payload: providerId as string,
 });

@@ -96,9 +96,9 @@ export type TSettings = {
   autorefreshInterval: number;
 };
 
-export interface IAction extends Action {
+export interface IAction<T = unknown> extends Action {
   type: string;
-  payload?: unknown;
+  payload?: T;
 }
 
 export type TDic = {

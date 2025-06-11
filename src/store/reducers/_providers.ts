@@ -11,7 +11,10 @@ const initialState = {
   error: null,
 };
 
-export const providersReducer = (state = initialState, action: IAction) => {
+export const providersReducer = (
+  state = initialState,
+  action: IAction<TProvider[]> | IAction<string>,
+) => {
   const { type, payload } = action;
 
   switch (type) {
@@ -21,13 +24,13 @@ export const providersReducer = (state = initialState, action: IAction) => {
     case GET_PROVIDERS_REQUEST_SUCCESS:
       return {
         ...state,
-        data: payload,
+        data: payload as Array<TProvider>,
         isLoading: false,
         error: null,
       };
 
     case GET_PROVIDERS_REQUEST_FAILED:
-      return { ...state, isLoading: false, error: payload };
+      return { ...state, isLoading: false, error: payload as string };
 
     default:
       return state;
