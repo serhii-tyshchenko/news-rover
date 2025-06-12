@@ -1,12 +1,8 @@
 import { Fragment } from 'react';
 
 import { useAppSelector, useLocalization } from '@hooks';
-import {
-  selectBookmarksData,
-  selectLocale,
-  selectProviderById,
-} from '@store/selectors';
-import { TNewsItem } from '@types';
+import { selectBookmarksData, selectLocale } from '@store/selectors';
+import { EViewMode, TNewsItem } from '@types';
 import { getDateLabel } from '@utils';
 
 import NewsListItem from './news-list-item';
@@ -17,14 +13,20 @@ interface IProps {
   providerId: string;
   onAddBookmark: (item: TNewsItem) => void;
   onRemoveBookmark: (item: TNewsItem) => void;
+  viewMode?: EViewMode;
 }
 
 function NewsList(props: IProps) {
-  const { data, providerId, onAddBookmark, onRemoveBookmark } = props;
+  const {
+    data,
+    providerId,
+    onAddBookmark,
+    onRemoveBookmark,
+    viewMode = EViewMode.TitleOnly,
+  } = props;
   const dic = useLocalization();
   const bookmarks = useAppSelector(selectBookmarksData);
   const locale = useAppSelector(selectLocale);
-  const providerSettings = useAppSelector(selectProviderById(providerId));
 
   return (
     <ul>
@@ -41,7 +43,7 @@ function NewsList(props: IProps) {
               key={item.link}
               data={item}
               bookmarked={checkIfBookmarked(bookmarks, item)}
-              viewMode={providerSettings?.viewMode}
+              viewMode={viewMode}
               onAddBookmark={onAddBookmark}
               onRemoveBookmark={onRemoveBookmark}
             />

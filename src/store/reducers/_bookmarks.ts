@@ -1,9 +1,19 @@
-import { ADD_BOOKMARK, REMOVE_BOOKMARK } from '@store/action-types';
-import { IAction, TNewsItem } from '@types';
+import {
+  ADD_BOOKMARK,
+  REMOVE_BOOKMARK,
+  UPDATE_BOOKMARKS_VIEW_MODE,
+} from '@store/action-types';
+import { EViewMode, IAction, TNewsItem } from '@types';
+
+type TState = {
+  data: Array<TNewsItem>;
+  viewMode: EViewMode;
+};
 
 const initialState = {
-  data: [] as Array<TNewsItem>,
-};
+  data: [],
+  viewMode: EViewMode.TitleOnly,
+} as TState;
 
 export const bookmarksReducer = (
   state = initialState,
@@ -21,6 +31,11 @@ export const bookmarksReducer = (
       return {
         ...state,
         data: state.data.filter((item) => item.link !== (payload as string)),
+      };
+    case UPDATE_BOOKMARKS_VIEW_MODE:
+      return {
+        ...state,
+        viewMode: payload as EViewMode,
       };
     default:
       return state;

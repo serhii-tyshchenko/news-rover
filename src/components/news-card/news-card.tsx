@@ -18,11 +18,11 @@ import {
 } from '@store/actions';
 import { selectProviderById, selectSettingsData } from '@store/selectors';
 import { EControlSize, EViewMode, TNewsItem } from '@types';
-import { groupDataByDay } from '@utils';
+import { changeViewMode, groupDataByDay } from '@utils';
 
 import { useNewsProviderData } from './news-card.queries';
 import { INewsCardProps } from './news-card.types';
-import { changeViewMode, getConfig } from './news-card.utils';
+import { getControlsConfig } from './news-card.utils';
 
 function NewsCard({ provider }: INewsCardProps) {
   const dic = useLocalization();
@@ -80,7 +80,7 @@ function NewsCard({ provider }: INewsCardProps) {
 
   const isDataLoading = isLoading || isFetching;
 
-  const controlsConfig = getConfig({
+  const controlsConfig = getControlsConfig({
     dic,
     handleRefresh,
     handleHideProvider,
@@ -126,6 +126,7 @@ function NewsCard({ provider }: INewsCardProps) {
             data={groupedData}
             onAddBookmark={handleAddBookmark}
             onRemoveBookmark={handleRemoveBookmark}
+            viewMode={providerSettings?.viewMode ?? EViewMode.TitleOnly}
           />
           {shouldShowLoadMoreButton && (
             <Button
