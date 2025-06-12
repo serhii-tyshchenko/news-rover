@@ -1,8 +1,8 @@
 /// <reference types="vitest" />
 /// <reference types="vite/client" />
-
 import path from 'path';
 import { Alias, defineConfig } from 'vite';
+
 import react from '@vitejs/plugin-react-swc';
 
 import * as tsconfig from './tsconfig.json';
@@ -35,10 +35,18 @@ export default defineConfig({
     setupFiles: 'src/setupTests.ts',
     coverage: {
       exclude: [
-        'node_modules/',
+        '.husky/',
+        '.storybook/',
+        '.vscode/',
         'build/',
-        'dist/',
+        'coverage/',
+        'node_modules/',
+        'public/',
         'storybook-static/',
+        'dist/',
+        'src/setupTests.ts',
+        '**/*.config.{js,ts,mjs,mts}',
+        '**/*.d.{ts,tsx}',
         '**/*.stories.{js,jsx,ts,tsx}',
       ],
     },

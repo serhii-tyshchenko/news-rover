@@ -17,12 +17,12 @@ import {
   doUpdateProvider,
 } from '@store/actions';
 import { selectProviderById, selectSettingsData } from '@store/selectors';
-import { EControlSize, TNewsItem } from '@types';
-import { groupDataByDay } from '@utils';
+import { EControlSize, EViewMode, TNewsItem } from '@types';
+import { changeViewMode, groupDataByDay } from '@utils';
 
 import { useNewsProviderData } from './news-card.queries';
 import { INewsCardProps } from './news-card.types';
-import { changeViewMode, getConfig } from './news-card.utils';
+import { getControlsConfig } from './news-card.utils';
 
 function NewsCard({ provider }: INewsCardProps) {
   const dic = useLocalization();
@@ -63,7 +63,9 @@ function NewsCard({ provider }: INewsCardProps) {
   const handleViewModeChange = useCallback(() => {
     dispatch(
       doUpdateProvider(provider.id, {
-        viewMode: changeViewMode(providerSettings?.viewMode),
+        viewMode: changeViewMode(
+          providerSettings?.viewMode ?? EViewMode.TitleOnly,
+        ),
       }),
     );
   }, [dispatch, provider.id, providerSettings?.viewMode]);
@@ -78,13 +80,13 @@ function NewsCard({ provider }: INewsCardProps) {
 
   const isDataLoading = isLoading || isFetching;
 
-  const controlsConfig = getConfig({
+  const controlsConfig = getControlsConfig({
     dic,
     handleRefresh,
     handleHideProvider,
     onViewModeClick: handleViewModeChange,
     showAnimation: isAnimationEnabled && isDataLoading,
-    viewMode: providerSettings?.viewMode,
+    viewMode: providerSettings?.viewMode ?? EViewMode.TitleOnly,
   });
 
   const shouldShowLoadMoreButton =
@@ -124,6 +126,7 @@ function NewsCard({ provider }: INewsCardProps) {
             data={groupedData}
             onAddBookmark={handleAddBookmark}
             onRemoveBookmark={handleRemoveBookmark}
+            viewMode={providerSettings?.viewMode ?? EViewMode.TitleOnly}
           />
           {shouldShowLoadMoreButton && (
             <Button
