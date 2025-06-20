@@ -1,20 +1,23 @@
 import { EViewMode, TDic } from '@types';
 import { getViewModeIcon } from '@utils';
 
-export type TGetControlsConfig = {
+type TGetControlsConfig = {
   dic: TDic;
   onViewModeClick: () => void;
   viewMode: EViewMode;
+  isEmptyData: boolean;
 };
 
 export const getControlsConfig = ({
   dic,
   onViewModeClick,
-  viewMode = EViewMode.TitleOnly,
+  viewMode,
+  isEmptyData,
 }: TGetControlsConfig) => [
   {
     icon: getViewModeIcon(viewMode),
     title: dic.viewMode,
     onClick: onViewModeClick,
+    disabled: isEmptyData,
   },
 ];

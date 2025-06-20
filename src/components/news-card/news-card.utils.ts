@@ -1,7 +1,6 @@
-import { EViewMode } from '@types';
 import { getViewModeIcon } from '@utils';
 
-import { TGetConfig } from './news-card.types';
+import { TControlsConfig, TGetControlsConfig } from './news-card.types';
 
 export const getControlsConfig = ({
   dic,
@@ -9,23 +8,28 @@ export const getControlsConfig = ({
   handleRefresh,
   onViewModeClick,
   showAnimation,
-  viewMode = EViewMode.TitleOnly,
-}: TGetConfig) => [
-  {
-    icon: 'arrows-cw',
-    title: dic.refresh,
-    onClick: handleRefresh,
-    className: showAnimation ? 'animation-rotate' : '',
-    disabled: showAnimation,
-  },
-  {
-    icon: getViewModeIcon(viewMode),
-    title: dic.viewMode,
-    onClick: onViewModeClick,
-  },
-  {
-    icon: 'eye-off',
-    title: dic.hideProvider,
-    onClick: handleHideProvider,
-  },
-];
+  isLoading = false,
+  isEmptyData = false,
+  viewMode,
+}: TGetControlsConfig) =>
+  [
+    {
+      icon: 'arrows-cw',
+      title: dic.refresh,
+      onClick: handleRefresh,
+      className: showAnimation && isLoading ? 'animation-rotate' : '',
+      disabled: isLoading,
+    },
+    {
+      icon: getViewModeIcon(viewMode),
+      title: dic.viewMode,
+      onClick: onViewModeClick,
+      disabled: isLoading || isEmptyData,
+    },
+    {
+      icon: 'eye-off',
+      title: dic.hideProvider,
+      onClick: handleHideProvider,
+      disabled: isLoading,
+    },
+  ] as TControlsConfig;
