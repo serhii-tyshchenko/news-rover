@@ -27,10 +27,12 @@ import { getControlsConfig } from './news-card.utils';
 function NewsCard({ provider }: INewsCardProps) {
   const dic = useLocalization();
   const dispatch = useAppDispatch();
+
   const { autorefresh, autorefreshInterval } =
     useAppSelector(selectSettingsData);
   const providerSettings = useAppSelector(selectProviderById(provider.id));
   const isAnimationEnabled = useAnimation();
+  const viewMode = providerSettings?.viewMode ?? EViewMode.TitleOnly;
 
   const [limit, setLimit] = useState(DEFAULT_POSTS_LIMIT);
 
@@ -63,12 +65,10 @@ function NewsCard({ provider }: INewsCardProps) {
   const handleViewModeChange = useCallback(() => {
     dispatch(
       doUpdateProvider(provider.id, {
-        viewMode: changeViewMode(
-          providerSettings?.viewMode ?? EViewMode.TitleOnly,
-        ),
+        viewMode: changeViewMode(viewMode),
       }),
     );
-  }, [dispatch, provider.id, providerSettings?.viewMode]);
+  }, [dispatch, provider.id, viewMode]);
 
   const handleHideProvider = () => {
     dispatch(doRemoveProvider(provider.id));
@@ -79,25 +79,26 @@ function NewsCard({ provider }: INewsCardProps) {
   };
 
   const isDataLoading = isLoading || isFetching;
+  const isEmptyData = isEmpty(providerData?.data);
+
+  const shouldShowLoadMoreButton =
+    !isEmptyData && limit <= (providerData?.count ?? 0);
+
+  const shouldShowSkeleton = isDataLoading;
+  const shouldShowError = !isDataLoading && !!error;
+  const shouldShowEmptyState = !isDataLoading && !error && isEmptyData;
+  const shouldShowContent = !shouldShowSkeleton && !error && !isEmptyData;
 
   const controlsConfig = getControlsConfig({
     dic,
     handleRefresh,
     handleHideProvider,
     onViewModeClick: handleViewModeChange,
-    showAnimation: isAnimationEnabled && isDataLoading,
-    viewMode: providerSettings?.viewMode ?? EViewMode.TitleOnly,
+    showAnimation: isAnimationEnabled,
+    isLoading: isDataLoading,
+    isEmptyData,
+    viewMode,
   });
-
-  const shouldShowLoadMoreButton =
-    !isEmpty(providerData?.data) && limit <= (providerData?.count ?? 0);
-
-  const shouldShowSkeleton = isDataLoading;
-  const shouldShowError = !isDataLoading && !!error;
-  const shouldShowEmptyState =
-    !isDataLoading && !error && isEmpty(providerData?.data);
-  const shouldShowContent =
-    !shouldShowSkeleton && !error && !isEmpty(providerData?.data);
 
   const groupedData = useMemo(
     () => groupDataByDay(providerData?.data ?? []),
@@ -126,7 +127,7 @@ function NewsCard({ provider }: INewsCardProps) {
             data={groupedData}
             onAddBookmark={handleAddBookmark}
             onRemoveBookmark={handleRemoveBookmark}
-            viewMode={providerSettings?.viewMode ?? EViewMode.TitleOnly}
+            viewMode={viewMode}
           />
           {shouldShowLoadMoreButton && (
             <Button

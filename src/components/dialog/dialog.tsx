@@ -1,9 +1,10 @@
 import { createPortal } from 'react-dom';
 
 import { FocusTrap } from 'focus-trap-react';
+import { noop } from 'lodash';
 
 import { IconButton } from '@components';
-import { noop, portalRoot } from '@constants';
+import { portalRoot } from '@constants';
 import { EControlSize } from '@types';
 import { getClassName } from '@utils';
 

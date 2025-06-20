@@ -147,6 +147,18 @@
   padding-right: 0.5rem;
 }
 
+.pb-1 {
+  padding-bottom: 0.25rem;
+}
+
+.pb-2 {
+  padding-bottom: 0.5rem;
+}
+
+.pb-3 {
+  padding-bottom: 0.75rem;
+}
+
 .text-center {
   text-align: center;
 }
@@ -211,6 +223,10 @@
   position: relative;
 }
 
+.sticky {
+  position: sticky;
+}
+
 .top-0 {
   top: 0;
 }
@@ -225,4 +241,8 @@
 
 .scrollbar-none {
   scrollbar-width: none;
+}
+
+.z-10 {
+  z-index: 10;
 }
