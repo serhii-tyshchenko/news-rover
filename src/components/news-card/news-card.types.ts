@@ -2,6 +2,11 @@ import { EViewMode, TDic, TProvider } from '@types';
 
 export interface INewsCardProps {
   provider: TProvider;
+  onDragStart?: (event: React.DragEvent<HTMLDivElement>) => void;
+  onDragEnd?: (event: React.DragEvent<HTMLDivElement>) => void;
+  onDragOver?: (event: React.DragEvent<HTMLDivElement>) => void;
+  isDragging?: boolean;
+  draggable?: boolean;
 }
 
 export type TGetControlsConfig = {

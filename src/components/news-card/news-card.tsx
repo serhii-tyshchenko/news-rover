@@ -24,7 +24,15 @@ import { useNewsProviderData } from './news-card.queries';
 import { INewsCardProps } from './news-card.types';
 import { getControlsConfig } from './news-card.utils';
 
-function NewsCard({ provider }: INewsCardProps) {
+function NewsCard(props: INewsCardProps) {
+  const {
+    provider,
+    onDragStart,
+    onDragEnd,
+    onDragOver,
+    isDragging,
+    draggable,
+  } = props;
   const dic = useLocalization();
   const dispatch = useAppDispatch();
 
@@ -106,7 +114,15 @@ function NewsCard({ provider }: INewsCardProps) {
   );
 
   return (
-    <Card title={provider.name} controlsConfig={controlsConfig}>
+    <Card
+      title={provider.name}
+      controlsConfig={controlsConfig}
+      draggable={draggable}
+      onDragStart={onDragStart}
+      onDragEnd={onDragEnd}
+      onDragOver={onDragOver}
+      className={isDragging ? 'opacity-50' : ''}
+    >
       {shouldShowSkeleton && (
         <Skeleton animated={isAnimationEnabled} count={DEFAULT_POSTS_LIMIT} />
       )}

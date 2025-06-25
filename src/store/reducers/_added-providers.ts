@@ -1,6 +1,7 @@
 import {
   ADD_PROVIDER,
   REMOVE_PROVIDER,
+  REORDER_PROVIDERS,
   UPDATE_PROVIDER,
 } from '@store/action-types';
 import { IAction, TAddedProvider } from '@types';
@@ -9,7 +10,7 @@ const initialState = [] as TAddedProvider[];
 
 export const addedProvidersReducer = (
   state = initialState,
-  action: IAction<TAddedProvider> | IAction<string>,
+  action: IAction<TAddedProvider | string | TAddedProvider[]>,
 ) => {
   const { type, payload } = action;
 
@@ -26,6 +27,9 @@ export const addedProvidersReducer = (
 
     case REMOVE_PROVIDER:
       return state.filter(({ id }) => id !== (payload as string));
+
+    case REORDER_PROVIDERS:
+      return [...(payload as unknown as TAddedProvider[])];
 
     default:
       return state;
