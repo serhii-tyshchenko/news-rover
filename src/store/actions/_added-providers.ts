@@ -1,6 +1,7 @@
 import {
   ADD_PROVIDER,
   REMOVE_PROVIDER,
+  REORDER_PROVIDERS,
   UPDATE_PROVIDER,
 } from '@store/action-types';
 import { EViewMode, TAddedProvider } from '@types';
@@ -27,4 +28,9 @@ export const doUpdateProvider = (
 export const doRemoveProvider = (providerId: string) => ({
   type: REMOVE_PROVIDER,
   payload: providerId as string,
+});
+
+export const doReorderProviders = (payload: TAddedProvider[]) => ({
+  type: REORDER_PROVIDERS,
+  payload: payload as TAddedProvider[],
 });

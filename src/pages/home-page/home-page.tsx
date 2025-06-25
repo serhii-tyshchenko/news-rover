@@ -1,25 +1,59 @@
+import { useCallback, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 
-import { isEmpty } from 'lodash';
+import { isEmpty, isEqual } from 'lodash';
 
 import { CardList, NewsCard } from '@components';
-import { useAppSelector, useLocalization } from '@hooks';
+import {
+  useAppDispatch,
+  useAppSelector,
+  useDraggableList,
+  useLocalization,
+} from '@hooks';
+import { doReorderProviders } from '@store/actions';
 import {
   selectAddedProviders,
   selectProvidersData,
   selectProvidersError,
 } from '@store/selectors';
-import { ERoute, TProvider } from '@types';
+import { ERoute, TAddedProvider, TProvider } from '@types';
 
 function HomePage() {
   const dic = useLocalization();
 
+  const dispatch = useAppDispatch();
   const availableProviders = useAppSelector(selectProvidersData) ?? [];
   const addedProviders = useAppSelector(selectAddedProviders);
-  const addedProvidersData = availableProviders.filter((provider: TProvider) =>
-    addedProviders.some((addedProvider) => addedProvider.id === provider.id),
-  );
   const error = useAppSelector(selectProvidersError);
+
+  const handleReorder = useCallback(
+    (reorderedProviders: TAddedProvider[]) => {
+      if (isEqual(addedProviders, reorderedProviders)) {
+        return;
+      }
+      dispatch(doReorderProviders(reorderedProviders));
+    },
+    [addedProviders, dispatch],
+  );
+
+  const {
+    currentItems,
+    handleDragStart,
+    handleDragOver,
+    handleDragEnd,
+    checkIfDragging,
+  } = useDraggableList<TAddedProvider>(addedProviders, handleReorder);
+
+  const addedProvidersData = useMemo(
+    () =>
+      currentItems.map((addedProvider) =>
+        availableProviders.find(
+          (availableProvider: TProvider) =>
+            availableProvider?.id === addedProvider.id,
+        ),
+      ),
+    [availableProviders, currentItems],
+  );
 
   if (!isEmpty(error)) {
     return (
@@ -38,8 +72,16 @@ function HomePage() {
 
   return (
     <CardList>
-      {addedProvidersData.map((provider: TProvider) => (
-        <NewsCard key={provider.id} provider={provider} />
+      {addedProvidersData.map((provider: TProvider, index) => (
+        <NewsCard
+          key={provider.id}
+          provider={provider}
+          onDragStart={handleDragStart(index)}
+          onDragOver={handleDragOver(index)}
+          onDragEnd={handleDragEnd}
+          isDragging={checkIfDragging(index)}
+          draggable={currentItems.length > 1}
+        />
       ))}
     </CardList>
   );
