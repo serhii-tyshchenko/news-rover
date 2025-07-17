@@ -84,7 +84,7 @@ function NewsListItem(props: INewsListItemProps) {
             {title}
           </a>
           {shouldShowDescription && (
-            <p className="color-secondary text-sm text-ellipsis overflow-x-auto">
+            <p className="color-secondary text-sm text-ellipsis overflow-x-auto font-normal">
               {data.description}
             </p>
           )}
