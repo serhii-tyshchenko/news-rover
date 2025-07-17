@@ -1,14 +1,14 @@
-import { EControlSize } from '@types';
+import { EControlSize, EIcon } from '@types';
 import { getClassName } from '@utils';
 
 import './icon-button.styles.scss';
 
 const NAME_SPACE = 'icon-button';
 
-interface IProps {
+interface IIconButtonProps {
   onClick: React.MouseEventHandler<HTMLButtonElement>;
   className?: string;
-  icon?: string;
+  icon?: EIcon | string; // Allow string for custom icons
   type?: 'button' | 'submit' | 'reset';
   title?: string;
   size?: EControlSize;
@@ -18,7 +18,7 @@ interface IProps {
   testId?: string;
 }
 
-function IconButton(props: IProps) {
+function IconButton(props: IIconButtonProps) {
   const {
     icon = '',
     onClick,

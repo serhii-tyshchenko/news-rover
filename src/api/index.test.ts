@@ -7,7 +7,7 @@ import {
   NEWS_ROOT_URL,
   PROVIDERS_ROOT_URL,
 } from '@constants';
-import { formatGetNewsByProviderResponse, isValidResponse } from '@utils';
+import { formatNewsResponse, isValidResponse } from '@utils';
 
 import { getNewsByProvider, getProviders } from './index';
 
@@ -18,7 +18,7 @@ vi.mock('@constants', () => ({
 }));
 vi.mock('@utils', () => ({
   isValidResponse: vi.fn(),
-  formatGetNewsByProviderResponse: vi.fn(),
+  formatNewsResponse: vi.fn(),
 }));
 
 describe('api/index', () => {
@@ -64,7 +64,7 @@ describe('api/index', () => {
       const mockData = [{ id: 1, title: 'News' }];
       const formattedData = [{ id: 1, title: 'Formatted News' }];
       (isValidResponse as any).mockReturnValue(true);
-      (formatGetNewsByProviderResponse as any).mockReturnValue(formattedData);
+      (formatNewsResponse as any).mockReturnValue(formattedData);
       mockFetch.mockResolvedValue({
         json: () => Promise.resolve(mockData),
       });
@@ -75,7 +75,7 @@ describe('api/index', () => {
         `https://news.api/news?url=${url}&limit=${limit}`,
       );
       expect(isValidResponse).toHaveBeenCalled();
-      expect(formatGetNewsByProviderResponse).toHaveBeenCalledWith(mockData);
+      expect(formatNewsResponse).toHaveBeenCalledWith(mockData);
       expect(result).toEqual(formattedData);
     });
 
@@ -84,7 +84,7 @@ describe('api/index', () => {
       const mockData = [{ id: 1 }];
       const formattedData = [{ id: 1 }];
       (isValidResponse as any).mockReturnValue(true);
-      (formatGetNewsByProviderResponse as any).mockReturnValue(formattedData);
+      (formatNewsResponse as any).mockReturnValue(formattedData);
       mockFetch.mockResolvedValue({
         json: () => Promise.resolve(mockData),
       });

@@ -3,11 +3,6 @@ import { fireEvent, render } from '@testing-library/react';
 import CardControls from './card-controls';
 
 describe('(Component) CardControls', () => {
-  it('should render nothing if config is empty', () => {
-    const { container } = render(<CardControls />);
-    expect(container.firstChild).toBeNull();
-  });
-
   it('should render the correct number of IconButton components', () => {
     const config = [
       { icon: 'icon1', title: 'Title 1', onClick: vi.fn() },

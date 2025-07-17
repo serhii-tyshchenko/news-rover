@@ -1,9 +1,9 @@
 import {
   DEFAULT_POSTS_LIMIT,
-  NEWS_ROOT_URL,
   PROVIDERS_ROOT_URL,
+  RSS_ROOT_URL,
 } from '@constants';
-import { formatGetNewsByProviderResponse, isValidResponse } from '@utils';
+import { formatNewsResponse, isValidResponse } from '@utils';
 
 export const getProviders = async () => {
   const response = await fetch(PROVIDERS_ROOT_URL);
@@ -15,15 +15,33 @@ export const getProviders = async () => {
 };
 
 export const getNewsByProvider = async (
-  url: string,
+  id: string,
   limit = DEFAULT_POSTS_LIMIT,
 ) => {
-  const response = await fetch(`${NEWS_ROOT_URL}?url=${url}&limit=${limit}`);
+  const response = await fetch(
+    `${PROVIDERS_ROOT_URL}/${id}/news?limit=${limit}`,
+  );
   if (!isValidResponse(response)) {
     throw new Error('Error fetching news');
   }
 
   const data = await response.json();
 
-  return formatGetNewsByProviderResponse(data);
+  return formatNewsResponse(data);
+};
+
+export const getNewsByRssUrl = async (
+  url: string,
+  limit = DEFAULT_POSTS_LIMIT,
+) => {
+  const response = await fetch(
+    `${RSS_ROOT_URL}?url=${encodeURIComponent(url)}&limit=${limit}`,
+  );
+  if (!isValidResponse(response)) {
+    throw new Error('Error fetching news');
+  }
+
+  const data = await response.json();
+
+  return formatNewsResponse(data);
 };

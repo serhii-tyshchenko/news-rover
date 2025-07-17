@@ -31,6 +31,7 @@
     "storybook:build": "storybook build"
   },
   "dependencies": {
+    "@tailwindcss/vite": "^4.1.11",
     "@types/node": "^22.7.6",
     "@types/react": "^18.0.28",
     "@types/react-dom": "^18.0.11",
@@ -46,6 +47,7 @@
     "redux-thunk": "^2.4.2",
     "reselect": "^4.1.8",
     "sass": "^1.80.2",
+    "tailwindcss": "^4.1.11",
     "typescript": "^4.9.5",
     "uuid": "^9.0.1",
     "vite": "^6.3.3",

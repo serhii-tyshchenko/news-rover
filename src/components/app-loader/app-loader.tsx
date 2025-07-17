@@ -1,19 +1,18 @@
 import logo from '~assets/images/logo96.png';
 
-import { useAnimation } from '@hooks';
+import { getClassName } from '@utils';
 
-function AppLoader() {
-  const isAnimationEnabled = useAnimation();
+interface IProps {
+  animated?: boolean;
+}
 
-  return (
-    <div className="content-center text-center h-full">
-      <img
-        src={logo}
-        alt="Logo"
-        className={`${isAnimationEnabled ? 'animation-pulse' : ''}`}
-      />
-    </div>
+function AppLoader({ animated }: IProps) {
+  const classNames = getClassName(
+    'absolute left-1/2 top-1/2 transform translate-x-[-50%] translate-y-[-50%]',
+    { 'animate-scale': animated },
   );
+
+  return <img src={logo} alt="Logo" className={classNames} />;
 }
 
 export { AppLoader };

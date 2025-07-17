@@ -41,11 +41,11 @@ describe('(Component) Button', () => {
     expect(button).toHaveAttribute('type', type);
   });
 
-  it('should have the correct btnType when passed as a prop', () => {
-    const btnType = 'secondary';
-    const { getByTestId } = render(<Button btnType={btnType}>Click me</Button>);
+  it('should have the correct variant when passed as a prop', () => {
+    const variant = 'secondary';
+    const { getByTestId } = render(<Button variant={variant}>Click me</Button>);
     const button = getByTestId('button');
-    expect(button).toHaveClass(`button--${btnType}`);
+    expect(button).toHaveClass(`button--${variant}`);
   });
 
   it('should have the correct size when passed as a prop', () => {

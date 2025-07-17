@@ -1,3 +1,4 @@
+import { EIcon } from '@types';
 import { getViewModeIcon } from '@utils';
 
 import { TControlsConfig, TGetControlsConfig } from './news-card.types';
@@ -14,10 +15,10 @@ export const getControlsConfig = ({
 }: TGetControlsConfig) =>
   [
     {
-      icon: 'arrows-cw',
+      icon: EIcon.ArrowsCW,
       title: dic.refresh,
       onClick: handleRefresh,
-      className: showAnimation && isLoading ? 'animation-rotate' : '',
+      className: showAnimation && isLoading ? 'animate-spin' : '',
       disabled: isLoading,
     },
     {
@@ -27,7 +28,7 @@ export const getControlsConfig = ({
       disabled: isLoading || isEmptyData,
     },
     {
-      icon: 'eye-off',
+      icon: EIcon.EyeOff,
       title: dic.hideProvider,
       onClick: handleHideProvider,
       disabled: isLoading,

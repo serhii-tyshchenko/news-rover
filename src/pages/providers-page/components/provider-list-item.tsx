@@ -1,6 +1,6 @@
-import { IconButton } from '@components';
+import { IconButton } from '@components/ui';
 import { useLocalization } from '@hooks';
-import { TProvider } from '@types';
+import { EIcon, TProvider } from '@types';
 
 interface IProviderListItemProps {
   data: TProvider;
@@ -17,30 +17,31 @@ function ProviderListItem({
 }: IProviderListItemProps) {
   const dic = useLocalization();
 
-  const handleClick = () => {
-    if (added) {
-      onRemoveProvider(id);
-    } else {
-      onAddProvider(id);
-    }
-  };
-  const icon = added ? 'eye' : 'eye-off';
-  const title = added ? dic.hideProvider : dic.showProvider;
+  const handleToggleProvider = () =>
+    added ? onRemoveProvider(id) : onAddProvider(id);
+
+  const providerStateIcon = added ? EIcon.Eye : EIcon.EyeOff;
+  const providerStateTitle = added ? dic.hideProvider : dic.showProvider;
 
   return (
     <li key={id} className="flex mb-4">
       <div className="mr-2">
         <h5 className="mb-1">
-          <a href={homepage} target="_blank" rel="noreferrer">
+          <a
+            href={homepage}
+            target="_blank"
+            rel="noreferrer"
+            className="text-accent hover:underline"
+          >
             {name}
           </a>
         </h5>
-        <p className="text-sm color-secondary">{description}</p>
+        <p className="text-sm text-secondary">{description}</p>
       </div>
       <IconButton
-        icon={icon}
-        onClick={handleClick}
-        title={title}
+        icon={providerStateIcon}
+        onClick={handleToggleProvider}
+        title={providerStateTitle}
         className="ml-auto"
         toggled={added}
       />

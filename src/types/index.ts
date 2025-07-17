@@ -26,12 +26,19 @@ export enum ERoute {
 
 // TODO add rest icons
 export enum EIcon {
+  ArrowsCW = 'arrows-cw',
   Bookmark = 'bookmark',
   BookmarkEmpty = 'bookmark-empty',
+  Cancel = 'cancel',
   Rss = 'rss',
   Moon = 'moon',
   Sun = 'sun',
   Settings = 'cog',
+  Eye = 'eye',
+  EyeOff = 'eye-off',
+  ThList = 'th-list',
+  ThLarge = 'th-large',
+  Share = 'share',
 }
 
 export type TProvider = {
