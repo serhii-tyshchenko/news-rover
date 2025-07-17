@@ -1,3 +1,5 @@
+import { isEmpty } from 'lodash';
+
 import { getClassName } from '@utils';
 
 import { CardControls } from './card-controls';
@@ -16,22 +18,26 @@ function Card(props: TCardProps) {
     onDragEnd,
   } = props;
 
-  const classNames = getClassName('card', className);
+  const originalClassName =
+    'w-full p-4 flex-shrink-0 snap-start flex flex-col rounded-none sm:rounded shadow h-full sm:h-[calc(100vh-5.25rem)] max-w-full sm:max-w-[80ch] justify-self-center bg-surface';
+
+  const classNames = getClassName(originalClassName, className);
+  const hasControls = !isEmpty(controlsConfig);
 
   return (
-    <div
+    <article
       className={classNames}
       draggable={draggable}
       onDragStart={onDragStart}
       onDragOver={onDragOver}
       onDragEnd={onDragEnd}
     >
-      <div className="flex justify-between items-center mb-4 gap-4">
-        <h3>{title}</h3>
-        <CardControls config={controlsConfig} />
-      </div>
+      <header className="flex justify-between items-center mb-4 gap-4">
+        <h3 className="font-semibold">{title}</h3>
+        {hasControls && <CardControls config={controlsConfig} />}
+      </header>
       {children}
-    </div>
+    </article>
   );
 }
 

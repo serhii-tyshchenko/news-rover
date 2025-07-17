@@ -10,7 +10,7 @@ export const extractThumbnailUrl = (enclosures: TEnclosure[] = []) =>
 
 export const isValidResponse = (response: Response) => response.status === 200;
 
-export const formatGetNewsByProviderResponse = (rawData: {
+export const formatNewsResponse = (rawData: {
   data: TRawNewsItem[];
   count: number;
 }) => ({

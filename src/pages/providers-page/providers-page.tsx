@@ -9,7 +9,7 @@ import {
   selectProvidersError,
 } from '@store/selectors';
 
-import ProviderList from './provider-list';
+import ProviderList from './components/provider-list';
 import { groupProvidersByCategory } from './providers-page.utils';
 
 function ProvidersPage() {
@@ -36,7 +36,7 @@ function ProvidersPage() {
 
   if (!isEmpty(error)) {
     return (
-      <div className="flex items-center justify-center h-full p-2 text-center color-danger">
+      <div className="flex items-center justify-center h-full p-2 text-center text-danger">
         {dic.genericError}
       </div>
     );

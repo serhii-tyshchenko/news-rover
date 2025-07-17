@@ -29,4 +29,9 @@ describe('(Component) Card', () => {
     const cardControlsElement = getByTestId('card-controls');
     expect(cardControlsElement).toBeInTheDocument();
   });
+  it('should not render CardControls when controlsConfig is empty', () => {
+    const { queryByTestId } = render(<Card title="Test" children="Test" />);
+    const cardControlsElement = queryByTestId('card-controls');
+    expect(cardControlsElement).not.toBeInTheDocument();
+  });
 });

@@ -1,15 +1,9 @@
-import { isEmpty } from 'lodash';
-
-import { IconButton } from '@components/icon-button';
+import { IconButton } from '@components/ui';
 
 import { TCardControlsProps } from './card-controls.types';
 
 function CardControls(props: TCardControlsProps) {
   const { config = [], testId = 'card-controls' } = props;
-
-  if (isEmpty(config)) {
-    return null;
-  }
 
   return (
     <div className="flex items-center gap-1" data-testid={testId}>

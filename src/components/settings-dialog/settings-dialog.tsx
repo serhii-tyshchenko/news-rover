@@ -1,4 +1,4 @@
-import { Dialog, Select, Toggle } from '@components';
+import { Dialog, Select, Toggle } from '@components/ui';
 import {
   APP_VERSION,
   AUTHOR_NAME,
@@ -107,7 +107,11 @@ function SettingsDialog(props: ISettingsDialogProps) {
         )}
       </div>
       <footer className="flex justify-between">
-        <a href={AUTHOR_SITE} className="text-sm" target="_blank">
+        <a
+          href={AUTHOR_SITE}
+          className="text-sm text-accent hover:underline"
+          target="_blank"
+        >
           &copy; {AUTHOR_NAME}
         </a>
         <span className="text-sm">{APP_VERSION}</span>

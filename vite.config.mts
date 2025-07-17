@@ -3,6 +3,7 @@
 import path from 'path';
 import { Alias, defineConfig } from 'vite';
 
+import tailwindcss from '@tailwindcss/vite';
 import react from '@vitejs/plugin-react-swc';
 
 import * as tsconfig from './tsconfig.json';
@@ -25,7 +26,7 @@ function readAliasFromTsConfig(): Alias[] {
 // https://vitejs.dev/config/
 export default defineConfig({
   base: '/',
-  plugins: [react()],
+  plugins: [react(), tailwindcss()],
   resolve: {
     alias: readAliasFromTsConfig(),
   },
