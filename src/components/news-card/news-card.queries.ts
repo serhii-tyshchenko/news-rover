@@ -7,21 +7,21 @@ import {
 } from '@constants';
 
 interface IProps {
-  url: string;
+  id: string;
   limit: number;
   autorefresh?: boolean;
   autorefreshInterval?: number;
 }
 
 export const useNewsProviderData = ({
-  url,
+  id,
   limit,
   autorefresh = false,
   autorefreshInterval = DEFAULT_AUTOREFERSH_INTERVAL,
 }: IProps) => {
   const { isLoading, error, data, refetch, isFetching } = useQuery(
-    ['fetch-news-by-provider', url, limit],
-    () => getNewsByProvider(url, limit),
+    ['fetch-news-by-provider', id, limit],
+    () => getNewsByProvider(id, limit),
     {
       refetchOnWindowFocus: false,
       refetchOnReconnect: false,

@@ -2,12 +2,10 @@ import NotFound from '~assets/images/not-found.png';
 
 import { isEmpty } from 'lodash';
 
-import { IconButton } from '@components';
+import { IconButton } from '@components/ui';
 import { useLocalization } from '@hooks';
-import { EControlSize, EViewMode, TNewsItem } from '@types';
+import { EControlSize, EIcon, EViewMode, TNewsItem } from '@types';
 import { formatTime, getClassName, isWithinLastHour } from '@utils';
-
-import './news-list-item.styles.scss';
 
 interface INewsListItemProps {
   data: TNewsItem;
@@ -41,7 +39,7 @@ function NewsListItem(props: INewsListItemProps) {
   };
 
   const itemTime = formatTime(created);
-  const bookmarkIcon = bookmarked ? 'bookmark' : 'bookmark-empty';
+  const bookmarkIcon = bookmarked ? EIcon.Bookmark : EIcon.BookmarkEmpty;
   const bookmarkTitle = bookmarked ? dic.removeBookmark : dic.addBookmark;
 
   const isShareSupported = !!navigator.share;
@@ -56,13 +54,13 @@ function NewsListItem(props: INewsListItemProps) {
   const isFresh = isWithinLastHour(created);
 
   return (
-    <li className="news-list-item">
+    <li className="group mb-6">
       {shouldShowThumbnail && (
         <a href={url} target="_blank" rel="noreferrer" className="block mb-1">
           <img
             src={thumbnailUrl ?? ''}
             alt={title}
-            className="w-full rounded-sm"
+            className="w-full rounded-sm opacity-100 hover:opacity-70 transition-opacity duration-500"
             loading="lazy"
             onError={handleImageError}
           />
@@ -73,37 +71,35 @@ function NewsListItem(props: INewsListItemProps) {
           'font-semibold': isFresh,
         })}
       >
-        <span className="color-secondary">{itemTime}</span>
+        <span className="text-secondary">{itemTime}</span>
         <div className="flex flex-col gap-1 overflow-hidden">
           <a
             href={url}
             target="_blank"
             rel="noreferrer"
-            className="color-primary overflow-hidden text-ellipsis"
+            className="overflow-hidden text-ellipsis hover:underline"
           >
             {title}
           </a>
           {shouldShowDescription && (
-            <p className="color-secondary text-sm text-ellipsis overflow-x-auto font-normal">
+            <p className="text-secondary text-sm text-ellipsis overflow-x-auto font-normal">
               {data.description}
             </p>
           )}
         </div>
-        <div className="flex ml-auto shrink-0 gap-1">
+        <div className="flex ml-auto shrink-0 gap-1 sm:invisible group-hover:visible">
           <IconButton
             icon={bookmarkIcon}
             title={bookmarkTitle}
             onClick={handleBookmarkClick}
             size={EControlSize.Small}
-            className="btn"
           />
           {isShareSupported && (
             <IconButton
-              icon="share"
+              icon={EIcon.Share}
               title={dic.share}
               onClick={handleShareClick}
               size={EControlSize.Small}
-              className="btn"
             />
           )}
         </div>

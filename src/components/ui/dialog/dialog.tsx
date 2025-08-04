@@ -3,9 +3,9 @@ import { createPortal } from 'react-dom';
 import { FocusTrap } from 'focus-trap-react';
 import { noop } from 'lodash';
 
-import { IconButton } from '@components';
+import { IconButton } from '@components/ui';
 import { portalRoot } from '@constants';
-import { EControlSize } from '@types';
+import { EControlSize, EIcon } from '@types';
 import { getClassName } from '@utils';
 
 import './dialog.styles.scss';
@@ -55,7 +55,7 @@ function Dialog(props: IProps) {
           </h4>
           <IconButton
             className={`${NAME_SPACE}__btn-close`}
-            icon="cancel"
+            icon={EIcon.Cancel}
             onClick={onClose}
             title={closeBtnTitle}
             size={EControlSize.Big}

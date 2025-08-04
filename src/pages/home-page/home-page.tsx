@@ -55,17 +55,23 @@ function HomePage() {
     [availableProviders, currentItems],
   );
 
+  const isDraggable = addedProvidersData.length > 1;
+
   if (!isEmpty(error)) {
     return (
-      <div className="flex items-center justify-center h-full p-2 text-center color-danger">
+      <div className="flex items-center justify-center h-full p-2 text-center text-danger">
         {dic.genericError}
       </div>
     );
   }
+
   if (isEmpty(addedProvidersData)) {
     return (
       <div className="flex items-center justify-center h-full p-2 text-center">
-        {dic.noProviders}&nbsp;<Link to={ERoute.Providers}>{dic.add}</Link>
+        {dic.noProviders}&nbsp;
+        <Link to={ERoute.Providers} className="text-accent hover:underline">
+          {dic.add}
+        </Link>
       </div>
     );
   }
@@ -80,7 +86,7 @@ function HomePage() {
           onDragOver={handleDragOver(index)}
           onDragEnd={handleDragEnd}
           isDragging={checkIfDragging(index)}
-          draggable={currentItems.length > 1}
+          draggable={isDraggable}
         />
       ))}
     </CardList>

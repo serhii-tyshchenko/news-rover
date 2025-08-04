@@ -1,7 +1,6 @@
 import { Outlet } from 'react-router-dom';
 
-import Header from './header';
-import Main from './main';
+import { Header, Main } from './components';
 
 function BaseLayout() {
   return (

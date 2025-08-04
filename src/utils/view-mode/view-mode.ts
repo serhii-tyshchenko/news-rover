@@ -1,4 +1,4 @@
-import { EViewMode } from '@types';
+import { EIcon, EViewMode } from '@types';
 
 const changeViewMode = (viewMode: EViewMode) => {
   switch (viewMode) {
@@ -19,12 +19,12 @@ const getViewModeIcon = (viewMode: EViewMode) => {
   switch (viewMode) {
     case EViewMode.TitleOnly:
     case EViewMode.TitleWithDescription:
-      return 'th-list';
+      return EIcon.ThList;
     case EViewMode.TitleWithThumbnail:
     case EViewMode.Full:
-      return 'th-large';
+      return EIcon.ThLarge;
     default:
-      return 'th-list';
+      return EIcon.ThList;
   }
 };
 

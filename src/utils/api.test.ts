@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest';
 
 import { EEnclosureType, TEnclosure } from '@types';
 
-import { extractThumbnailUrl, formatGetNewsByProviderResponse } from './api';
+import { extractThumbnailUrl, formatNewsResponse } from './api';
 
 describe('extractThumbnailUrl', () => {
   it('should return the URL of the first image enclosure', () => {
@@ -50,7 +50,7 @@ describe('extractThumbnailUrl', () => {
   });
 });
 
-describe('formatGetNewsByProviderResponse', () => {
+describe('formatNewsResponse', () => {
   it('should format the raw data correctly', () => {
     const rawData = {
       data: [
@@ -75,7 +75,7 @@ describe('formatGetNewsByProviderResponse', () => {
       count: 2,
     };
 
-    const result = formatGetNewsByProviderResponse(rawData);
+    const result = formatNewsResponse(rawData);
 
     expect(result).toEqual({
       data: [
@@ -102,7 +102,7 @@ describe('formatGetNewsByProviderResponse', () => {
       count: 0,
     };
 
-    const result = formatGetNewsByProviderResponse(rawData);
+    const result = formatNewsResponse(rawData);
 
     expect(result).toEqual({
       data: [],

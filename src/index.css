@@ -1,0 +1,33 @@
+@import 'tailwindcss';
+
+@layer utilities {
+  .scrollbar-none {
+    scrollbar-width: none;
+  }
+}
+
+@theme {
+  --animate-scale: scale 2s ease infinite;
+
+  @keyframes scale {
+    0% {
+      transform: scale(1);
+    }
+
+    50% {
+      transform: scale(1.1);
+    }
+
+    100% {
+      transform: scale(1);
+    }
+  }
+}
+
+@theme inline {
+  --color-accent: var(--color-accent);
+  --color-surface: var(--color-surface);
+  --color-primary: var(--color-primary);
+  --color-secondary: var(--color-secondary);
+  --color-danger: var(--color-danger);
+}

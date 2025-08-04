@@ -9,7 +9,7 @@ export interface IProps {
   onClick?: () => void;
   className?: string;
   type?: 'button' | 'submit' | 'reset';
-  btnType?: 'primary' | 'secondary' | 'action';
+  variant?: 'primary' | 'secondary' | 'action';
   size?: EControlSize;
   children?: React.ReactNode;
   disabled?: boolean;
@@ -21,7 +21,7 @@ function Button(props: IProps) {
     onClick = undefined,
     className = '',
     type = 'button',
-    btnType = 'primary',
+    variant = 'primary',
     size = EControlSize.Normal,
     children = null,
     disabled = false,
@@ -30,7 +30,7 @@ function Button(props: IProps) {
 
   const componentClassName = getClassName(
     NAME_SPACE,
-    `${NAME_SPACE}--${btnType}`,
+    `${NAME_SPACE}--${variant}`,
     `${NAME_SPACE}--${size}`,
     className,
   );
