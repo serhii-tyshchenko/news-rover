@@ -11,8 +11,7 @@ import { loadState, saveState } from '@storage';
 import {
   addedProvidersReducer as addedProviders,
   bookmarksReducer as bookmarks,
-  providersReducer as providers,
-  settings,
+  settingsReducer as settings,
 } from './reducers';
 
 declare global {
@@ -23,7 +22,6 @@ declare global {
 
 export const rootReducer = combineReducers({
   settings,
-  providers,
   addedProviders,
   bookmarks,
 });

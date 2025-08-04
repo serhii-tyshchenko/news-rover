@@ -11,21 +11,21 @@ import {
   useDraggableList,
   useLocalization,
 } from '@hooks';
+import { useProvidersData } from '@queries';
 import { doReorderProviders } from '@store/actions';
-import {
-  selectAddedProviders,
-  selectProvidersData,
-  selectProvidersError,
-} from '@store/selectors';
+import { selectAddedProviders } from '@store/selectors';
 import { ERoute, TAddedProvider, TProvider } from '@types';
 
 function HomePage() {
-  const dic = useLocalization();
-
   const dispatch = useAppDispatch();
-  const availableProviders = useAppSelector(selectProvidersData) ?? [];
+
+  const dic = useLocalization();
   const addedProviders = useAppSelector(selectAddedProviders);
-  const error = useAppSelector(selectProvidersError);
+  const {
+    isLoading,
+    error,
+    data: availableProviders,
+  } = useProvidersData(!isEmpty(addedProviders));
 
   const handleReorder = useCallback(
     (reorderedProviders: TAddedProvider[]) => {
@@ -58,11 +58,15 @@ function HomePage() {
 
   const isDraggable = addedProvidersData.length > 1;
 
+  if (isLoading) {
+    return <EmptyState>{dic.loading}</EmptyState>;
+  }
+
   if (!isEmpty(error)) {
     return <ErrorState>{dic.genericError}</ErrorState>;
   }
 
-  if (isEmpty(addedProvidersData)) {
+  if (isEmpty(addedProviders)) {
     return (
       <EmptyState>
         {dic.noProviders}&nbsp;

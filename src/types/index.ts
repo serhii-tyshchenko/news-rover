@@ -134,6 +134,7 @@ export type TDic = {
   home: string;
   language: string;
   languages: TLanguageKeys;
+  loading: string;
   loadMore: string;
   noBookmarks: string;
   noNews: string;

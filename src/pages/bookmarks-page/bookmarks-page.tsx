@@ -15,25 +15,25 @@ function BookmarksPage() {
   const bookmarks = useAppSelector(selectBookmarksData);
   const viewMode =
     useAppSelector(selectBookmarksViewMode) ?? EViewMode.TitleOnly;
-  const isEmptyData = isEmpty(bookmarks);
+  const noData = isEmpty(bookmarks);
 
   const handleRemoveBookmark = (item: TNewsItem) => {
     dispatch(doRemoveBookmark(item.link));
   };
 
-  const onViewModeClick = () =>
+  const handleViewModeClick = () =>
     dispatch(doUpdateBookmarksViewMode(changeViewMode(viewMode)));
 
   const controlsConfig = [
     {
       icon: getViewModeIcon(viewMode),
       title: dic.viewMode,
-      onClick: onViewModeClick,
-      disabled: isEmptyData,
+      onClick: handleViewModeClick,
+      disabled: noData,
     },
   ];
 
-  if (isEmptyData) {
+  if (noData) {
     return (
       <Card title={dic.bookmarks}>
         <EmptyState>{dic.noBookmarks}</EmptyState>

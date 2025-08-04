@@ -3,12 +3,9 @@ import { isEmpty } from 'lodash';
 import { Card, CardList } from '@components';
 import { EmptyState, ErrorState } from '@components/ui';
 import { useAppDispatch, useAppSelector, useLocalization } from '@hooks';
+import { useProvidersData } from '@queries';
 import { doAddProvider, doRemoveProvider } from '@store/actions';
-import {
-  selectLocale,
-  selectProvidersData,
-  selectProvidersError,
-} from '@store/selectors';
+import { selectLocale } from '@store/selectors';
 
 import ProviderList from './components/provider-list';
 import { groupProvidersByCategory } from './providers-page.utils';
@@ -17,8 +14,8 @@ function ProvidersPage() {
   const dic = useLocalization();
 
   const dispatch = useAppDispatch();
-  const availableProviders = useAppSelector(selectProvidersData);
-  const error = useAppSelector(selectProvidersError);
+  const { isLoading, error, data: availableProviders } = useProvidersData();
+
   const locale = useAppSelector(selectLocale);
 
   const groupedProviders = groupProvidersByCategory(
@@ -35,11 +32,15 @@ function ProvidersPage() {
     dispatch(doRemoveProvider(providerId));
   };
 
+  if (isLoading) {
+    return <EmptyState>{dic.loading}</EmptyState>;
+  }
+
   if (!isEmpty(error)) {
     return <ErrorState>{dic.genericError}</ErrorState>;
   }
 
-  if (isEmpty(groupedProviders)) {
+  if (isEmpty(availableProviders)) {
     return <EmptyState>{dic.noProviders}</EmptyState>;
   }
 
