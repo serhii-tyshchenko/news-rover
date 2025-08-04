@@ -1,31 +1,7 @@
-// fonts
-$font-icon: 'fontello';
-$font-primary: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-  sans-serif;
-$font-secondary: 'Arial Narrow';
-
-// font sizes
-$font-size-xxs: 0.625rem;
 $font-size-xs: 0.75rem;
-$font-size-sm: 0.875rem;
 $font-size-md: 1rem;
-$font-size-lg: 1.125rem;
 $font-size-xl: 1.25rem;
-$font-size-xxl: 1.5rem;
-$font-size-xxxl: 2rem;
 
-// padding
-$padding-xxs: 0.125rem;
-$padding-xs: 0.25rem;
-$padding-sm: 0.5rem;
-$padding-md: 0.75rem;
-$padding-lg: 1rem;
-$padding-xl: 1.25rem;
-$padding-xxl: 1.5rem;
-$padding-xxxl: 2rem;
-
-// media breaks
 $break-4k: 2560px;
 $break-laptop-large: 1440px;
 $break-laptop: 1024px;
@@ -34,12 +10,5 @@ $break-mobile-large: 480px;
 $break-mobile-medium: 375px;
 $break-mobile-small: 320px;
 
-// z-indexes
-$zindex-dropdown: 1000;
-$zindex-sticky: 1020;
-$zindex-fixed: 1030;
 $zindex-modal-backdrop: 1040;
 $zindex-modal: 1050;
-$zindex-popover: 1060;
-$zindex-tooltip: 1070;
-$zindex-loader: 1080;

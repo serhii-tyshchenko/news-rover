@@ -24,9 +24,9 @@ function ProviderListItem({
   const providerStateTitle = added ? dic.hideProvider : dic.showProvider;
 
   return (
-    <li key={id} className="flex mb-4">
-      <div className="mr-2">
-        <h5 className="mb-1">
+    <li key={id} className="flex mb-4 gap-2">
+      <div>
+        <h5 className="mb-1 text-xl">
           <a
             href={homepage}
             target="_blank"

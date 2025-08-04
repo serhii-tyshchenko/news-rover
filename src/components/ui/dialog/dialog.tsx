@@ -50,9 +50,9 @@ function Dialog(props: IProps) {
         className={componentClassName}
       >
         <header className={`${NAME_SPACE}__header`}>
-          <h4 id="dialog-title" className={`${NAME_SPACE}__title`}>
+          <h5 id="dialog-title" className="font-bold text-xl">
             {title}
-          </h4>
+          </h5>
           <IconButton
             className={`${NAME_SPACE}__btn-close`}
             icon={EIcon.Cancel}

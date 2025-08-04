@@ -33,7 +33,7 @@ function Card(props: TCardProps) {
       onDragEnd={onDragEnd}
     >
       <header className="flex justify-between items-center mb-4 gap-4">
-        <h3 className="font-semibold">{title}</h3>
+        <h2 className="font-semibold text-2xl">{title}</h2>
         {hasControls && <CardControls config={controlsConfig} />}
       </header>
       {children}
