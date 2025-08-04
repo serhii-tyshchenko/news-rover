@@ -10,11 +10,8 @@ interface IProviderListProps {
   onRemoveProvider: (providerId: string) => void;
 }
 
-function ProviderList({
-  data: providers,
-  onAddProvider,
-  onRemoveProvider,
-}: IProviderListProps) {
+function ProviderList(props: IProviderListProps) {
+  const { data: providers, onAddProvider, onRemoveProvider } = props;
   const isAdded = (id: string) =>
     Boolean(useAppSelector(selectProviderById(id)));
 

@@ -31,6 +31,5 @@ export const getControlsConfig = ({
       icon: EIcon.EyeOff,
       title: dic.hideProvider,
       onClick: handleHideProvider,
-      disabled: isLoading,
     },
   ] as TControlsConfig;

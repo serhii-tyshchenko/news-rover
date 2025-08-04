@@ -4,27 +4,28 @@ import { Link } from 'react-router-dom';
 import { isEmpty, isEqual } from 'lodash';
 
 import { CardList, NewsCard } from '@components';
+import { EmptyState, ErrorState } from '@components/ui';
 import {
   useAppDispatch,
   useAppSelector,
   useDraggableList,
   useLocalization,
 } from '@hooks';
+import { useProvidersData } from '@queries';
 import { doReorderProviders } from '@store/actions';
-import {
-  selectAddedProviders,
-  selectProvidersData,
-  selectProvidersError,
-} from '@store/selectors';
+import { selectAddedProviders } from '@store/selectors';
 import { ERoute, TAddedProvider, TProvider } from '@types';
 
 function HomePage() {
-  const dic = useLocalization();
-
   const dispatch = useAppDispatch();
-  const availableProviders = useAppSelector(selectProvidersData) ?? [];
+
+  const dic = useLocalization();
   const addedProviders = useAppSelector(selectAddedProviders);
-  const error = useAppSelector(selectProvidersError);
+  const {
+    isLoading,
+    error,
+    data: availableProviders,
+  } = useProvidersData(!isEmpty(addedProviders));
 
   const handleReorder = useCallback(
     (reorderedProviders: TAddedProvider[]) => {
@@ -57,22 +58,22 @@ function HomePage() {
 
   const isDraggable = addedProvidersData.length > 1;
 
-  if (!isEmpty(error)) {
-    return (
-      <div className="flex items-center justify-center h-full p-2 text-center text-danger">
-        {dic.genericError}
-      </div>
-    );
+  if (isLoading) {
+    return <EmptyState>{dic.loading}</EmptyState>;
   }
 
-  if (isEmpty(addedProvidersData)) {
+  if (!isEmpty(error)) {
+    return <ErrorState>{dic.genericError}</ErrorState>;
+  }
+
+  if (isEmpty(addedProviders)) {
     return (
-      <div className="flex items-center justify-center h-full p-2 text-center">
+      <EmptyState>
         {dic.noProviders}&nbsp;
         <Link to={ERoute.Providers} className="text-accent hover:underline">
           {dic.add}
         </Link>
-      </div>
+      </EmptyState>
     );
   }
 

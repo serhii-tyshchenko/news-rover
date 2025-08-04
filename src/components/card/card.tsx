@@ -18,8 +18,9 @@ function Card(props: TCardProps) {
     onDragEnd,
   } = props;
 
-  const originalClassName =
-    'w-full p-4 flex-shrink-0 snap-start flex flex-col rounded-none sm:rounded shadow h-full sm:h-[calc(100vh-5.25rem)] max-w-full sm:max-w-[80ch] justify-self-center bg-surface';
+  const originalClassName = `w-full p-4 flex-shrink-0 snap-start flex
+    flex-col rounded-none sm:rounded shadow h-full sm:h-[calc(100vh-5.25rem)] max-w-full
+    sm:max-w-[80ch] justify-self-center bg-surface`;
 
   const classNames = getClassName(originalClassName, className);
   const hasControls = !isEmpty(controlsConfig);
@@ -32,8 +33,8 @@ function Card(props: TCardProps) {
       onDragOver={onDragOver}
       onDragEnd={onDragEnd}
     >
-      <header className="flex justify-between items-center mb-4 gap-4">
-        <h3 className="font-semibold">{title}</h3>
+      <header className="flex justify-between items-center mb-6 gap-4">
+        <h2 className="font-semibold text-2xl">{title}</h2>
         {hasControls && <CardControls config={controlsConfig} />}
       </header>
       {children}

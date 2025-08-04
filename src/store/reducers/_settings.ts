@@ -11,7 +11,7 @@ const initialState: TSettings = {
   autorefreshInterval: DEFAULT_AUTOREFERSH_INTERVAL,
 };
 
-export const settings = (
+export const settingsReducer = (
   state = initialState,
   action: IAction<Partial<TSettings>>,
 ) => {

@@ -42,12 +42,6 @@
   }
 }
 
-@mixin for-reduced-motion {
-  @media (prefers-reduced-motion) {
-    @content;
-  }
-}
-
 @mixin for-disabled {
   cursor: not-allowed;
   opacity: 0.65;
