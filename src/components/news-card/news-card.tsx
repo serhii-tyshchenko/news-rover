@@ -3,7 +3,7 @@ import { useCallback, useMemo, useState } from 'react';
 import { isEmpty } from 'lodash';
 
 import { Card, NewsList, Skeleton } from '@components';
-import { Button } from '@components/ui';
+import { Button, ErrorState } from '@components/ui';
 import { DEFAULT_POSTS_LIMIT } from '@constants';
 import {
   useAnimation,
@@ -127,11 +127,7 @@ function NewsCard(props: INewsCardProps) {
       {shouldShowSkeleton && (
         <Skeleton animated={isAnimationEnabled} count={DEFAULT_POSTS_LIMIT} />
       )}
-      {shouldShowError && (
-        <div className="flex items-center justify-center h-full p-2 text-center text-danger">
-          {dic.genericError}
-        </div>
-      )}
+      {shouldShowError && <ErrorState>{dic.genericError}</ErrorState>}
       {shouldShowEmptyState && (
         <div className="flex items-center justify-center text-center grow">
           {dic.noNews}

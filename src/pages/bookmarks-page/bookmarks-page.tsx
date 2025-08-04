@@ -1,6 +1,7 @@
 import { isEmpty, noop } from 'lodash';
 
 import { Card, NewsList } from '@components';
+import { EmptyState } from '@components/ui';
 import { useAppDispatch, useAppSelector, useLocalization } from '@hooks';
 import { doRemoveBookmark, doUpdateBookmarksViewMode } from '@store/actions';
 import { selectBookmarksData, selectBookmarksViewMode } from '@store/selectors';
@@ -35,9 +36,7 @@ function BookmarksPage() {
   if (isEmptyData) {
     return (
       <Card title={dic.bookmarks}>
-        <div className="flex items-center justify-center h-full p-2 text-center">
-          {dic.noBookmarks}
-        </div>
+        <EmptyState>{dic.noBookmarks}</EmptyState>
       </Card>
     );
   }

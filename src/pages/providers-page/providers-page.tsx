@@ -1,6 +1,7 @@
 import { isEmpty } from 'lodash';
 
 import { Card, CardList } from '@components';
+import { EmptyState, ErrorState } from '@components/ui';
 import { useAppDispatch, useAppSelector, useLocalization } from '@hooks';
 import { doAddProvider, doRemoveProvider } from '@store/actions';
 import {
@@ -35,19 +36,11 @@ function ProvidersPage() {
   };
 
   if (!isEmpty(error)) {
-    return (
-      <div className="flex items-center justify-center h-full p-2 text-center text-danger">
-        {dic.genericError}
-      </div>
-    );
+    return <ErrorState>{dic.genericError}</ErrorState>;
   }
 
   if (isEmpty(groupedProviders)) {
-    return (
-      <div className="flex items-center justify-center h-full p-2 text-center">
-        {dic.noProviders}
-      </div>
-    );
+    return <EmptyState>{dic.noProviders}</EmptyState>;
   }
 
   return (
