@@ -1,4 +1,4 @@
-import { noop } from 'lodash';
+import { noop } from 'lodash-es';
 
 import { fireEvent, render } from '@testing-library/react';
 import { EControlSize } from '@types';

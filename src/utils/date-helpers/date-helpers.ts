@@ -1,4 +1,4 @@
-import { groupBy } from 'lodash';
+import { groupBy } from 'lodash-es';
 
 import { ONE_MINUTE_IN_MILLISECONDS } from '@constants';
 import { TDic, TNewsItem } from '@types';

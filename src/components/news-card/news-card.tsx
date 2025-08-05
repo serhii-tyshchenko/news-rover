@@ -1,6 +1,6 @@
 import { useCallback, useMemo, useState } from 'react';
 
-import { isEmpty } from 'lodash';
+import { isEmpty } from 'lodash-es';
 
 import { Card, NewsList, Skeleton } from '@components';
 import { Button, ErrorState } from '@components/ui';

@@ -1,6 +1,6 @@
 import NotFound from '~assets/images/not-found.png';
 
-import { isEmpty } from 'lodash';
+import { isEmpty } from 'lodash-es';
 
 import { IconButton } from '@components/ui';
 import { useLocalization } from '@hooks';

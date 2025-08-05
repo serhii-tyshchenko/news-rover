@@ -1,7 +1,7 @@
 import { useCallback, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 
-import { isEmpty, isEqual } from 'lodash';
+import { isEmpty, isEqual } from 'lodash-es';
 
 import { CardList, NewsCard } from '@components';
 import { EmptyState, ErrorState } from '@components/ui';

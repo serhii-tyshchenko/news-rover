@@ -1,4 +1,4 @@
-import { isEmpty, noop } from 'lodash';
+import { isEmpty, noop } from 'lodash-es';
 
 import { Card, NewsList } from '@components';
 import { EmptyState } from '@components/ui';

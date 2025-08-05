@@ -1,7 +1,7 @@
 import { useLocation, useNavigate } from 'react-router';
 import { Link } from 'react-router-dom';
 
-import { isEmpty } from 'lodash';
+import { isEmpty } from 'lodash-es';
 
 import { SettingsDialog } from '@components';
 import { APP_NAME } from '@constants';

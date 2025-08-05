@@ -1,4 +1,4 @@
-import { first } from 'lodash';
+import { first } from 'lodash-es';
 
 import { version } from '../../package.json';
 

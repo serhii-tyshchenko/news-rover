@@ -1,7 +1,7 @@
 import { createPortal } from 'react-dom';
 
 import { FocusTrap } from 'focus-trap-react';
-import { noop } from 'lodash';
+import { noop } from 'lodash-es';
 
 import { IconButton } from '@components/ui';
 import { portalRoot } from '@constants';

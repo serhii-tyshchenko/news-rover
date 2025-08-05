@@ -1,4 +1,4 @@
-import { isEmpty } from 'lodash';
+import { isEmpty } from 'lodash-es';
 
 import { Card, CardList } from '@components';
 import { EmptyState, ErrorState } from '@components/ui';
