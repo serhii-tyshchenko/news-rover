@@ -13,7 +13,7 @@ interface IProps {
   autorefreshInterval?: number;
 }
 
-export const useNewsProviderData = ({
+export const useProviderNewsData = ({
   id,
   limit,
   autorefresh = false,

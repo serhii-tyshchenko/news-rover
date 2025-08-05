@@ -11,6 +11,7 @@ import {
   useAppSelector,
   useLocalization,
 } from '@hooks';
+import { useProviderNewsData } from '@queries';
 import {
   doAddBookmark,
   doRemoveBookmark,
@@ -21,7 +22,6 @@ import { selectProviderById, selectSettingsData } from '@store/selectors';
 import { EControlSize, EViewMode, TNewsItem } from '@types';
 import { changeViewMode, groupDataByDay } from '@utils';
 
-import { useNewsProviderData } from './news-card.queries';
 import { INewsCardProps } from './news-card.types';
 import { getControlsConfig } from './news-card.utils';
 
@@ -51,7 +51,7 @@ function NewsCard(props: INewsCardProps) {
     error,
     refetch,
     isFetching,
-  } = useNewsProviderData({
+  } = useProviderNewsData({
     id: provider.id,
     limit,
     autorefresh,
