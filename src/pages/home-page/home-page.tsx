@@ -5,6 +5,7 @@ import { isEmpty, isEqual } from 'lodash-es';
 
 import { CardList, CardListSkeleton, NewsCard } from '@components';
 import { EmptyState, ErrorState } from '@components/ui';
+import { DEFAULT_CARD_COUNT } from '@constants';
 import {
   useAppDispatch,
   useAppSelector,
@@ -56,7 +57,11 @@ function HomePage() {
   const isDraggable = addedProvidersData.length > 1;
 
   if (isLoading) {
-    return <CardListSkeleton />;
+    return (
+      <CardListSkeleton
+        cardCount={addedProviders.length || DEFAULT_CARD_COUNT}
+      />
+    );
   }
 
   if (!isEmpty(error)) {

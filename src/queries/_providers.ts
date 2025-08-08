@@ -11,5 +11,6 @@ export const useProvidersData = () => {
   } = useQuery(['fetch-providers'], () => getProviders(), {
     refetchInterval: 60 * ONE_MINUTE_IN_MILLISECONDS,
   });
+
   return { isLoading, error, data };
 };

@@ -2,6 +2,7 @@ import { isEmpty } from 'lodash-es';
 
 import { Card, CardList, CardListSkeleton } from '@components';
 import { EmptyState, ErrorState } from '@components/ui';
+import { DEFAULT_CARD_COUNT } from '@constants';
 import { useAppDispatch, useAppSelector, useLocalization } from '@hooks';
 import { useProvidersData } from '@queries';
 import { doAddProvider, doRemoveProvider } from '@store/actions';
@@ -33,7 +34,11 @@ function ProvidersPage() {
   };
 
   if (isLoading) {
-    return <CardListSkeleton />;
+    return (
+      <CardListSkeleton
+        cardCount={availableProviders.length || DEFAULT_CARD_COUNT}
+      />
+    );
   }
 
   if (!isEmpty(error)) {
