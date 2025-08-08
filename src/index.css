@@ -30,6 +30,7 @@
   --color-primary: var(--color-primary);
   --color-secondary: var(--color-secondary);
   --color-danger: var(--color-danger);
+  --color-skeleton: var(--background-skeleton);
 }
 
 body {

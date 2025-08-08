@@ -1,15 +1,15 @@
+import { useAnimation } from '@hooks';
 import { getClassName } from '@utils';
 
 import './skeleton.styles.scss';
 
 interface ISkeletonProps {
-  animated?: boolean;
-  count: number;
+  count?: number;
 }
 
 function Skeleton(props: ISkeletonProps) {
-  const { animated = true, count } = props;
-
+  const { count = 10 } = props;
+  const animated = useAnimation();
   const classNames = getClassName('skeleton', {
     'skeleton--animated': animated,
   });

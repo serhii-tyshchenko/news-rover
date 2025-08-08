@@ -1,6 +1,6 @@
 import { isEmpty } from 'lodash-es';
 
-import { Card, CardList } from '@components';
+import { Card, CardList, CardListSkeleton } from '@components';
 import { EmptyState, ErrorState } from '@components/ui';
 import { useAppDispatch, useAppSelector, useLocalization } from '@hooks';
 import { useProvidersData } from '@queries';
@@ -33,7 +33,7 @@ function ProvidersPage() {
   };
 
   if (isLoading) {
-    return <EmptyState>{dic.loading}</EmptyState>;
+    return <CardListSkeleton />;
   }
 
   if (!isEmpty(error)) {

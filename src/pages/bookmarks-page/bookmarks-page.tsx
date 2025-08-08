@@ -34,11 +34,7 @@ function BookmarksPage() {
   ];
 
   if (noData) {
-    return (
-      <Card title={dic.bookmarks}>
-        <EmptyState>{dic.noBookmarks}</EmptyState>
-      </Card>
-    );
+    return <EmptyState>{dic.noBookmarks}</EmptyState>;
   }
 
   return (
