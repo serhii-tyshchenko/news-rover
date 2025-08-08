@@ -124,7 +124,9 @@ function NewsCard(props: INewsCardProps) {
       onDragOver={onDragOver}
       className={isDragging ? 'opacity-50' : ''}
     >
-      {shouldShowSkeleton && <Skeleton count={DEFAULT_POSTS_LIMIT} />}
+      {shouldShowSkeleton && (
+        <Skeleton animated={isAnimationEnabled} count={DEFAULT_POSTS_LIMIT} />
+      )}
       {shouldShowError && <ErrorState>{dic.genericError}</ErrorState>}
       {shouldShowEmptyState && (
         <div className="flex items-center justify-center text-center grow">

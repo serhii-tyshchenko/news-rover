@@ -1,15 +1,16 @@
 import { CardList, CardSkeleton } from '@components';
-import { useBreakpoints } from '@hooks';
+import { useAnimation, useBreakpoints } from '@hooks';
 
 function CardListSkeleton() {
   const { isMd, isXl, is2xl } = useBreakpoints();
+  const isAnimationEnabled = useAnimation();
 
   return (
     <CardList>
-      <CardSkeleton />
-      {isMd && <CardSkeleton />}
-      {isXl && <CardSkeleton />}
-      {is2xl && <CardSkeleton />}
+      <CardSkeleton animated={isAnimationEnabled} />
+      {isMd && <CardSkeleton animated={isAnimationEnabled} />}
+      {isXl && <CardSkeleton animated={isAnimationEnabled} />}
+      {is2xl && <CardSkeleton animated={isAnimationEnabled} />}
     </CardList>
   );
 }

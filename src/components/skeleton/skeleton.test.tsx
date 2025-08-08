@@ -2,29 +2,29 @@ import { render } from '@testing-library/react';
 
 import Skeleton from './skeleton';
 
+const TEST_ID = 'skeleton-list-test';
+
 describe('(Component) Skeleton', () => {
   it('should render the correct number of skeleton items', () => {
     const count = 5;
-    const { getAllByTestId } = render(<Skeleton count={count} />);
-    const skeletonItems = getAllByTestId('skeleton-item');
+    const { getAllByRole } = render(<Skeleton count={count} />);
+    const skeletonItems = getAllByRole('listitem');
     expect(skeletonItems.length).toBe(count);
   });
 
-  it('should have the "skeleton" class', () => {
-    const { getByTestId } = render(<Skeleton count={1} />);
-    const skeletonItem = getByTestId('skeleton-item');
-    expect(skeletonItem).toHaveClass('skeleton');
+  it('should have the "animate-pulse" class when animated prop is true', () => {
+    const { getByTestId } = render(
+      <Skeleton count={1} testId={TEST_ID} animated />,
+    );
+    const skeleton = getByTestId(TEST_ID);
+    expect(skeleton).toHaveClass('animate-pulse');
   });
 
-  it('should have the "skeleton--animated" class when animated prop is true', () => {
-    const { getByTestId } = render(<Skeleton count={1} animated />);
-    const skeletonItem = getByTestId('skeleton-item');
-    expect(skeletonItem).toHaveClass('skeleton--animated');
-  });
-
-  it('should not have the "skeleton--animated" class when animated prop is false', () => {
-    const { getByTestId } = render(<Skeleton count={1} animated={false} />);
-    const skeletonItem = getByTestId('skeleton-item');
-    expect(skeletonItem).not.toHaveClass('skeleton--animated');
+  it('should not have the "animate-pulse" class when animated prop is false', () => {
+    const { getByTestId } = render(
+      <Skeleton count={1} testId={TEST_ID} animated={false} />,
+    );
+    const skeleton = getByTestId(TEST_ID);
+    expect(skeleton).not.toHaveClass('animate-pulse');
   });
 });

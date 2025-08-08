@@ -1,23 +1,25 @@
-import { useAnimation } from '@hooks';
 import { getClassName } from '@utils';
 
-import './skeleton.styles.scss';
-
 interface ISkeletonProps {
+  animated?: boolean;
   count?: number;
+  testId?: string;
 }
 
 function Skeleton(props: ISkeletonProps) {
-  const { count = 10 } = props;
-  const animated = useAnimation();
-  const classNames = getClassName('skeleton', {
-    'skeleton--animated': animated,
-  });
+  const { animated = true, count = 10, testId = 'skeleton-list' } = props;
+
+  const rootClassName = getClassName(
+    'flex flex-col h-full overflow-y-auto scrollbar-none gap-6',
+    {
+      'animate-pulse': animated,
+    },
+  );
 
   return (
-    <ul className="flex flex-col h-full overflow-y-auto scrollbar-none">
+    <ul className={rootClassName} data-testid={testId}>
       {Array.from({ length: count }).map((_, index) => (
-        <li className={classNames} key={index} data-testid="skeleton-item" />
+        <li className="rounded bg-skeleton grow min-h-16" key={index} />
       ))}
     </ul>
   );
