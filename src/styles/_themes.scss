@@ -10,7 +10,6 @@
   --color-scrollbar-hover: #0f5bb5;
 
   --background-skeleton: #282c34;
-  --background-skeleton-lighten: #{lighten(#282c34, 10%)};
 }
 
 [data-theme='light'] {
@@ -25,7 +24,6 @@
   --color-scrollbar-hover: #0f5bb5;
 
   --background-skeleton: #d0d7e0;
-  --background-skeleton-lighten: #{lighten(#d0d7e0, 10%)};
 }
 
 [data-theme='dark'] {
@@ -40,7 +38,6 @@
   --color-scrollbar-hover: #1f6ce0;
 
   --background-skeleton: #282c34;
-  --background-skeleton-lighten: #{lighten(#282c34, 10%)};
 }
 
 [data-theme='light-blue'] {
@@ -55,7 +52,6 @@
   --color-scrollbar-hover: #0f5bb5;
 
   --background-skeleton: #D0E1FF;
-  --background-skeleton-lighten: #{lighten(#D0E1FF, 10%)};
 }
 
 [data-theme='dark-blue'] {
@@ -70,7 +66,6 @@
   --color-scrollbar-hover: #7a9edc;
 
   --background-skeleton: #102A43;
-  --background-skeleton-lighten: #{lighten(#102A43, 10%)};
 }
 
 [data-theme='light-green'] {
@@ -85,7 +80,6 @@
   --color-scrollbar-hover: #388E3C;
 
   --background-skeleton: #A5D6A7;
-  --background-skeleton-lighten: #{lighten(#A5D6A7, 10%)};
 }
 
 [data-theme='dark-green'] {
@@ -100,7 +94,6 @@
   --color-scrollbar-hover: #388E3C;
 
   --background-skeleton: #1B5E20;
-  --background-skeleton-lighten: #{lighten(#1B5E20, 10%)};
 }
 
 [data-theme='light-red'] {
@@ -115,7 +108,6 @@
   --color-scrollbar-hover: #D93A3A;
 
   --background-skeleton: #F8D7DA;
-  --background-skeleton-lighten: #{lighten(#F8D7DA, 10%)};
 }
 
 [data-theme='dark-red'] {
@@ -130,5 +122,4 @@
   --color-scrollbar-hover: #D93A3A;
 
   --background-skeleton: #381313;
-  --background-skeleton-lighten: #{lighten(#381313, 10%)};
 }

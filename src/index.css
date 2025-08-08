@@ -6,24 +6,6 @@
   }
 }
 
-@theme {
-  --animate-scale: scale 2s ease infinite;
-
-  @keyframes scale {
-    0% {
-      transform: scale(1);
-    }
-
-    50% {
-      transform: scale(1.1);
-    }
-
-    100% {
-      transform: scale(1);
-    }
-  }
-}
-
 @theme inline {
   --color-accent: var(--color-accent);
   --color-surface: var(--color-surface);
