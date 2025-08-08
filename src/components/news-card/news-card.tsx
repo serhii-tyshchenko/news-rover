@@ -1,6 +1,6 @@
 import { useCallback, useMemo, useState } from 'react';
 
-import { isEmpty } from 'lodash';
+import { isEmpty } from 'lodash-es';
 
 import { Card, NewsList, Skeleton } from '@components';
 import { Button, ErrorState } from '@components/ui';
@@ -11,6 +11,7 @@ import {
   useAppSelector,
   useLocalization,
 } from '@hooks';
+import { useProviderNewsData } from '@queries';
 import {
   doAddBookmark,
   doRemoveBookmark,
@@ -21,7 +22,6 @@ import { selectProviderById, selectSettingsData } from '@store/selectors';
 import { EControlSize, EViewMode, TNewsItem } from '@types';
 import { changeViewMode, groupDataByDay } from '@utils';
 
-import { useNewsProviderData } from './news-card.queries';
 import { INewsCardProps } from './news-card.types';
 import { getControlsConfig } from './news-card.utils';
 
@@ -51,7 +51,7 @@ function NewsCard(props: INewsCardProps) {
     error,
     refetch,
     isFetching,
-  } = useNewsProviderData({
+  } = useProviderNewsData({
     id: provider.id,
     limit,
     autorefresh,
@@ -124,9 +124,7 @@ function NewsCard(props: INewsCardProps) {
       onDragOver={onDragOver}
       className={isDragging ? 'opacity-50' : ''}
     >
-      {shouldShowSkeleton && (
-        <Skeleton animated={isAnimationEnabled} count={DEFAULT_POSTS_LIMIT} />
-      )}
+      {shouldShowSkeleton && <Skeleton count={DEFAULT_POSTS_LIMIT} />}
       {shouldShowError && <ErrorState>{dic.genericError}</ErrorState>}
       {shouldShowEmptyState && (
         <div className="flex items-center justify-center text-center grow">

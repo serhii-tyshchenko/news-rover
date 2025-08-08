@@ -1,9 +1,9 @@
 import { useCallback, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 
-import { isEmpty, isEqual } from 'lodash';
+import { isEmpty, isEqual } from 'lodash-es';
 
-import { CardList, NewsCard } from '@components';
+import { CardList, CardListSkeleton, NewsCard } from '@components';
 import { EmptyState, ErrorState } from '@components/ui';
 import {
   useAppDispatch,
@@ -21,11 +21,8 @@ function HomePage() {
 
   const dic = useLocalization();
   const addedProviders = useAppSelector(selectAddedProviders);
-  const {
-    isLoading,
-    error,
-    data: availableProviders,
-  } = useProvidersData(!isEmpty(addedProviders));
+
+  const { isLoading, error, data: availableProviders } = useProvidersData();
 
   const handleReorder = useCallback(
     (reorderedProviders: TAddedProvider[]) => {
@@ -59,7 +56,7 @@ function HomePage() {
   const isDraggable = addedProvidersData.length > 1;
 
   if (isLoading) {
-    return <EmptyState>{dic.loading}</EmptyState>;
+    return <CardListSkeleton />;
   }
 
   if (!isEmpty(error)) {

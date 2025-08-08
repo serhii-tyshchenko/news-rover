@@ -168,3 +168,5 @@ export enum EControlSize {
   Big = 'big',
   Large = 'large',
 }
+
+export type TBreakpoint = 'sm' | 'md' | 'lg' | 'xl' | '2xl';

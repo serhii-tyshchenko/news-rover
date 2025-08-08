@@ -1,10 +1,13 @@
+// settings
 export const UPDATE_SETTINGS = 'UPDATE_SETTINGS';
 
+// added providers
 export const ADD_PROVIDER = 'ADD_PROVIDER';
 export const UPDATE_PROVIDER = 'UPDATE_PROVIDER';
 export const REMOVE_PROVIDER = 'REMOVE_PROVIDER';
 export const REORDER_PROVIDERS = 'REORDER_PROVIDERS';
 
+// bookmarks
 export const ADD_BOOKMARK = 'ADD_BOOKMARK';
 export const REMOVE_BOOKMARK = 'REMOVE_BOOKMARK';
 export const UPDATE_BOOKMARKS_VIEW_MODE = 'UPDATE_BOOKMARKS_VIEW_MODE';

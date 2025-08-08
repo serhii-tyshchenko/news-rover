@@ -1,9 +1,8 @@
-import { isEmpty } from 'lodash';
+import { isEmpty } from 'lodash-es';
 
 import { getClassName } from '@utils';
 
 import { CardControls } from './card-controls';
-import './card.styles.scss';
 import { TCardProps } from './card.types';
 
 function Card(props: TCardProps) {
@@ -33,7 +32,7 @@ function Card(props: TCardProps) {
       onDragOver={onDragOver}
       onDragEnd={onDragEnd}
     >
-      <header className="flex justify-between items-center mb-6 gap-4">
+      <header className="flex justify-between items-center mb-4 gap-4">
         <h2 className="font-semibold text-2xl">{title}</h2>
         {hasControls && <CardControls config={controlsConfig} />}
       </header>

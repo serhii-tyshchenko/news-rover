@@ -1,4 +1,4 @@
-import { isEmpty, noop } from 'lodash';
+import { isEmpty, noop } from 'lodash-es';
 
 import { Card, NewsList } from '@components';
 import { EmptyState } from '@components/ui';
@@ -34,11 +34,7 @@ function BookmarksPage() {
   ];
 
   if (noData) {
-    return (
-      <Card title={dic.bookmarks}>
-        <EmptyState>{dic.noBookmarks}</EmptyState>
-      </Card>
-    );
+    return <EmptyState>{dic.noBookmarks}</EmptyState>;
   }
 
   return (
