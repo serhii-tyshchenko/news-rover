@@ -12,7 +12,10 @@
     "vite",
     "typescript"
   ],
-  "author": "Serhii Tyshchenko",
+  "author": {
+    "name": "Serhii Tyshchenko",
+    "url": "https://github.com/serhii-tyshchenko"
+  },
   "license": "MIT",
   "repository": {
     "type": "git",

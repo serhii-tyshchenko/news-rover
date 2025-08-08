@@ -1,14 +1,14 @@
 import { first } from 'lodash-es';
 
-import { version } from '../../package.json';
+import { author, version } from '../../package.json';
 
 export * from './api';
 
 export const APP_NAME = 'NewsRover';
 export const APP_VERSION = version;
 export const DEFAULT_POSTS_LIMIT = 10;
-export const AUTHOR_NAME = 'Serhii Tyshchenko';
-export const AUTHOR_SITE = 'https://github.com/serhii-tyshchenko';
+export const AUTHOR_NAME = author.name;
+export const AUTHOR_SITE = author.url;
 
 export const portalRoot = document.getElementById('portal-root') as HTMLElement;
 export const ONE_SECOND_IN_MILLISECONDS = 1000;

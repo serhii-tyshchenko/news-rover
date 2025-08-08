@@ -4,7 +4,7 @@ import { useAppSelector, useMediaQuery } from '@hooks';
 import { selectTheme } from '@store/selectors';
 import { ETheme } from '@types';
 
-export const useTheme = () => {
+function useTheme() {
   const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
   let theme = useAppSelector(selectTheme);
 
@@ -16,4 +16,6 @@ export const useTheme = () => {
     () => document.documentElement.setAttribute('data-theme', theme),
     [theme],
   );
-};
+}
+
+export default useTheme;

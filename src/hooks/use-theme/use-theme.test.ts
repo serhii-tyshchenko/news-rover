@@ -4,7 +4,7 @@ import * as hooks from '@hooks';
 import { renderHook } from '@testing-library/react';
 import { ETheme } from '@types';
 
-import { useTheme } from './use-theme';
+import useTheme from './use-theme';
 
 vi.mock('@hooks', () => ({
   useAppSelector: vi.fn(),
@@ -15,7 +15,7 @@ vi.mock('@store/selectors', () => ({
   selectTheme: vi.fn(),
 }));
 
-describe('useTheme', () => {
+describe('(Hook) useTheme', () => {
   const setAttributeMock = vi.fn();
 
   beforeAll(() => {
