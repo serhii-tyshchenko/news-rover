@@ -1,0 +1,39 @@
+components:
+  schemas:
+    RSS:
+      type: object
+      title: Rss
+      properties:
+        title:
+          type: string
+          example: 'Російські війська атакували 5 громад на Харківщині за добу'
+        link:
+          type: string
+          format: uri
+          example: 'https://armyinform.com.ua/2024/12/19/rosijski-vijska-atakuvaly-5-gromad-na-harkivshhyni-za-dobu/'
+        created:
+          type: number
+          example: 1734599526000
+        description:
+          type: string
+          example: 'Про це повідомив начальник Харківської ОВА Олег Синєгубов. У Київському районі міста Харків обстріл з використанням дронів пошкодив покрівлю цивільної будівлі....'
+        enclosures:
+          type: array
+          items:
+            type: object
+            properties:
+              url:
+                type: string
+                format: uri
+                example: 'https://images.cnscdn.com/4/d/0/7/4d077e920c2ef428c0b99e42f131ca72/528x330.jpg'
+              type:
+                type: string
+                example: 'image/jpeg'
+              length:
+                type: string
+                example: '27307'
+      required:
+        - title
+        - link
+        - created
+        - description

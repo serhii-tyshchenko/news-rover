@@ -1,0 +1,22 @@
+{
+  "version": 2,
+  "name": "my-news-be",
+  "builds": [
+    {
+      "src": "src/app.js",
+      "use": "@vercel/node",
+      "config": {
+        "includeFiles": [
+          "./src/**",
+          "./node_modules/swagger-ui-dist/**"
+        ]
+      }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "src/app.js"
+    }
+  ]
+}

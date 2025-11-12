@@ -1,0 +1,44 @@
+components:
+  schemas:
+    Provider:
+      type: object
+      title: Provider
+      properties:
+        id:
+          type: string
+          example: 'site_ua'
+        type:
+          type: string
+          example: 'rss'
+        name:
+          type: string
+          example: 'Site.UA'
+        description:
+          type: string
+          example: 'Тексти про найгостріші проблеми сучасної України.'
+        url:
+          type: string
+          format: uri
+          example: 'https://site.ua/rss.xml'
+        homepage:
+          type: string
+          format: uri
+          example: 'https://site.ua'
+        logo:
+          type: string
+          format: uri
+          example: 'https://texty.org.ua/static/core/favicon-196.png'
+        category:
+          type: string
+          example: 'blogs'
+        language:
+          type: string
+          example: 'uk'
+      required:
+        - id
+        - type
+        - name
+        - url
+        - homepage
+        - category
+        - language
