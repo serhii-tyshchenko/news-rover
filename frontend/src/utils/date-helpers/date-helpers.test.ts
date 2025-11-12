@@ -103,7 +103,7 @@ describe('(Function) groupDataByDay', () => {
     ] as TNewsItem[];
 
     expect(groupDataByDay(data)).toEqual({
-      '01.01.2022': [
+      '1/1/2022': [
         {
           created: new Date('2022-01-01T12:00:00').getTime(),
           title: 'Title 1',
@@ -111,7 +111,7 @@ describe('(Function) groupDataByDay', () => {
           thumbnail: 'thumbnail1',
         },
       ],
-      '02.01.2022': [
+      '1/2/2022': [
         {
           created: new Date('2022-01-02T12:15:00').getTime(),
           title: 'Title 3',
