@@ -1,0 +1,5 @@
+components:
+  schemas:
+    Category:
+      type: string
+      title: Category
