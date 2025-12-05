@@ -1,6 +1,4 @@
-# my-news-be
-
-My News API Backend
+# News Rover API Backend
 
 ## Overview
 
@@ -25,8 +23,8 @@ This project provides a backend API for aggregating and serving RSS news feeds a
 1. Clone the repository:
 
    ```sh
-   git clone https://github.com/yourusername/my-news-be.git
-   cd my-news-be
+   git clone https://github.com/serhii-tyshchenko/news-rover.git
+   cd news-rover/backend
    ```
 
 2. Install dependencies:
@@ -108,4 +106,4 @@ ISC
 
 ---
 
-© 2024 Serhii Tyshchenko
+© 2025 Serhii Tyshchenko
