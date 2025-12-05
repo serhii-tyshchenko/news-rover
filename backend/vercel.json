@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "name": "my-news-be",
+  "name": "news-rover-backend",
   "builds": [
     {
       "src": "src/app.js",
