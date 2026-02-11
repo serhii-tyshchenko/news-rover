@@ -1,4 +1,4 @@
-# News Rover API Backend
+# News Rover App Backend
 
 ## Overview
 
@@ -24,16 +24,21 @@ This project provides a backend API for aggregating and serving RSS news feeds a
 
    ```sh
    git clone https://github.com/serhii-tyshchenko/news-rover.git
-   cd news-rover/backend
    ```
 
-2. Install dependencies:
+2.  Navigate to the project directory:
+
+    ```bash
+    cd news-rower/backend
+    ```
+
+3. Install dependencies:
 
    ```sh
    npm install
    ```
 
-3. Copy `.env.example` to `.env` and fill in your Google Sheets credentials:
+4. Copy `.env.example` to `.env` and fill in your Google Sheets credentials:
    ```
    GOOGLE_SPREADSHEET_ID=your_spreadsheet_id
    GOOGLE_SERVICE_EMAIL=your_service_account_email

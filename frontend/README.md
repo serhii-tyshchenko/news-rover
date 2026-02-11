@@ -1,13 +1,4 @@
-# News Rover App
-
-This React web application is designed to display RSS news from different sources. It fetches and aggregates news content from multiple RSS feeds, providing users with a consolidated view of the latest news from various channels.
-
-## Features
-
-- **RSS Feeds Integration**: Fetches and displays news content from different RSS sources.
-- **Categorized News**: Organizes news articles based on different sources for easy browsing.
-- **Responsive Design**: Ensures the app is accessible and functional across various devices.
-- **Read More**: Allows users to read full articles by clicking on the news headlines.
+# News Rover App Frontend
 
 ## Installation
 
@@ -20,7 +11,7 @@ This React web application is designed to display RSS news from different source
 2.  Navigate to the project directory:
 
     ```bash
-    cd news-rower
+    cd news-rower/frontend
     ```
 
 3.  Install dependencies:
@@ -32,29 +23,43 @@ This React web application is designed to display RSS news from different source
     ```bash
     npm start
     ```
-
     This will run the app in development mode. Open http://127.0.0.1:3000/ to view it in the browser.
 
-## Technologies Used
+## Project Structure
 
-- React
-- Typescript
-- HTML/CSS
-- Vite
-- Vitest
+```
+config.json             # Icon font configuration
+index.html              # Dev HTML entry
+package.json            # npm scripts and dependencies
+vite.config.mts         # Vite configuration
+public/                 # Static assets served in development
+    _redirects
+    robots.txt
+    site.webmanifest
+    locales/
+build/                  # Production build output
+    assets/
+src/                    # Source code
+    index.tsx             # App bootstrap
+    App.tsx               # Root React component
+    App.scss              # Global styles
+    api/                  # API wrapper and tests
+    assets/               # Fonts and images
+    components/           # Reusable UI components
+    constants/            # App-wide constants
+    contexts/             # React context providers
+    hooks/                # Custom hooks
+    layout/               # Layout and page shells
+    pages/                # Page components
+    queries/              # Data fetching hooks/queries
+    store/                # State management (actions, reducers)
+    styles/               # SCSS variables, mixins, themes
+    types/                # TypeScript types
+    utils/                # Utilities and tests
+```
 
-## Usage
+This mirrors the structure used across the project and helps contributors find core pieces of the frontend quickly.
+    
+---
 
-Once the app is running, you can view the aggregated news from various RSS sources. The homepage will display the latest headlines from the selected sources. Clicking on a headline will lead to the full article.
-
-## Contributing
-
-If you'd like to contribute to this project, feel free to fork the repository and submit a pull request with your proposed changes. Ensure that any contributions align with the project's goals.
-
-## License
-
-This project is licensed under the MIT License.
-
-## Acknowledgements
-
-Inspired by the need for a consolidated news-viewing experience.
+© 2025 Serhii Tyshchenko
