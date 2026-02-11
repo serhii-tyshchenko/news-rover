@@ -59,19 +59,29 @@ export const groupDataByDay = (data: TNewsItem[]) =>
     (item: TNewsItem) => new Date(item.created).toLocaleDateString(),
   );
 
-export const getDateLabel = (date: Date, dic: TDic, locale: string) => {
-  if (isToday(date)) {
+export const getDateLabel = (
+  date: Date,
+  dic: TDic,
+  locale: Intl.LocalesArgument,
+) => {
+  console.log('getDateLabel called with date:', date);
+  const isTodayDate = isToday(date);
+  const isYesterdayDate = isYesterday(date);
+  const isThisWeekDate = isThisWeek(date);
+  const isThisYearDate = !isThisYear(date);
+
+  if (isTodayDate) {
     return dic.today;
   }
-  if (isYesterday(date)) {
+  if (isYesterdayDate) {
     return dic.yesterday;
   }
 
   const options: Intl.DateTimeFormatOptions = {
-    weekday: 'long',
-    year: isThisYear(date) ? undefined : 'numeric',
-    month: isThisWeek(date) ? undefined : 'long',
-    day: isThisWeek(date) ? undefined : 'numeric',
+    weekday: isThisWeekDate ? 'long' : undefined,
+    year: isThisYearDate ? 'numeric' : undefined,
+    month: isThisWeekDate ? undefined : 'long',
+    day: isThisWeekDate ? undefined : 'numeric',
   };
   return capitalizeFirstLetter(date.toLocaleDateString(locale, options));
 };

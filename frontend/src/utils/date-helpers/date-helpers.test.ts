@@ -1,9 +1,11 @@
 import { describe, expect, it } from 'vitest';
 
-import { TNewsItem } from '@types';
+import { TDic, TNewsItem } from '@types';
+import { capitalizeFirstLetter } from '@utils';
 
 import {
   formatTime,
+  getDateLabel,
   groupDataByDay,
   isThisWeek,
   isThisYear,
@@ -126,5 +128,73 @@ describe('(Function) groupDataByDay', () => {
         },
       ],
     });
+  });
+});
+
+describe('(Function) getDateLabel', () => {
+  const dic = { today: 'Today', yesterday: 'Yesterday' } as TDic;
+  const locale = 'en';
+
+  it('should return today label for today', () => {
+    const date = new Date();
+    expect(getDateLabel(date, dic, locale)).toBe(dic.today);
+  });
+
+  it('should return yesterday label for yesterday', () => {
+    const date = new Date();
+    date.setDate(date.getDate() - 1);
+    expect(getDateLabel(date, dic, locale)).toBe(dic.yesterday);
+  });
+
+  it('should return weekday name for dates in this week', () => {
+    const now = new Date();
+    const startOfWeek = new Date(now);
+    startOfWeek.setDate(now.getDate() - now.getDay());
+    startOfWeek.setHours(0, 0, 0, 0);
+
+    const testDate = new Date(startOfWeek);
+    testDate.setDate(startOfWeek.getDate() + 3);
+
+    const today = new Date();
+    const yesterday = new Date();
+    yesterday.setDate(today.getDate() - 1);
+
+    if (
+      testDate.getDate() === today.getDate() &&
+      testDate.getMonth() === today.getMonth() &&
+      testDate.getFullYear() === today.getFullYear()
+    ) {
+      testDate.setDate(startOfWeek.getDate() + 2);
+    }
+    if (
+      testDate.getDate() === yesterday.getDate() &&
+      testDate.getMonth() === yesterday.getMonth() &&
+      testDate.getFullYear() === yesterday.getFullYear()
+    ) {
+      testDate.setDate(startOfWeek.getDate() + 4);
+    }
+
+    const expected = capitalizeFirstLetter(
+      testDate.toLocaleDateString(locale, { weekday: 'long' }),
+    );
+    expect(getDateLabel(testDate, dic, locale)).toBe(expected);
+  });
+
+  it('should return month, day and year for dates not this year', () => {
+    const now = new Date();
+    const d = new Date(now);
+    d.setFullYear(now.getFullYear() - 1);
+    d.setMonth(0);
+    d.setDate(1);
+    d.setHours(12, 0, 0, 0);
+
+    const expected = capitalizeFirstLetter(
+      d.toLocaleDateString(locale, {
+        month: 'long',
+        day: 'numeric',
+        year: 'numeric',
+      }),
+    );
+    expect(getDateLabel(d, dic, locale)).toBe(expected);
   });
 });
