@@ -1,0 +1,19 @@
+@import '~styles/variables';
+@import '~styles/mixins';
+
+.card-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 1rem;
+  justify-content: center;
+  height: max-content;
+
+  @include for-size(tablet) {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    height: 100%;
+    justify-content: flex-start;
+  }
+}

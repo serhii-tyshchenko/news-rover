@@ -1,0 +1,80 @@
+paths:
+  /providers:
+    get:
+      summary: Get providers
+      tags:
+        - Providers
+      parameters:
+        - in: query
+          name: search
+          schema:
+            type: string
+          description: Search term to filter providers by any field (case-insensitive)
+          required: false
+      responses:
+        200:
+          description: Successfully fetched providers
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Provider'
+        500:
+          description: Failed to fetch providers
+  /providers/{id}:
+    get:
+      summary: Get provider by ID
+      description: Retrieve a single provider by its unique identifier.
+      tags:
+        - Providers
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+          description: The unique identifier of the provider.
+      responses:
+        200:
+          description: Successfully fetched the provider
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Provider'
+        404:
+          description: Provider not found
+        500:
+          description: Failed to fetch provider
+  /providers/{id}/news:
+    get:
+      summary: Get provider news by ID
+      description: Retrieve provider news by its unique identifier.
+      tags:
+        - Providers
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+          description: The unique identifier of the provider.
+      responses:
+        200:
+          description: Successfully fetched the provider news
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/RSS'
+                  count:
+                    type: integer
+                    example: 10
+        404:
+          description: Provider not found or missing URL
+        500:
+          description: Failed to fetch RSS feed

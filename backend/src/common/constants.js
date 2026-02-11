@@ -1,0 +1,11 @@
+const DEFAULT_POST_LIMIT = 10;
+
+const PORT = process.env.PORT || 4000;
+
+const DEFAULT_CACHE_DURATION_MINUTES = 5;
+
+module.exports = {
+  DEFAULT_POST_LIMIT,
+  PORT,
+  DEFAULT_CACHE_DURATION_MINUTES,
+};
