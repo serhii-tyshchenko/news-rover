@@ -17,7 +17,7 @@ export const LocalizationProvider: React.FC<LocalizationProviderProps> = ({
   const [localization, setLocalization] = useState<TDic>({} as TDic);
 
   useEffect(() => {
-    fetch(`/locales/${locale}.json`)
+    fetch(`/locales/${locale.toLowerCase()}.json`)
       .then((response) => response.json())
       .then(setLocalization)
       .catch((error) => console.error('Error loading localization:', error));

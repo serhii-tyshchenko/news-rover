@@ -1,11 +1,11 @@
 import { DEFAULT_AUTOREFERSH_INTERVAL } from '@constants';
 import { UPDATE_SETTINGS } from '@store/action-types';
 import { ETheme, IAction, TSettings } from '@types';
-import { getSystemLocale, shouldReduceMotion } from '@utils';
+import { getInitialLocale, shouldReduceMotion } from '@utils';
 
 const initialState: TSettings = {
   theme: ETheme.System,
-  locale: getSystemLocale(),
+  locale: getInitialLocale(),
   animation: !shouldReduceMotion(),
   autorefresh: false,
   autorefreshInterval: DEFAULT_AUTOREFERSH_INTERVAL,

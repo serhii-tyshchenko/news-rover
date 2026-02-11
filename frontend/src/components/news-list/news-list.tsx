@@ -1,9 +1,8 @@
 import { Fragment } from 'react';
 
-import { useAppSelector, useLocalization } from '@hooks';
-import { selectBookmarksData, selectLocale } from '@store/selectors';
+import { useAppSelector } from '@hooks';
+import { selectBookmarksData } from '@store/selectors';
 import { EViewMode, TNewsItem } from '@types';
-import { getDateLabel } from '@utils';
 
 import NewsListItem from './news-list-item';
 import { checkIfBookmarked } from './news-list.utils';
@@ -24,9 +23,7 @@ function NewsList(props: IProps) {
     onRemoveBookmark,
     viewMode = EViewMode.TitleOnly,
   } = props;
-  const dic = useLocalization();
   const bookmarks = useAppSelector(selectBookmarksData);
-  const locale = useAppSelector(selectLocale);
 
   return (
     <ul>
@@ -36,7 +33,7 @@ function NewsList(props: IProps) {
             className="text-secondary font-bold text-sm bg-surface sticky top-0 z-10 pb-3"
             key={`${providerId}-${date}`}
           >
-            {getDateLabel(new Date(date), dic, locale)}
+            {date}
           </li>
           {data[date].map((item: TNewsItem) => (
             <NewsListItem

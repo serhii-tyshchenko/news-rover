@@ -24,9 +24,9 @@
   "home": "Startseite",
   "language": "Sprache",
   "languages": {
-    "en": "Englisch",
+    "en-US": "Englisch",
     "uk": "Ukrainisch",
-    "de": "Deutsch"
+    "de-DE": "Deutsch"
   },
   "loading": "Laden...",
   "loadMore": "Mehr laden",

@@ -24,9 +24,9 @@
   "home": "Home",
   "language": "Language",
   "languages": {
-    "en": "English",
+    "en-US": "English",
     "uk": "Ukrainian",
-    "de": "German"
+    "de-DE": "German"
   },
   "loading": "Loading...",
   "loadMore": "Load more",

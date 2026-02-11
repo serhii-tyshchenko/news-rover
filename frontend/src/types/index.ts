@@ -12,10 +12,10 @@ export enum ETheme {
   DarkRed = 'dark-red',
 }
 
-export enum ELanguage {
-  En = 'en',
+export enum ELocale {
+  EnUS = 'en-US',
   Uk = 'uk',
-  Ge = 'de',
+  DeDE = 'de-DE',
 }
 
 export enum ERoute {
@@ -97,7 +97,7 @@ export enum EEnclosureType {
 
 export type TSettings = {
   theme: ETheme;
-  locale: ELanguage;
+  locale: ELocale;
   animation: boolean;
   autorefresh: boolean;
   autorefreshInterval: number;
@@ -133,7 +133,7 @@ export type TDic = {
   hideProvider: string;
   home: string;
   language: string;
-  languages: TLanguageKeys;
+  languages: Record<ELocale, string>;
   loading: string;
   loadMore: string;
   noBookmarks: string;
@@ -156,10 +156,6 @@ export type TDic = {
 
 type TThemeKeys = {
   [key in ETheme]: string;
-};
-
-type TLanguageKeys = {
-  [key in ELanguage]: string;
 };
 
 export enum EControlSize {

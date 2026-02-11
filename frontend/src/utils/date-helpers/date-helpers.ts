@@ -1,7 +1,7 @@
 import { groupBy } from 'lodash-es';
 
 import { ONE_MINUTE_IN_MILLISECONDS } from '@constants';
-import { TDic, TNewsItem } from '@types';
+import { ELocale, TDic, TNewsItem } from '@types';
 import { capitalizeFirstLetter } from '@utils';
 
 export const formatTime = (dateRaw: number) => {
@@ -53,22 +53,11 @@ export const isThisWeek = (date: Date): boolean => {
   return date >= startOfWeek && date <= endOfWeek;
 };
 
-export const groupDataByDay = (data: TNewsItem[]) =>
-  groupBy(
-    data.toSorted((a, b) => b.created - a.created),
-    (item: TNewsItem) => new Date(item.created).toLocaleDateString(),
-  );
-
-export const getDateLabel = (
-  date: Date,
-  dic: TDic,
-  locale: Intl.LocalesArgument,
-) => {
-  console.log('getDateLabel called with date:', date);
+export const getDateLabel = (date: Date, dic: TDic, locale: ELocale) => {
   const isTodayDate = isToday(date);
   const isYesterdayDate = isYesterday(date);
   const isThisWeekDate = isThisWeek(date);
-  const isThisYearDate = !isThisYear(date);
+  const isThisYearDate = isThisYear(date);
 
   if (isTodayDate) {
     return dic.today;
@@ -79,9 +68,15 @@ export const getDateLabel = (
 
   const options: Intl.DateTimeFormatOptions = {
     weekday: isThisWeekDate ? 'long' : undefined,
-    year: isThisYearDate ? 'numeric' : undefined,
+    year: isThisYearDate ? undefined : 'numeric',
     month: isThisWeekDate ? undefined : 'long',
     day: isThisWeekDate ? undefined : 'numeric',
   };
   return capitalizeFirstLetter(date.toLocaleDateString(locale, options));
 };
+
+export const groupDataByDay = (data: TNewsItem[], dic: TDic, locale: ELocale) =>
+  groupBy(
+    data.toSorted((a, b) => b.created - a.created),
+    (item: TNewsItem) => getDateLabel(new Date(item.created), dic, locale),
+  );

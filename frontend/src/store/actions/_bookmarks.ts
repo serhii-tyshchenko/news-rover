@@ -5,17 +5,17 @@ import {
 } from '@store/action-types';
 import { EViewMode, TNewsItem } from '@types';
 
-export const doAddBookmark = (data: TNewsItem) => ({
+export const doAddBookmark = (payload: TNewsItem) => ({
   type: ADD_BOOKMARK,
-  payload: data as TNewsItem,
+  payload,
 });
 
-export const doRemoveBookmark = (bookmarkUrl: string) => ({
+export const doRemoveBookmark = (payload: string) => ({
   type: REMOVE_BOOKMARK,
-  payload: bookmarkUrl as string,
+  payload,
 });
 
-export const doUpdateBookmarksViewMode = (viewMode: EViewMode) => ({
+export const doUpdateBookmarksViewMode = (payload: EViewMode) => ({
   type: UPDATE_BOOKMARKS_VIEW_MODE,
-  payload: viewMode as EViewMode,
+  payload,
 });

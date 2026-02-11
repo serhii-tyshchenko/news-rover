@@ -18,7 +18,11 @@ import {
   doRemoveProvider,
   doUpdateProvider,
 } from '@store/actions';
-import { selectProviderById, selectSettingsData } from '@store/selectors';
+import {
+  selectLocale,
+  selectProviderById,
+  selectSettingsData,
+} from '@store/selectors';
 import { EControlSize, EViewMode, TNewsItem } from '@types';
 import { changeViewMode, groupDataByDay } from '@utils';
 
@@ -40,6 +44,7 @@ function NewsCard(props: INewsCardProps) {
   const { autorefresh, autorefreshInterval } =
     useAppSelector(selectSettingsData);
   const providerSettings = useAppSelector(selectProviderById(provider.id));
+  const locale = useAppSelector(selectLocale);
   const isAnimationEnabled = useAnimation();
   const viewMode = providerSettings?.viewMode ?? EViewMode.TitleOnly;
 
@@ -110,8 +115,8 @@ function NewsCard(props: INewsCardProps) {
   });
 
   const groupedData = useMemo(
-    () => groupDataByDay(providerData?.data ?? []),
-    [providerData?.data],
+    () => groupDataByDay(providerData?.data ?? [], dic, locale),
+    [providerData?.data, dic, locale],
   );
 
   return (

@@ -1,8 +1,8 @@
 import { describe, expect, it, vi } from 'vitest';
 
-import { ELanguage } from '@types';
+import { ELocale } from '@types';
 
-import { getSystemLocale, shouldReduceMotion } from './system-preferences';
+import { getInitialLocale, shouldReduceMotion } from './system-preferences';
 
 describe('(Function) shouldReduceMotion', () => {
   it('should return true if prefers-reduced-motion is set to reduce', () => {
@@ -36,17 +36,17 @@ describe('(Function) shouldReduceMotion', () => {
   });
 });
 
-describe('(Function) getSystemLocale', () => {
-  it('should return the system locale if it is a valid ELanguage', () => {
+describe('(Function) getInitialLocale', () => {
+  it('should return the system locale if it is a valid ELocale', () => {
     vi.spyOn(navigator, 'language', 'get').mockReturnValue('en-US');
-    expect(getSystemLocale()).toBe(ELanguage.En);
+    expect(getInitialLocale()).toBe(ELocale.EnUS);
 
-    vi.spyOn(navigator, 'language', 'get').mockReturnValue('uk-UA');
-    expect(getSystemLocale()).toBe(ELanguage.Uk);
+    vi.spyOn(navigator, 'language', 'get').mockReturnValue('uk');
+    expect(getInitialLocale()).toBe(ELocale.Uk);
   });
 
-  it('should return ELanguage.En if the system locale is not a valid ELanguage', () => {
+  it('should return ELocale.EnUS if the system locale is not a valid ELocale', () => {
     vi.spyOn(navigator, 'language', 'get').mockReturnValue('fr-FR');
-    expect(getSystemLocale()).toBe(ELanguage.En);
+    expect(getInitialLocale()).toBe(ELocale.EnUS);
   });
 });

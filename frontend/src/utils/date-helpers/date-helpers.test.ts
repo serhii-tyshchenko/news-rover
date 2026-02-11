@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 
-import { TDic, TNewsItem } from '@types';
+import { ELocale, TDic, TNewsItem } from '@types';
 import { capitalizeFirstLetter } from '@utils';
 
 import {
@@ -82,6 +82,7 @@ describe('(Function) isThisWeek', () => {
 });
 
 describe('(Function) groupDataByDay', () => {
+  const dic = { today: 'Today', yesterday: 'Yesterday' } as TDic;
   it('should group data by day', () => {
     const data = [
       {
@@ -104,8 +105,8 @@ describe('(Function) groupDataByDay', () => {
       },
     ] as TNewsItem[];
 
-    expect(groupDataByDay(data)).toEqual({
-      '1/1/2022': [
+    expect(groupDataByDay(data, dic, ELocale.EnUS)).toEqual({
+      'January 1, 2022': [
         {
           created: new Date('2022-01-01T12:00:00').getTime(),
           title: 'Title 1',
@@ -113,7 +114,7 @@ describe('(Function) groupDataByDay', () => {
           thumbnail: 'thumbnail1',
         },
       ],
-      '1/2/2022': [
+      'January 2, 2022': [
         {
           created: new Date('2022-01-02T12:15:00').getTime(),
           title: 'Title 3',
@@ -133,7 +134,7 @@ describe('(Function) groupDataByDay', () => {
 
 describe('(Function) getDateLabel', () => {
   const dic = { today: 'Today', yesterday: 'Yesterday' } as TDic;
-  const locale = 'en';
+  const locale = ELocale.EnUS;
 
   it('should return today label for today', () => {
     const date = new Date();

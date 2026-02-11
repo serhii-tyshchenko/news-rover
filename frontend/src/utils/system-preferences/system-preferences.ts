@@ -1,20 +1,15 @@
-import { first } from 'lodash-es';
-
-import { ELanguage } from '@types';
+import { ELocale } from '@types';
 
 export const shouldReduceMotion = () =>
   window.matchMedia &&
   window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-export const getSystemLocale = () => {
-  const systemLocale = first(navigator.language.split('-'));
+export const getInitialLocale = () => {
+  const systemLocale = navigator.language as ELocale | undefined;
 
-  if (
-    systemLocale &&
-    Object.values(ELanguage).includes(systemLocale as ELanguage)
-  ) {
-    return systemLocale as ELanguage;
+  if (systemLocale && Object.values(ELocale).includes(systemLocale)) {
+    return systemLocale;
   }
 
-  return ELanguage.En;
+  return ELocale.EnUS;
 };

@@ -14,10 +14,10 @@ import {
 } from '@hooks';
 import { doUpdateSettings } from '@store/actions';
 import { selectSettingsData } from '@store/selectors';
-import { EControlSize, ELanguage, ETheme } from '@types';
-import { prepareOptions } from '@utils';
+import { EControlSize, ELocale, ETheme } from '@types';
 
 import { SettingsGroup } from './components';
+import { prepareOptions } from './settings-dialog.utils';
 
 interface ISettingsDialogProps {
   opened: boolean;
@@ -80,7 +80,7 @@ function SettingsDialog(props: ISettingsDialogProps) {
             name="locale"
             value={locale}
             onChange={handleStringChange}
-            options={prepareOptions(ELanguage, dic.languages)}
+            options={prepareOptions(ELocale, dic.languages)}
             title={dic.changeLanguage}
           />
         </SettingsGroup>

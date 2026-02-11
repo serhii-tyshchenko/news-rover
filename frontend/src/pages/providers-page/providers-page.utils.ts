@@ -1,4 +1,4 @@
-import { TDic, TProvider } from '@types';
+import { ELocale, TDic, TProvider } from '@types';
 
 const getCategoryTitle = (category: string, dic: TDic) => {
   const categoryToNameMap: { [key: string]: string } = {
@@ -19,7 +19,7 @@ const getCategoryTitle = (category: string, dic: TDic) => {
 
 export const groupProvidersByCategory = (
   providers: TProvider[] = [],
-  locale: string,
+  locale: ELocale,
   dic: TDic,
 ) =>
   [...new Set<string>(providers.map(({ category }) => category))]

@@ -6,7 +6,7 @@ import {
 } from '@store/action-types';
 import { IAction, TAddedProvider } from '@types';
 
-const initialState = [] as TAddedProvider[];
+const initialState: TAddedProvider[] = [];
 
 export const addedProvidersReducer = (
   state = initialState,
@@ -29,7 +29,7 @@ export const addedProvidersReducer = (
       return state.filter(({ id }) => id !== (payload as string));
 
     case REORDER_PROVIDERS:
-      return [...(payload as unknown as TAddedProvider[])];
+      return [...(payload as TAddedProvider[])];
 
     default:
       return state;
