@@ -4,7 +4,6 @@ type IArgs = {
   dic: TDic;
   navigate: (route: ERoute) => void;
   noBookmarks: boolean;
-  openDialog: () => void;
   location: {
     pathname: string;
   };
@@ -24,7 +23,6 @@ export const getNavConfig = ({
   dic,
   navigate,
   noBookmarks,
-  openDialog,
   location,
   onFullscreen,
   isFullscreen,
@@ -44,8 +42,9 @@ export const getNavConfig = ({
   },
   {
     icon: EIcon.Settings,
-    onClick: openDialog,
+    onClick: () => navigate(ERoute.Settings),
     title: dic.settings,
+    active: location.pathname.includes(ERoute.Settings),
   },
   {
     ...(isFullscreenEnabled

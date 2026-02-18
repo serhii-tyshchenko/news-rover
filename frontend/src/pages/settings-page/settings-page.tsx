@@ -1,4 +1,5 @@
-import { Dialog, Select, Toggle } from '@components/ui';
+import { Card } from '@components';
+import { Select, Toggle } from '@components/ui';
 import {
   APP_VERSION,
   AUTHOR_NAME,
@@ -17,12 +18,7 @@ import { selectSettingsData } from '@store/selectors';
 import { EControlSize, ELocale, ETheme } from '@types';
 
 import { SettingsGroup } from './components';
-import { prepareOptions } from './settings-dialog.utils';
-
-interface ISettingsDialogProps {
-  opened: boolean;
-  onClose: () => void;
-}
+import { prepareOptions } from './settings-page.utils';
 
 type TChangeEvent = {
   target: {
@@ -32,9 +28,9 @@ type TChangeEvent = {
   };
 };
 
-function SettingsDialog(props: ISettingsDialogProps) {
-  const { opened, onClose } = props;
+function SettingsPage() {
   const dic = useLocalization();
+
   const isAnimationEnabled = useAnimation();
 
   const dispatch = useAppDispatch();
@@ -54,8 +50,8 @@ function SettingsDialog(props: ISettingsDialogProps) {
   };
 
   return (
-    <Dialog opened={opened} onClose={onClose} title={dic.settings}>
-      <div className="flex flex-col grow">
+    <Card title={dic.settings}>
+      <div className="grow overflow-y-auto scrollbar-none p-1">
         <SettingsGroup label={dic.theme}>
           <Select
             name="theme"
@@ -116,8 +112,8 @@ function SettingsDialog(props: ISettingsDialogProps) {
         </a>
         <span className="text-sm">{APP_VERSION}</span>
       </footer>
-    </Dialog>
+    </Card>
   );
 }
 
-export default SettingsDialog;
+export default SettingsPage;

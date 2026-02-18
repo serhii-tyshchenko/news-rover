@@ -22,6 +22,7 @@ export enum ERoute {
   Home = '/',
   Bookmarks = 'bookmarks',
   Providers = 'providers',
+  Settings = 'settings',
 }
 
 // TODO add rest icons

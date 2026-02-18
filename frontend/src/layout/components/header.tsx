@@ -4,14 +4,8 @@ import { Link } from 'react-router-dom';
 
 import { isEmpty } from 'lodash-es';
 
-import { SettingsDialog } from '@components';
 import { APP_NAME } from '@constants';
-import {
-  useAppSelector,
-  useDialogState,
-  useFullscreen,
-  useLocalization,
-} from '@hooks';
+import { useAppSelector, useFullscreen, useLocalization } from '@hooks';
 import { selectBookmarksData } from '@store/selectors';
 import { ERoute } from '@types';
 
@@ -21,7 +15,6 @@ import { getNavConfig } from './header.utils';
 function Header() {
   const navigate = useNavigate();
   const location = useLocation();
-  const { opened, openDialog, closeDialog } = useDialogState();
 
   const { isFullscreenEnabled, isFullscreen, toggleFullscreen } =
     useFullscreen();
@@ -36,7 +29,6 @@ function Header() {
         dic,
         navigate,
         noBookmarks,
-        openDialog,
         location,
         isFullscreen,
         isFullscreenEnabled,
@@ -46,7 +38,6 @@ function Header() {
       dic,
       navigate,
       noBookmarks,
-      openDialog,
       location,
       isFullscreen,
       isFullscreenEnabled,
@@ -60,7 +51,6 @@ function Header() {
         {APP_NAME}
       </Link>
       <HeaderNav items={navConfig} />
-      <SettingsDialog opened={opened} onClose={closeDialog} />
     </header>
   );
 }
