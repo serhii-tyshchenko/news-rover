@@ -1,6 +1,6 @@
 import { EIcon, ERoute, TDic } from '@types';
 
-interface IGetNavConfig {
+type IArgs = {
   dic: TDic;
   navigate: (route: ERoute) => void;
   noBookmarks: boolean;
@@ -8,7 +8,17 @@ interface IGetNavConfig {
   location: {
     pathname: string;
   };
-}
+  onFullscreen: () => void;
+  isFullscreenEnabled: boolean;
+  isFullscreen: boolean;
+};
+
+type TNavItem = {
+  icon: EIcon;
+  onClick: () => void;
+  title: string;
+  active?: boolean;
+};
 
 export const getNavConfig = ({
   dic,
@@ -16,7 +26,10 @@ export const getNavConfig = ({
   noBookmarks,
   openDialog,
   location,
-}: IGetNavConfig) => [
+  onFullscreen,
+  isFullscreen,
+  isFullscreenEnabled,
+}: IArgs): TNavItem[] => [
   {
     icon: EIcon.Rss,
     onClick: () => navigate(ERoute.Providers),
@@ -33,5 +46,14 @@ export const getNavConfig = ({
     icon: EIcon.Settings,
     onClick: openDialog,
     title: dic.settings,
+  },
+  {
+    ...(isFullscreenEnabled
+      ? {
+          icon: isFullscreen ? EIcon.ResizeSmall : EIcon.ResizeFull,
+          onClick: onFullscreen,
+          title: isFullscreen ? dic.exitFullscreen : dic.fullscreen,
+        }
+      : ({} as TNavItem)),
   },
 ];

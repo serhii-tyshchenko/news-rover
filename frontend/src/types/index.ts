@@ -30,15 +30,17 @@ export enum EIcon {
   Bookmark = 'bookmark',
   BookmarkEmpty = 'bookmark-empty',
   Cancel = 'cancel',
-  Rss = 'rss',
-  Moon = 'moon',
-  Sun = 'sun',
-  Settings = 'cog',
   Eye = 'eye',
   EyeOff = 'eye-off',
-  ThList = 'th-list',
-  ThLarge = 'th-large',
+  Moon = 'moon',
+  ResizeFull = 'resize-full',
+  ResizeSmall = 'resize-small',
+  Rss = 'rss',
+  Settings = 'cog',
   Share = 'share',
+  Sun = 'sun',
+  ThLarge = 'th-large',
+  ThList = 'th-list',
 }
 
 export type TProvider = {
@@ -129,6 +131,8 @@ export type TDic = {
   changeAutorefreshInterval: string;
   changeLanguage: string;
   changeTheme: string;
+  exitFullscreen: string;
+  fullscreen: string;
   genericError: string;
   hideProvider: string;
   home: string;

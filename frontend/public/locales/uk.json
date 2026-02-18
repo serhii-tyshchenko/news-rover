@@ -19,6 +19,8 @@
   "changeAutorefreshInterval": "Змінити інтервал автооновлення",
   "changeLanguage": "Змінити мову",
   "changeTheme": "Змінити тему",
+  "exitFullscreen": "Вихід з повного екрану",
+  "fullscreen": "Повний екран",
   "genericError": "Щось пішло не так. Спробуйте пізніше.",
   "hideProvider": "Приховати провайдера",
   "home": "Головна",

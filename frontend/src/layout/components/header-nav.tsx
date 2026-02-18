@@ -1,26 +1,28 @@
 import { IconButton } from '@components/ui';
-import { EControlSize } from '@types';
+import { EControlSize, EIcon } from '@types';
 
-interface HeaderNavProps {
+interface IProps {
   items: Array<{
-    icon: string;
+    icon: EIcon;
     onClick: () => void;
     title: string;
     active?: boolean;
   }>;
 }
 
-function HeaderNav({ items }: HeaderNavProps) {
+function HeaderNav(props: IProps) {
+  const { items } = props;
+
   return (
     <nav className="flex gap-2">
-      {items.map((item) => (
+      {items.map(({ icon, onClick, title, active }) => (
         <IconButton
-          key={item.icon}
-          icon={item.icon}
-          onClick={item.onClick}
-          title={item.title}
+          key={icon}
+          icon={icon}
+          onClick={onClick}
+          title={title}
           size={EControlSize.Big}
-          toggled={item.active}
+          toggled={active}
         />
       ))}
     </nav>

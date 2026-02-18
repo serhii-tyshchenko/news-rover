@@ -19,6 +19,8 @@
   "changeAutorefreshInterval": "Change autorefresh interval",
   "changeLanguage": "Change language",
   "changeTheme": "Change theme",
+  "exitFullscreen": "Exit fullscreen",
+  "fullscreen": "Fullscreen",
   "genericError": "Something went wrong. Try again later.",
   "hideProvider": "Hide provider",
   "home": "Home",
