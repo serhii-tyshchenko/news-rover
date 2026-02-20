@@ -51,6 +51,8 @@ function NewsListItem(props: INewsListItemProps) {
     !isEmpty(thumbnailUrl) && (isFullMode || isThumbnailMode);
   const shouldShowDescription =
     !isEmpty(description) && (isFullMode || isTitleWithDescriptionMode);
+  const shouldShowLinkTitle =
+    !isEmpty(description) && !isFullMode && !isTitleWithDescriptionMode;
   const isFresh = isWithinLastHour(created);
 
   return (
@@ -78,6 +80,7 @@ function NewsListItem(props: INewsListItemProps) {
             target="_blank"
             rel="noreferrer"
             className="overflow-hidden text-ellipsis hover:underline"
+            {...(shouldShowLinkTitle && { title: data.description })}
           >
             {title}
           </a>
