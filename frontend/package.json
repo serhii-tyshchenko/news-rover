@@ -30,7 +30,8 @@
     "test": "vitest run",
     "test:coverage": "vitest run --coverage",
     "storybook": "storybook dev -p 6006",
-    "storybook:build": "storybook build"
+    "storybook:build": "storybook build",
+    "husky:prepare": "cd .. && husky frontend/.husky"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.11",
@@ -74,6 +75,7 @@
     "eslint-config-prettier": "^10.1.5",
     "eslint-plugin-react": "^7.37.5",
     "globals": "^16.2.0",
+    "husky": "^9.1.7",
     "jsdom": "^22.1.0",
     "prettier": "3.5.3",
     "storybook": "^8.6.9",
