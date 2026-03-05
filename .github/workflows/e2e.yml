@@ -47,6 +47,11 @@ jobs:
 
       - name: Run Playwright tests
         working-directory: integration-tests
+        env:
+          GOOGLE_SPREADSHEET_ID: ${{ secrets.GOOGLE_SPREADSHEET_ID }}
+          GOOGLE_SERVICE_EMAIL: ${{ secrets.GOOGLE_SERVICE_EMAIL }}
+          GOOGLE_PRIVATE_KEY: ${{ secrets.GOOGLE_PRIVATE_KEY }}
+          CACHE_DURATION_MINUTES: ${{ secrets.CACHE_DURATION_MINUTES }}
         run: npm test
 
       - name: Upload Playwright report
