@@ -149,36 +149,13 @@ describe('(Function) getDateLabel', () => {
 
   it('should return weekday name for dates in this week', () => {
     const now = new Date();
-    const startOfWeek = new Date(now);
-    startOfWeek.setDate(now.getDate() - now.getDay());
-    startOfWeek.setHours(0, 0, 0, 0);
-
-    const testDate = new Date(startOfWeek);
-    testDate.setDate(startOfWeek.getDate() + 3);
-
-    const today = new Date();
-    const yesterday = new Date();
-    yesterday.setDate(today.getDate() - 1);
-
-    if (
-      testDate.getDate() === today.getDate() &&
-      testDate.getMonth() === today.getMonth() &&
-      testDate.getFullYear() === today.getFullYear()
-    ) {
-      testDate.setDate(startOfWeek.getDate() + 2);
-    }
-    if (
-      testDate.getDate() === yesterday.getDate() &&
-      testDate.getMonth() === yesterday.getMonth() &&
-      testDate.getFullYear() === yesterday.getFullYear()
-    ) {
-      testDate.setDate(startOfWeek.getDate() + 4);
-    }
-
+    const d = new Date(now);
+    d.setDate(now.getDate() - 2);
+    d.setHours(12, 0, 0, 0);
     const expected = capitalizeFirstLetter(
-      testDate.toLocaleDateString(locale, { weekday: 'long' }),
+      d.toLocaleDateString(locale, { weekday: 'long' }),
     );
-    expect(getDateLabel(testDate, dic, locale)).toBe(expected);
+    expect(getDateLabel(d, dic, locale)).toBe(expected);
   });
 
   it('should return month, day and year for dates not this year', () => {
