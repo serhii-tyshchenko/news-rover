@@ -1,0 +1,21 @@
+{
+  "name": "news-rover-integration-tests",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Playwright integration tests for News Rover",
+  "scripts": {
+    "test": "playwright test",
+    "test:smoke": "playwright test tests/smoke.spec.ts",
+    "test:ui": "playwright test --ui",
+    "test:headed": "playwright test --headed",
+    "test:debug": "playwright test --debug",
+    "report": "playwright show-report",
+    "install:browsers": "playwright install"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.21",
+    "@playwright/test": "^1.52.0",
+    "cross-env": "^7.0.3",
+    "typescript": "^5.8.3"
+  }
+}

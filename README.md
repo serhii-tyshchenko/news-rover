@@ -41,7 +41,19 @@ This React web application is designed to display RSS news from different source
 - SCSS / Tailwind
 - Vite
 - Vitest
+- Playwright
 - Node.js / Express.js
+
+## Integration Tests
+
+Playwright integration tests are located in `integration-tests/` as a standalone package.
+
+```bash
+cd integration-tests
+npm install
+npm run install:browsers
+npm test
+```
 
 ## Usage
 
