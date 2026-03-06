@@ -20,7 +20,7 @@ app.use('/', indexRouter);
 app.use('/rss', rssRouter);
 app.use('/providers', providersRouter);
 app.use('/categories', categoriesRouter);
-app.use((req, res, next) => {
+app.use((_, res) => {
   res.status(404).json({ error: 'Not Found' });
 });
 
