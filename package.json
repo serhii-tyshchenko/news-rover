@@ -1,0 +1,10 @@
+{
+  "name": "news-rover-root",
+  "private": true,
+  "scripts": {
+    "prepare": "husky .husky"
+  },
+  "devDependencies": {
+    "husky": "^9.1.7"
+  }
+}

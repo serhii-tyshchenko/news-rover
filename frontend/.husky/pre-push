@@ -1,6 +1,0 @@
-cd frontend
-
-echo "RUNNING TESTS..."
-npm run test;
-echo "RUNNING BUILD..."
-npm run build;

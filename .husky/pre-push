@@ -1,0 +1,14 @@
+echo "RUNNING BACKEND LINT..."
+npm --prefix backend run lint
+
+echo "RUNNING BACKEND TESTS..."
+npm --prefix backend run test
+
+echo "RUNNING FRONTEND LINT..."
+npm --prefix frontend run lint
+
+echo "RUNNING FRONTEND TESTS..."
+npm --prefix frontend run test
+
+echo "RUNNING FRONTEND BUILD..."
+npm --prefix frontend run build
