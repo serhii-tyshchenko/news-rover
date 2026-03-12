@@ -2,7 +2,7 @@
 
 ## Overview
 
-This project provides a backend API for aggregating and serving RSS news feeds and provider information. It is built with Node.js and Express, and supports fetching RSS feeds, listing providers from a Google Spreadsheet, and serving OpenAPI documentation.
+This project provides a backend API for aggregating and serving RSS news feeds and provider information. It is built with Node.js, TypeScript, native ESM imports, and Express. It supports fetching RSS feeds, listing providers from a Google Spreadsheet, and serving OpenAPI documentation.
 
 ## Features
 
@@ -15,7 +15,7 @@ This project provides a backend API for aggregating and serving RSS news feeds a
 
 ### Prerequisites
 
-- Node.js (v14+ recommended)
+- Node.js (v24+ recommended)
 - npm
 
 ### Installation
@@ -26,11 +26,11 @@ This project provides a backend API for aggregating and serving RSS news feeds a
    git clone https://github.com/serhii-tyshchenko/news-rover.git
    ```
 
-2.  Navigate to the project directory:
+2. Navigate to the project directory:
 
-    ```bash
-    cd news-rower/backend
-    ```
+   ```bash
+   cd news-rower/backend
+   ```
 
 3. Install dependencies:
 
@@ -52,8 +52,20 @@ This project provides a backend API for aggregating and serving RSS news feeds a
   npm start
   ```
 - For development with auto-reload:
+
   ```sh
   npm run dev
+  ```
+
+- Run tests:
+
+  ```sh
+  npm test
+  ```
+
+- Run type check:
+  ```sh
+  npm run typecheck
   ```
 
 The server will start on `http://localhost:4000` by default.
@@ -81,24 +93,27 @@ Swagger UI for API documentation.
 
 ```
 src/
-  app.js                # Main Express app
-  parse.js              # RSS parsing logic
-  utils.js              # Utility functions
+  app.ts                # Main Express app
+  parse.ts              # RSS parsing logic
   common/
-    constants.js        # Shared constants
-    utils.js            # Data transformation utilities
+    constants.ts        # Shared constants
+    utils.ts            # Data transformation utilities
   controllers/
-    providers.js        # Providers controller
-    rss.js              # RSS controller
+    providers.ts        # Providers controller
+    categories.ts       # Categories controller
+    rss.ts              # RSS controller
   docs/
-    swaggerDef.js       # Swagger definition
+    swaggerDef.ts       # Swagger definition
     components/
       paths/            # OpenAPI path definitions
       schemas/          # OpenAPI schemas
   routes/
-    index.js            # Root route
-    providers.js        # Providers route
-    rss.js              # RSS route
+    index.ts            # Root route
+    providers.ts        # Providers route
+    categories.ts       # Categories route
+    rss.ts              # RSS route
+  services/
+    db.ts               # Google Sheets data access
 ```
 
 ## Deployment

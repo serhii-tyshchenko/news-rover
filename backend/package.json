@@ -2,12 +2,14 @@
   "name": "my-news-be",
   "version": "1.0.0",
   "description": "News Rover API Backend",
-  "main": "src/app.js",
+  "type": "module",
+  "main": "src/app.ts",
   "scripts": {
-    "start": "node src/app.js",
-    "dev": "nodemon src/app.js",
+    "start": "node --experimental-strip-types src/app.ts",
+    "dev": "node --watch --experimental-strip-types src/app.ts",
     "lint": "eslint src",
-    "test": "jest"
+    "typecheck": "tsc --noEmit",
+    "test": "node --experimental-strip-types --test src/**/*.test.ts"
   },
   "author": "Serhii Tyshchenko",
   "license": "ISC",
@@ -24,9 +26,14 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.36.0",
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.3",
+    "@types/node": "^24.6.1",
+    "@types/swagger-jsdoc": "^6.0.4",
+    "@types/swagger-ui-express": "^4.1.8",
     "eslint": "^9.36.0",
     "globals": "^16.4.0",
-    "jest": "^30.2.0",
-    "nodemon": "^3.1.13"
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.44.1"
   }
 }
