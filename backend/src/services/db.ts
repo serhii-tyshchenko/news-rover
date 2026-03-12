@@ -1,13 +1,16 @@
-const { google } = require('googleapis');
-const { DEFAULT_CACHE_DURATION_MINUTES } = require('../common/constants');
+import { google } from 'googleapis';
+import { DEFAULT_CACHE_DURATION_MINUTES } from '../common/constants.ts';
 
 const spreadsheetId = process.env.GOOGLE_SPREADSHEET_ID;
 const serviceEmail = process.env.GOOGLE_SERVICE_EMAIL;
 const privateKey = process.env.GOOGLE_PRIVATE_KEY?.replace(/\\n/g, '\n');
-const CACHE_DURATION_MINUTES =
-  process.env.CACHE_DURATION_MINUTES ?? DEFAULT_CACHE_DURATION_MINUTES;
+const CACHE_DURATION_MINUTES = Number(
+  process.env.CACHE_DURATION_MINUTES ?? DEFAULT_CACHE_DURATION_MINUTES,
+);
 
-let providersCache = null;
+export type Provider = Record<string, string>;
+
+let providersCache: Provider[] | null = null;
 let providersCacheTimestamp = 0;
 
 function checkEnv() {
@@ -27,7 +30,7 @@ async function authenticate() {
   return client;
 }
 
-async function getProviders() {
+export async function getProviders(): Promise<Provider[]> {
   const now = Date.now();
   if (
     providersCache &&
@@ -41,28 +44,38 @@ async function getProviders() {
     spreadsheetId,
     range: 'providers!A1:Z',
   });
-  const headers = response.data.values[0];
-  const data = response.data.values.slice(1);
+  const rows = response.data.values ?? [];
+  if (rows.length === 0) {
+    providersCache = [];
+    providersCacheTimestamp = now;
+    return providersCache;
+  }
+
+  const headers = rows[0] ?? [];
+  const data = rows.slice(1);
   providersCache = data.map((row) =>
-    row.reduce((acc, cell, index) => {
-      acc[headers[index]] = cell;
+    row.reduce((acc: Provider, cell: string, index: number) => {
+      const header = headers[index];
+      if (header) {
+        acc[header] = cell;
+      }
       return acc;
-    }, {})
+    }, {}),
   );
   providersCacheTimestamp = now;
   return providersCache;
 }
 
-async function searchProviders(query) {
+export async function searchProviders(query: string): Promise<Provider[]> {
   const providers = await getProviders();
   return providers.filter((provider) =>
     Object.values(provider).some((value) =>
-      value.toLowerCase().includes(query.toLowerCase())
-    )
+      value.toLowerCase().includes(query.toLowerCase()),
+    ),
   );
 }
 
-async function getProviderById(id) {
+export async function getProviderById(id: string): Promise<Provider | null> {
   const providers = await getProviders();
   const provider = providers.find((p) => p.id === id);
   if (!provider) {
@@ -71,9 +84,9 @@ async function getProviderById(id) {
   return provider;
 }
 
-async function getCategories() {
+export async function getCategories(): Promise<string[]> {
   const providers = await getProviders();
-  const categories = new Set();
+  const categories = new Set<string>();
   providers.forEach((provider) => {
     if (provider.category) {
       categories.add(provider.category);
@@ -82,15 +95,9 @@ async function getCategories() {
   return Array.from(categories);
 }
 
-async function getCategoryProviders(categoryId) {
+export async function getCategoryProviders(
+  categoryId: string,
+): Promise<Provider[]> {
   const providers = await getProviders();
   return providers.filter((provider) => provider.category === categoryId);
 }
-
-module.exports = {
-  getProviders,
-  getProviderById,
-  searchProviders,
-  getCategories,
-  getCategoryProviders,
-};
