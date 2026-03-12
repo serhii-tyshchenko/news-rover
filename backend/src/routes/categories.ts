@@ -1,6 +1,6 @@
-const express = require('express');
+import express from 'express';
 
-const categoriesController = require('../controllers/categories');
+import categoriesController from '../controllers/categories.ts';
 
 const router = express.Router();
 
@@ -8,4 +8,4 @@ router.get('/', categoriesController.list);
 
 router.get('/:id', categoriesController.getById);
 
-module.exports = router;
+export default router;

@@ -1,7 +1,7 @@
-const express = require('express');
+import express from 'express';
 
-const providersController = require('../controllers/providers');
-const rssController = require('../controllers/rss');
+import providersController from '../controllers/providers.ts';
+import rssController from '../controllers/rss.ts';
 
 const router = express.Router();
 
@@ -11,4 +11,4 @@ router.get('/:id', providersController.getById);
 
 router.get('/:id/news', rssController.providerNews);
 
-module.exports = router;
+export default router;
