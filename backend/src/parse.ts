@@ -1,13 +1,39 @@
-const { XMLParser } = require('fast-xml-parser');
-const axios = require('axios');
-
-const {
+import axios, { type AxiosRequestConfig } from 'axios';
+import { XMLParser } from 'fast-xml-parser';
+import {
   normalizeDate,
   normalizeTitle,
   normalizeDescription,
-} = require('./common/utils');
+} from './common/utils.ts';
 
-const parse = async (url, config) => {
+export type ParsedRssItem = {
+  id?: string;
+  title: string;
+  description: string;
+  link?: string;
+  author?: string;
+  published: number;
+  created: number;
+  category: unknown[];
+  content?: string;
+  enclosures: unknown[];
+  media: Record<string, unknown>;
+  [key: string]: unknown;
+};
+
+export type ParsedRss = {
+  title: string;
+  description: string;
+  link?: string;
+  image?: string;
+  category: unknown[];
+  items: ParsedRssItem[];
+};
+
+const parse = async (
+  url: string,
+  config?: AxiosRequestConfig,
+): Promise<ParsedRss | null> => {
   if (!/(^http(s?):\/\/[^\s$.?#].[^\s]*)/i.test(url)) return null;
 
   const { data } = await axios(url, config);
@@ -18,21 +44,22 @@ const parse = async (url, config) => {
     ignoreAttributes: false,
   });
 
-  const result = xml.parse(data);
+  const result = xml.parse(data) as Record<string, any>;
 
   let channel =
     result.rss && result.rss.channel ? result.rss.channel : result.feed;
+  if (!channel) return null;
   if (Array.isArray(channel)) channel = channel[0];
 
-  const rss = {
+  const rss: ParsedRss = {
     title: channel.title ?? '',
     description: channel.description ?? '',
     link: channel.link && channel.link.href ? channel.link.href : channel.link,
     image: channel.image
       ? channel.image.url
       : channel['itunes:image']
-      ? channel['itunes:image'].href
-      : '',
+        ? channel['itunes:image'].href
+        : '',
     category: channel.category || [],
     items: [],
   };
@@ -41,16 +68,22 @@ const parse = async (url, config) => {
   if (items && !Array.isArray(items)) items = [items];
 
   for (let i = 0; i < items.length; i++) {
-    const val = items[i];
-    const media = {};
+    const val = items[i] as Record<string, any>;
+    const media: Record<string, unknown> = {};
 
-    const obj = {
+    const obj: ParsedRssItem = {
       id: val.guid && val.guid.$text ? val.guid.$text : val.id,
       title: normalizeTitle(
-        val.title && val.title.$text ? val.title.$text : val.title
+        String(
+          val.title && val.title.$text ? val.title.$text : (val.title ?? ''),
+        ),
       ),
       description: normalizeDescription(
-        val.summary && val.summary.$text ? val.summary.$text : val.description
+        String(
+          val.summary && val.summary.$text
+            ? val.summary.$text
+            : (val.description ?? ''),
+        ),
       ),
       link: val.link && val.link.href ? val.link.href : val.link,
       author:
@@ -58,20 +91,25 @@ const parse = async (url, config) => {
       published: val.created
         ? Date.parse(val.created)
         : val.pubDate
-        ? Date.parse(val.pubDate)
-        : Date.now(),
+          ? Date.parse(val.pubDate)
+          : Date.now(),
       created: val.updated
         ? Date.parse(val.updated)
         : val.pubDate
-        ? Date.parse(normalizeDate(val.pubDate))
-        : val.created
-        ? Date.parse(val.created)
-        : Date.now(),
-      category: val.category || [],
+          ? Date.parse(normalizeDate(val.pubDate))
+          : val.created
+            ? Date.parse(val.created)
+            : Date.now(),
+      category: Array.isArray(val.category)
+        ? val.category
+        : val.category
+          ? [val.category]
+          : [],
       content:
         val.content && val.content.$text
           ? val.content.$text
           : val['content:encoded'],
+      media,
       enclosures: val.enclosure
         ? Array.isArray(val.enclosure)
           ? val.enclosure
@@ -123,4 +161,4 @@ const parse = async (url, config) => {
   return rss;
 };
 
-module.exports = parse;
+export default parse;
