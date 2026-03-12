@@ -1,20 +1,36 @@
-const { decode } = require('html-entities');
-const { DEFAULT_POST_LIMIT } = require('./constants');
+import { decode } from 'html-entities';
+import { DEFAULT_POST_LIMIT } from './constants.ts';
 
-const transformData = (items = [], limit = DEFAULT_POST_LIMIT) =>
-  items
-    .slice(0, limit)
+type TransformInputItem = {
+  title?: string;
+  link?: string;
+  created?: string | number;
+  enclosures?: unknown[];
+  description?: string;
+};
+
+export const transformData = (
+  items: TransformInputItem[] = [],
+  limit: number | string = DEFAULT_POST_LIMIT,
+) => {
+  const safeLimit = Number(limit) || DEFAULT_POST_LIMIT;
+
+  return items
+    .slice(0, safeLimit)
     .map(({ title, link, created, enclosures, description }) => ({
-      title: decode(title).trim(),
+      title: decode(String(title ?? '')).trim(),
       link,
       created,
       enclosures,
-      description: decode(description).trim().replaceAll('\n', ''),
+      description: decode(String(description ?? ''))
+        .trim()
+        .replaceAll('\n', ''),
     }));
+};
 
-const normalizeTitle = (text) => text.normalize('NFKD').trim();
+export const normalizeTitle = (text: string) => text.normalize('NFKD').trim();
 
-const normalizeDescription = (description) => {
+export const normalizeDescription = (description: string) => {
   const MAX_LENGTH = 250;
   const strippedDescription = description.replace(/<[^>]*>/g, '').trim();
 
@@ -26,8 +42,8 @@ const normalizeDescription = (description) => {
     : `${truncatedDescription}...`;
 };
 
-const normalizeDate = (date) => {
-  const daysMap = {
+export const normalizeDate = (date: string) => {
+  const daysMap: Record<string, string> = {
     пн: 'Mon',
     вт: 'Tue',
     ср: 'Wed',
@@ -36,7 +52,7 @@ const normalizeDate = (date) => {
     сб: 'Sat',
     нв: 'Sun',
   };
-  const monthsMap = {
+  const monthsMap: Record<string, string> = {
     січ: 'Jan',
     янв: 'Jan',
     лют: 'Feb',
@@ -63,7 +79,8 @@ const normalizeDate = (date) => {
     дек: 'Dec',
   };
 
-  const arrayToRegex = (arr) => new RegExp(Object.keys(arr).join('|'), 'gi');
+  const arrayToRegex = (arr: Record<string, string>) =>
+    new RegExp(Object.keys(arr).join('|'), 'gi');
 
   const regexDays = arrayToRegex(daysMap);
   const regexMonths = arrayToRegex(monthsMap);
@@ -72,11 +89,4 @@ const normalizeDate = (date) => {
     .replace(regexDays, (match) => daysMap[match])
     .replace(regexMonths, (match) => monthsMap[match]);
   return newDate;
-};
-
-module.exports = {
-  transformData,
-  normalizeTitle,
-  normalizeDescription,
-  normalizeDate,
 };
