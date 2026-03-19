@@ -4,9 +4,10 @@ import { DEFAULT_CACHE_DURATION_MINUTES } from '../common/constants.ts';
 const spreadsheetId = process.env.GOOGLE_SPREADSHEET_ID;
 const serviceEmail = process.env.GOOGLE_SERVICE_EMAIL;
 const privateKey = process.env.GOOGLE_PRIVATE_KEY?.replace(/\\n/g, '\n');
-const CACHE_DURATION_MINUTES = Number(
+const cacheDurationMinutes = Number(
   process.env.CACHE_DURATION_MINUTES ?? DEFAULT_CACHE_DURATION_MINUTES,
 );
+const providersKey = 'providers';
 
 export type Provider = Record<string, string>;
 
@@ -34,17 +35,19 @@ export async function getProviders(): Promise<Provider[]> {
   const now = Date.now();
   if (
     providersCache &&
-    now - providersCacheTimestamp < CACHE_DURATION_MINUTES * 60 * 1000
+    now - providersCacheTimestamp < cacheDurationMinutes * 60 * 1000
   ) {
     return providersCache;
   }
+
   const auth = await authenticate();
   const sheets = google.sheets({ version: 'v4', auth });
   const response = await sheets.spreadsheets.values.get({
     spreadsheetId,
-    range: 'providers!A1:Z',
+    range: `${providersKey}!A1:Z`,
   });
   const rows = response.data.values ?? [];
+
   if (rows.length === 0) {
     providersCache = [];
     providersCacheTimestamp = now;
@@ -53,6 +56,7 @@ export async function getProviders(): Promise<Provider[]> {
 
   const headers = rows[0] ?? [];
   const data = rows.slice(1);
+
   providersCache = data.map((row) =>
     row.reduce((acc: Provider, cell: string, index: number) => {
       const header = headers[index];

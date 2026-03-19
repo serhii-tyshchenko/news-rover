@@ -11,12 +11,10 @@ type TransformInputItem = {
 
 export const transformData = (
   items: TransformInputItem[] = [],
-  limit: number | string = DEFAULT_POST_LIMIT,
+  limit: number = DEFAULT_POST_LIMIT,
 ) => {
-  const safeLimit = Number(limit) || DEFAULT_POST_LIMIT;
-
   return items
-    .slice(0, safeLimit)
+    .slice(0, limit)
     .map(({ title, link, created, enclosures, description }) => ({
       title: decode(String(title ?? '')).trim(),
       link,
