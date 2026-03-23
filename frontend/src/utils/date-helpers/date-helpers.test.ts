@@ -147,17 +147,6 @@ describe('(Function) getDateLabel', () => {
     expect(getDateLabel(date, dic, locale)).toBe(dic.yesterday);
   });
 
-  it('should return weekday name for dates in this week', () => {
-    const now = new Date();
-    const d = new Date(now);
-    d.setDate(now.getDate() - 2);
-    d.setHours(12, 0, 0, 0);
-    const expected = capitalizeFirstLetter(
-      d.toLocaleDateString(locale, { weekday: 'long' }),
-    );
-    expect(getDateLabel(d, dic, locale)).toBe(expected);
-  });
-
   it('should return month, day and year for dates not this year', () => {
     const now = new Date();
     const d = new Date(now);

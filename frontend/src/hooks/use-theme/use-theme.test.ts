@@ -1,17 +1,21 @@
 import { vi } from 'vitest';
 
 import * as hooks from '@hooks';
+import * as storeHooks from '@store/hooks';
 import { renderHook } from '@testing-library/react';
 import { ETheme } from '@types';
 
 import useTheme from './use-theme';
 
 vi.mock('@hooks', () => ({
-  useAppSelector: vi.fn(),
   useMediaQuery: vi.fn(),
 }));
 
-vi.mock('@store/selectors', () => ({
+vi.mock('@store/hooks', () => ({
+  useAppSelector: vi.fn(),
+}));
+
+vi.mock('@store/slices', () => ({
   selectTheme: vi.fn(),
 }));
 
@@ -30,7 +34,7 @@ describe('(Hook) useTheme', () => {
   });
 
   it('should set theme to dark when system theme is dark and ETheme.System is selected', () => {
-    vi.spyOn(hooks, 'useAppSelector').mockReturnValue(ETheme.System);
+    vi.spyOn(storeHooks, 'useAppSelector').mockReturnValue(ETheme.System);
     vi.spyOn(hooks, 'useMediaQuery').mockReturnValue(true); // prefers dark mode
 
     renderHook(() => useTheme());
@@ -39,7 +43,7 @@ describe('(Hook) useTheme', () => {
   });
 
   it('should set theme to light when system theme is light and ETheme.System is selected', () => {
-    vi.spyOn(hooks, 'useAppSelector').mockReturnValue(ETheme.System);
+    vi.spyOn(storeHooks, 'useAppSelector').mockReturnValue(ETheme.System);
     vi.spyOn(hooks, 'useMediaQuery').mockReturnValue(false); // prefers light mode
 
     renderHook(() => useTheme());
@@ -48,7 +52,7 @@ describe('(Hook) useTheme', () => {
   });
 
   it('should set theme to dark when ETheme.Dark is selected', () => {
-    vi.spyOn(hooks, 'useAppSelector').mockReturnValue(ETheme.Dark);
+    vi.spyOn(storeHooks, 'useAppSelector').mockReturnValue(ETheme.Dark);
 
     renderHook(() => useTheme());
 
@@ -56,7 +60,7 @@ describe('(Hook) useTheme', () => {
   });
 
   it('should set theme to light when ETheme.Light is selected', () => {
-    vi.spyOn(hooks, 'useAppSelector').mockReturnValue(ETheme.Light);
+    vi.spyOn(storeHooks, 'useAppSelector').mockReturnValue(ETheme.Light);
 
     renderHook(() => useTheme());
 

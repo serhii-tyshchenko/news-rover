@@ -1,5 +1,5 @@
-import { useAppSelector } from '@hooks';
-import { selectSettingsData } from '@store/selectors';
+import { useAppSelector } from '@store/hooks';
+import { selectSettingsData } from '@store/slices';
 
 const useAnimation = () => {
   const { animation } = useAppSelector(selectSettingsData);

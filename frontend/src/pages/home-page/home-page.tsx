@@ -6,15 +6,10 @@ import { isEmpty, isEqual } from 'lodash-es';
 import { CardList, CardListSkeleton, NewsCard } from '@components';
 import { EmptyState, ErrorState } from '@components/ui';
 import { DEFAULT_CARD_COUNT } from '@constants';
-import {
-  useAppDispatch,
-  useAppSelector,
-  useDraggableList,
-  useLocalization,
-} from '@hooks';
+import { useDraggableList, useLocalization } from '@hooks';
 import { useProvidersData } from '@queries';
-import { doReorderProviders } from '@store/actions';
-import { selectAddedProviders } from '@store/selectors';
+import { useAppDispatch, useAppSelector } from '@store/hooks';
+import { doReorderProviders, selectAddedProviders } from '@store/slices';
 import { ERoute, TAddedProvider, TProvider } from '@types';
 
 function HomePage() {

@@ -7,14 +7,9 @@ import {
   AUTOREFRESH_INTERVAL_OPTIONS,
   DEFAULT_AUTOREFERSH_INTERVAL,
 } from '@constants';
-import {
-  useAnimation,
-  useAppDispatch,
-  useAppSelector,
-  useLocalization,
-} from '@hooks';
-import { doUpdateSettings } from '@store/actions';
-import { selectSettingsData } from '@store/selectors';
+import { useAnimation, useLocalization } from '@hooks';
+import { useAppDispatch, useAppSelector } from '@store/hooks';
+import { doUpdateSettings, selectSettingsData } from '@store/slices';
 import { EControlSize, ELocale, ETheme } from '@types';
 
 import { SettingsGroup } from './components';

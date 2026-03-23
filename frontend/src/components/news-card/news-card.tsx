@@ -5,24 +5,18 @@ import { isEmpty } from 'lodash-es';
 import { Card, NewsList, Skeleton } from '@components';
 import { Button, ErrorState } from '@components/ui';
 import { DEFAULT_POSTS_LIMIT } from '@constants';
-import {
-  useAnimation,
-  useAppDispatch,
-  useAppSelector,
-  useLocalization,
-} from '@hooks';
+import { useAnimation, useLocalization } from '@hooks';
 import { useProviderNewsData } from '@queries';
+import { useAppDispatch, useAppSelector } from '@store/hooks';
 import {
   doAddBookmark,
   doRemoveBookmark,
   doRemoveProvider,
   doUpdateProvider,
-} from '@store/actions';
-import {
   selectLocale,
   selectProviderById,
   selectSettingsData,
-} from '@store/selectors';
+} from '@store/slices';
 import { EControlSize, EViewMode, TNewsItem } from '@types';
 import { changeViewMode, groupDataByDay } from '@utils';
 
@@ -78,7 +72,8 @@ function NewsCard(props: INewsCardProps) {
 
   const handleViewModeChange = useCallback(() => {
     dispatch(
-      doUpdateProvider(provider.id, {
+      doUpdateProvider({
+        id: provider.id,
         viewMode: changeViewMode(viewMode),
       }),
     );

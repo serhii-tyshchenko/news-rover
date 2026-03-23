@@ -2,13 +2,15 @@ import { isEmpty, noop } from 'lodash-es';
 
 import { Card, NewsList } from '@components';
 import { EmptyState } from '@components/ui';
-import { useAppDispatch, useAppSelector, useLocalization } from '@hooks';
-import { doRemoveBookmark, doUpdateBookmarksViewMode } from '@store/actions';
+import { useLocalization } from '@hooks';
+import { useAppDispatch, useAppSelector } from '@store/hooks';
 import {
+  doRemoveBookmark,
+  doUpdateBookmarksViewMode,
   selectBookmarksData,
   selectBookmarksViewMode,
   selectLocale,
-} from '@store/selectors';
+} from '@store/slices';
 import { EViewMode, TNewsItem } from '@types';
 import { changeViewMode, getViewModeIcon, groupDataByDay } from '@utils';
 

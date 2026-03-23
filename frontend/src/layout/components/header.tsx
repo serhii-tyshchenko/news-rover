@@ -5,8 +5,9 @@ import { Link } from 'react-router-dom';
 import { isEmpty } from 'lodash-es';
 
 import { APP_NAME } from '@constants';
-import { useAppSelector, useFullscreen, useLocalization } from '@hooks';
-import { selectBookmarksData } from '@store/selectors';
+import { useFullscreen, useLocalization } from '@hooks';
+import { useAppSelector } from '@store/hooks';
+import { selectBookmarksData } from '@store/slices';
 import { ERoute } from '@types';
 
 import HeaderNav from './header-nav';

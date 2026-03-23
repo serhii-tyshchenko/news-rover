@@ -41,12 +41,6 @@ export const getNavConfig = ({
     active: location.pathname.includes(ERoute.Bookmarks),
   },
   {
-    icon: EIcon.Settings,
-    onClick: () => navigate(ERoute.Settings),
-    title: dic.settings,
-    active: location.pathname.includes(ERoute.Settings),
-  },
-  {
     ...(isFullscreenEnabled
       ? {
           icon: isFullscreen ? EIcon.ResizeSmall : EIcon.ResizeFull,
@@ -54,5 +48,11 @@ export const getNavConfig = ({
           title: isFullscreen ? dic.exitFullscreen : dic.fullscreen,
         }
       : ({} as TNavItem)),
+  },
+  {
+    icon: EIcon.Settings,
+    onClick: () => navigate(ERoute.Settings),
+    title: dic.settings,
+    active: location.pathname.includes(ERoute.Settings),
   },
 ];

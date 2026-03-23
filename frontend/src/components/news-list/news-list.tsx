@@ -1,7 +1,7 @@
 import { Fragment } from 'react';
 
-import { useAppSelector } from '@hooks';
-import { selectBookmarksData } from '@store/selectors';
+import { useAppSelector } from '@store/hooks';
+import { selectBookmarksData } from '@store/slices';
 import { EViewMode, TNewsItem } from '@types';
 
 import NewsListItem from './news-list-item';

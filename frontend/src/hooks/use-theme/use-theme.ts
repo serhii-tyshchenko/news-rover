@@ -1,7 +1,8 @@
 import { useEffect } from 'react';
 
-import { useAppSelector, useMediaQuery } from '@hooks';
-import { selectTheme } from '@store/selectors';
+import { useMediaQuery } from '@hooks';
+import { useAppSelector } from '@store/hooks';
+import { selectTheme } from '@store/slices';
 import { ETheme } from '@types';
 
 function useTheme() {

@@ -1,18 +1,16 @@
 import { createContext, useEffect, useState } from 'react';
 
-import { useAppSelector } from '@hooks';
-import { selectLocale } from '@store/selectors';
+import { useAppSelector } from '@store/hooks';
+import { selectLocale } from '@store/slices';
 import { TDic } from '@types';
 
-interface LocalizationProviderProps {
+interface IProps {
   children: React.ReactNode;
 }
 
 export const LocalizationContext = createContext<TDic>({} as TDic);
 
-export const LocalizationProvider: React.FC<LocalizationProviderProps> = ({
-  children,
-}) => {
+export const LocalizationProvider: React.FC<IProps> = ({ children }) => {
   const locale = useAppSelector(selectLocale);
   const [localization, setLocalization] = useState<TDic>({} as TDic);
 

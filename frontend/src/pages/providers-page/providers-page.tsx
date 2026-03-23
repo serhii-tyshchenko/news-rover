@@ -3,10 +3,11 @@ import { isEmpty } from 'lodash-es';
 import { Card, CardList, CardListSkeleton } from '@components';
 import { EmptyState, ErrorState } from '@components/ui';
 import { DEFAULT_CARD_COUNT } from '@constants';
-import { useAppDispatch, useAppSelector, useLocalization } from '@hooks';
+import { useLocalization } from '@hooks';
 import { useProvidersData } from '@queries';
-import { doAddProvider, doRemoveProvider } from '@store/actions';
-import { selectLocale } from '@store/selectors';
+import { useAppDispatch, useAppSelector } from '@store/hooks';
+import { doAddProvider, doRemoveProvider, selectLocale } from '@store/slices';
+import { EViewMode } from '@types';
 
 import ProviderList from './components/provider-list';
 import { groupProvidersByCategory } from './providers-page.utils';
@@ -26,7 +27,12 @@ function ProvidersPage() {
   );
 
   const handleAddProvider = (providerId: string) => {
-    dispatch(doAddProvider(providerId));
+    dispatch(
+      doAddProvider({
+        id: providerId,
+        viewMode: EViewMode.TitleOnly,
+      }),
+    );
   };
 
   const handleRemoveProvider = (providerId: string) => {

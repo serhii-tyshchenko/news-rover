@@ -33,6 +33,7 @@
     "storybook:build": "storybook build"
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^2.11.2",
     "@tailwindcss/vite": "^4.1.11",
     "@types/node": "^22.7.6",
     "@types/react": "^18.0.28",
@@ -46,8 +47,6 @@
     "react-redux": "^8.0.5",
     "react-router-dom": "^7.5.2",
     "redux": "^4.2.1",
-    "redux-thunk": "^2.4.2",
-    "reselect": "^4.1.8",
     "sass": "^1.80.2",
     "tailwindcss": "^4.1.11",
     "typescript": "^5.9.3",

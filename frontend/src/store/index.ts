@@ -1,24 +1,7 @@
-import {
-  applyMiddleware,
-  combineReducers,
-  compose,
-  legacy_createStore as createStore,
-} from 'redux';
-import thunk from 'redux-thunk';
-
+import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import { loadState, saveState } from '@storage';
 
-import {
-  addedProvidersReducer as addedProviders,
-  bookmarksReducer as bookmarks,
-  settingsReducer as settings,
-} from './reducers';
-
-declare global {
-  interface Window {
-    __REDUX_DEVTOOLS_EXTENSION_COMPOSE__?: typeof compose;
-  }
-}
+import { addedProviders, bookmarks, settings } from './slices';
 
 export const rootReducer = combineReducers({
   settings,
@@ -26,13 +9,10 @@ export const rootReducer = combineReducers({
   bookmarks,
 });
 
-const persistedState = loadState();
-const composeTools = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-const store = createStore(
-  rootReducer,
-  persistedState,
-  composeTools(applyMiddleware(thunk)),
-);
+const store = configureStore({
+  reducer: rootReducer,
+  preloadedState: loadState(),
+});
 
 store.subscribe(() => {
   const { settings, addedProviders, bookmarks } = store.getState();
