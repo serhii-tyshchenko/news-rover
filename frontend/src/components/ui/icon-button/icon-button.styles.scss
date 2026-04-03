@@ -1,4 +1,4 @@
-@import '~styles/variables';
+@use '~styles/variables' as *;
 
 .icon-button {
   $size: 1.75em;

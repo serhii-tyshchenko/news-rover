@@ -1,3 +1,5 @@
+@use 'variables' as *;
+
 @mixin for-size($size) {
   @if $size ==mobile-small {
     @media (max-width: $break-mobile-small) {
