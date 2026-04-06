@@ -32,7 +32,15 @@ const mapConfigs = (arg: unknown) => {
   return actionsConfig[argType!](arg);
 };
 
-const getClassName = (...args: unknown[]) =>
+/**
+ * Generates a class name string based on the provided arguments, which can be strings, objects, or arrays.
+ * - Strings are included directly in the class name.
+ * - Objects are processed by including keys with truthy values as class names.
+ * - Arrays are joined into a single string of class names.
+ * @param {...unknown[]} args - A variable number of arguments that can be strings, objects, or arrays.
+ * @returns {string} - A string of class names separated by spaces.
+ */
+const getClassName = (...args: unknown[]): string =>
   args
     .filter(Boolean)
     .map((arg) => mapConfigs(arg))
