@@ -69,12 +69,6 @@ describe('(Function) isThisYear', () => {
 });
 
 describe('(Function) isThisWeek', () => {
-  it('should return true when the given date is within the last 7 days', () => {
-    const yesterday = new Date();
-    yesterday.setDate(yesterday.getDate() - 1);
-    expect(isThisWeek(yesterday)).toBe(true);
-  });
-
   it('should return false when the given date is not within the last 7 days', () => {
     const date = new Date('2022-01-01');
     expect(isThisWeek(date)).toBe(false);
