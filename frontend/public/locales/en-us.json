@@ -21,6 +21,7 @@
   "changeTheme": "Change theme",
   "exitFullscreen": "Exit fullscreen",
   "fullscreen": "Fullscreen",
+  "fullscreenToggle": "Fullscreen toggle",
   "genericError": "Something went wrong. Try again later.",
   "hideProvider": "Hide provider",
   "home": "Home",

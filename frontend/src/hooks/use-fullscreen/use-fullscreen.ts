@@ -1,9 +1,13 @@
 import { useCallback, useEffect, useState } from 'react';
+import { useAppSelector } from '@store/hooks';
+import { selectSettingsData } from '@store/slices';
 
 function useFullscreen() {
   const [isFullscreen, setIsFullscreen] = useState(
     !!document.fullscreenElement,
   );
+
+  const { fullscreenToggle } = useAppSelector(selectSettingsData);
 
   const handleFullscreenChange = () => {
     setIsFullscreen(!!document.fullscreenElement);
@@ -26,7 +30,7 @@ function useFullscreen() {
   }, [isFullscreen]);
 
   return {
-    isFullscreenEnabled: document.fullscreenEnabled,
+    isFullscreenEnabled: fullscreenToggle && document.fullscreenEnabled,
     isFullscreen,
     toggleFullscreen,
   };

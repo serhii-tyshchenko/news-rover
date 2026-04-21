@@ -99,11 +99,12 @@ export enum EEnclosureType {
 }
 
 export type TSettings = {
-  theme: ETheme;
-  locale: ELocale;
   animation: boolean;
   autorefresh: boolean;
   autorefreshInterval: number;
+  fullscreenToggle: boolean;
+  locale: ELocale;
+  theme: ETheme;
 };
 
 export interface IAction<T = unknown> extends Action {
@@ -134,6 +135,7 @@ export type TDic = {
   changeTheme: string;
   exitFullscreen: string;
   fullscreen: string;
+  fullscreenToggle: string;
   genericError: string;
   hideProvider: string;
   home: string;

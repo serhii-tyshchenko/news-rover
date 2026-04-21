@@ -7,11 +7,12 @@ import { getInitialLocale, shouldReduceMotion } from '@utils';
 import { TRootState } from '../index';
 
 const initialState: TSettings = {
-  theme: ETheme.System,
-  locale: getInitialLocale(),
   animation: !shouldReduceMotion(),
   autorefresh: false,
   autorefreshInterval: DEFAULT_AUTOREFERSH_INTERVAL,
+  fullscreenToggle: false,
+  locale: getInitialLocale(),
+  theme: ETheme.System,
 };
 
 export const settingsSlice = createSlice({

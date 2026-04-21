@@ -29,7 +29,7 @@ function SettingsPage() {
   const isAnimationEnabled = useAnimation();
 
   const dispatch = useAppDispatch();
-  const { locale, theme, autorefresh, autorefreshInterval } =
+  const { locale, theme, autorefresh, autorefreshInterval, fullscreenToggle } =
     useAppSelector(selectSettingsData);
 
   const handleStringChange = ({ target: { name, value } }: TChangeEvent) => {
@@ -73,6 +73,15 @@ function SettingsPage() {
             onChange={handleStringChange}
             options={prepareOptions(ELocale, dic.languages)}
             title={dic.changeLanguage}
+          />
+        </SettingsGroup>
+        <SettingsGroup label={dic.fullscreenToggle}>
+          <Toggle
+            name="fullscreenToggle"
+            toggled={fullscreenToggle}
+            onChange={handleBooleanChange}
+            animated={isAnimationEnabled}
+            size={EControlSize.Small}
           />
         </SettingsGroup>
         <SettingsGroup label={dic.autorefresh}>

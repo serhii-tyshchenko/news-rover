@@ -27,32 +27,31 @@ export const getNavConfig = ({
   onFullscreen,
   isFullscreen,
   isFullscreenEnabled,
-}: IArgs): TNavItem[] => [
-  {
-    icon: EIcon.Rss,
-    onClick: () => navigate(ERoute.Providers),
-    title: dic.providers,
-    active: location.pathname.includes(ERoute.Providers),
-  },
-  {
-    icon: noBookmarks ? EIcon.BookmarkEmpty : EIcon.Bookmark,
-    onClick: () => navigate(ERoute.Bookmarks),
-    title: dic.bookmarks,
-    active: location.pathname.includes(ERoute.Bookmarks),
-  },
-  {
-    ...(isFullscreenEnabled
+}: IArgs): Array<TNavItem | null> =>
+  [
+    {
+      icon: EIcon.Rss,
+      onClick: () => navigate(ERoute.Providers),
+      title: dic.providers,
+      active: location.pathname.includes(ERoute.Providers),
+    },
+    {
+      icon: noBookmarks ? EIcon.BookmarkEmpty : EIcon.Bookmark,
+      onClick: () => navigate(ERoute.Bookmarks),
+      title: dic.bookmarks,
+      active: location.pathname.includes(ERoute.Bookmarks),
+    },
+    isFullscreenEnabled
       ? {
           icon: isFullscreen ? EIcon.ResizeSmall : EIcon.ResizeFull,
           onClick: onFullscreen,
           title: isFullscreen ? dic.exitFullscreen : dic.fullscreen,
         }
-      : ({} as TNavItem)),
-  },
-  {
-    icon: EIcon.Settings,
-    onClick: () => navigate(ERoute.Settings),
-    title: dic.settings,
-    active: location.pathname.includes(ERoute.Settings),
-  },
-];
+      : null,
+    {
+      icon: EIcon.Settings,
+      onClick: () => navigate(ERoute.Settings),
+      title: dic.settings,
+      active: location.pathname.includes(ERoute.Settings),
+    },
+  ].filter(Boolean);
