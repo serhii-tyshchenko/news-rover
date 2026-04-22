@@ -1,25 +1,20 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useSyncExternalStore } from 'react';
 import { useAppSelector } from '@store/hooks';
 import { selectSettingsData } from '@store/slices';
 
+function subscribe(callback: () => void) {
+  document.addEventListener('fullscreenchange', callback);
+  return () => document.removeEventListener('fullscreenchange', callback);
+}
+
+function getSnapshot() {
+  return !!document.fullscreenElement;
+}
+
 function useFullscreen() {
-  const [isFullscreen, setIsFullscreen] = useState(
-    !!document.fullscreenElement,
-  );
+  const isFullscreen = useSyncExternalStore(subscribe, getSnapshot);
 
   const { fullscreenToggle } = useAppSelector(selectSettingsData);
-
-  const handleFullscreenChange = () => {
-    setIsFullscreen(!!document.fullscreenElement);
-  };
-
-  useEffect(() => {
-    document.addEventListener('fullscreenchange', handleFullscreenChange);
-
-    return () => {
-      document.removeEventListener('fullscreenchange', handleFullscreenChange);
-    };
-  }, []);
 
   const toggleFullscreen = useCallback(() => {
     if (!isFullscreen) {
