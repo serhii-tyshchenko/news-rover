@@ -10,7 +10,7 @@ interface IProps {
 
 export const LocalizationContext = createContext<TDic>({} as TDic);
 
-export const LocalizationProvider: React.FC<IProps> = ({ children }) => {
+export const LocalizationProvider = ({ children }: IProps) => {
   const locale = useAppSelector(selectLocale);
   const [localization, setLocalization] = useState<TDic>({} as TDic);
 
