@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { QueryClient, QueryClientProvider } from 'react-query';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 
 import { LocalizationProvider } from '@contexts';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 import App from './App';
 import reportWebVitals from './reportWebVitals';

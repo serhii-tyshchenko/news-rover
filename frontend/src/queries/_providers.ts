@@ -1,14 +1,15 @@
-import { useQuery } from 'react-query';
-
 import { getProviders } from '@api';
 import { ONE_MINUTE_IN_MILLISECONDS } from '@constants';
+import { useQuery } from '@tanstack/react-query';
 
 export const useProvidersData = () => {
   const {
     isLoading,
     error,
     data = [],
-  } = useQuery(['fetch-providers'], () => getProviders(), {
+  } = useQuery({
+    queryKey: ['fetch-providers'],
+    queryFn: () => getProviders(),
     refetchInterval: 60 * ONE_MINUTE_IN_MILLISECONDS,
   });
 
