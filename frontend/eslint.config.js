@@ -8,14 +8,7 @@ import pluginJs from '@eslint/js';
 
 /** @type {import('eslint').Linter.Config[]} */
 export default [
-  globalIgnores([
-    'node_modules',
-    'dist',
-    'build',
-    'storybook-static',
-    'coverage',
-    'public',
-  ]),
+  globalIgnores(['node_modules', 'dist', 'build', 'coverage', 'public']),
   { files: ['**/*.{js,mjs,cjs,ts,jsx,tsx}'] },
 
   { languageOptions: { globals: globals.browser } },

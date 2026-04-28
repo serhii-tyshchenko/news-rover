@@ -37,13 +37,11 @@ export default defineConfig({
     coverage: {
       exclude: [
         '.husky/',
-        '.storybook/',
         '.vscode/',
         'build/',
         'coverage/',
         'node_modules/',
         'public/',
-        'storybook-static/',
         'dist/',
         'src/setupTests.ts',
         '**/*.config.{js,ts,mjs,mts}',
