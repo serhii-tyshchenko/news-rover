@@ -6,22 +6,24 @@ import {
 import { useQuery } from '@tanstack/react-query';
 
 interface IProps {
-  id: string;
-  limit: number;
   autorefresh?: boolean;
   autorefreshInterval?: number;
+  id: string;
+  limit: number;
+  refreshOnFocus?: boolean;
 }
 
 export const useProviderNewsData = ({
-  id,
-  limit,
   autorefresh = false,
   autorefreshInterval = DEFAULT_AUTOREFERSH_INTERVAL,
+  id,
+  limit,
+  refreshOnFocus = false,
 }: IProps) => {
   const { isLoading, error, data, refetch, isFetching } = useQuery({
     queryKey: ['fetch-news-by-provider', id, limit],
     queryFn: () => getNewsByProvider(id, limit),
-    refetchOnWindowFocus: false,
+    refetchOnWindowFocus: refreshOnFocus,
     refetchOnReconnect: false,
     refetchOnMount: false,
     refetchInterval: autorefresh

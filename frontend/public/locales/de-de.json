@@ -38,6 +38,7 @@
   "noProviders": "Keine Anbieter hinzugefügt.",
   "providers": "Anbieter",
   "refresh": "Aktualisieren",
+  "refreshOnFocus": "Beim Fokussieren aktualisieren",
   "removeBookmark": "Lesezeichen entfernen",
   "settings": "Einstellungen",
   "share": "Teilen",

@@ -38,6 +38,7 @@
   "noProviders": "No providers added.",
   "providers": "Providers",
   "refresh": "Refresh",
+  "refreshOnFocus": "Refresh on window focus",
   "removeBookmark": "Remove bookmark",
   "settings": "Settings",
   "share": "Share",

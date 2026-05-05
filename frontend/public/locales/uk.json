@@ -39,6 +39,7 @@
   "providers": "Провайдери",
   "removeBookmark": "Видалити закладку",
   "refresh": "Оновити",
+  "refreshOnFocus": "Оновлювати при фокусі вікна",
   "settings": "Налаштування",
   "share": "Поділитися",
   "showProvider": "Показати провайдера",

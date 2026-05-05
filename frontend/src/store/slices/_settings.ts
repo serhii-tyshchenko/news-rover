@@ -12,6 +12,7 @@ const initialState: TSettings = {
   autorefreshInterval: DEFAULT_AUTOREFERSH_INTERVAL,
   fullscreenToggle: false,
   locale: getInitialLocale(),
+  refreshOnFocus: false,
   theme: ETheme.System,
 };
 

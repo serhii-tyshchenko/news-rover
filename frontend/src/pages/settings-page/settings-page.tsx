@@ -29,8 +29,14 @@ function SettingsPage() {
   const isAnimationEnabled = useAnimation();
 
   const dispatch = useAppDispatch();
-  const { locale, theme, autorefresh, autorefreshInterval, fullscreenToggle } =
-    useAppSelector(selectSettingsData);
+  const {
+    locale,
+    theme,
+    autorefresh,
+    autorefreshInterval,
+    fullscreenToggle,
+    refreshOnFocus,
+  } = useAppSelector(selectSettingsData);
 
   const handleStringChange = ({ target: { name, value } }: TChangeEvent) => {
     dispatch(doUpdateSettings({ [name]: value }));
@@ -82,8 +88,20 @@ function SettingsPage() {
             onChange={handleBooleanChange}
             animated={isAnimationEnabled}
             size={EControlSize.Small}
+            label={dic.fullscreenToggle}
           />
         </SettingsGroup>
+        <SettingsGroup label={dic.refreshOnFocus}>
+          <Toggle
+            name="refreshOnFocus"
+            toggled={refreshOnFocus}
+            onChange={handleBooleanChange}
+            animated={isAnimationEnabled}
+            size={EControlSize.Small}
+            label={dic.refreshOnFocus}
+          />
+        </SettingsGroup>
+
         <SettingsGroup label={dic.autorefresh}>
           <Toggle
             name="autorefresh"

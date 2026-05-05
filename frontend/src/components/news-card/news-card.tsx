@@ -35,7 +35,7 @@ function NewsCard(props: INewsCardProps) {
   const dic = useLocalization();
   const dispatch = useAppDispatch();
 
-  const { autorefresh, autorefreshInterval } =
+  const { autorefresh, autorefreshInterval, refreshOnFocus } =
     useAppSelector(selectSettingsData);
   const providerSettings = useAppSelector(selectProviderById(provider.id));
   const locale = useAppSelector(selectLocale);
@@ -55,6 +55,7 @@ function NewsCard(props: INewsCardProps) {
     limit,
     autorefresh,
     autorefreshInterval,
+    refreshOnFocus,
   });
 
   const handleAddBookmark = (item: TNewsItem) => {

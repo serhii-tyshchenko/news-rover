@@ -104,6 +104,7 @@ export type TSettings = {
   autorefreshInterval: number;
   fullscreenToggle: boolean;
   locale: ELocale;
+  refreshOnFocus: boolean;
   theme: ETheme;
 };
 
