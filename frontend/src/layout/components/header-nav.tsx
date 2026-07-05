@@ -2,7 +2,7 @@ import { IconButton } from '@components/ui';
 import { EControlSize, EIcon } from '@types';
 
 interface IProps {
-  items: Array<{
+  data: Array<{
     icon: EIcon;
     onClick: () => void;
     title: string;
@@ -11,11 +11,11 @@ interface IProps {
 }
 
 function HeaderNav(props: IProps) {
-  const { items } = props;
+  const { data } = props;
 
   return (
     <nav className="flex gap-2">
-      {items.map(({ icon, onClick, title, active }) => (
+      {data.map(({ icon, onClick, title, active }) => (
         <IconButton
           key={icon}
           icon={icon}

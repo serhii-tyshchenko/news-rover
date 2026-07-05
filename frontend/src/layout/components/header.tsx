@@ -51,7 +51,7 @@ function Header() {
       <Link to={ERoute.Home} className="text-primary hover:text-accent">
         {APP_NAME}
       </Link>
-      <HeaderNav items={navConfig} />
+      <HeaderNav data={navConfig} />
     </header>
   );
 }

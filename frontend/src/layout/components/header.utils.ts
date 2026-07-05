@@ -27,7 +27,7 @@ export const getNavConfig = ({
   onFullscreen,
   isFullscreen,
   isFullscreenEnabled,
-}: IArgs): Array<TNavItem | null> =>
+}: IArgs): Array<TNavItem> =>
   [
     {
       icon: EIcon.Rss,
@@ -41,13 +41,15 @@ export const getNavConfig = ({
       title: dic.bookmarks,
       active: location.pathname.includes(ERoute.Bookmarks),
     },
-    isFullscreenEnabled
-      ? {
-          icon: isFullscreen ? EIcon.ResizeSmall : EIcon.ResizeFull,
-          onClick: onFullscreen,
-          title: isFullscreen ? dic.exitFullscreen : dic.fullscreen,
-        }
-      : null,
+    ...(isFullscreenEnabled
+      ? [
+          {
+            icon: isFullscreen ? EIcon.ResizeSmall : EIcon.ResizeFull,
+            onClick: onFullscreen,
+            title: isFullscreen ? dic.exitFullscreen : dic.fullscreen,
+          },
+        ]
+      : []),
     {
       icon: EIcon.Settings,
       onClick: () => navigate(ERoute.Settings),
