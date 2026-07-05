@@ -1,8 +1,6 @@
-import { APP_NAME } from '@constants';
-
-export const loadState = () => {
+export const loadState = (key: string) => {
   try {
-    const serializedState = localStorage.getItem(APP_NAME);
+    const serializedState = localStorage.getItem(key);
     if (serializedState === null) {
       return undefined;
     }
@@ -12,10 +10,10 @@ export const loadState = () => {
   }
 };
 
-export const saveState = (state: Record<string, unknown>) => {
+export const saveState = (key: string, state: Record<string, unknown>) => {
   try {
     const serializedState = JSON.stringify(state);
-    localStorage.setItem(APP_NAME, serializedState);
+    localStorage.setItem(key, serializedState);
   } catch {
     throw new Error('Unable to save to Local Storage');
   }
