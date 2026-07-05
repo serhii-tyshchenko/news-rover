@@ -10,6 +10,8 @@ export const DEFAULT_POSTS_LIMIT = 10;
 export const AUTHOR_NAME = author.name;
 export const AUTHOR_SITE = author.url;
 
+export const STORAGE_KEY_REDUX_STATE = 'news-rover:redux-state:v1';
+
 export const portalRoot = document.getElementById('portal-root') as HTMLElement;
 export const ONE_SECOND_IN_MILLISECONDS = 1000;
 export const ONE_MINUTE_IN_MILLISECONDS = 60 * ONE_SECOND_IN_MILLISECONDS;

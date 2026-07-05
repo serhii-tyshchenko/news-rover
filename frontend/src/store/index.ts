@@ -1,3 +1,4 @@
+import { STORAGE_KEY_REDUX_STATE } from '@constants';
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import { loadState, saveState } from '@storage';
 
@@ -11,12 +12,12 @@ export const rootReducer = combineReducers({
 
 const store = configureStore({
   reducer: rootReducer,
-  preloadedState: loadState(),
+  preloadedState: loadState(STORAGE_KEY_REDUX_STATE),
 });
 
 store.subscribe(() => {
   const { settings, addedProviders, bookmarks } = store.getState();
-  saveState({
+  saveState(STORAGE_KEY_REDUX_STATE, {
     settings,
     addedProviders,
     bookmarks,
