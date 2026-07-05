@@ -5,7 +5,7 @@ import {
   AUTHOR_NAME,
   AUTHOR_SITE,
   AUTOREFRESH_INTERVAL_OPTIONS,
-  DEFAULT_AUTOREFERSH_INTERVAL,
+  DEFAULT_AUTOREFRESH_INTERVAL,
 } from '@constants';
 import { useAnimation, useLocalization } from '@hooks';
 import { useAppDispatch, useAppSelector } from '@store/hooks';
@@ -116,7 +116,7 @@ function SettingsPage() {
           <SettingsGroup label={dic.autorefreshInterval}>
             <Select
               name="autorefreshInterval"
-              value={autorefreshInterval ?? DEFAULT_AUTOREFERSH_INTERVAL}
+              value={autorefreshInterval ?? DEFAULT_AUTOREFRESH_INTERVAL}
               onChange={handleNumberChange}
               options={AUTOREFRESH_INTERVAL_OPTIONS}
               title={dic.changeAutorefreshInterval}

@@ -1,6 +1,6 @@
 import { getNewsByProvider } from '@api';
 import {
-  DEFAULT_AUTOREFERSH_INTERVAL,
+  DEFAULT_AUTOREFRESH_INTERVAL,
   ONE_MINUTE_IN_MILLISECONDS,
 } from '@constants';
 import { useQuery } from '@tanstack/react-query';
@@ -15,7 +15,7 @@ interface IProps {
 
 export const useProviderNewsData = ({
   autorefresh = false,
-  autorefreshInterval = DEFAULT_AUTOREFERSH_INTERVAL,
+  autorefreshInterval = DEFAULT_AUTOREFRESH_INTERVAL,
   id,
   limit,
   refreshOnFocus = false,

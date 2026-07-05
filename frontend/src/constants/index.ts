@@ -25,7 +25,7 @@ export const AUTOREFRESH_INTERVAL_OPTIONS = autorefreshIntervals.map(
     label: value.toString(),
   }),
 );
-export const DEFAULT_AUTOREFERSH_INTERVAL =
+export const DEFAULT_AUTOREFRESH_INTERVAL =
   (first(autorefreshIntervals) as number) || 5;
 
 export const DEFAULT_CARD_COUNT = 4;
