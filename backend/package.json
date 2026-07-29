@@ -14,26 +14,26 @@
   "author": "Serhii Tyshchenko",
   "license": "ISC",
   "dependencies": {
+    "@eslint/js": "^10.0.1",
     "axios": "^1.13.5",
     "cors": "^2.8.6",
     "dotenv": "^17.3.1",
+    "eslint": "^10.8.0",
     "express": "^5.2.1",
     "fast-xml-parser": "^5.3.7",
     "googleapis": "^171.4.0",
     "html-entities": "^2.6.0",
     "swagger-jsdoc": "^6.2.8",
-    "swagger-ui-express": "^5.0.1"
+    "swagger-ui-express": "^5.0.1",
+    "typescript-eslint": "^8.65.0"
   },
   "devDependencies": {
-    "@eslint/js": "^9.36.0",
     "@types/cors": "^2.8.19",
     "@types/express": "^5.0.3",
     "@types/node": "^24.6.1",
     "@types/swagger-jsdoc": "^6.0.4",
     "@types/swagger-ui-express": "^4.1.8",
-    "eslint": "^9.36.0",
     "globals": "^16.4.0",
-    "typescript": "^5.9.3",
-    "typescript-eslint": "^8.44.1"
+    "typescript": "^5.9.3"
   }
 }
