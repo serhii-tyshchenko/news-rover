@@ -46,6 +46,52 @@ src/
 
 ---
 
+## Routing
+
+**Library:** React Router v7 (`react-router`)
+
+### Route Map
+
+| `ERoute` value     | Path        | Page component      |
+| ------------------ | ----------- | ------------------- |
+| `ERoute.Home`      | `/`         | `<HomePage />`      |
+| `ERoute.Bookmarks` | `bookmarks` | `<BookmarksPage />` |
+| `ERoute.Providers` | `providers` | `<ProvidersPage />` |
+| `ERoute.Settings`  | `settings`  | `<SettingsPage />`  |
+
+All routes are nested under `<BaseLayout />`, which renders the shared shell with `<Outlet />`. Unknown paths redirect to `/`.
+
+### Adding a New Route
+
+1. Add a value to `ERoute` in `src/types/index.ts`.
+2. Create the page component under `src/pages/my-page/`.
+3. Register the route in `src/App.tsx`:
+
+```typescript
+<Route path={ERoute.MyPage} element={<MyPage />} />
+```
+
+### Navigation Patterns
+
+```typescript
+// Declarative link
+import { Link } from 'react-router';
+<Link to={ERoute.Settings}>Settings</Link>
+
+// Programmatic navigation
+import { useNavigate } from 'react-router';
+const navigate = useNavigate();
+navigate(ERoute.Home);
+
+// Current location
+import { useLocation } from 'react-router';
+const { pathname } = useLocation();
+```
+
+Always reference `ERoute` enum values instead of hard-coded path strings.
+
+---
+
 ## Code Conventions
 
 ### Naming Patterns
