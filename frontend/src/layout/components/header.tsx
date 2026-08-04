@@ -1,6 +1,5 @@
 import { useMemo } from 'react';
-import { useLocation, useNavigate } from 'react-router';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router';
 
 import { isEmpty } from 'lodash-es';
 

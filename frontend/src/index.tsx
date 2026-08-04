@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter } from 'react-router';
 
 import { LocalizationProvider } from '@contexts';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
