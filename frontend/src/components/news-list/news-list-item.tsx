@@ -30,8 +30,12 @@ function NewsListItem(props: INewsListItemProps) {
   const handleBookmarkClick = () =>
     bookmarked ? onRemoveBookmark(data) : onAddBookmark(data);
 
-  const handleShareClick = () => {
-    navigator.share({ title, url });
+  const handleShareClick = async () => {
+    try {
+      await navigator.share({ title, url });
+    } catch (error) {
+      console.error('Error sharing:', error);
+    }
   };
 
   const handleImageError = (e: React.SyntheticEvent<HTMLImageElement>) => {
@@ -42,17 +46,16 @@ function NewsListItem(props: INewsListItemProps) {
   const bookmarkIcon = bookmarked ? EIcon.Bookmark : EIcon.BookmarkEmpty;
   const bookmarkTitle = bookmarked ? dic.removeBookmark : dic.addBookmark;
 
-  const isShareSupported = !!navigator.share;
+  const isShareSupported = !!navigator?.share;
   const isTitleWithDescriptionMode =
     viewMode === EViewMode.TitleWithDescription;
   const isThumbnailMode = viewMode === EViewMode.TitleWithThumbnail;
   const isFullMode = viewMode === EViewMode.Full;
   const shouldShowThumbnail =
     !isEmpty(thumbnailUrl) && (isFullMode || isThumbnailMode);
-  const shouldShowDescription =
-    !isEmpty(description) && (isFullMode || isTitleWithDescriptionMode);
-  const shouldShowLinkTitle =
-    !isEmpty(description) && !isFullMode && !isTitleWithDescriptionMode;
+  const shouldShowDescription = !isEmpty(description);
+  const shouldShowDescriptionOnHover =
+    shouldShowDescription && !isFullMode && !isTitleWithDescriptionMode;
   const isFresh = isWithinLastHour(created);
 
   return (
@@ -80,13 +83,20 @@ function NewsListItem(props: INewsListItemProps) {
             target="_blank"
             rel="noreferrer"
             className="overflow-hidden text-ellipsis hover:underline"
-            {...(shouldShowLinkTitle && { title: data.description })}
           >
             {title}
           </a>
           {shouldShowDescription && (
-            <p className="text-secondary text-sm text-ellipsis overflow-x-auto font-normal">
-              {data.description}
+            <p
+              className={getClassName(
+                'text-secondary text-sm text-ellipsis overflow-x-auto font-normal',
+                {
+                  'hidden group-hover:block group-focus-within:block':
+                    shouldShowDescriptionOnHover,
+                },
+              )}
+            >
+              {description}
             </p>
           )}
         </div>
