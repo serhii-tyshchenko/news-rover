@@ -53,9 +53,9 @@ function NewsListItem(props: INewsListItemProps) {
   const isFullMode = viewMode === EViewMode.Full;
   const shouldShowThumbnail =
     !isEmpty(thumbnailUrl) && (isFullMode || isThumbnailMode);
-  const shouldShowDescription = !isEmpty(description);
-  const shouldShowDescriptionOnHover =
-    shouldShowDescription && !isFullMode && !isTitleWithDescriptionMode;
+  const shouldShowDescription =
+    !isEmpty(description) && (isFullMode || isTitleWithDescriptionMode);
+  const shouldShowDescriptionOnHover = !shouldShowDescription;
   const isFresh = isWithinLastHour(created);
 
   return (
@@ -83,19 +83,15 @@ function NewsListItem(props: INewsListItemProps) {
             target="_blank"
             rel="noreferrer"
             className="overflow-hidden text-ellipsis hover:underline"
+            {...(shouldShowDescriptionOnHover && {
+              'aria-label': description,
+              title: description,
+            })}
           >
             {title}
           </a>
           {shouldShowDescription && (
-            <p
-              className={getClassName(
-                'text-secondary text-sm text-ellipsis overflow-x-auto font-normal',
-                {
-                  'hidden group-hover:block group-focus-within:block':
-                    shouldShowDescriptionOnHover,
-                },
-              )}
-            >
+            <p className="text-secondary text-sm text-ellipsis overflow-x-auto font-normal">
               {description}
             </p>
           )}
