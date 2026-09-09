@@ -1,5 +1,4 @@
 import { fireEvent, render } from '@testing-library/react';
-import { EControlSize } from '@types';
 
 import { Button } from './button';
 
@@ -49,7 +48,7 @@ describe('(Component) Button', () => {
   });
 
   it('should have the correct size when passed as a prop', () => {
-    const size = EControlSize.Big;
+    const size = 'big';
     const { getByTestId } = render(<Button size={size}>Click me</Button>);
     const button = getByTestId('button');
     expect(button).toHaveClass(`button--${size}`);

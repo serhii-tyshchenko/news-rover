@@ -17,7 +17,7 @@ import {
   selectProviderById,
   selectSettingsData,
 } from '@store/slices';
-import { EControlSize, EViewMode, TNewsItem } from '@types';
+import { EViewMode, TNewsItem } from '@types';
 import { changeViewMode, groupDataByDay } from '@utils';
 
 import { INewsCardProps } from './news-card.types';
@@ -132,7 +132,7 @@ function NewsCard(props: INewsCardProps) {
         <ErrorState>
           <div className="flex flex-col items-center justify-center gap-1">
             {dic.genericError}
-            <Button onClick={handleRefresh} variant="action">
+            <Button onClick={handleRefresh} variant="action" size="small">
               {dic.retry}
             </Button>
           </div>
@@ -155,7 +155,7 @@ function NewsCard(props: INewsCardProps) {
           {shouldShowLoadMoreButton && (
             <Button
               onClick={handleLoadMoreClick}
-              size={EControlSize.Small}
+              size="small"
               variant="action"
               className="block mx-auto"
             >

@@ -1,4 +1,3 @@
-import { EControlSize } from '@types';
 import { getClassName } from '@utils';
 
 import './button.styles.scss';
@@ -10,7 +9,7 @@ export interface IProps {
   className?: string;
   type?: 'button' | 'submit' | 'reset';
   variant?: 'primary' | 'secondary' | 'action';
-  size?: EControlSize;
+  size?: 'small' | 'normal' | 'big';
   children?: React.ReactNode;
   disabled?: boolean;
   testId?: string;
@@ -22,7 +21,7 @@ function Button(props: IProps) {
     className = '',
     type = 'button',
     variant = 'primary',
-    size = EControlSize.Normal,
+    size = 'normal',
     children = null,
     disabled = false,
     testId = NAME_SPACE,
