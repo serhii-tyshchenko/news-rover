@@ -128,7 +128,16 @@ function NewsCard(props: INewsCardProps) {
       {shouldShowSkeleton && (
         <Skeleton animated={isAnimationEnabled} count={DEFAULT_POSTS_LIMIT} />
       )}
-      {shouldShowError && <ErrorState>{dic.genericError}</ErrorState>}
+      {shouldShowError && (
+        <ErrorState>
+          <div className="flex flex-col items-center justify-center gap-1">
+            {dic.genericError}
+            <Button onClick={handleRefresh} variant="action">
+              {dic.retry}
+            </Button>
+          </div>
+        </ErrorState>
+      )}
       {shouldShowEmptyState && (
         <div className="flex items-center justify-center text-center grow">
           {dic.noNews}

@@ -150,6 +150,7 @@ export type TDic = {
   providers: string;
   removeBookmark: string;
   refresh: string;
+  retry: string;
   settings: string;
   share: string;
   showDescription: string;

@@ -7,9 +7,7 @@ describe('(Component) ErrorState', () => {
     render(<ErrorState />);
     const errorDiv = screen.getByTestId('ui-error-state');
     expect(errorDiv).toBeInTheDocument();
-    expect(errorDiv).toHaveTextContent(
-      'Something went wrong. Try again later.',
-    );
+    expect(errorDiv).toHaveTextContent('Something went wrong...');
   });
 
   it('renders with custom children', () => {
