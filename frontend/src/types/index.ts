@@ -10,6 +10,7 @@ export enum ETheme {
   DarkGreen = 'dark-green',
   LightRed = 'light-red',
   DarkRed = 'dark-red',
+  Newspaper = 'newspaper',
 }
 
 export enum ELocale {
@@ -150,6 +151,7 @@ export type TDic = {
   providers: string;
   removeBookmark: string;
   refresh: string;
+  refreshOnFocus: string;
   retry: string;
   settings: string;
   share: string;
