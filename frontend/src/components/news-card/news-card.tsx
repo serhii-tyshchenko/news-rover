@@ -40,7 +40,6 @@ function NewsCard(props: INewsCardProps) {
   const providerSettings = useAppSelector(selectProviderById(provider.id));
   const locale = useAppSelector(selectLocale);
   const isAnimationEnabled = useAnimation();
-  const viewMode = providerSettings?.viewMode ?? EViewMode.TitleOnly;
 
   const [limit, setLimit] = useState(DEFAULT_POSTS_LIMIT);
 
@@ -57,6 +56,8 @@ function NewsCard(props: INewsCardProps) {
     autorefreshInterval,
     refreshOnFocus,
   });
+
+  const viewMode = providerSettings?.viewMode ?? EViewMode.TitleOnly;
 
   const handleAddBookmark = (item: TNewsItem) => {
     dispatch(doAddBookmark(item));
@@ -85,7 +86,7 @@ function NewsCard(props: INewsCardProps) {
   };
 
   const handleLoadMoreClick = () => {
-    setLimit((prev) => prev + 10);
+    setLimit((prev) => prev + DEFAULT_POSTS_LIMIT);
   };
 
   const isDataLoading = isLoading || isFetching;
