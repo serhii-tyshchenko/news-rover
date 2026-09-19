@@ -3,7 +3,7 @@ import { useCallback, useMemo, useState } from 'react';
 import { isEmpty } from 'lodash-es';
 
 import { Card, NewsList, Skeleton } from '@components';
-import { Button, ErrorState } from '@components/ui';
+import { Button, EmptyState, ErrorState } from '@components/ui';
 import { DEFAULT_POSTS_LIMIT } from '@constants';
 import { useAnimation, useLocalization } from '@hooks';
 import { useProviderNewsData } from '@queries';
@@ -140,12 +140,14 @@ function NewsCard(props: INewsCardProps) {
         </ErrorState>
       )}
       {shouldShowEmptyState && (
-        <div className="flex flex-col items-center justify-center gap-1">
-          {dic.noNews}
-          <Button onClick={handleRefresh} variant="action" size="small">
-            {dic.retry}
-          </Button>
-        </div>
+        <EmptyState>
+          <div className="flex flex-col items-center justify-center gap-1">
+            {dic.noNews}
+            <Button onClick={handleRefresh} variant="action" size="small">
+              {dic.retry}
+            </Button>
+          </div>
+        </EmptyState>
       )}
       {shouldShowContent && (
         <div className="overflow-y-auto scrollbar-none snap-mandatory snap-y scroll-pt-8">
