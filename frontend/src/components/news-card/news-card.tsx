@@ -140,12 +140,15 @@ function NewsCard(props: INewsCardProps) {
         </ErrorState>
       )}
       {shouldShowEmptyState && (
-        <div className="flex items-center justify-center text-center grow">
+        <div className="flex flex-col items-center justify-center gap-1">
           {dic.noNews}
+          <Button onClick={handleRefresh} variant="action" size="small">
+            {dic.retry}
+          </Button>
         </div>
       )}
       {shouldShowContent && (
-        <div className="overflow-y-auto scrollbar-none">
+        <div className="overflow-y-auto scrollbar-none snap-mandatory snap-y scroll-pt-8">
           <NewsList
             providerId={provider.id}
             data={groupedData}

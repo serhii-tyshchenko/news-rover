@@ -30,7 +30,7 @@ function NewsList(props: IProps) {
       {Object.keys(data).map((date) => (
         <Fragment key={`${providerId}-${date}`}>
           <li
-            className="text-secondary font-bold text-sm bg-surface sticky top-0 z-10 pb-3"
+            className="text-secondary font-bold text-sm bg-surface sticky top-0 z-10 pb-3 snap-align-none"
             key={`${providerId}-${date}`}
           >
             {date}

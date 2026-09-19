@@ -59,7 +59,7 @@ function NewsListItem(props: INewsListItemProps) {
   const isFresh = isWithinLastHour(created);
 
   return (
-    <li className="group mb-6">
+    <li className="group mb-6 snap-start">
       {shouldShowThumbnail && (
         <a href={url} target="_blank" rel="noreferrer" className="block mb-1">
           <img
