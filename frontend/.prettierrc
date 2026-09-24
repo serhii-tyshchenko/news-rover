@@ -15,5 +15,6 @@
     ],
     "importOrderSeparation": true,
     "importOrderSortSpecifiers": true,
-    "importOrderSeparateGroups": true
+    "importOrderSeparateGroups": true,
+    "endOfLine": "lf"
 }
