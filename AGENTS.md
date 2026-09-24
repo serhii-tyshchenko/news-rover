@@ -63,7 +63,7 @@ Provider stack (outer → inner): `<Provider store>` → `<QueryClientProvider>`
 |---|---|---|
 | Routes | `src/App.tsx` | `/`, `/bookmarks`, `/providers`, `/settings`; unknown paths redirect to `/` |
 | Client state | `src/store/` | Redux Toolkit; 3 slices: `settings`, `addedProviders`, `bookmarks` |
-| Server state | `src/queries/` | react-query v3; naming convention `useXxxData()` |
+| Server state | `src/queries/` | TanStack Query v5; naming convention `useXxxData()` |
 | Raw API calls | `src/api/index.ts` | Native `fetch()`; validates via `isValidResponse()` |
 | Types/enums | `src/types/index.ts` | **All** TypeScript types live here as a single barrel |
 | Localization | `src/contexts/localization-context.tsx` | Fetches `/locales/{locale}.json` on locale change |
@@ -81,7 +81,7 @@ Provider stack (outer → inner): `<Provider store>` → `<QueryClientProvider>`
 - **Use typed hooks**: `useAppDispatch()` and `useAppSelector()` — never raw `useDispatch`/`useSelector`
 - **react-query hooks**: named `useXxxData()`
 - **Slice/query files**: prefixed with `_` (e.g., `_settings.ts`), re-exported via a barrel `index.ts`
-- **`localStorage` key**: `"NewsRover"` (the `APP_NAME` constant)
+- **`localStorage` key**: `STORAGE_KEY_REDUX_STATE` (`'news-rover:redux-state:v1'`)
 - **Default post limit**: `DEFAULT_POSTS_LIMIT` (frontend) / `DEFAULT_POST_LIMIT` (backend) — both equal `10`
 
 ### Backend
@@ -134,7 +134,7 @@ vi.mock('@constants', () => ({ DEFAULT_POSTS_LIMIT: 10 }));
 
 ## Localization
 
-Three locales: `en-US`, `uk`, `de-DE`.  
-Dictionary files: `frontend/public/locales/{locale.toLowerCase()}.json`  
-Consume in components: `const dic = useLocalization()` → `dic.someKey`  
+Three supported locales: `en-US`, `uk`, `de-DE` (runtime values; files are fetched using lowercase names such as `en-us.json`).
+Dictionary files: `frontend/public/locales/{locale.toLowerCase()}.json`
+Consume in components: `const dic = useLocalization()` → `dic.someKey`
 All keys are typed via `TDic` in `@types`.
