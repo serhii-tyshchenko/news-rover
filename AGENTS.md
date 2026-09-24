@@ -13,32 +13,35 @@ integration-tests/   Playwright E2E tests
 ## Commands
 
 ### Backend (`cd backend`)
-| Purpose | Command |
-|---|---|
-| Dev server (watch) | `npm run dev` |
-| Type-check | `npm run typecheck` |
-| Lint | `npm run lint` |
-| Unit tests | `npm test` |
+
+| Purpose            | Command             |
+| ------------------ | ------------------- |
+| Dev server (watch) | `npm run dev`       |
+| Type-check         | `npm run typecheck` |
+| Lint               | `npm run lint`      |
+| Unit tests         | `npm test`          |
 
 > **No build step.** Node runs TypeScript directly via `--experimental-strip-types`.
 
 ### Frontend (`cd frontend`)
-| Purpose | Command |
-|---|---|
-| Dev server (port 3000) | `npm start` |
-| Production build → `build/` | `npm run build` |
-| Type-check | `npx tsc --noEmit` |
-| Lint | `npm run lint` |
-| Unit tests | `npm test` |
-| Unit tests with coverage | `npm run test:coverage` |
-| Storybook | `npm run storybook` |
+
+| Purpose                     | Command                 |
+| --------------------------- | ----------------------- |
+| Dev server (port 3000)      | `npm start`             |
+| Production build → `build/` | `npm run build`         |
+| Type-check                  | `npx tsc --noEmit`      |
+| Lint                        | `npm run lint`          |
+| Unit tests                  | `npm test`              |
+| Unit tests with coverage    | `npm run test:coverage` |
+| Storybook                   | `npm run storybook`     |
 
 ### Integration tests (`cd integration-tests`)
-| Purpose | Command |
-|---|---|
-| All tests | `npm test` |
+
+| Purpose          | Command              |
+| ---------------- | -------------------- |
+| All tests        | `npm test`           |
 | Smoke tests only | `npm run test:smoke` |
-| Interactive UI | `npm run test:ui` |
+| Interactive UI   | `npm run test:ui`    |
 
 > Playwright auto-starts backend and frontend via `webServer` config — no manual servers needed.
 
@@ -51,7 +54,7 @@ integration-tests/   Playwright E2E tests
   ```ts
   export function createCategoriesController(deps: CategoriesDeps) { ... }
   ```
-- **Data layer**: Google Sheets API v4 (`services/db.ts`). All providers live in one sheet; categories are *derived* from providers (not stored separately). In-memory cache with `CACHE_DURATION_MINUTES` TTL (default 5 min).
+- **Data layer**: Google Sheets API v4 (`services/db.ts`). All providers live in one sheet; categories are _derived_ from providers (not stored separately). In-memory cache with `CACHE_DURATION_MINUTES` TTL (default 5 min).
 - **RSS parsing**: `src/parse.ts` — supports RSS (`rss.channel`) and Atom (`feed`) formats, normalises dates including Ukrainian/Russian month names.
 - See [backend/README.md](backend/README.md) for API endpoint reference.
 
@@ -59,16 +62,16 @@ integration-tests/   Playwright E2E tests
 
 Provider stack (outer → inner): `<Provider store>` → `<QueryClientProvider>` → `<LocalizationProvider>` → `<BrowserRouter>` → `<App />`
 
-| Concern | Location | Notes |
-|---|---|---|
-| Routes | `src/App.tsx` | `/`, `/bookmarks`, `/providers`, `/settings`; unknown paths redirect to `/` |
-| Client state | `src/store/` | Redux Toolkit; 3 slices: `settings`, `addedProviders`, `bookmarks` |
-| Server state | `src/queries/` | TanStack Query v5; naming convention `useXxxData()` |
-| Raw API calls | `src/api/index.ts` | Native `fetch()`; validates via `isValidResponse()` |
-| Types/enums | `src/types/index.ts` | **All** TypeScript types live here as a single barrel |
-| Localization | `src/contexts/localization-context.tsx` | Fetches `/locales/{locale}.json` on locale change |
-| Styling | TailwindCSS v4 + SASS | Theme applied as `data-theme` on `<html>` |
-| Icons | IcoMoon font | CSS class `icon-*`; values in `EIcon` enum in `@types` |
+| Concern       | Location                                | Notes                                                                       |
+| ------------- | --------------------------------------- | --------------------------------------------------------------------------- |
+| Routes        | `src/App.tsx`                           | `/`, `/bookmarks`, `/providers`, `/settings`; unknown paths redirect to `/` |
+| Client state  | `src/store/`                            | Redux Toolkit; 3 slices: `settings`, `addedProviders`, `bookmarks`          |
+| Server state  | `src/queries/`                          | TanStack Query v5; naming convention `useXxxData()`                         |
+| Raw API calls | `src/api/index.ts`                      | Native `fetch()`; validates via `isValidResponse()`                         |
+| Types/enums   | `src/types/index.ts`                    | **All** TypeScript types live here as a single barrel                       |
+| Localization  | `src/contexts/localization-context.tsx` | Fetches `/locales/{locale}.json` on locale change                           |
+| Styling       | TailwindCSS v4 + SASS                   | Theme applied as `data-theme` on `<html>`                                   |
+| Icons         | IcoMoon font                            | CSS class `icon-*`; values in `EIcon` enum in `@types`                      |
 
 ## Key conventions
 
@@ -93,25 +96,30 @@ Provider stack (outer → inner): `<Provider store>` → `<QueryClientProvider>`
 ## Testing
 
 ### Backend unit tests — Node.js `node:test` (no third-party runner)
+
 ```ts
 import assert from 'node:assert/strict';
 import { describe, it } from 'node:test';
 import { createCategoriesController } from './categories.ts';
 ```
+
 - Mock `Request`/`Response` objects manually — no framework helpers
 - Tests co-located with source (`*.test.ts`)
 
 ### Frontend unit tests — Vitest + @testing-library/react
+
 ```ts
 import { vi } from 'vitest'; // describe/it/expect are globals — no import needed
 vi.mock('@constants', () => ({ DEFAULT_POSTS_LIMIT: 10 }));
 ```
+
 - `globals: true` — `describe`, `it`, `expect`, etc. are auto-imported
 - `environment: 'jsdom'`; setup file: `src/setupTests.ts` (`@testing-library/jest-dom`)
 - Mock modules via `vi.mock(alias, factory)` using path aliases
 - Tests co-located with source (`*.test.ts` / `*.test.tsx`)
 
 ### Integration tests — Playwright (Chromium only)
+
 - Clear `localStorage` in each test via `page.addInitScript(() => localStorage.clear())`
 - Prefer `getByRole` / `getByText` locators
 
