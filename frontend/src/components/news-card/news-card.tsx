@@ -93,7 +93,7 @@ function NewsCard(props: INewsCardProps) {
   const isEmptyData = isEmpty(providerData?.data);
 
   const shouldShowLoadMoreButton =
-    !isEmptyData && limit <= (providerData?.count ?? 0);
+    !isEmptyData && limit < (providerData?.count ?? 0);
 
   const shouldShowSkeleton = isDataLoading;
   const shouldShowError = !isDataLoading && !!error;
@@ -150,7 +150,7 @@ function NewsCard(props: INewsCardProps) {
         </EmptyState>
       )}
       {shouldShowContent && (
-        <div className="overflow-y-auto scrollbar-none snap-mandatory snap-y scroll-pt-8">
+        <div className="overflow-y-auto scrollbar-none snap-mandatory snap-y lg:snap-none scroll-pt-8">
           <NewsList
             providerId={provider.id}
             data={groupedData}
