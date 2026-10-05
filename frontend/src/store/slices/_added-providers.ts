@@ -1,9 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 
-import { TAddedProvider } from '#types';
+import type { TAddedProvider } from '#types';
 
-import { TRootState } from '../index';
+import type { TRootState } from '../index';
 
 const initialState: TAddedProvider[] = [];
 

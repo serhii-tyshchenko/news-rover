@@ -2,7 +2,7 @@ import { Fragment } from 'react';
 
 import { useAppSelector } from '#store';
 import { selectBookmarksData } from '#store/slices';
-import { EViewMode, TNewsItem } from '#types';
+import { EViewMode, type TNewsItem } from '#types';
 
 import NewsListItem from './news-list-item';
 import { checkIfBookmarked } from './news-list.utils';

@@ -5,7 +5,7 @@ import Card from './card';
 describe('(Component) Card', () => {
   it('should render the title correctly', () => {
     const title = 'Test Title';
-    const { getByText } = render(<Card title={title} children="Test" />);
+    const { getByText } = render(<Card title={title}>Test</Card>);
     const titleElement = getByText(title);
     expect(titleElement).toBeInTheDocument();
   });
@@ -24,13 +24,15 @@ describe('(Component) Card', () => {
       { icon: 'icon3', title: 'Title 3', onClick: vi.fn() },
     ];
     const { getByTestId } = render(
-      <Card title="Test" controlsConfig={controlsConfig} children="Test" />,
+      <Card title="Test" controlsConfig={controlsConfig}>
+        Test
+      </Card>,
     );
     const cardControlsElement = getByTestId('card-controls');
     expect(cardControlsElement).toBeInTheDocument();
   });
   it('should not render CardControls when controlsConfig is empty', () => {
-    const { queryByTestId } = render(<Card title="Test" children="Test" />);
+    const { queryByTestId } = render(<Card title="Test">Test</Card>);
     const cardControlsElement = queryByTestId('card-controls');
     expect(cardControlsElement).not.toBeInTheDocument();
   });

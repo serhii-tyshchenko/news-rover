@@ -10,7 +10,8 @@ import { useDraggableList, useLocalization } from '#hooks';
 import { useProvidersData } from '#queries';
 import { useAppDispatch, useAppSelector } from '#store';
 import { doReorderProviders, selectAddedProviders } from '#store/slices';
-import { ERoute, TAddedProvider, TProvider } from '#types';
+import type { TAddedProvider, TProvider } from '#types';
+import { ERoute } from '#types';
 
 function HomePage() {
   const dispatch = useAppDispatch();

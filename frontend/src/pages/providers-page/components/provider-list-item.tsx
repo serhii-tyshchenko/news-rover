@@ -1,6 +1,6 @@
 import { IconButton } from '#components/ui';
 import { useLocalization } from '#hooks';
-import { EIcon, TProvider } from '#types';
+import { EIcon, type TProvider } from '#types';
 
 interface IProviderListItemProps {
   data: TProvider;

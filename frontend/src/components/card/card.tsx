@@ -3,7 +3,7 @@ import { isEmpty } from 'lodash-es';
 import { getClassName } from '#utils';
 
 import { CardControls } from './card-controls';
-import { TCardProps } from './card.types';
+import { type TCardProps } from './card.types';
 
 function Card(props: TCardProps) {
   const {

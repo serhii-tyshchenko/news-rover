@@ -129,6 +129,7 @@ function SettingsPage() {
           href={AUTHOR_SITE}
           className="text-sm text-accent hover:underline"
           target="_blank"
+          rel="noreferrer noopener"
         >
           &copy; {AUTHOR_NAME}
         </a>

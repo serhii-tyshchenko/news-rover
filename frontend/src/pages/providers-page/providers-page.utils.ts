@@ -1,4 +1,5 @@
-import { ELocale, TDic, TProvider } from '#types';
+import type { TDic, TProvider } from '#types';
+import { ELocale } from '#types';
 
 /**
  * Retrieves a user-friendly title for a given provider category by mapping the category identifier to a localized string from the provided dictionary (dic).

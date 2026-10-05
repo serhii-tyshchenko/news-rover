@@ -11,7 +11,8 @@ import {
   selectBookmarksViewMode,
   selectLocale,
 } from '#store/slices';
-import { EViewMode, TNewsItem } from '#types';
+import type { TNewsItem } from '#types';
+import { EViewMode } from '#types';
 import { changeViewMode, getViewModeIcon, groupDataByDay } from '#utils';
 
 function BookmarksPage() {

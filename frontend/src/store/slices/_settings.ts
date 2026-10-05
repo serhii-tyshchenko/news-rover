@@ -2,10 +2,11 @@ import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 
 import { DEFAULT_AUTOREFRESH_INTERVAL } from '#constants';
-import { ETheme, TSettings } from '#types';
+import type { TSettings } from '#types';
+import { ETheme } from '#types';
 import { getInitialLocale, shouldReduceMotion } from '#utils';
 
-import { TRootState } from '../index';
+import type { TRootState } from '../index';
 
 const initialState: TSettings = {
   animation: !shouldReduceMotion(),

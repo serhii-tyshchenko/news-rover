@@ -1,9 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 
-import { EViewMode, TNewsItem } from '#types';
+import type { TNewsItem } from '#types';
+import { EViewMode } from '#types';
 
-import { TRootState } from '../index';
+import type { TRootState } from '../index';
 
 type TBookmarksState = {
   data: TNewsItem[];

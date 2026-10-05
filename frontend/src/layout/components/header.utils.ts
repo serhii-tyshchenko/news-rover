@@ -1,4 +1,5 @@
-import { EIcon, ERoute, TDic } from '#types';
+import type { TDic } from '#types';
+import { EIcon, ERoute } from '#types';
 
 type IArgs = {
   dic: TDic;

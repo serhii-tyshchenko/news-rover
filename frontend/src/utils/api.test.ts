@@ -1,6 +1,6 @@
-import { EEnclosureType, TEnclosure } from '#types';
-
 import { describe, expect, it } from 'vitest';
+
+import { EEnclosureType, type TEnclosure } from '#types';
 
 import { extractThumbnailUrl, formatNewsResponse } from './api';
 
@@ -55,18 +55,19 @@ describe('formatNewsResponse', () => {
     const rawData = {
       data: [
         {
-          created: '2023-01-01',
+          created: 1672531200000,
           title: 'News Title 1',
           link: 'http://example.com/news1',
           enclosures: [
             {
               type: EEnclosureType.Image,
               url: 'http://example.com/image1.jpg',
+              length: 12345,
             },
           ],
         },
         {
-          created: '2023-01-02',
+          created: 1672617600000,
           title: 'News Title 2',
           link: 'http://example.com/news2',
           enclosures: [],
@@ -80,13 +81,15 @@ describe('formatNewsResponse', () => {
     expect(result).toEqual({
       data: [
         {
-          created: '2023-01-01',
+          created: 1672531200000,
+          description: undefined,
           title: 'News Title 1',
           link: 'http://example.com/news1',
           thumbnail: 'http://example.com/image1.jpg',
         },
         {
-          created: '2023-01-02',
+          created: 1672617600000,
+          description: undefined,
           title: 'News Title 2',
           link: 'http://example.com/news2',
           thumbnail: null,

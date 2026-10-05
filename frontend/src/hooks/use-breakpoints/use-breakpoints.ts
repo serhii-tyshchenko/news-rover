@@ -1,5 +1,5 @@
 import { useMediaQuery } from '#hooks';
-import { TBreakpoint } from '#types';
+import type { TBreakpoint } from '#types';
 
 function useBreakpoints() {
   const isSm = useMediaQuery('(min-width: 640px)');

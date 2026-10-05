@@ -1,6 +1,6 @@
 import { IconButton } from '#components/ui';
 
-import { TCardControlsProps } from './card-controls.types';
+import { type TCardControlsProps } from './card-controls.types';
 
 function CardControls(props: TCardControlsProps) {
   const { config = [], testId = 'card-controls' } = props;

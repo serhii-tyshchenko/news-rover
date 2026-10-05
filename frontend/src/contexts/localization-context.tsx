@@ -2,7 +2,7 @@ import { createContext, useEffect, useState } from 'react';
 
 import { useAppSelector } from '#store';
 import { selectLocale } from '#store/slices';
-import { TDic } from '#types';
+import { type TDic } from '#types';
 
 interface IProps {
   children: React.ReactNode;

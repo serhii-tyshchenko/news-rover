@@ -1,7 +1,7 @@
 import { EIcon } from '#types';
 import { getViewModeIcon } from '#utils';
 
-import { TControlsConfig, TGetControlsConfig } from './news-card.types';
+import type { TControlsConfig, TGetControlsConfig } from './news-card.types';
 
 export const getControlsConfig = ({
   dic,

@@ -17,10 +17,10 @@ import {
   selectProviderById,
   selectSettingsData,
 } from '#store/slices';
-import { EViewMode, TNewsItem } from '#types';
+import { EViewMode, type TNewsItem } from '#types';
 import { changeViewMode, groupDataByDay } from '#utils';
 
-import { INewsCardProps } from './news-card.types';
+import { type INewsCardProps } from './news-card.types';
 import { getControlsConfig } from './news-card.utils';
 
 function NewsCard(props: INewsCardProps) {
