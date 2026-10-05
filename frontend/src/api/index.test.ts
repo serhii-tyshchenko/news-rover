@@ -1,41 +1,39 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
-import { DEFAULT_POSTS_LIMIT, PROVIDERS_ROOT_URL } from '@constants';
-import { formatNewsResponse, isValidResponse } from '@utils';
+import { formatNewsResponse, isValidResponse } from '#utils';
 
 import { getNewsByProvider, getProviders } from './index';
 
-vi.mock('@constants', () => ({
+vi.mock('#constants', () => ({
   DEFAULT_POSTS_LIMIT: 10,
   PROVIDERS_ROOT_URL: 'https://news.api/providers',
 }));
-vi.mock('@utils', () => ({
+vi.mock('#utils', () => ({
   isValidResponse: vi.fn(),
   formatNewsResponse: vi.fn(),
 }));
 
 describe('api/index', () => {
-  const mockFetch = vi.fn();
-  const globalAny: any = global;
+  const mockFetch = vi.fn<typeof fetch>();
 
   beforeEach(() => {
-    globalAny.fetch = mockFetch;
+    vi.stubGlobal('fetch', mockFetch);
     vi.clearAllMocks();
   });
 
   afterEach(() => {
+    vi.unstubAllGlobals();
     vi.resetAllMocks();
   });
 
   describe('getProviders', () => {
     it('should fetch providers and return data on valid response', async () => {
       const mockData = [{ id: 1, name: 'Provider' }];
-      (isValidResponse as any).mockReturnValue(true);
+      vi.mocked(isValidResponse).mockReturnValue(true);
       mockFetch.mockResolvedValue({
+        ...new Response(JSON.stringify(mockData)),
         json: () => Promise.resolve(mockData),
-      });
+      } as Response);
 
       const result = await getProviders();
 
@@ -45,8 +43,8 @@ describe('api/index', () => {
     });
 
     it('should throw error on invalid response', async () => {
-      (isValidResponse as any).mockReturnValue(false);
-      mockFetch.mockResolvedValue({});
+      vi.mocked(isValidResponse).mockReturnValue(false);
+      mockFetch.mockResolvedValue(new Response(null, { status: 500 }));
 
       await expect(getProviders()).rejects.toThrow('Error fetching providers');
     });
@@ -56,13 +54,14 @@ describe('api/index', () => {
     it('should fetch news and return formatted data on valid response', async () => {
       const id = 'provider-id';
       const limit = 5;
-      const mockData = [{ id: 1, title: 'News' }];
-      const formattedData = [{ id: 1, title: 'Formatted News' }];
-      (isValidResponse as any).mockReturnValue(true);
-      (formatNewsResponse as any).mockReturnValue(formattedData);
+      const mockData = { data: [], count: 0 };
+      const formattedData = { data: [], count: 0 };
+      vi.mocked(isValidResponse).mockReturnValue(true);
+      vi.mocked(formatNewsResponse).mockReturnValue(formattedData);
       mockFetch.mockResolvedValue({
+        ...new Response(JSON.stringify(mockData)),
         json: () => Promise.resolve(mockData),
-      });
+      } as Response);
 
       const result = await getNewsByProvider(id, limit);
 
@@ -76,13 +75,14 @@ describe('api/index', () => {
 
     it('should use default limit if not provided', async () => {
       const id = 'provider-id';
-      const mockData = [{ id: 1 }];
-      const formattedData = [{ id: 1 }];
-      (isValidResponse as any).mockReturnValue(true);
-      (formatNewsResponse as any).mockReturnValue(formattedData);
+      const mockData = { data: [], count: 0 };
+      const formattedData = { data: [], count: 0 };
+      vi.mocked(isValidResponse).mockReturnValue(true);
+      vi.mocked(formatNewsResponse).mockReturnValue(formattedData);
       mockFetch.mockResolvedValue({
+        ...new Response(JSON.stringify(mockData)),
         json: () => Promise.resolve(mockData),
-      });
+      } as Response);
 
       await getNewsByProvider(id);
 
@@ -92,8 +92,8 @@ describe('api/index', () => {
     });
 
     it('should throw error on invalid response', async () => {
-      (isValidResponse as any).mockReturnValue(false);
-      mockFetch.mockResolvedValue({});
+      vi.mocked(isValidResponse).mockReturnValue(false);
+      mockFetch.mockResolvedValue(new Response(null, { status: 500 }));
 
       await expect(getNewsByProvider('url')).rejects.toThrow(
         'Error fetching news',

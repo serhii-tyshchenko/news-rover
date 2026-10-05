@@ -1,8 +1,8 @@
 import { createContext, useEffect, useState } from 'react';
 
-import { useAppSelector } from '@store/hooks';
-import { selectLocale } from '@store/slices';
-import { TDic } from '@types';
+import { useAppSelector } from '#store';
+import { selectLocale } from '#store/slices';
+import { TDic } from '#types';
 
 interface IProps {
   children: React.ReactNode;

@@ -2,13 +2,13 @@
 
 ## Quick Start
 
-**Build & Run:**
+**Build & Run** (from `frontend/`):
 
-- `npm start` - Start dev server (Vite) at http://127.0.0.1:3000/
-- `npm build` - Production build
-- `npm lint` - Run ESLint (uses Prettier for formatting)
-- `npm test` - Run tests with Vitest
-- `npm test:coverage` - Generate coverage report
+- `npm run start` - Start dev server (Vite) at http://127.0.0.1:3000/
+- `npm run build` - Production build
+- `npm run lint` - Run ESLint
+- `npm run test` - Run tests with Vitest
+- `npm run test:coverage` - Generate coverage report
 
 **Tech Stack:** React 19 + TypeScript + Vite + Redux Toolkit + React Query + Tailwind + SCSS
 
@@ -108,18 +108,21 @@ Always reference `ERoute` enum values instead of hard-coded path strings.
 
 ### Imports & Aliases
 
-Use path aliases from `tsconfig.json`:
+Use package subpath imports declared in `package.json` under `imports`:
 
 ```typescript
 // ✓ Correct
-import { Button } from '@components/ui/button';
-import { useBreakpoints } from '@hooks';
-import { getClassName } from '@utils/get-class-name';
-import styles from '~styles/_variables.scss';
+import { Button } from '#components/ui/button';
+import { useBreakpoints } from '#hooks';
+import { getClassName } from '#utils';
 
 // ✗ Avoid
 import { Button } from '../../components/ui/button';
 ```
+
+With `moduleResolution: "bundler"`, TypeScript resolves these imports from `package.json`; do not duplicate them in `tsconfig.json` with `baseUrl` or `paths`. Keep exact entries for root aliases (such as `#hooks`) and wildcard entries for subpaths. Every import-map target must match an existing file.
+
+For SCSS `@use`, use relative Sass module paths. TypeScript package imports do not configure Sass module resolution.
 
 ### File Naming
 
@@ -137,9 +140,10 @@ import { Button } from '../../components/ui/button';
 
 ```typescript
 // 1. Define slice in src/store/slices/*.ts
-import { createSlice } from '@reduxjs/toolkit';
 // 2. Use typed hooks in components
-import { useAppDispatch, useAppSelector } from '@store/hooks';
+import { createSlice } from '@reduxjs/toolkit';
+
+import { useAppDispatch, useAppSelector } from '#store';
 
 const settingsSlice = createSlice({
   name: 'settings',
@@ -248,7 +252,7 @@ export default NewsCard;
 }
 
 // Use getClassName() utility for BEM-style classes
-import { getClassName } from '@utils/get-class-name';
+import { getClassName } from '#utils/get-class-name';
 const classes = getClassName('card', { elevated: true });
 // Result: 'card card--elevated'
 ```
@@ -354,7 +358,7 @@ describe('(Hook) useBreakpoints', () => {
 
 3. **Add tests:** Write tests for components and hooks before implementation
 
-4. **Lint & format:** `npm lint` (auto-fixes formatting issues)
+4. **Lint:** `npm run lint`
 
 ### Updating Redux State
 
@@ -373,7 +377,7 @@ describe('(Hook) useBreakpoints', () => {
 - Use Tailwind for layout, spacing, typography, colors
 - Use SCSS module for complex/scoped styles
 - Keep component-level styles in `component.styles.scss`
-- Use variables from `~styles/_variables.scss` for theme values
+- Use variables from `#styles/_variables.scss` for theme values
 
 ---
 
@@ -384,7 +388,7 @@ describe('(Hook) useBreakpoints', () => {
 | Redux state saves on every dispatch           | localStorage thrashing         | Use batch() from Redux, or accept frequent writes (status quo) |
 | React Query retries 3x by default             | Slow UX on network errors      | Pass `retry: 0` to `useQuery()` if immediate feedback needed   |
 | Media queries in hooks ≠ Tailwind breakpoints | Mismatched responsive behavior | Align custom breakpoints with Tailwind config                  |
-| Missing path alias in import                  | Build fails silently in dev    | Use `@components`, `@hooks`, etc. from `tsconfig.json`         |
+| Missing package import mapping                | Module cannot be resolved      | Add or correct the entry in `package.json#imports`             |
 | Type imports not tree-shaken                  | Larger bundle                  | Use `import type { Type }` for type-only imports               |
 | Forgetting `default export` on components     | Import fails for barrel        | Always export component as default; named exports for helpers  |
 | Locale not persisted on page reload           | UX regression                  | Redux slice handles persistence, no extra work needed          |

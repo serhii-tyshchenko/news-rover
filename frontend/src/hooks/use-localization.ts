@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 
-import { LocalizationContext } from '@contexts';
+import { LocalizationContext } from '#contexts';
 
 const useLocalization = () => {
   const context = useContext(LocalizationContext);

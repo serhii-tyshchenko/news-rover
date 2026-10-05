@@ -1,4 +1,4 @@
-import { TNewsItem } from '@types';
+import { TNewsItem } from '#types';
 
 /**
  * Checks if a given news item is bookmarked by comparing its link with the links of the bookmarked items.

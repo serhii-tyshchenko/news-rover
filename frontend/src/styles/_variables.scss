@@ -1,14 +1,17 @@
-$font-size-xs: 0.75rem;
-$font-size-md: 1rem;
-$font-size-xl: 1.25rem;
+:root {
+    --color-background: #f0f2f5;
+    --color-surface: #FFFFFF;
+    --color-primary: #050505;
+    --color-secondary: #65676B;
+    --color-background-controls: #f0f2f5;
+    --color-accent: #1876f2;
+    --color-danger: #ff0000;
+    --color-scrollbar: #1876f2;
+    --color-scrollbar-hover: #0f5bb5;
 
-$break-4k: 2560px;
-$break-laptop-large: 1440px;
-$break-laptop: 1024px;
-$break-tablet: 768px;
-$break-mobile-large: 480px;
-$break-mobile-medium: 375px;
-$break-mobile-small: 320px;
+    --background-skeleton: #282c34;
 
-$zindex-modal-backdrop: 1040;
-$zindex-modal: 1050;
+    --font-size-xs: 0.75rem;
+    --font-size-md: 1rem;
+    --font-size-xl: 1.25rem;
+}

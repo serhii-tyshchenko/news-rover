@@ -1,11 +1,11 @@
 import { Mock, beforeEach, describe, expect, it, vi } from 'vitest';
 
-import { useMediaQuery } from '@hooks';
+import { useMediaQuery } from '#hooks';
 
 import useBreakpoints from './use-breakpoints';
 
-// Mock useMediaQuery from @hooks
-vi.mock('@hooks', () => ({
+// Mock useMediaQuery from #hooks
+vi.mock('#hooks', () => ({
   useMediaQuery: vi.fn(),
 }));
 

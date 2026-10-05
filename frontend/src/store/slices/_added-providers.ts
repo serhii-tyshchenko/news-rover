@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
-import { TAddedProvider } from '@types';
+
+import { TAddedProvider } from '#types';
 
 import { TRootState } from '../index';
 

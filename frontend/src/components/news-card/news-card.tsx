@@ -2,12 +2,12 @@ import { useCallback, useMemo, useState } from 'react';
 
 import { isEmpty } from 'lodash-es';
 
-import { Card, NewsList, Skeleton } from '@components';
-import { Button, EmptyState, ErrorState } from '@components/ui';
-import { DEFAULT_POSTS_LIMIT } from '@constants';
-import { useAnimation, useLocalization } from '@hooks';
-import { useProviderNewsData } from '@queries';
-import { useAppDispatch, useAppSelector } from '@store/hooks';
+import { Card, NewsList, Skeleton } from '#components';
+import { Button, EmptyState, ErrorState } from '#components/ui';
+import { DEFAULT_POSTS_LIMIT } from '#constants';
+import { useAnimation, useLocalization } from '#hooks';
+import { useProviderNewsData } from '#queries';
+import { useAppDispatch, useAppSelector } from '#store';
 import {
   doAddBookmark,
   doRemoveBookmark,
@@ -16,9 +16,9 @@ import {
   selectLocale,
   selectProviderById,
   selectSettingsData,
-} from '@store/slices';
-import { EViewMode, TNewsItem } from '@types';
-import { changeViewMode, groupDataByDay } from '@utils';
+} from '#store/slices';
+import { EViewMode, TNewsItem } from '#types';
+import { changeViewMode, groupDataByDay } from '#utils';
 
 import { INewsCardProps } from './news-card.types';
 import { getControlsConfig } from './news-card.utils';

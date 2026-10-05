@@ -1,4 +1,4 @@
-import { EIcon, EViewMode } from '@types';
+import { EIcon, EViewMode } from '#types';
 
 /**
  * Changes the view mode to the next mode in a predefined sequence.

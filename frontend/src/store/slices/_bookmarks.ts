@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
-import { EViewMode, TNewsItem } from '@types';
+
+import { EViewMode, TNewsItem } from '#types';
 
 import { TRootState } from '../index';
 

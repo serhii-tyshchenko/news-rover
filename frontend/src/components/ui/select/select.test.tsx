@@ -1,5 +1,6 @@
 import { fireEvent, render } from '@testing-library/react';
-import { EControlSize } from '@types';
+
+import { EControlSize } from '#types';
 
 import { Select } from './select';
 

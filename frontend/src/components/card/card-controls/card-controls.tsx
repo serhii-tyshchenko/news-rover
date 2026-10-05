@@ -1,4 +1,4 @@
-import { IconButton } from '@components/ui';
+import { IconButton } from '#components/ui';
 
 import { TCardControlsProps } from './card-controls.types';
 

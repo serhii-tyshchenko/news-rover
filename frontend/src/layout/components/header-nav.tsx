@@ -1,5 +1,5 @@
-import { IconButton } from '@components/ui';
-import { EControlSize, EIcon } from '@types';
+import { IconButton } from '#components/ui';
+import { EControlSize, EIcon } from '#types';
 
 interface IProps {
   data: Array<{

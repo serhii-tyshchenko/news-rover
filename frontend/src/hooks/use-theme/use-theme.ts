@@ -1,9 +1,9 @@
 import { useEffect } from 'react';
 
-import { useMediaQuery } from '@hooks';
-import { useAppSelector } from '@store/hooks';
-import { selectTheme } from '@store/slices';
-import { ETheme } from '@types';
+import { useMediaQuery } from '#hooks';
+import { useAppSelector } from '#store';
+import { selectTheme } from '#store/slices';
+import { ETheme } from '#types';
 
 function useTheme() {
   const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');

@@ -11,6 +11,7 @@
         "^react",
         "^[a-z]",
         "^@",
+        "^#",
         "^[./]"
     ],
     "importOrderSeparation": true,

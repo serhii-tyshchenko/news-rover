@@ -3,11 +3,11 @@ import { Link, useLocation, useNavigate } from 'react-router';
 
 import { isEmpty } from 'lodash-es';
 
-import { APP_NAME } from '@constants';
-import { useFullscreen, useLocalization } from '@hooks';
-import { useAppSelector } from '@store/hooks';
-import { selectBookmarksData } from '@store/slices';
-import { ERoute } from '@types';
+import { APP_NAME } from '#constants';
+import { useFullscreen, useLocalization } from '#hooks';
+import { useAppSelector } from '#store';
+import { selectBookmarksData } from '#store/slices';
+import { ERoute } from '#types';
 
 import HeaderNav from './header-nav';
 import { getNavConfig } from './header.utils';

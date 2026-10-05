@@ -1,5 +1,5 @@
-import { Skeleton } from '@components/skeleton';
-import { getClassName } from '@utils';
+import { Skeleton } from '#components/skeleton';
+import { getClassName } from '#utils';
 
 interface ICardSkeletonProps {
   animated?: boolean;
@@ -14,7 +14,7 @@ function CardSkeleton(props: ICardSkeletonProps) {
   );
 
   return (
-    <article className="w-full p-4 flex-shrink-0 snap-start flex flex-col rounded-none shadow h-full max-w-full justify-self-center bg-surface sm:h-[calc(100vh-5.25rem)] sm:max-w-[80ch] sm:rounded">
+    <article className="w-full p-4 shrink-0 snap-start flex flex-col rounded-none shadow h-full max-w-full justify-self-center bg-surface sm:h-[calc(100vh-5.25rem)] sm:max-w-[80ch] sm:rounded">
       <header className={headerClassName}>
         <div className="h-8 bg-skeleton block w-1/2 rounded" />
         <div className="flex gap-2">

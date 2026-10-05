@@ -1,18 +1,18 @@
 import { isEmpty, noop } from 'lodash-es';
 
-import { Card, NewsList } from '@components';
-import { EmptyState } from '@components/ui';
-import { useLocalization } from '@hooks';
-import { useAppDispatch, useAppSelector } from '@store/hooks';
+import { Card, NewsList } from '#components';
+import { EmptyState } from '#components/ui';
+import { useLocalization } from '#hooks';
+import { useAppDispatch, useAppSelector } from '#store';
 import {
   doRemoveBookmark,
   doUpdateBookmarksViewMode,
   selectBookmarksData,
   selectBookmarksViewMode,
   selectLocale,
-} from '@store/slices';
-import { EViewMode, TNewsItem } from '@types';
-import { changeViewMode, getViewModeIcon, groupDataByDay } from '@utils';
+} from '#store/slices';
+import { EViewMode, TNewsItem } from '#types';
+import { changeViewMode, getViewModeIcon, groupDataByDay } from '#utils';
 
 function BookmarksPage() {
   const dispatch = useAppDispatch();

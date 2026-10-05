@@ -1,15 +1,16 @@
 import { vi } from 'vitest';
 
-import * as storeHooks from '@store/hooks';
 import { act, renderHook } from '@testing-library/react';
+
+import * as storeHooks from '#store';
 
 import useFullscreen from './use-fullscreen';
 
-vi.mock('@store/hooks', () => ({
+vi.mock('#store', () => ({
   useAppSelector: vi.fn(),
 }));
 
-vi.mock('@store/slices', () => ({
+vi.mock('#store/slices', () => ({
   selectSettingsData: vi.fn(),
 }));
 
@@ -159,10 +160,16 @@ describe('(Hook) useFullscreen', () => {
 
     const { unmount } = renderHook(() => useFullscreen());
 
-    expect(addSpy).toHaveBeenCalledWith('fullscreenchange', expect.any(Function));
+    expect(addSpy).toHaveBeenCalledWith(
+      'fullscreenchange',
+      expect.any(Function),
+    );
 
     unmount();
 
-    expect(removeSpy).toHaveBeenCalledWith('fullscreenchange', expect.any(Function));
+    expect(removeSpy).toHaveBeenCalledWith(
+      'fullscreenchange',
+      expect.any(Function),
+    );
   });
 });

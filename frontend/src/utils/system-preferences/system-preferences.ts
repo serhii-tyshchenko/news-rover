@@ -1,4 +1,4 @@
-import { ELocale } from '@types';
+import { ELocale } from '#types';
 
 /**
  * Checks if the user has set a preference for reduced motion in their system settings.

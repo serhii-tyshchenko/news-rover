@@ -1,7 +1,8 @@
 import { noop } from 'lodash-es';
 
 import { fireEvent, render } from '@testing-library/react';
-import { EControlSize } from '@types';
+
+import { EControlSize } from '#types';
 
 import { IconButton } from './icon-button';
 

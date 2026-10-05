@@ -1,6 +1,7 @@
-import { getProviders } from '@api';
-import { ONE_MINUTE_IN_MILLISECONDS } from '@constants';
 import { useQuery } from '@tanstack/react-query';
+
+import { getProviders } from '#api';
+import { ONE_MINUTE_IN_MILLISECONDS } from '#constants';
 
 export const useProvidersData = () => {
   const {

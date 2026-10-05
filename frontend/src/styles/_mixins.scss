@@ -1,44 +1,42 @@
-@use 'variables' as *;
-
 @mixin for-size($size) {
   @if $size ==mobile-small {
-    @media (max-width: $break-mobile-small) {
+    @media (max-width: 320px) {
       @content;
     }
   }
 
   @else if $size ==mobile-medium {
-    @media (max-width: $break-mobile-medium) {
+    @media (max-width: 375px) {
       @content;
     }
   }
 
   @else if $size ==mobile-large {
-    @media (max-width: $break-mobile-large) {
+    @media (max-width: 480px) {
       @content;
     }
   }
 
   @else if $size ==tablet {
-    @media (max-width: $break-tablet) {
+    @media (max-width: 768px) {
       @content;
     }
   }
 
   @else if $size ==laptop {
-    @media (max-width: $break-laptop) {
+    @media (max-width: 1024px) {
       @content;
     }
   }
 
   @else if $size ==laptop-large {
-    @media (max-width: $break-laptop-large) {
+    @media (max-width: 1440px) {
       @content;
     }
   }
 
   @else if $size ==4k {
-    @media (max-width: $break-4k) {
+    @media (max-width: 2560px) {
       @content;
     }
   }

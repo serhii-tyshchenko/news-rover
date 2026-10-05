@@ -1,6 +1,6 @@
-import { CardList, CardSkeleton } from '@components';
-import { DEFAULT_CARD_COUNT } from '@constants';
-import { useAnimation, useBreakpoints } from '@hooks';
+import { CardList, CardSkeleton } from '#components';
+import { DEFAULT_CARD_COUNT } from '#constants';
+import { useAnimation, useBreakpoints } from '#hooks';
 
 interface ICardListSkeletonProps {
   cardCount?: number;

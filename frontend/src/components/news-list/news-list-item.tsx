@@ -1,11 +1,11 @@
-import NotFound from '~assets/images/not-found.png';
-
 import { isEmpty } from 'lodash-es';
 
-import { IconButton } from '@components/ui';
-import { useLocalization } from '@hooks';
-import { EControlSize, EIcon, EViewMode, TNewsItem } from '@types';
-import { formatTime, getClassName, isWithinLastHour } from '@utils';
+import { IconButton } from '#components/ui';
+import { useLocalization } from '#hooks';
+import { EControlSize, EIcon, EViewMode, TNewsItem } from '#types';
+import { formatTime, getClassName, isWithinLastHour } from '#utils';
+
+import NotFound from '../../assets/images/not-found.png';
 
 interface INewsListItemProps {
   data: TNewsItem;

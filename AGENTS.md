@@ -71,14 +71,14 @@ Provider stack (outer → inner): `<Provider store>` → `<QueryClientProvider>`
 | Types/enums   | `src/types/index.ts`                    | **All** TypeScript types live here as a single barrel                       |
 | Localization  | `src/contexts/localization-context.tsx` | Fetches `/locales/{locale}.json` on locale change                           |
 | Styling       | TailwindCSS v4 + SASS                   | Theme applied as `data-theme` on `<html>`                                   |
-| Icons         | IcoMoon font                            | CSS class `icon-*`; values in `EIcon` enum in `@types`                      |
+| Icons         | IcoMoon font                            | CSS class `icon-*`; values in `EIcon` enum in `#types`                      |
 
 ## Key conventions
 
 ### Frontend
 
 - **Always use path aliases** — never relative imports for aliased paths:  
-  `@api`, `@components`, `@constants`, `@contexts`, `@hooks`, `@layout`, `@pages`, `@queries`, `@storage`, `@store`, `@types`, `@utils`, `~styles`, `~assets`
+  `#api`, `#components`, `#constants`, `#contexts`, `#hooks`, `#layout`, `#pages`, `#queries`, `#storage`, `#store`, `#types`, `#utils`, `#styles`, `~assets`
 - **Redux action creators**: named `doVerbNoun` (e.g., `doAddProvider`, `doUpdateSettings`)
 - **Redux selectors**: named `selectXxx`
 - **Use typed hooks**: `useAppDispatch()` and `useAppSelector()` — never raw `useDispatch`/`useSelector`
@@ -110,7 +110,7 @@ import { createCategoriesController } from './categories.ts';
 
 ```ts
 import { vi } from 'vitest'; // describe/it/expect are globals — no import needed
-vi.mock('@constants', () => ({ DEFAULT_POSTS_LIMIT: 10 }));
+vi.mock('#constants', () => ({ DEFAULT_POSTS_LIMIT: 10 }));
 ```
 
 - `globals: true` — `describe`, `it`, `expect`, etc. are auto-imported
@@ -145,4 +145,4 @@ vi.mock('@constants', () => ({ DEFAULT_POSTS_LIMIT: 10 }));
 Three supported locales: `en-US`, `uk`, `de-DE` (runtime values; files are fetched using lowercase names such as `en-us.json`).
 Dictionary files: `frontend/public/locales/{locale.toLowerCase()}.json`
 Consume in components: `const dic = useLocalization()` → `dic.someKey`
-All keys are typed via `TDic` in `@types`.
+All keys are typed via `TDic` in `#types`.

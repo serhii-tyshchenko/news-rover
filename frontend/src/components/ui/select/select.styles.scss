@@ -1,6 +1,3 @@
-@use '~styles/variables' as *;
-@use '~styles/mixins' as *;
-
 .select {
   background-clip: padding-box;
   background-color: inherit;
@@ -14,7 +11,7 @@
   width: max-content;
 
   &:disabled {
-    @include for-disabled;
+    // @include for-disabled;
   }
 
   &:hover:not(:disabled) {

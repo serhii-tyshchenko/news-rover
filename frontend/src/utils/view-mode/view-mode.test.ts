@@ -1,6 +1,6 @@
-import { describe, expect, it } from 'vitest';
+import { EViewMode } from '#types';
 
-import { EViewMode } from '@types';
+import { describe, expect, it } from 'vitest';
 
 import { changeViewMode, getViewModeIcon } from './view-mode';
 

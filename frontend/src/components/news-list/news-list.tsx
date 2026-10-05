@@ -1,8 +1,8 @@
 import { Fragment } from 'react';
 
-import { useAppSelector } from '@store/hooks';
-import { selectBookmarksData } from '@store/slices';
-import { EViewMode, TNewsItem } from '@types';
+import { useAppSelector } from '#store';
+import { selectBookmarksData } from '#store/slices';
+import { EViewMode, TNewsItem } from '#types';
 
 import NewsListItem from './news-list-item';
 import { checkIfBookmarked } from './news-list.utils';

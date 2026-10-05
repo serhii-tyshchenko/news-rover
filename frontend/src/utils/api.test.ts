@@ -1,6 +1,6 @@
-import { describe, expect, it } from 'vitest';
+import { EEnclosureType, TEnclosure } from '#types';
 
-import { EEnclosureType, TEnclosure } from '@types';
+import { describe, expect, it } from 'vitest';
 
 import { extractThumbnailUrl, formatNewsResponse } from './api';
 

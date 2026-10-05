@@ -1,9 +1,10 @@
-import { getNewsByProvider } from '@api';
+import { useQuery } from '@tanstack/react-query';
+
+import { getNewsByProvider } from '#api';
 import {
   DEFAULT_AUTOREFRESH_INTERVAL,
   ONE_MINUTE_IN_MILLISECONDS,
-} from '@constants';
-import { useQuery } from '@tanstack/react-query';
+} from '#constants';
 
 interface IProps {
   autorefresh?: boolean;

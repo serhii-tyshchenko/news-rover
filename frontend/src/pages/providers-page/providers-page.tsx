@@ -1,13 +1,13 @@
 import { isEmpty } from 'lodash-es';
 
-import { Card, CardList, CardListSkeleton } from '@components';
-import { EmptyState, ErrorState } from '@components/ui';
-import { DEFAULT_CARD_COUNT } from '@constants';
-import { useLocalization } from '@hooks';
-import { useProvidersData } from '@queries';
-import { useAppDispatch, useAppSelector } from '@store/hooks';
-import { doAddProvider, doRemoveProvider, selectLocale } from '@store/slices';
-import { EViewMode } from '@types';
+import { Card, CardList, CardListSkeleton } from '#components';
+import { EmptyState, ErrorState } from '#components/ui';
+import { DEFAULT_CARD_COUNT } from '#constants';
+import { useLocalization } from '#hooks';
+import { useProvidersData } from '#queries';
+import { useAppDispatch, useAppSelector } from '#store';
+import { doAddProvider, doRemoveProvider, selectLocale } from '#store/slices';
+import { EViewMode } from '#types';
 
 import ProviderList from './components/provider-list';
 import { groupProvidersByCategory } from './providers-page.utils';

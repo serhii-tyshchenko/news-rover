@@ -1,8 +1,9 @@
-import { DEFAULT_AUTOREFRESH_INTERVAL } from '@constants';
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
-import { ETheme, TSettings } from '@types';
-import { getInitialLocale, shouldReduceMotion } from '@utils';
+
+import { DEFAULT_AUTOREFRESH_INTERVAL } from '#constants';
+import { ETheme, TSettings } from '#types';
+import { getInitialLocale, shouldReduceMotion } from '#utils';
 
 import { TRootState } from '../index';
 

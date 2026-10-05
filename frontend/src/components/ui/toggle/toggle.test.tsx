@@ -1,5 +1,6 @@
+import { EControlSize } from '#types';
+
 import { fireEvent, render } from '@testing-library/react';
-import { EControlSize } from '@types';
 
 import { Toggle } from './toggle';
 

@@ -1,6 +1,9 @@
-import { STORAGE_KEY_REDUX_STATE } from '@constants';
+import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
+
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
-import { loadState, saveState } from '@storage';
+
+import { STORAGE_KEY_REDUX_STATE } from '#constants';
+import { loadState, saveState } from '#storage';
 
 import { addedProviders, bookmarks, settings } from './slices';
 
@@ -27,5 +30,8 @@ store.subscribe(() => {
 export type TRootState = ReturnType<typeof store.getState>;
 
 export type TAppDispatch = typeof store.dispatch;
+
+export const useAppDispatch: () => TAppDispatch = useDispatch;
+export const useAppSelector: TypedUseSelectorHook<TRootState> = useSelector;
 
 export default store;

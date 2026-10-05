@@ -1,5 +1,5 @@
-import { EIcon } from '@types';
-import { getViewModeIcon } from '@utils';
+import { EIcon } from '#types';
+import { getViewModeIcon } from '#utils';
 
 import { TControlsConfig, TGetControlsConfig } from './news-card.types';
 

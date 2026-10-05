@@ -1,6 +1,3 @@
-@use '~styles/variables' as *;
-@use '~styles/mixins' as *;
-
 .toggle {
   appearance: none;
   background-color: var(--color-background-controls);

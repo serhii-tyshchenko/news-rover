@@ -1,8 +1,8 @@
-import { groupBy } from 'lodash-es';
+import { ONE_MINUTE_IN_MILLISECONDS } from '#constants';
+import { ELocale, TDic, TNewsItem } from '#types';
+import { capitalizeFirstLetter } from '#utils';
 
-import { ONE_MINUTE_IN_MILLISECONDS } from '@constants';
-import { ELocale, TDic, TNewsItem } from '@types';
-import { capitalizeFirstLetter } from '@utils';
+import { groupBy } from 'lodash-es';
 
 /**
  * Formats a given timestamp into a time string in the format of "HH:MM".

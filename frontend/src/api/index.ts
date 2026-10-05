@@ -2,8 +2,8 @@ import {
   DEFAULT_POSTS_LIMIT,
   PROVIDERS_ROOT_URL,
   RSS_ROOT_URL,
-} from '@constants';
-import { formatNewsResponse, isValidResponse } from '@utils';
+} from '#constants';
+import { formatNewsResponse, isValidResponse } from '#utils';
 
 export const getProviders = async () => {
   const response = await fetch(PROVIDERS_ROOT_URL);

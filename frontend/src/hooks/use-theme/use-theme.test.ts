@@ -1,21 +1,22 @@
 import { vi } from 'vitest';
 
-import * as hooks from '@hooks';
-import * as storeHooks from '@store/hooks';
 import { renderHook } from '@testing-library/react';
-import { ETheme } from '@types';
+
+import * as hooks from '#hooks';
+import * as storeHooks from '#store';
+import { ETheme } from '#types';
 
 import useTheme from './use-theme';
 
-vi.mock('@hooks', () => ({
+vi.mock('#hooks', () => ({
   useMediaQuery: vi.fn(),
 }));
 
-vi.mock('@store/hooks', () => ({
+vi.mock('#store', () => ({
   useAppSelector: vi.fn(),
 }));
 
-vi.mock('@store/slices', () => ({
+vi.mock('#store/slices', () => ({
   selectTheme: vi.fn(),
 }));
 

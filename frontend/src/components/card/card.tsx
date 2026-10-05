@@ -1,6 +1,6 @@
 import { isEmpty } from 'lodash-es';
 
-import { getClassName } from '@utils';
+import { getClassName } from '#utils';
 
 import { CardControls } from './card-controls';
 import { TCardProps } from './card.types';

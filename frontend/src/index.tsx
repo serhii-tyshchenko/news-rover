@@ -3,8 +3,9 @@ import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router';
 
-import { LocalizationProvider } from '@contexts';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+
+import { LocalizationProvider } from '#contexts';
 
 import App from './App';
 import reportWebVitals from './reportWebVitals';

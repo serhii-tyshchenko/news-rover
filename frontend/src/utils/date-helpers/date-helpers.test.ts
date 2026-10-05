@@ -1,7 +1,7 @@
-import { describe, expect, it } from 'vitest';
+import { ELocale, TDic, TNewsItem } from '#types';
+import { capitalizeFirstLetter } from '#utils';
 
-import { ELocale, TDic, TNewsItem } from '@types';
-import { capitalizeFirstLetter } from '@utils';
+import { describe, expect, it } from 'vitest';
 
 import {
   formatTime,

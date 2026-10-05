@@ -1,6 +1,7 @@
 import { useCallback, useSyncExternalStore } from 'react';
-import { useAppSelector } from '@store/hooks';
-import { selectSettingsData } from '@store/slices';
+
+import { useAppSelector } from '#store';
+import { selectSettingsData } from '#store/slices';
 
 function subscribe(callback: () => void) {
   document.addEventListener('fullscreenchange', callback);

@@ -1,7 +1,5 @@
 {
   "compilerOptions": {
-    "baseUrl": "src",
-    "target": "ESNext",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
@@ -11,7 +9,8 @@
     "forceConsistentCasingInFileNames": true,
     "noFallthroughCasesInSwitch": true,
     "module": "esnext",
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
+    "target": "ESNext",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
@@ -22,27 +21,7 @@
       "vite-plugin-svgr/client",
       "vitest/globals",
       "@testing-library/jest-dom"
-    ],
-    "paths": {
-      "@api": ["api/"],
-      "@api/*": ["api/*"],
-      "@components": ["components/"],
-      "@components/*": ["components/*"],
-      "@constants": ["constants/"],
-      "@contexts": ["contexts/"],
-      "@hooks": ["hooks/"],
-      "@layout": ["layout/"],
-      "@pages": ["pages/"],
-      "@queries": ["queries/"],
-      "@storage": ["storage/"],
-      "@storage/*": ["storage/*"],
-      "@store": ["store/"],
-      "@store/*": ["store/*"],
-      "@types": ["types/"],
-      "@utils": ["utils/"],
-      "~styles": ["styles/"],
-      "~assets": ["assets/"]
-    }
+    ]
   },
   "include": ["src"]
 }

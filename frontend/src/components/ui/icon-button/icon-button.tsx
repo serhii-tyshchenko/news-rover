@@ -1,5 +1,5 @@
-import { EControlSize, EIcon } from '@types';
-import { getClassName } from '@utils';
+import { EControlSize, EIcon } from '#types';
+import { getClassName } from '#utils';
 
 import './icon-button.styles.scss';
 

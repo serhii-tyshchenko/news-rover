@@ -1,16 +1,16 @@
-import { Card } from '@components';
-import { Select, Toggle } from '@components/ui';
+import { Card } from '#components';
+import { Select, Toggle } from '#components/ui';
 import {
   APP_VERSION,
   AUTHOR_NAME,
   AUTHOR_SITE,
   AUTOREFRESH_INTERVAL_OPTIONS,
   DEFAULT_AUTOREFRESH_INTERVAL,
-} from '@constants';
-import { useAnimation, useLocalization } from '@hooks';
-import { useAppDispatch, useAppSelector } from '@store/hooks';
-import { doUpdateSettings, selectSettingsData } from '@store/slices';
-import { EControlSize, ELocale, ETheme } from '@types';
+} from '#constants';
+import { useAnimation, useLocalization } from '#hooks';
+import { useAppDispatch, useAppSelector } from '#store';
+import { doUpdateSettings, selectSettingsData } from '#store/slices';
+import { EControlSize, ELocale, ETheme } from '#types';
 
 import { SettingsGroup } from './components';
 import { prepareOptions } from './settings-page.utils';

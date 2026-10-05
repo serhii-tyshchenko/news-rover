@@ -1,9 +1,9 @@
 import { Navigate, Route, Routes } from 'react-router';
 
-import { useTheme } from '@hooks';
-import { BaseLayout } from '@layout';
-import { BookmarksPage, HomePage, ProvidersPage, SettingsPage } from '@pages';
-import { ERoute } from '@types';
+import { useTheme } from '#hooks';
+import { BaseLayout } from '#layout';
+import { BookmarksPage, HomePage, ProvidersPage, SettingsPage } from '#pages';
+import { ERoute } from '#types';
 
 import './App.scss';
 import './index.css';

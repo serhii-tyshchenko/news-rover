@@ -1,4 +1,4 @@
-import { getClassName } from '@utils';
+import { getClassName } from '#utils';
 
 import './button.styles.scss';
 

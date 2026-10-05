@@ -27,8 +27,7 @@
     "build": "vite build",
     "preview": "vite preview",
     "lint": "eslint .",
-    "test": "vitest run",
-    "test:coverage": "vitest run --coverage"
+    "test": "vitest run"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.11.2",
@@ -47,7 +46,7 @@
     "redux": "^5.0.1",
     "sass": "^1.80.2",
     "tailwindcss": "^4.3.1",
-    "typescript": "^5.9.3",
+    "typescript": "^7.0.2",
     "vite": "^8.0.16",
     "vite-plugin-svgr": "^5.2.0",
     "vite-tsconfig-paths": "^6.1.1",
@@ -59,17 +58,38 @@
     "@testing-library/react": "^16.0.1",
     "@trivago/prettier-plugin-sort-imports": "^5.2.2",
     "@types/lodash-es": "^4.17.12",
-    "@vitest/coverage-v8": "^4.1.8",
     "eslint": "^9.27.0",
     "eslint-config-prettier": "^10.1.5",
     "eslint-plugin-react": "^7.37.5",
     "globals": "^16.2.0",
     "jsdom": "^29.0.1",
     "prettier": "3.5.3",
-    "typescript-eslint": "^8.33.0",
     "vitest": "^4.1.8"
   },
   "allowScripts": {
     "@parcel/watcher@2.5.1": true
+  },
+  "imports": {
+    "#api": "./src/api/index.ts",
+    "#api/*": "./src/api/*/index.ts",
+    "#assets": "./src/assets/index.ts",
+    "#assets/*": "./src/assets/*/index.ts",
+    "#components": "./src/components/index.ts",
+    "#components/*": "./src/components/*/index.ts",
+    "#constants": "./src/constants/index.ts",
+    "#contexts": "./src/contexts/index.ts",
+    "#hooks": "./src/hooks/index.ts",
+    "#layout": "./src/layout/index.ts",
+    "#pages": "./src/pages/index.ts",
+    "#queries": "./src/queries/index.ts",
+    "#storage": "./src/storage/index.ts",
+    "#storage/*": "./src/storage/*/index.ts",
+    "#store": "./src/store/index.ts",
+    "#store/*": "./src/store/*/index.ts",
+    "#styles": "./src/styles/index.ts",
+    "#styles/*": "./src/styles/*/index.ts",
+    "#types": "./src/types/index.ts",
+    "#utils": "./src/utils/index.ts",
+    "#utils/*": "./src/utils/*/index.ts"
   }
 }

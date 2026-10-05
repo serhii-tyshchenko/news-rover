@@ -1,6 +1,6 @@
-import { describe, expect, it, vi } from 'vitest';
+import { ELocale } from '#types';
 
-import { ELocale } from '@types';
+import { describe, expect, it, vi } from 'vitest';
 
 import { getInitialLocale, shouldReduceMotion } from './system-preferences';
 
