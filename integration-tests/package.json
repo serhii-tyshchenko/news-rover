@@ -16,6 +16,6 @@
     "@types/node": "^22.15.21",
     "@playwright/test": "^1.52.0",
     "cross-env": "^7.0.3",
-    "typescript": "^5.8.3"
+    "typescript": "^7.0.2"
   }
 }
