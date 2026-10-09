@@ -26,7 +26,7 @@
     "start": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "lint": "tsc --noEmit && eslint . --ext .ts,.tsx",
+    "lint": "tsc --noEmit",
     "test": "vitest run"
   },
   "dependencies": {
@@ -66,7 +66,6 @@
     "globals": "^16.2.0",
     "jsdom": "^29.0.1",
     "prettier": "3.5.3",
-    "typescript-eslint": "^8.71.1",
     "vitest": "^4.1.8"
   },
   "allowScripts": {

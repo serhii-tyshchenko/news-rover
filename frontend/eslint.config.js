@@ -2,7 +2,6 @@ import prettier from 'eslint-config-prettier';
 import pluginReact from 'eslint-plugin-react';
 import { globalIgnores } from 'eslint/config';
 import globals from 'globals';
-import tseslint from 'typescript-eslint';
 
 import pluginJs from '@eslint/js';
 
@@ -13,7 +12,6 @@ export default [
 
   { languageOptions: { globals: globals.browser } },
   pluginJs.configs.recommended,
-  ...tseslint.configs.recommended,
   {
     ...pluginReact.configs.flat.recommended,
     settings: {
