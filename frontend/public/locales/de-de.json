@@ -13,7 +13,6 @@
     "news": "Nachrichten",
     "technology": "Technologie",
     "science": "Wissenschaft",
-    "softwareDevelopment": "IT",
     "space": "Weltraum"
   },
   "changeAutorefreshInterval": "Automatische Aktualisierung Intervall ändern",

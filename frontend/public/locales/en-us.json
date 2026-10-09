@@ -13,7 +13,6 @@
     "news": "News",
     "technology": "Technology",
     "science": "Science",
-    "softwareDevelopment": "IT",
     "space": "Space"
   },
   "changeAutorefreshInterval": "Change autorefresh interval",

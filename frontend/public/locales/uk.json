@@ -8,11 +8,10 @@
   "category": {
     "blogs": "Блоги",
     "business": "Бізнес",
-    "it": "Ай Ті",
+    "it": "IT",
     "military": "Війна",
     "news": "Новини",
     "science": "Наука",
-    "softwareDevelopment": "Ай Ті",
     "space": "Космос",
     "technology": "Технології"
   },
