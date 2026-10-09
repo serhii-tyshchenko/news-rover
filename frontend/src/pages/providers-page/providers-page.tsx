@@ -58,7 +58,7 @@ function ProvidersPage() {
   return (
     <CardList>
       {groupedProviders.map((provider) => (
-        <Card key={provider.category} title={provider.title}>
+        <Card key={provider.categoryId} title={provider.title}>
           <ProviderList
             data={provider.data}
             onAddProvider={handleAddProvider}

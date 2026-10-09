@@ -52,7 +52,7 @@ export type TProvider = {
   url: string;
   homepage: string;
   logo: string;
-  category: string;
+  categoryId: string;
 };
 
 export type TAddedProvider = {
