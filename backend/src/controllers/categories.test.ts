@@ -24,7 +24,10 @@ function createResponse() {
 
 describe('(Controller) Categories', () => {
   it('returns categories with status 200', async () => {
-    const categories = ['News', 'Tech'];
+    const categories = [
+      { id: 'news', name: 'News' },
+      { id: 'tech', name: 'Tech' },
+    ];
     const controller = createCategoriesController({
       getCategories: async () => categories,
       getCategoryProviders: async () => [],
@@ -38,12 +41,22 @@ describe('(Controller) Categories', () => {
   });
 
   it('returns category providers with status 200', async () => {
-    const providers = [{ id: '1', provider: 'Provider1' }];
+    const providers = [
+      {
+        id: '1',
+        name: 'Provider1',
+        categoryId: '123',
+        url: 'https://example.com/rss',
+        description: null,
+        logo: null,
+        language: null,
+      },
+    ];
     const controller = createCategoriesController({
       getCategories: async () => [],
       getCategoryProviders: async (id: string) => {
         assert.equal(id, '123');
-        return providers as any[];
+        return providers;
       },
     });
     const { state, res } = createResponse();

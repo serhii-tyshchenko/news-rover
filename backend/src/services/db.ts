@@ -4,19 +4,25 @@ import { eq, ilike, or } from 'drizzle-orm';
 import { provider, providerCategory } from '../db/schema.ts';
 import type { Provider, ProviderCategory } from '../db/schema.ts';
 
-const databaseUrl = process.env.DATABASE_URL_UNPOOLED;
-if (!databaseUrl) {
-  throw new Error('DATABASE_URL_UNPOOLED is not set');
+let db: ReturnType<typeof drizzle> | undefined;
+
+function getDb() {
+  if (!db) {
+    const databaseUrl = process.env.DATABASE_URL_UNPOOLED;
+    if (!databaseUrl) {
+      throw new Error('DATABASE_URL_UNPOOLED is not set');
+    }
+    db = drizzle(neon(databaseUrl));
+  }
+  return db;
 }
 
-const db = drizzle(neon(databaseUrl));
-
 export const getProviders = (): Promise<Provider[]> =>
-  db.select().from(provider);
+  getDb().select().from(provider);
 
 export function searchProviders(query: string): Promise<Provider[]> {
   const q = `%${query}%`;
-  return db
+  return getDb()
     .select()
     .from(provider)
     .where(
@@ -29,12 +35,15 @@ export function searchProviders(query: string): Promise<Provider[]> {
 }
 
 export async function getProviderById(id: string): Promise<Provider | null> {
-  const [row] = await db.select().from(provider).where(eq(provider.id, id));
+  const [row] = await getDb()
+    .select()
+    .from(provider)
+    .where(eq(provider.id, id));
   return row ?? null;
 }
 
 export const getCategories = (): Promise<ProviderCategory[]> =>
-  db.select().from(providerCategory);
+  getDb().select().from(providerCategory);
 
 export const getCategoryProviders = (categoryId: string): Promise<Provider[]> =>
-  db.select().from(provider).where(eq(provider.categoryId, categoryId));
+  getDb().select().from(provider).where(eq(provider.categoryId, categoryId));

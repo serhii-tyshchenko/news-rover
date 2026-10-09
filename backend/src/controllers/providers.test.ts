@@ -24,7 +24,17 @@ function createResponse() {
 
 describe('(Controller) Providers', () => {
   it('returns providers when no search query', async () => {
-    const mockProviders = [{ id: '1', name: 'Provider1' }];
+    const mockProviders = [
+      {
+        id: '1',
+        name: 'Provider1',
+        categoryId: 'news',
+        url: 'https://example.com/rss',
+        description: null,
+        logo: null,
+        language: null,
+      },
+    ];
     const controller = createProvidersController({
       getProviders: async () => mockProviders,
       getProviderById: async () => null,
@@ -39,7 +49,17 @@ describe('(Controller) Providers', () => {
   });
 
   it('returns providers when search query is present', async () => {
-    const mockProviders = [{ id: '2', name: 'NewsProvider' }];
+    const mockProviders = [
+      {
+        id: '2',
+        name: 'NewsProvider',
+        categoryId: 'news',
+        url: 'https://example.com/rss',
+        description: null,
+        logo: null,
+        language: null,
+      },
+    ];
     const controller = createProvidersController({
       getProviders: async () => [],
       getProviderById: async () => null,
@@ -60,7 +80,15 @@ describe('(Controller) Providers', () => {
   });
 
   it('returns provider by id', async () => {
-    const mockProvider = { id: '123', name: 'Provider123' };
+    const mockProvider = {
+      id: '123',
+      name: 'Provider123',
+      categoryId: 'news',
+      url: 'https://example.com/rss',
+      description: null,
+      logo: null,
+      language: null,
+    };
     const controller = createProvidersController({
       getProviders: async () => [],
       getProviderById: async () => mockProvider,
