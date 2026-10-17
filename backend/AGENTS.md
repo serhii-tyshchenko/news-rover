@@ -15,7 +15,7 @@ Quick run & test
 
 Environment
 
-- See [README.md](README.md) for environment variable names (`GOOGLE_SPREADSHEET_ID`, `GOOGLE_SERVICE_EMAIL`, `GOOGLE_PRIVATE_KEY`).
+- `DATABASE_URL_UNPOOLED` is required to connect to the Neon PostgreSQL database.
 
 Project shape (important paths)
 
@@ -24,7 +24,9 @@ Project shape (important paths)
 - Core utilities: [src/common/utils.ts](src/common/utils.ts#L1)
 - Controllers: [src/controllers](src/controllers)
 - Routes: [src/routes](src/routes)
-- Google Sheets service: [src/services/db.ts](src/services/db.ts#L1)
+- Drizzle database service: [src/services/db.ts](src/services/db.ts#L1)
+- Drizzle schema: [src/db/schema.ts](src/db/schema.ts#L1)
+- Database migrations: [drizzle](drizzle)
 - API docs (OpenAPI): [src/docs/swaggerDef.ts](src/docs/swaggerDef.ts#L1)
 
 Conventions & notes for agents
@@ -33,7 +35,9 @@ Conventions & notes for agents
 - Tests live alongside source under `src/**/*.test.ts` and are run with Node's test runner.
 - Prefer making small, test-covered changes. Run `npm test` and `npm run typecheck` before proposing large refactors.
 - When editing routes or controllers, update corresponding OpenAPI YAML files under `src/docs/components/paths` and `src/docs/components/schemas`.
-- Persisted provider data is read from a Google Spreadsheet via the service account env vars — avoid requesting real secrets.
+- Provider and category data are stored in PostgreSQL and accessed through Drizzle ORM; the Neon serverless connection is initialized in `src/services/db.ts`.
+- The Drizzle schema is defined in `src/db/schema.ts`. Providers reference rows in the `provider_category` table; categories are stored data, not derived from providers.
+- Do not request or expose database credentials. Use `DATABASE_URL_UNPOOLED` from the environment when a database connection is required.
 
 Agent workflow suggestions (recommended)
 
