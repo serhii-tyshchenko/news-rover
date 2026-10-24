@@ -2,15 +2,14 @@
 
 ## Quick Start
 
-**Build & Run** (from `frontend/`):
+- **Build & Run** (from `frontend/`):
 
 - `npm run start` - Start dev server (Vite) at http://127.0.0.1:3000/
 - `npm run build` - Production build
-- `npm run lint` - Run ESLint
+- `npm run lint` - Run the TypeScript check (`tsc --noEmit`)
 - `npm run test` - Run tests with Vitest
-- `npm run test:coverage` - Generate coverage report
 
-**Tech Stack:** React 19 + TypeScript + Vite + Redux Toolkit + React Query + Tailwind + SCSS
+**Tech Stack:** React 19 + TypeScript + Vite 8 + React Router 8 + Redux Toolkit + React Query + Tailwind CSS 4 + SCSS
 
 ---
 
@@ -48,27 +47,27 @@ src/
 
 ## Routing
 
-**Library:** React Router v7 (`react-router`)
+**Library:** React Router v8 (`react-router`)
 
 ### Route Map
 
-| `ERoute` value     | Path        | Page component      |
-| ------------------ | ----------- | ------------------- |
-| `ERoute.Home`      | `/`         | `<HomePage />`      |
-| `ERoute.Bookmarks` | `bookmarks` | `<BookmarksPage />` |
-| `ERoute.Providers` | `providers` | `<ProvidersPage />` |
-| `ERoute.Settings`  | `settings`  | `<SettingsPage />`  |
+| `ROUTE` value     | Path        | Page component      |
+| ----------------- | ----------- | ------------------- |
+| `ROUTE.HOME`      | `/`         | `<HomePage />`      |
+| `ROUTE.BOOKMARKS` | `bookmarks` | `<BookmarksPage />` |
+| `ROUTE.PROVIDERS` | `providers` | `<ProvidersPage />` |
+| `ROUTE.SETTINGS`  | `settings`  | `<SettingsPage />`  |
 
 All routes are nested under `<BaseLayout />`, which renders the shared shell with `<Outlet />`. Unknown paths redirect to `/`.
 
 ### Adding a New Route
 
-1. Add a value to `ERoute` in `src/types/index.ts`.
+1. Add a value to the `ROUTE` object in `src/constants/index.ts`.
 2. Create the page component under `src/pages/my-page/`.
 3. Register the route in `src/App.tsx`:
 
 ```typescript
-<Route path={ERoute.MyPage} element={<MyPage />} />
+<Route path={ROUTE.MY_PAGE} element={<MyPage />} />
 ```
 
 ### Navigation Patterns
@@ -76,19 +75,21 @@ All routes are nested under `<BaseLayout />`, which renders the shared shell wit
 ```typescript
 // Declarative link
 import { Link } from 'react-router';
-<Link to={ERoute.Settings}>Settings</Link>
+import { ROUTE } from '#constants';
+<Link to={ROUTE.SETTINGS}>Settings</Link>
 
 // Programmatic navigation
 import { useNavigate } from 'react-router';
+import { ROUTE } from '#constants';
 const navigate = useNavigate();
-navigate(ERoute.Home);
+navigate(ROUTE.HOME);
 
 // Current location
 import { useLocation } from 'react-router';
 const { pathname } = useLocation();
 ```
 
-Always reference `ERoute` enum values instead of hard-coded path strings.
+Always reference values from `ROUTE` instead of hard-coded route strings.
 
 ---
 
@@ -398,11 +399,11 @@ describe('(Hook) useBreakpoints', () => {
 
 ## Code Style & Linting
 
-- **Formatter:** Prettier (auto-run with ESLint)
-- **Rules:** ESLint + TypeScript ESLint + React plugin
+- **Formatter:** Prettier
+- **Validation:** `npm run lint` runs `tsc --noEmit`; no ESLint or coverage script is currently defined in `package.json`.
 - **TypeScript:** Strict mode enabled (`strict: true`)
 - **React:** Version detection automatic (React 19)
-- **Run:** `npm lint` to check and auto-fix style issues
+- **Run:** `npm run lint` to type-check the project
 
 ---
 
