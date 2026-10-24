@@ -1,9 +1,10 @@
+import { ROUTE } from '#constants';
 import type { TDic } from '#types';
-import { EIcon, ERoute } from '#types';
+import { EIcon } from '#types';
 
 type IArgs = {
   dic: TDic;
-  navigate: (route: ERoute) => void;
+  navigate: (route: (typeof ROUTE)[keyof typeof ROUTE]) => void;
   noBookmarks: boolean;
   location: {
     pathname: string;
@@ -32,15 +33,15 @@ export const getNavConfig = ({
   [
     {
       icon: EIcon.Rss,
-      onClick: () => navigate(ERoute.Providers),
+      onClick: () => navigate(ROUTE.PROVIDERS),
       title: dic.providers,
-      active: location.pathname.includes(ERoute.Providers),
+      active: location.pathname.includes(ROUTE.PROVIDERS),
     },
     {
       icon: noBookmarks ? EIcon.BookmarkEmpty : EIcon.Bookmark,
-      onClick: () => navigate(ERoute.Bookmarks),
+      onClick: () => navigate(ROUTE.BOOKMARKS),
       title: dic.bookmarks,
-      active: location.pathname.includes(ERoute.Bookmarks),
+      active: location.pathname.includes(ROUTE.BOOKMARKS),
     },
     ...(isFullscreenEnabled
       ? [
@@ -53,8 +54,8 @@ export const getNavConfig = ({
       : []),
     {
       icon: EIcon.Settings,
-      onClick: () => navigate(ERoute.Settings),
+      onClick: () => navigate(ROUTE.SETTINGS),
       title: dic.settings,
-      active: location.pathname.includes(ERoute.Settings),
+      active: location.pathname.includes(ROUTE.SETTINGS),
     },
   ].filter(Boolean);

@@ -4,10 +4,10 @@ import { Link, useLocation, useNavigate } from 'react-router';
 import { isEmpty } from 'lodash-es';
 
 import { APP_NAME } from '#constants';
+import { ROUTE } from '#constants';
 import { useFullscreen, useLocalization } from '#hooks';
 import { useAppSelector } from '#store';
 import { selectBookmarksData } from '#store/slices';
-import { ERoute } from '#types';
 
 import HeaderNav from './header-nav';
 import { getNavConfig } from './header.utils';
@@ -47,7 +47,7 @@ function Header() {
 
   return (
     <header className="header flex items-center justify-between text-2xl p-2 sm:p-4">
-      <Link to={ERoute.Home} className="text-primary hover:text-accent">
+      <Link to={ROUTE.HOME} className="text-primary hover:text-accent">
         {APP_NAME}
       </Link>
       <HeaderNav data={navConfig} />

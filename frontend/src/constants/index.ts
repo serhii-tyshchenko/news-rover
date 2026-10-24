@@ -31,3 +31,10 @@ export const DEFAULT_AUTOREFRESH_INTERVAL =
   (first(autorefreshIntervals) as number) || 5;
 
 export const DEFAULT_CARD_COUNT = 4;
+
+export const ROUTE = {
+  HOME: '/',
+  BOOKMARKS: 'bookmarks',
+  PROVIDERS: 'providers',
+  SETTINGS: 'settings',
+} as const;

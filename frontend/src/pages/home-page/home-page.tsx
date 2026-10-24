@@ -6,12 +6,12 @@ import { isEmpty, isEqual } from 'lodash-es';
 import { CardList, CardListSkeleton, NewsCard } from '#components';
 import { EmptyState, ErrorState } from '#components/ui';
 import { DEFAULT_CARD_COUNT } from '#constants';
+import { ROUTE } from '#constants';
 import { useDraggableList, useLocalization } from '#hooks';
 import { useProvidersData } from '#queries';
 import { useAppDispatch, useAppSelector } from '#store';
 import { doReorderProviders, selectAddedProviders } from '#store/slices';
 import type { TAddedProvider, TProvider } from '#types';
-import { ERoute } from '#types';
 
 function HomePage() {
   const dispatch = useAppDispatch();
@@ -68,7 +68,7 @@ function HomePage() {
     return (
       <EmptyState>
         {dic.noProviders}&nbsp;
-        <Link to={ERoute.Providers} className="text-accent hover:underline">
+        <Link to={ROUTE.PROVIDERS} className="text-accent hover:underline">
           {dic.add}
         </Link>
       </EmptyState>
