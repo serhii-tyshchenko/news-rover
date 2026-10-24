@@ -1,7 +1,5 @@
 import { fireEvent, render } from '@testing-library/react';
 
-import { EControlSize } from '#types';
-
 import { Select } from './select';
 
 describe('(Component) Select', () => {
@@ -61,7 +59,7 @@ describe('(Component) Select', () => {
   });
 
   it('should have the correct size when passed as a prop', () => {
-    const size = EControlSize.Large;
+    const size = 'large';
     const { getByTestId } = render(<Select options={options} size={size} />);
     const select = getByTestId('select');
     expect(select).toHaveClass(`select--${size}`);

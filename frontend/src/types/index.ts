@@ -19,13 +19,6 @@ export enum ELocale {
   DeDE = 'de-DE',
 }
 
-export enum ERoute {
-  Home = '/',
-  Bookmarks = 'bookmarks',
-  Providers = 'providers',
-  Settings = 'settings',
-}
-
 // TODO add rest icons
 export enum EIcon {
   ArrowsCW = 'arrows-cw',
@@ -169,11 +162,6 @@ type TThemeKeys = {
   [key in ETheme]: string;
 };
 
-export enum EControlSize {
-  Small = 'small',
-  Normal = 'normal',
-  Big = 'big',
-  Large = 'large',
-}
+export type TControlSize = 'small' | 'normal' | 'big' | 'large';
 
 export type TBreakpoint = 'sm' | 'md' | 'lg' | 'xl' | '2xl';

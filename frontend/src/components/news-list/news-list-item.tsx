@@ -2,7 +2,7 @@ import { isEmpty } from 'lodash-es';
 
 import { IconButton } from '#components/ui';
 import { useLocalization } from '#hooks';
-import { EControlSize, EIcon, EViewMode, type TNewsItem } from '#types';
+import { EIcon, EViewMode, type TNewsItem } from '#types';
 import { formatTime, getClassName, isWithinLastHour } from '#utils';
 
 import NotFound from '../../assets/images/not-found.png';
@@ -101,14 +101,14 @@ function NewsListItem(props: INewsListItemProps) {
             icon={bookmarkIcon}
             title={bookmarkTitle}
             onClick={handleBookmarkClick}
-            size={EControlSize.Small}
+            size="small"
           />
           {isShareSupported && (
             <IconButton
               icon={EIcon.Share}
               title={dic.share}
               onClick={handleShareClick}
-              size={EControlSize.Small}
+              size="small"
             />
           )}
         </div>

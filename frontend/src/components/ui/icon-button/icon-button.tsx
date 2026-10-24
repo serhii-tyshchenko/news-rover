@@ -1,4 +1,4 @@
-import { EControlSize, EIcon } from '#types';
+import { EIcon, type TControlSize } from '#types';
 import { getClassName } from '#utils';
 
 import './icon-button.styles.scss';
@@ -11,7 +11,7 @@ interface IIconButtonProps {
   icon?: EIcon | string; // Allow string for custom icons
   type?: 'button' | 'submit' | 'reset';
   title?: string;
-  size?: EControlSize;
+  size?: TControlSize;
   disabled?: boolean;
   autoFocus?: boolean;
   toggled?: boolean;
@@ -25,7 +25,7 @@ function IconButton(props: IIconButtonProps) {
     className = '',
     title = 'Click me',
     type = 'button',
-    size = EControlSize.Normal,
+    size = 'normal',
     disabled = false,
     autoFocus = false,
     toggled = false,

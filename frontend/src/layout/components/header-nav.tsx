@@ -1,5 +1,5 @@
 import { IconButton } from '#components/ui';
-import { EControlSize, EIcon } from '#types';
+import { EIcon } from '#types';
 
 interface IProps {
   data: Array<{
@@ -21,7 +21,7 @@ function HeaderNav(props: IProps) {
           icon={icon}
           onClick={onClick}
           title={title}
-          size={EControlSize.Big}
+          size="big"
           toggled={active}
         />
       ))}

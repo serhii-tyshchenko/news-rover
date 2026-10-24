@@ -10,7 +10,7 @@ import {
 import { useAnimation, useLocalization } from '#hooks';
 import { useAppDispatch, useAppSelector } from '#store';
 import { doUpdateSettings, selectSettingsData } from '#store/slices';
-import { EControlSize, ELocale, ETheme } from '#types';
+import { ELocale, ETheme } from '#types';
 
 import { SettingsGroup } from './components';
 import { prepareOptions } from './settings-page.utils';
@@ -68,7 +68,7 @@ function SettingsPage() {
             toggled={isAnimationEnabled}
             onChange={handleBooleanChange}
             animated={isAnimationEnabled}
-            size={EControlSize.Small}
+            size="small"
             label={dic.animation}
           />
         </SettingsGroup>
@@ -87,7 +87,7 @@ function SettingsPage() {
             toggled={fullscreenToggle}
             onChange={handleBooleanChange}
             animated={isAnimationEnabled}
-            size={EControlSize.Small}
+            size="small"
             label={dic.fullscreenToggle}
           />
         </SettingsGroup>
@@ -97,7 +97,7 @@ function SettingsPage() {
             toggled={refreshOnFocus}
             onChange={handleBooleanChange}
             animated={isAnimationEnabled}
-            size={EControlSize.Small}
+            size="small"
             label={dic.refreshOnFocus}
           />
         </SettingsGroup>
@@ -108,7 +108,7 @@ function SettingsPage() {
             toggled={autorefresh}
             onChange={handleBooleanChange}
             animated={isAnimationEnabled}
-            size={EControlSize.Small}
+            size="small"
             label={dic.autorefresh}
           />
         </SettingsGroup>

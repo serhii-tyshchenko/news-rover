@@ -1,12 +1,10 @@
-import { EControlSize } from '#types';
-
 import { fireEvent, render } from '@testing-library/react';
 
 import { Toggle } from './toggle';
 
 describe('(Component) Toggle', () => {
   it('should render the toggle with the correct size', () => {
-    const size = EControlSize.Big;
+    const size = 'big';
     const onChange = vi.fn();
     const { getByTestId } = render(
       <Toggle size={size} onChange={onChange} label="Test" />,

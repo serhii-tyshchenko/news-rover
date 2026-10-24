@@ -1,4 +1,4 @@
-import { EControlSize } from '#types';
+import type { TControlSize } from '#types';
 import { getClassName } from '#utils';
 
 import './select.styles.scss';
@@ -21,7 +21,7 @@ interface IProps {
   required?: boolean;
   disabled?: boolean;
   noArrow?: boolean;
-  size?: EControlSize;
+  size?: TControlSize;
   name?: string;
   label?: string;
   error?: string;
@@ -40,7 +40,7 @@ function Select(props: IProps) {
     required = false,
     disabled = false,
     noArrow = false,
-    size = EControlSize.Normal,
+    size = 'normal',
     name = NAME_SPACE,
     label = '',
     error = '',

@@ -2,8 +2,6 @@ import { noop } from 'lodash-es';
 
 import { fireEvent, render } from '@testing-library/react';
 
-import { EControlSize } from '#types';
-
 import { IconButton } from './icon-button';
 
 describe('(Component) IconButton', () => {
@@ -52,7 +50,7 @@ describe('(Component) IconButton', () => {
   });
 
   it('should have the correct size when passed as a prop', () => {
-    const size = EControlSize.Big;
+    const size = 'big';
     const { getByTestId } = render(<IconButton onClick={noop} size={size} />);
     const iconButton = getByTestId('icon-button');
     expect(iconButton).toHaveClass(`icon-button--${size}`);
