@@ -1,5 +1,7 @@
 import type { Action } from 'redux';
 
+import { LOCALE } from '#constants';
+
 export enum ETheme {
   System = 'system',
   Light = 'light',
@@ -13,11 +15,7 @@ export enum ETheme {
   Newspaper = 'newspaper',
 }
 
-export enum ELocale {
-  EnUS = 'en-US',
-  Uk = 'uk',
-  DeDE = 'de-DE',
-}
+export type TLocale = (typeof LOCALE)[keyof typeof LOCALE];
 
 // TODO add rest icons
 export enum EIcon {
@@ -97,7 +95,7 @@ export type TSettings = {
   autorefresh: boolean;
   autorefreshInterval: number;
   fullscreenToggle: boolean;
-  locale: ELocale;
+  locale: TLocale;
   refreshOnFocus: boolean;
   theme: ETheme;
 };
@@ -135,7 +133,7 @@ export type TDic = {
   hideProvider: string;
   home: string;
   language: string;
-  languages: Record<ELocale, string>;
+  languages: Record<TLocale, string>;
   loading: string;
   loadMore: string;
   noBookmarks: string;

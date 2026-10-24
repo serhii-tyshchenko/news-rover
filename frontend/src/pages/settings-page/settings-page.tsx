@@ -6,11 +6,12 @@ import {
   AUTHOR_SITE,
   AUTOREFRESH_INTERVAL_OPTIONS,
   DEFAULT_AUTOREFRESH_INTERVAL,
+  LOCALE,
 } from '#constants';
 import { useAnimation, useLocalization } from '#hooks';
 import { useAppDispatch, useAppSelector } from '#store';
 import { doUpdateSettings, selectSettingsData } from '#store/slices';
-import { ELocale, ETheme } from '#types';
+import { ETheme } from '#types';
 
 import { SettingsGroup } from './components';
 import { prepareOptions } from './settings-page.utils';
@@ -77,7 +78,7 @@ function SettingsPage() {
             name="locale"
             value={locale}
             onChange={handleStringChange}
-            options={prepareOptions(ELocale, dic.languages)}
+            options={prepareOptions(LOCALE, dic.languages)}
             title={dic.changeLanguage}
           />
         </SettingsGroup>

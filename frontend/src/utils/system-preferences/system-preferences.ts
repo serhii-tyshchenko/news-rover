@@ -1,4 +1,5 @@
-import { ELocale } from '#types';
+import { LOCALE } from '#constants';
+import { type TLocale } from '#types';
 
 /**
  * Checks if the user has set a preference for reduced motion in their system settings.
@@ -10,16 +11,16 @@ export const shouldReduceMotion = (): boolean =>
   window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 /**
- * Retrieves the user's system locale and checks if it matches one of the supported locales defined in the `ELocale` enum.
+ * Retrieves the user's system locale and checks if it matches one of the supported locales defined in the `TLocale` type.
  * If a match is found, it returns the system locale; otherwise, it defaults to 'en-US'.
- * @returns {ELocale} - The initial locale to be used in the application, based on the user's system settings.
+ * @returns {TLocale} - The initial locale to be used in the application, based on the user's system settings.
  */
-export const getInitialLocale = (): ELocale => {
-  const systemLocale = navigator.language as ELocale | undefined;
+export const getInitialLocale = (): TLocale => {
+  const systemLocale = navigator.language as TLocale | undefined;
 
-  if (systemLocale && Object.values(ELocale).includes(systemLocale)) {
+  if (systemLocale && Object.values(LOCALE).includes(systemLocale)) {
     return systemLocale;
   }
 
-  return ELocale.EnUS;
+  return LOCALE.EN_US;
 };

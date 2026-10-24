@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 
-import { ELocale, type TDic, type TNewsItem } from '#types';
+import { LOCALE } from '#constants';
+import { type TDic, type TLocale, type TNewsItem } from '#types';
 import { capitalizeFirstLetter } from '#utils';
 
 import {
@@ -99,7 +100,7 @@ describe('(Function) groupDataByDay', () => {
       },
     ] as TNewsItem[];
 
-    expect(groupDataByDay(data, dic, ELocale.EnUS)).toEqual({
+    expect(groupDataByDay(data, dic, LOCALE.EN_US)).toEqual({
       'January 1, 2022': [
         {
           created: new Date('2022-01-01T12:00:00').getTime(),
@@ -128,7 +129,7 @@ describe('(Function) groupDataByDay', () => {
 
 describe('(Function) getDateLabel', () => {
   const dic = { today: 'Today', yesterday: 'Yesterday' } as TDic;
-  const locale = ELocale.EnUS;
+  const locale: TLocale = LOCALE.EN_US;
 
   it('should return today label for today', () => {
     const date = new Date();

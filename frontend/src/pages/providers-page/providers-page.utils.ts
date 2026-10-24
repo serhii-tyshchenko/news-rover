@@ -1,5 +1,5 @@
 import type { TDic, TProvider } from '#types';
-import { ELocale } from '#types';
+import { type TLocale } from '#types';
 
 /**
  * Retrieves a user-friendly title for a given provider category by mapping the category identifier to a localized string from the provided dictionary (dic).
@@ -18,13 +18,13 @@ const getCategoryTitle = (categoryId: string, dic: TDic): string =>
  * Finally, the resulting array of category groups is sorted alphabetically by the category title.
  * This function is useful for organizing news providers in the user interface, allowing users to easily browse providers by category and find the ones they are interested in.
  * @param {TProvider[]} providers - An array of news providers to be grouped by category.
- * @param {ELocale} locale - The locale to be used for sorting the provider names and category titles.
+ * @param {TLocale} locale - The locale to be used for sorting the provider names and category titles.
  * @param {TDic} dic - A dictionary object containing localized strings for category titles.
  * @returns {Array<{ category: string; title: string; data: TProvider[] }>} - An array of objects, each representing a category group with its name, localized title, and sorted list of providers.
  */
 export const groupProvidersByCategory = (
   providers: TProvider[] = [],
-  locale: ELocale,
+  locale: TLocale,
   dic: TDic,
 ): Array<{ categoryId: string; title: string; data: TProvider[] }> =>
   [...new Set<string>(providers.map(({ categoryId }) => categoryId))]

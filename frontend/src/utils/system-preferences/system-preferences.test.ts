@@ -1,6 +1,6 @@
-import { ELocale } from '#types';
-
 import { describe, expect, it, vi } from 'vitest';
+
+import { LOCALE } from '#constants';
 
 import { getInitialLocale, shouldReduceMotion } from './system-preferences';
 
@@ -48,18 +48,18 @@ describe('(Function) shouldReduceMotion', () => {
 });
 
 describe('(Function) getInitialLocale', () => {
-  it('should return the system locale if it is a valid ELocale', () => {
+  it('should return the system locale if it is a valid TLocale', () => {
     const languageSpy = vi.spyOn(navigator, 'language', 'get');
 
     languageSpy.mockReturnValue('en-US');
-    expect(getInitialLocale()).toBe(ELocale.EnUS);
+    expect(getInitialLocale()).toBe(LOCALE.EN_US);
 
     languageSpy.mockReturnValue('uk');
-    expect(getInitialLocale()).toBe(ELocale.Uk);
+    expect(getInitialLocale()).toBe(LOCALE.UK);
   });
 
-  it('should return ELocale.EnUS if the system locale is not a valid ELocale', () => {
+  it('should return LOCALE.EN_US if the system locale is not a valid TLocale', () => {
     vi.spyOn(navigator, 'language', 'get').mockReturnValue('fr-FR');
-    expect(getInitialLocale()).toBe(ELocale.EnUS);
+    expect(getInitialLocale()).toBe(LOCALE.EN_US);
   });
 });

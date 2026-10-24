@@ -38,3 +38,9 @@ export const ROUTE = {
   PROVIDERS: 'providers',
   SETTINGS: 'settings',
 } as const;
+
+export const LOCALE = {
+  EN_US: 'en-US',
+  UK: 'uk',
+  DE_DE: 'de-DE',
+} as const;

@@ -1,7 +1,7 @@
 import { groupBy } from 'lodash-es';
 
 import { ONE_MINUTE_IN_MILLISECONDS } from '#constants';
-import { ELocale, type TDic, type TNewsItem } from '#types';
+import { type TDic, type TLocale, type TNewsItem } from '#types';
 import { capitalizeFirstLetter } from '#utils';
 
 /**
@@ -98,13 +98,13 @@ export const isThisWeek = (someDate: Date): boolean => {
  * This function helps in categorizing news items based on their publication date and providing a user-friendly label for each category.
  * @param {Date} date - The date for which to generate the label.
  * @param {TDic} dic - A dictionary object containing localized strings for "today" and "yesterday".
- * @param {ELocale} locale - The locale to be used for formatting the date string.
+ * @param {TLocale} locale - The locale to be used for formatting the date string.
  * @returns {string} - A label representing the date category (e.g., "Today", "Yesterday", "Monday", "March 5").
  */
 export const getDateLabel = (
   date: Date,
   dic: TDic,
-  locale: ELocale,
+  locale: TLocale,
 ): string => {
   const isTodayDate = isToday(date);
   const isYesterdayDate = isYesterday(date);
@@ -133,13 +133,13 @@ export const getDateLabel = (
  * This is useful for organizing news items in the UI, allowing users to easily see which items are recent and which are older.
  * @param {TNewsItem[]} data - An array of news items to be grouped.
  * @param {TDic} dic - A dictionary object containing localized strings for "today" and "yesterday".
- * @param {ELocale} locale - The locale to be used for formatting the date labels.
+ * @param {TLocale} locale - The locale to be used for formatting the date labels.
  * @returns {Record<string, TNewsItem[]>} - An object where the keys are date labels and the values are arrays of news items that fall under each label.
  */
 export const groupDataByDay = (
   data: TNewsItem[],
   dic: TDic,
-  locale: ELocale,
+  locale: TLocale,
 ): Record<string, TNewsItem[]> =>
   groupBy(
     data.toSorted((a, b) => b.created - a.created),
