@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useLayoutEffect } from 'react';
 
 import { useMediaQuery } from '#hooks';
 import { useAppSelector } from '#store';
@@ -13,7 +13,7 @@ function useTheme() {
     theme = prefersDarkMode ? ETheme.Dark : ETheme.Light;
   }
 
-  useEffect(
+  useLayoutEffect(
     () => document.documentElement.setAttribute('data-theme', theme),
     [theme],
   );

@@ -9,6 +9,20 @@
   <meta name="description" content="NewsRover is a news aggregator app that allows users to followm various news sources.">
   <link rel="manifest" href="/site.webmanifest" />
   <title>NewsRover</title>
+  <script>
+    // Keep in sync with STORAGE_KEY_REDUX_STATE and useTheme
+    (function () {
+      let theme = 'system';
+      try {
+        const state = JSON.parse(localStorage.getItem('news-rover:redux-state:v1'));
+        theme = (state && state.settings && state.settings.theme) || 'system';
+      } catch (e) { }
+      if (theme === 'system') {
+        theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      }
+      document.documentElement.setAttribute('data-theme', theme);
+    })();
+  </script>
 </head>
 
 <body>
